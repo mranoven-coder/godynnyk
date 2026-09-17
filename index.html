@@ -1,0 +1,561 @@
+<!-- Автор ідеї та вимог: Anatolii Bondarenko, створено 17.09.2026 -->
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Навчальний годинник</title>
+
+<!-- PWA: manifest -->
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#4a7fd6">
+
+<!-- PWA: iOS (Safari) підтримка -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Годинник">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+
+<!-- PWA: Android іконка -->
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="icons/icon-512.png">
+<style>
+  :root{
+    --hour-color:#000000;
+    --minute-color:#1155cc;
+    --second-color:#e02424;
+    --number-color:#ff8c00;
+    --bg:#fdf6e3;
+    --panel:#ffffff;
+    --accent:#4a7fd6;
+  }
+  *{box-sizing:border-box;}
+  html,body{
+    margin:0;padding:0;
+    background:linear-gradient(180deg,#dff3ff 0%,#fdf6e3 100%);
+    font-family:"Comic Sans MS","Segoe UI",Verdana,Arial,sans-serif;
+    color:#333;
+    min-height:100vh;
+  }
+  h1{
+    text-align:center;
+    color:#4a7fd6;
+    font-size:1.8rem;
+    margin:14px 0 4px;
+  }
+  .hint{
+    text-align:center;
+    color:#777;
+    margin:0 0 14px;
+    font-size:0.95rem;
+  }
+  .wrap{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    align-items:flex-start;
+    gap:26px;
+    padding:0 16px 40px;
+  }
+  .clock-col{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+  }
+  svg{
+    touch-action:none;
+    -webkit-user-select:none;
+    user-select:none;
+    max-width:min(88vw,420px);
+    height:auto;
+    filter:drop-shadow(0 6px 14px rgba(0,0,0,0.15));
+  }
+  .hand{cursor:grab;}
+  .hand:active{cursor:grabbing;}
+  .hit{
+    stroke:rgba(0,0,0,0.001);
+    fill:none;
+  }
+  .digital{
+    margin-top:14px;
+    background:var(--panel);
+    border-radius:18px;
+    padding:14px 22px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.12);
+    text-align:center;
+  }
+  .digital .big-time{
+    font-size:2.1rem;
+    font-weight:bold;
+    color:#333;
+    letter-spacing:1px;
+    margin-bottom:6px;
+  }
+  .weekday{
+    color:var(--accent);
+    font-size:1rem;
+    margin-bottom:10px;
+  }
+  .digital input[type=time],
+  .digital input[type=date]{
+    font-size:1.1rem;
+    padding:6px 8px;
+    border-radius:10px;
+    border:2px solid #cfd9e8;
+    margin:4px;
+    font-family:inherit;
+  }
+  .panel{
+    background:var(--panel);
+    border-radius:20px;
+    padding:20px 24px;
+    box-shadow:0 4px 14px rgba(0,0,0,0.12);
+    width:300px;
+    max-width:90vw;
+  }
+  .panel h2{
+    font-size:1.05rem;
+    color:var(--accent);
+    margin:0 0 10px;
+    border-bottom:2px dashed #e0e6f0;
+    padding-bottom:6px;
+  }
+  .row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin:8px 0;
+    font-size:0.95rem;
+  }
+  .row label{display:flex;align-items:center;gap:8px;cursor:pointer;}
+  .swatch{
+    width:14px;height:14px;border-radius:50%;display:inline-block;
+  }
+  .swatch.hour{background:var(--hour-color);}
+  .swatch.minute{background:var(--minute-color);}
+  .swatch.second{background:var(--second-color);}
+  input[type=checkbox]{
+    width:18px;height:18px;accent-color:var(--accent);cursor:pointer;
+  }
+  input[type=range]{
+    width:100%;
+    accent-color:var(--accent);
+  }
+  .speed-label{
+    display:flex;justify-content:space-between;
+    font-size:0.9rem;color:#555;margin-top:4px;
+  }
+  .btn-row{
+    display:flex;
+    gap:8px;
+    margin-top:14px;
+    flex-wrap:wrap;
+  }
+  button{
+    flex:1;
+    min-width:100px;
+    border:none;
+    border-radius:12px;
+    padding:10px 8px;
+    font-size:0.95rem;
+    font-family:inherit;
+    font-weight:bold;
+    cursor:pointer;
+    color:#fff;
+    background:var(--accent);
+    transition:transform .1s ease, filter .1s ease;
+  }
+  button:active{transform:scale(0.95);}
+  button.pause{background:#4a7fd6;}
+  button.pause.playing{background:#e0a02a;}
+  button.now{background:#5cb85c;}
+  button.reverse{background:#9b6bd6;}
+  button.reverse.active{background:#6a3ea6;}
+  .download-note{
+    text-align:center;
+    color:#999;
+    font-size:0.8rem;
+    margin-top:26px;
+  }
+</style>
+</head>
+<body>
+
+<h1>🕒 Навчальний годинник</h1>
+<p class="hint">Потягни стрілки пальцем або мишкою, щоб виставити свій час!</p>
+
+<div class="wrap">
+
+  <div class="clock-col">
+    <svg id="clockSvg" viewBox="0 0 400 400">
+      <!-- Face -->
+      <circle cx="200" cy="200" r="190" fill="#ffffff" stroke="#4a7fd6" stroke-width="6"/>
+      <circle cx="200" cy="200" r="178" fill="none" stroke="#e6ecf5" stroke-width="2"/>
+
+      <!-- Minute ticks -->
+      <g id="ticks"></g>
+
+      <!-- Numbers -->
+      <g id="numbers"></g>
+
+      <!-- Hands: hit areas first (wide, invisible) then visible line, grouped so rotation applies to both -->
+      <g id="hourGroup" class="hand">
+        <line class="hit" x1="200" y1="200" x2="200" y2="118" stroke-width="34"/>
+        <line x1="200" y1="200" x2="200" y2="118" stroke="var(--hour-color)" stroke-width="10" stroke-linecap="round"/>
+      </g>
+
+      <g id="minuteGroup" class="hand">
+        <line class="hit" x1="200" y1="200" x2="200" y2="78" stroke-width="30"/>
+        <line x1="200" y1="200" x2="200" y2="78" stroke="var(--minute-color)" stroke-width="7" stroke-linecap="round"/>
+      </g>
+
+      <g id="secondGroup" class="hand">
+        <line class="hit" x1="200" y1="200" x2="200" y2="58" stroke-width="26"/>
+        <line x1="200" y1="215" x2="200" y2="58" stroke="var(--second-color)" stroke-width="3" stroke-linecap="round"/>
+      </g>
+
+      <circle cx="200" cy="200" r="9" fill="#333"/>
+      <circle cx="200" cy="200" r="4" fill="#fff"/>
+    </svg>
+
+    <div class="digital">
+      <div class="big-time" id="bigTime">00:00:00</div>
+      <div class="weekday" id="weekday">—</div>
+      <div>
+        <input type="time" id="timeInput" step="1">
+        <input type="date" id="dateInput">
+      </div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>👁 Показати стрілки</h2>
+    <div class="row"><label><span class="swatch hour"></span> Годинникова</label>
+      <input type="checkbox" id="chkHour" checked></div>
+    <div class="row"><label><span class="swatch minute"></span> Хвилинна</label>
+      <input type="checkbox" id="chkMinute" checked></div>
+    <div class="row"><label><span class="swatch second"></span> Секундна</label>
+      <input type="checkbox" id="chkSecond" checked></div>
+
+    <h2 style="margin-top:16px;">⚡ Швидкість ходу</h2>
+    <input type="range" id="speedRange" min="1" max="300" value="1" step="1">
+    <div class="speed-label">
+      <span>реальний час</span>
+      <span id="speedValue">x1</span>
+      <span>x300</span>
+    </div>
+
+    <div class="btn-row">
+      <button class="pause" id="pauseBtn">⏸ Пауза</button>
+      <button class="reverse" id="reverseBtn">◀ Назад</button>
+    </div>
+    <div class="btn-row">
+      <button class="now" id="nowBtn">🕐 Поточний час</button>
+    </div>
+  </div>
+
+</div>
+
+<p class="download-note">Файл можна відкрити офлайн у будь-якому браузері.<br>Автор: Anatolii Bondarenko, 17.09.2026</p>
+
+<script>
+(function(){
+  const svg = document.getElementById('clockSvg');
+  const hourGroup = document.getElementById('hourGroup');
+  const minuteGroup = document.getElementById('minuteGroup');
+  const secondGroup = document.getElementById('secondGroup');
+  const ticksG = document.getElementById('ticks');
+  const numbersG = document.getElementById('numbers');
+  const bigTime = document.getElementById('bigTime');
+  const weekdayEl = document.getElementById('weekday');
+  const timeInput = document.getElementById('timeInput');
+  const dateInput = document.getElementById('dateInput');
+  const chkHour = document.getElementById('chkHour');
+  const chkMinute = document.getElementById('chkMinute');
+  const chkSecond = document.getElementById('chkSecond');
+  const speedRange = document.getElementById('speedRange');
+  const speedValue = document.getElementById('speedValue');
+  const pauseBtn = document.getElementById('pauseBtn');
+  const reverseBtn = document.getElementById('reverseBtn');
+  const nowBtn = document.getElementById('nowBtn');
+
+  const CENTER = 200;
+  const NS = "http://www.w3.org/2000/svg";
+
+  // Build ticks
+  for(let i=0;i<60;i++){
+    const angle = i*6;
+    const isHour = i%5===0;
+    const rOuter = 178;
+    const rInner = isHour ? 155 : 168;
+    const rad = (angle-90)*Math.PI/180;
+    const x1 = CENTER + rOuter*Math.cos(rad);
+    const y1 = CENTER + rOuter*Math.sin(rad);
+    const x2 = CENTER + rInner*Math.cos(rad);
+    const y2 = CENTER + rInner*Math.sin(rad);
+    const line = document.createElementNS(NS,'line');
+    line.setAttribute('x1',x1); line.setAttribute('y1',y1);
+    line.setAttribute('x2',x2); line.setAttribute('y2',y2);
+    line.setAttribute('stroke', isHour ? '#4a7fd6' : '#c7d3e8');
+    line.setAttribute('stroke-width', isHour ? 4 : 2);
+    line.setAttribute('stroke-linecap','round');
+    ticksG.appendChild(line);
+  }
+
+  // Numbers 1-12 (outer, main)
+  for(let n=1;n<=12;n++){
+    const angle = n*30 - 90;
+    const rad = angle*Math.PI/180;
+    const r = 138;
+    const x = CENTER + r*Math.cos(rad);
+    const y = CENTER + r*Math.sin(rad);
+    const text = document.createElementNS(NS,'text');
+    text.setAttribute('x',x);
+    text.setAttribute('y',y);
+    text.setAttribute('text-anchor','middle');
+    text.setAttribute('dominant-baseline','central');
+    text.setAttribute('font-size','30');
+    text.setAttribute('font-weight','bold');
+    text.setAttribute('font-family','Verdana, Arial, sans-serif');
+    text.setAttribute('fill','var(--number-color)');
+    text.textContent = n;
+    numbersG.appendChild(text);
+  }
+
+  // Numbers 13-24 (inner, 24-hour format)
+  for(let n=1;n<=12;n++){
+    const angle = n*30 - 90;
+    const rad = angle*Math.PI/180;
+    const r = 100;
+    const x = CENTER + r*Math.cos(rad);
+    const y = CENTER + r*Math.sin(rad);
+    const value = (n===12) ? 24 : n+12;
+    const text = document.createElementNS(NS,'text');
+    text.setAttribute('x',x);
+    text.setAttribute('y',y);
+    text.setAttribute('text-anchor','middle');
+    text.setAttribute('dominant-baseline','central');
+    text.setAttribute('font-size','15');
+    text.setAttribute('font-weight','bold');
+    text.setAttribute('font-family','Verdana, Arial, sans-serif');
+    text.setAttribute('fill','#7d8aa3');
+    text.textContent = value;
+    numbersG.appendChild(text);
+  }
+
+  // State
+  let simTime = new Date();
+  let paused = false;
+  let reverse = false;
+  let speed = 1;
+  let dragging = null; // 'hour' | 'minute' | 'second' | null
+  let lastTs = null;
+  let activePointerId = null;
+
+  const weekdays = ["неділя","понеділок","вівторок","середа","четвер","п'ятниця","субота"];
+
+  function pad(n){ return n.toString().padStart(2,'0'); }
+
+  function formatDateForInput(d){
+    return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate());
+  }
+  function formatTimeForInput(d){
+    return pad(d.getHours())+':'+pad(d.getMinutes())+':'+pad(d.getSeconds());
+  }
+
+  function render(){
+    const h = simTime.getHours() % 12;
+    const m = simTime.getMinutes();
+    const s = simTime.getSeconds();
+    const ms = simTime.getMilliseconds();
+
+    const secFrac = s + ms/1000;
+    const minFrac = m + secFrac/60;
+    const hourFrac = h + minFrac/60;
+
+    const hourAngle = (hourFrac/12)*360;
+    const minuteAngle = (minFrac/60)*360;
+    const secondAngle = (secFrac/60)*360;
+
+    hourGroup.setAttribute('transform', 'rotate('+hourAngle+' '+CENTER+' '+CENTER+')');
+    minuteGroup.setAttribute('transform', 'rotate('+minuteAngle+' '+CENTER+' '+CENTER+')');
+    secondGroup.setAttribute('transform', 'rotate('+secondAngle+' '+CENTER+' '+CENTER+')');
+
+    bigTime.textContent = pad(simTime.getHours())+':'+pad(m)+':'+pad(s);
+    weekdayEl.textContent = weekdays[simTime.getDay()] + ', ' + pad(simTime.getDate())+'.'+pad(simTime.getMonth()+1)+'.'+simTime.getFullYear();
+
+    if(document.activeElement !== timeInput){
+      timeInput.value = formatTimeForInput(simTime);
+    }
+    if(document.activeElement !== dateInput){
+      dateInput.value = formatDateForInput(simTime);
+    }
+  }
+
+  function loop(ts){
+    if(lastTs===null) lastTs = ts;
+    const dt = ts - lastTs;
+    lastTs = ts;
+    if(!paused && !dragging){
+      const delta = dt * speed * (reverse ? -1 : 1);
+      simTime = new Date(simTime.getTime() + delta);
+    }
+    render();
+    requestAnimationFrame(loop);
+  }
+  requestAnimationFrame(loop);
+
+  // Visibility toggles
+  function updateVisibility(){
+    hourGroup.style.display = chkHour.checked ? '' : 'none';
+    minuteGroup.style.display = chkMinute.checked ? '' : 'none';
+    secondGroup.style.display = chkSecond.checked ? '' : 'none';
+  }
+  chkHour.addEventListener('change', updateVisibility);
+  chkMinute.addEventListener('change', updateVisibility);
+  chkSecond.addEventListener('change', updateVisibility);
+  updateVisibility();
+
+  // Speed
+  speedRange.addEventListener('input', function(){
+    speed = parseFloat(speedRange.value);
+    speedValue.textContent = 'x'+speed;
+  });
+
+  // Pause / Start
+  pauseBtn.addEventListener('click', function(){
+    paused = !paused;
+    pauseBtn.textContent = paused ? '▶ Старт' : '⏸ Пауза';
+    pauseBtn.classList.toggle('playing', !paused);
+  });
+
+  // Reverse
+  reverseBtn.addEventListener('click', function(){
+    reverse = !reverse;
+    reverseBtn.classList.toggle('active', reverse);
+    reverseBtn.textContent = reverse ? '▶ Вперед' : '◀ Назад';
+  });
+
+  // Now
+  nowBtn.addEventListener('click', function(){
+    simTime = new Date();
+    paused = false;
+    reverse = false;
+    speed = 1;
+    speedRange.value = 1;
+    speedValue.textContent = 'x1';
+    pauseBtn.textContent = '⏸ Пауза';
+    pauseBtn.classList.remove('playing');
+    reverseBtn.textContent = '◀ Назад';
+    reverseBtn.classList.remove('active');
+  });
+
+  // Manual keyboard-driven time/date inputs
+  timeInput.addEventListener('change', function(){
+    const val = timeInput.value; // HH:MM:SS
+    if(!val) return;
+    const parts = val.split(':');
+    const h = parseInt(parts[0],10) || 0;
+    const m = parseInt(parts[1],10) || 0;
+    const s = parts.length>2 ? (parseInt(parts[2],10)||0) : 0;
+    const nt = new Date(simTime);
+    nt.setHours(h,m,s,0);
+    simTime = nt;
+  });
+
+  dateInput.addEventListener('change', function(){
+    const val = dateInput.value; // YYYY-MM-DD
+    if(!val) return;
+    const parts = val.split('-');
+    const y = parseInt(parts[0],10);
+    const mo = parseInt(parts[1],10)-1;
+    const d = parseInt(parts[2],10);
+    const nt = new Date(simTime);
+    nt.setFullYear(y,mo,d);
+    simTime = nt;
+  });
+
+  // ---- Dragging hands ----
+  function getSvgPoint(evt){
+    const pt = svg.createSVGPoint();
+    pt.x = evt.clientX;
+    pt.y = evt.clientY;
+    const ctm = svg.getScreenCTM().inverse();
+    return pt.matrixTransform(ctm);
+  }
+
+  function angleFromPoint(pt){
+    let angle = Math.atan2(pt.y-CENTER, pt.x-CENTER)*180/Math.PI + 90;
+    if(angle<0) angle += 360;
+    return angle;
+  }
+
+  function startDrag(which, evt){
+    dragging = which;
+    activePointerId = evt.pointerId;
+    try{ evt.target.setPointerCapture(evt.pointerId); }catch(e){}
+    evt.preventDefault();
+  }
+
+  function onPointerMove(evt){
+    if(!dragging) return;
+    if(activePointerId!==null && evt.pointerId!==activePointerId) return;
+    const pt = getSvgPoint(evt);
+    const angle = angleFromPoint(pt);
+    const nt = new Date(simTime);
+
+    if(dragging==='second'){
+      let sec = Math.round((angle/360)*60) % 60;
+      nt.setSeconds(sec, 0);
+    } else if(dragging==='minute'){
+      let minFrac = (angle/360)*60;
+      let min = Math.floor(minFrac) % 60;
+      let sec = Math.round((minFrac-Math.floor(minFrac))*60) % 60;
+      nt.setMinutes(min);
+      nt.setSeconds(sec);
+    } else if(dragging==='hour'){
+      let hourFrac = (angle/360)*12;
+      let h12 = Math.floor(hourFrac) % 12;
+      let minFrac = (hourFrac-Math.floor(hourFrac))*60;
+      let min = Math.round(minFrac) % 60;
+      const isPM = simTime.getHours() >= 12;
+      let h24 = h12 + (isPM ? 12 : 0);
+      nt.setHours(h24);
+      nt.setMinutes(min);
+    }
+    simTime = nt;
+    render();
+    evt.preventDefault();
+  }
+
+  function endDrag(evt){
+    if(dragging){
+      dragging = null;
+      activePointerId = null;
+      lastTs = null;
+    }
+  }
+
+  hourGroup.addEventListener('pointerdown', function(e){ startDrag('hour', e); });
+  minuteGroup.addEventListener('pointerdown', function(e){ startDrag('minute', e); });
+  secondGroup.addEventListener('pointerdown', function(e){ startDrag('second', e); });
+
+  svg.addEventListener('pointermove', onPointerMove);
+  window.addEventListener('pointerup', endDrag);
+  window.addEventListener('pointercancel', endDrag);
+
+  render();
+})();
+
+// Реєстрація Service Worker для офлайн-роботи (PWA)
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function(){
+    navigator.serviceWorker.register('sw.js').catch(function(err){
+      console.log('Service worker не зареєстровано:', err);
+    });
+  });
+}
+</script>
+
+</body>
+</html>
