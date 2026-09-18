@@ -177,6 +177,108 @@
     font-size:0.8rem;
     margin-top:26px;
   }
+  .help-btn{
+    display:block;
+    margin:18px auto 0;
+    background:#ff8c00;
+    color:#fff;
+    border:none;
+    border-radius:14px;
+    padding:12px 22px;
+    font-size:1rem;
+    font-family:inherit;
+    font-weight:bold;
+    cursor:pointer;
+    box-shadow:0 3px 8px rgba(0,0,0,0.15);
+  }
+  .help-btn:active{transform:scale(0.97);}
+
+  .help-overlay{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(20,30,50,0.55);
+    z-index:100;
+    padding:20px;
+    overflow-y:auto;
+  }
+  .help-overlay.open{display:block;}
+  .help-card{
+    background:#fffdf8;
+    max-width:720px;
+    margin:0 auto 40px;
+    border-radius:20px;
+    padding:26px 26px 34px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.25);
+    position:relative;
+  }
+  .help-close{
+    position:sticky;
+    top:0;
+    float:right;
+    background:#e02424;
+    color:#fff;
+    border:none;
+    border-radius:50%;
+    width:38px;
+    height:38px;
+    font-size:1.2rem;
+    cursor:pointer;
+    line-height:1;
+    box-shadow:0 2px 6px rgba(0,0,0,0.2);
+  }
+  .help-card h2{
+    color:var(--accent);
+    margin:6px 0 2px;
+    font-size:1.4rem;
+  }
+  .help-card h3{
+    color:#ff8c00;
+    margin:20px 0 6px;
+    font-size:1.1rem;
+  }
+  .help-card p, .help-card li{
+    font-size:0.95rem;
+    line-height:1.5;
+    color:#444;
+  }
+  .help-card ul, .help-card ol{
+    padding-left:22px;
+    margin:6px 0 12px;
+  }
+  .help-card table{
+    width:100%;
+    border-collapse:collapse;
+    margin:10px 0 18px;
+    font-size:0.88rem;
+  }
+  .help-card th, .help-card td{
+    border:1px solid #e0e6f0;
+    padding:8px 10px;
+    text-align:left;
+    vertical-align:top;
+  }
+  .help-card th{
+    background:#eef3fb;
+    color:var(--accent);
+  }
+  .help-card .subtitle{
+    color:#888;
+    font-size:0.85rem;
+    margin-top:-4px;
+    margin-bottom:14px;
+  }
+  .help-card hr{
+    border:none;
+    border-top:1px dashed #e0e6f0;
+    margin:20px 0;
+  }
+  .help-card .footer-note{
+    color:#999;
+    font-size:0.8rem;
+    text-align:center;
+    margin-top:20px;
+  }
 </style>
 </head>
 <body>
@@ -257,6 +359,67 @@
 </div>
 
 <p class="download-note">Файл можна відкрити офлайн у будь-якому браузері.<br>Автор: Anatolii Bondarenko, 17.09.2026</p>
+
+<button class="help-btn" id="helpBtn" type="button">📖 Інструкція для батьків і вчителів</button>
+
+<div class="help-overlay" id="helpOverlay">
+  <div class="help-card">
+    <button class="help-close" id="helpClose" type="button" aria-label="Закрити">✕</button>
+    <h2>Навчальний годинник — посібник для вчителя (або батьків)</h2>
+    <p class="subtitle">Для кого: діти, які вчаться визначати час (орієнтовно 5–9 років)</p>
+
+    <h3>1. Що це таке</h3>
+    <p>Це аналоговий годинник із циферблатом, на якому дитина може:</p>
+    <ul>
+      <li>дивитись, як рухаються стрілки в реальному часі;</li>
+      <li>тягнути стрілки пальцем або мишкою, щоб самостійно виставити будь-який час;</li>
+      <li>прискорювати або сповільнювати хід годинника, щоб побачити, як стрілки співвідносяться одна з одною;</li>
+      <li>відкривати й закривати окремі стрілки, щоб тренувати визначення часу поетапно;</li>
+      <li>рахувати час у зворотному напрямку — корисно для завдань на кшталт «який час був 20 хвилин тому?».</li>
+    </ul>
+    <p>Циферблат показує одразу два формати — 12-годинний (великі помаранчеві цифри 1–12) і 24-годинний (менші цифри 13–24 у внутрішньому колі) — тому годинник підходить і для першого знайомства з часом, і для пізнішого переходу до «дорослого» формату.</p>
+
+    <h3>2. Опис елементів екрана</h3>
+    <table>
+      <tr><th>Елемент</th><th>Що робить</th></tr>
+      <tr><td>Циферблат</td><td>Класичний круглий годинник із трьома стрілками: годинникова (чорна), хвилинна (синя), секундна (червона)</td></tr>
+      <tr><td>Показати стрілки (3 галочки)</td><td>Вмикає/вимикає кожну стрілку окремо</td></tr>
+      <tr><td>Швидкість ходу (повзунок)</td><td>Регулює, наскільки швидко рухаються стрілки — від x1 (реальний час) до x300</td></tr>
+      <tr><td>Пауза / Старт</td><td>Зупиняє й відновлює рух стрілок</td></tr>
+      <tr><td>Назад</td><td>Перемикає напрямок ходу годинника — стрілки рухаються у зворотний бік</td></tr>
+      <tr><td>Поточний час</td><td>Миттєво повертає годинник до реального часу й скидає налаштування</td></tr>
+      <tr><td>Цифровий час і дата</td><td>Показує поточний час і дату текстом; поля можна редагувати з клавіатури</td></tr>
+      <tr><td>Тягнення стрілок</td><td>Дитина бере пальцем/мишкою будь-яку стрілку і крутить — циферблат одразу показує новий час</td></tr>
+    </table>
+
+    <h3>3. Як користуватись покроково</h3>
+    <p><b>Крок 1. Просто спостерігати.</b> Залиште годинник у звичайному режимі (швидкість x1, усі стрілки ввімкнено) і попросіть дитину стежити за секундною стрілкою протягом хвилини.</p>
+    <p><b>Крок 2. Вимкнути зайві стрілки.</b> Зніміть галочки з «Хвилинна» і «Секундна» — залишиться тільки годинникова. Попросіть дитину сказати, «яка зараз приблизно година», лише за її положенням.</p>
+    <p><b>Крок 3. Прискорити час.</b> Пересуньте повзунок на x30–x60. Дитина побачить, як за кілька секунд минає ціла година.</p>
+    <p><b>Крок 4. Виставити час самостійно.</b> Натисніть «Пауза» і попросіть дитину виставити стрілки на названий вами час — перевірте за цифровим годинником.</p>
+    <p><b>Крок 5. Зворотний хід.</b> Натисніть «Поточний час», потім «Назад». Запитайте: «Який час був 15 хвилин тому?»</p>
+    <p><b>Крок 6. 24-годинний формат.</b> Покажіть внутрішнє коло чисел 13–24 і поясніть, що «14:00» — це «2 години дня».</p>
+
+    <h3>4. Ідеї для занять і ігор</h3>
+    <ul>
+      <li><b>«Вгадай час»</b>: один виставляє стрілки навмання, інший називає час уголос.</li>
+      <li><b>«Хто швидше»</b>: назвіть час словами («чверть на дев'яту») — дитина якнайшвидше виставляє стрілки.</li>
+      <li><b>«Розклад дня»</b>: виставте на годиннику час сніданку, школи, прогулянки.</li>
+      <li><b>Задачі на прискорений час</b>: швидкість x300 — скільки годин пройде за 10 секунд перегляду?</li>
+      <li><b>Порівняння форматів</b>: назвіть «17:00» — дитина каже «5 годин вечора», і навпаки.</li>
+    </ul>
+
+    <h3>5. Технічні примітки</h3>
+    <ul>
+      <li>Працює в будь-якому сучасному браузері на комп'ютері, планшеті й телефоні.</li>
+      <li>Можна «встановити» як окремий застосунок на головний екран телефона чи в меню «Пуск».</li>
+      <li>Після першого відкриття працює навіть без інтернету.</li>
+    </ul>
+
+    <hr>
+    <p class="footer-note">Автор ідеї та вимог: Anatolii Bondarenko</p>
+  </div>
+</div>
 
 <script>
 (function(){
@@ -555,6 +718,26 @@ if ('serviceWorker' in navigator) {
     });
   });
 }
+
+// Панель інструкції для батьків/вчителів
+(function(){
+  const helpBtn = document.getElementById('helpBtn');
+  const helpOverlay = document.getElementById('helpOverlay');
+  const helpClose = document.getElementById('helpClose');
+
+  function openHelp(){
+    helpOverlay.classList.add('open');
+  }
+  function closeHelp(){
+    helpOverlay.classList.remove('open');
+  }
+
+  helpBtn.addEventListener('click', openHelp);
+  helpClose.addEventListener('click', closeHelp);
+  helpOverlay.addEventListener('click', function(e){
+    if(e.target === helpOverlay) closeHelp();
+  });
+})();
 </script>
 
 </body>
