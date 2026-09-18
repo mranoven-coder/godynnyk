@@ -145,6 +145,19 @@
     display:flex;justify-content:space-between;
     font-size:0.9rem;color:#555;margin-top:4px;
   }
+  .speed-presets{
+    display:flex;
+    justify-content:space-between;
+    gap:8px;
+    margin-top:12px;
+    font-size:0.95rem;
+  }
+  .speed-presets label{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    cursor:pointer;
+  }
   .btn-row{
     display:flex;
     gap:8px;
@@ -171,6 +184,27 @@
   button.now{background:#5cb85c;}
   button.reverse{background:#9b6bd6;}
   button.reverse.active{background:#6a3ea6;}
+  .lang-switch{
+    display:flex;
+    justify-content:center;
+    gap:6px;
+    margin:12px 0 0;
+  }
+  .lang-switch button{
+    flex:none;
+    min-width:52px;
+    padding:6px 14px;
+    font-size:0.85rem;
+    background:#fff;
+    color:var(--accent);
+    border:2px solid var(--accent);
+    border-radius:999px;
+  }
+  .lang-switch button.active{
+    background:var(--accent);
+    color:#fff;
+  }
+  .help-body[hidden]{display:none;}
   .download-note{
     text-align:center;
     color:#999;
@@ -283,8 +317,13 @@
 </head>
 <body>
 
-<h1>🕒 Навчальний годинник</h1>
-<p class="hint">Потягни стрілки пальцем або мишкою, щоб виставити свій час!</p>
+<div class="lang-switch" role="group" aria-label="Language / Мова">
+  <button type="button" data-lang="uk" title="Українська">UA</button>
+  <button type="button" data-lang="en" title="English">EN</button>
+</div>
+
+<h1 data-i18n="h1">🕒 Навчальний годинник</h1>
+<p class="hint" data-i18n="hint">Потягни стрілки пальцем або мишкою, щоб виставити свій час!</p>
 
 <div class="wrap">
 
@@ -331,20 +370,25 @@
   </div>
 
   <div class="panel">
-    <h2>👁 Показати стрілки</h2>
-    <div class="row"><label><span class="swatch hour"></span> Годинникова</label>
+    <h2 data-i18n="showHands">👁 Показати стрілки</h2>
+    <div class="row"><label><span class="swatch hour"></span> <span data-i18n="hourHand">Годинникова</span></label>
       <input type="checkbox" id="chkHour" checked></div>
-    <div class="row"><label><span class="swatch minute"></span> Хвилинна</label>
+    <div class="row"><label><span class="swatch minute"></span> <span data-i18n="minuteHand">Хвилинна</span></label>
       <input type="checkbox" id="chkMinute" checked></div>
-    <div class="row"><label><span class="swatch second"></span> Секундна</label>
+    <div class="row"><label><span class="swatch second"></span> <span data-i18n="secondHand">Секундна</span></label>
       <input type="checkbox" id="chkSecond" checked></div>
 
-    <h2 style="margin-top:16px;">⚡ Швидкість ходу</h2>
+    <h2 style="margin-top:16px;" data-i18n="speedTitle">⚡ Швидкість ходу</h2>
     <input type="range" id="speedRange" min="1" max="300" value="1" step="1">
     <div class="speed-label">
-      <span>реальний час</span>
+      <span data-i18n="realTime">реальний час</span>
       <span id="speedValue">x1</span>
       <span>x300</span>
+    </div>
+    <div class="speed-presets" id="speedPresets">
+      <label><input type="checkbox" value="300"> x300</label>
+      <label><input type="checkbox" value="600"> x600</label>
+      <label><input type="checkbox" value="1200"> x1200</label>
     </div>
 
     <div class="btn-row">
@@ -352,19 +396,20 @@
       <button class="reverse" id="reverseBtn">◀ Назад</button>
     </div>
     <div class="btn-row">
-      <button class="now" id="nowBtn">🕐 Поточний час</button>
+      <button class="now" id="nowBtn" data-i18n="now">🕐 Поточний час</button>
     </div>
   </div>
 
 </div>
 
-<p class="download-note">Файл можна відкрити офлайн у будь-якому браузері.<br>Автор: Anatolii Bondarenko, 17.09.2026</p>
+<p class="download-note" data-i18n-html="downloadNote">Файл можна відкрити офлайн у будь-якому браузері.<br>Автор: Anatolii Bondarenko, 17.09.2026</p>
 
-<button class="help-btn" id="helpBtn" type="button">📖 Інструкція для батьків і вчителів</button>
+<button class="help-btn" id="helpBtn" type="button" data-i18n="helpBtn">📖 Інструкція для батьків і вчителів</button>
 
 <div class="help-overlay" id="helpOverlay">
   <div class="help-card">
-    <button class="help-close" id="helpClose" type="button" aria-label="Закрити">✕</button>
+    <button class="help-close" id="helpClose" type="button" aria-label="Закрити" data-i18n-aria="close">✕</button>
+    <div class="help-body" data-lang="uk">
     <h2>Навчальний годинник — посібник для вчителя (або батьків)</h2>
     <p class="subtitle">Для кого: діти, які вчаться визначати час (орієнтовно 5–9 років)</p>
 
@@ -384,7 +429,7 @@
       <tr><th>Елемент</th><th>Що робить</th></tr>
       <tr><td>Циферблат</td><td>Класичний круглий годинник із трьома стрілками: годинникова (чорна), хвилинна (синя), секундна (червона)</td></tr>
       <tr><td>Показати стрілки (3 галочки)</td><td>Вмикає/вимикає кожну стрілку окремо</td></tr>
-      <tr><td>Швидкість ходу (повзунок)</td><td>Регулює, наскільки швидко рухаються стрілки — від x1 (реальний час) до x300</td></tr>
+      <tr><td>Швидкість ходу (повзунок і галочки x300, x600, x1200)</td><td>Повзунок регулює, наскільки швидко рухаються стрілки — від x1 (реальний час) до x300. Галочки x300, x600 і x1200 вмикають ще більше прискорення (активна лише одна; щоб повернутись до повзунка, зніміть галочку)</td></tr>
       <tr><td>Пауза / Старт</td><td>Зупиняє й відновлює рух стрілок</td></tr>
       <tr><td>Назад</td><td>Перемикає напрямок ходу годинника — стрілки рухаються у зворотний бік</td></tr>
       <tr><td>Поточний час</td><td>Миттєво повертає годинник до реального часу й скидає налаштування</td></tr>
@@ -395,7 +440,7 @@
     <h3>3. Як користуватись покроково</h3>
     <p><b>Крок 1. Просто спостерігати.</b> Залиште годинник у звичайному режимі (швидкість x1, усі стрілки ввімкнено) і попросіть дитину стежити за секундною стрілкою протягом хвилини.</p>
     <p><b>Крок 2. Вимкнути зайві стрілки.</b> Зніміть галочки з «Хвилинна» і «Секундна» — залишиться тільки годинникова. Попросіть дитину сказати, «яка зараз приблизно година», лише за її положенням.</p>
-    <p><b>Крок 3. Прискорити час.</b> Пересуньте повзунок на x30–x60. Дитина побачить, як за кілька секунд минає ціла година.</p>
+    <p><b>Крок 3. Прискорити час.</b> Пересуньте повзунок на x30–x60 — година мине приблизно за 1–2 хвилини. Щоб побачити, як ціла година минає за лічені секунди, увімкніть галочку x300 (≈12 с), x600 (≈6 с) або x1200 (≈3 с).</p>
     <p><b>Крок 4. Виставити час самостійно.</b> Натисніть «Пауза» і попросіть дитину виставити стрілки на названий вами час — перевірте за цифровим годинником.</p>
     <p><b>Крок 5. Зворотний хід.</b> Натисніть «Поточний час», потім «Назад». Запитайте: «Який час був 15 хвилин тому?»</p>
     <p><b>Крок 6. 24-годинний формат.</b> Покажіть внутрішнє коло чисел 13–24 і поясніть, що «14:00» — це «2 години дня».</p>
@@ -405,7 +450,7 @@
       <li><b>«Вгадай час»</b>: один виставляє стрілки навмання, інший називає час уголос.</li>
       <li><b>«Хто швидше»</b>: назвіть час словами («чверть на дев'яту») — дитина якнайшвидше виставляє стрілки.</li>
       <li><b>«Розклад дня»</b>: виставте на годиннику час сніданку, школи, прогулянки.</li>
-      <li><b>Задачі на прискорений час</b>: швидкість x300 — скільки годин пройде за 10 секунд перегляду?</li>
+      <li><b>Задачі на прискорений час</b>: швидкість x1200 — скільки годин пройде за 10 секунд перегляду?</li>
       <li><b>Порівняння форматів</b>: назвіть «17:00» — дитина каже «5 годин вечора», і навпаки.</li>
     </ul>
 
@@ -418,8 +463,156 @@
 
     <hr>
     <p class="footer-note">Автор ідеї та вимог: Anatolii Bondarenko</p>
+    </div>
+
+    <div class="help-body" data-lang="en" hidden>
+    <h2>Learning Clock — a guide for teachers (or parents)</h2>
+    <p class="subtitle">Who it's for: children learning to tell the time (roughly ages 5–9)</p>
+
+    <h3>1. What it is</h3>
+    <p>This is an analog clock face on which a child can:</p>
+    <ul>
+      <li>watch the hands move in real time;</li>
+      <li>drag the hands with a finger or the mouse to set any time on their own;</li>
+      <li>speed the clock up or slow it down to see how the hands relate to one another;</li>
+      <li>show or hide individual hands to practise telling the time step by step;</li>
+      <li>run time backward — useful for tasks like "what time was it 20 minutes ago?"</li>
+    </ul>
+    <p>The clock face shows two formats at once — the 12-hour format (large orange numbers 1–12) and the 24-hour format (smaller numbers 13–24 in the inner ring) — so the clock is suitable both for a first introduction to time and for the later move to the "grown-up" format.</p>
+
+    <h3>2. Screen elements</h3>
+    <table>
+      <tr><th>Element</th><th>What it does</th></tr>
+      <tr><td>Clock face</td><td>A classic round clock with three hands: hour (black), minute (blue), second (red)</td></tr>
+      <tr><td>Show the hands (3 checkboxes)</td><td>Turns each hand on or off separately</td></tr>
+      <tr><td>Clock speed (slider and the x300, x600, x1200 checkboxes)</td><td>The slider controls how fast the hands move — from x1 (real time) to x300. The x300, x600 and x1200 checkboxes give even faster speeds (only one can be active; untick it to go back to the slider)</td></tr>
+      <tr><td>Pause / Start</td><td>Stops and resumes the movement of the hands</td></tr>
+      <tr><td>Backward</td><td>Switches the direction of the clock — the hands move the other way</td></tr>
+      <tr><td>Current time</td><td>Instantly returns the clock to the real time and resets the settings</td></tr>
+      <tr><td>Digital time and date</td><td>Shows the current time and date as text; the fields can be edited from the keyboard</td></tr>
+      <tr><td>Dragging the hands</td><td>The child grabs any hand with a finger or the mouse and turns it — the clock face immediately shows the new time</td></tr>
+    </table>
+
+    <h3>3. How to use it, step by step</h3>
+    <p><b>Step 1. Just watch.</b> Leave the clock in its normal mode (speed x1, all hands on) and ask the child to follow the second hand for one minute.</p>
+    <p><b>Step 2. Hide the extra hands.</b> Untick "Minute hand" and "Second hand" — only the hour hand remains. Ask the child to say "roughly what hour it is" from its position alone.</p>
+    <p><b>Step 3. Speed up time.</b> Move the slider to x30–x60 — an hour passes in about 1–2 minutes. To see a whole hour pass in just a few seconds, tick x300 (≈12 s), x600 (≈6 s) or x1200 (≈3 s).</p>
+    <p><b>Step 4. Set the time yourself.</b> Press "Pause" and ask the child to set the hands to a time you name — check it against the digital clock.</p>
+    <p><b>Step 5. Run it backward.</b> Press "Current time", then "Backward". Ask: "What time was it 15 minutes ago?"</p>
+    <p><b>Step 6. The 24-hour format.</b> Point to the inner ring of numbers 13–24 and explain that "14:00" means "2 o'clock in the afternoon".</p>
+
+    <h3>4. Ideas for lessons and games</h3>
+    <ul>
+      <li><b>"Guess the time"</b>: one person sets the hands at random, the other says the time out loud.</li>
+      <li><b>"Who's faster"</b>: say a time in words ("quarter past eight") — the child sets the hands as quickly as possible.</li>
+      <li><b>"Daily schedule"</b>: set the clock to the time of breakfast, school, a walk.</li>
+      <li><b>Fast-time problems</b>: at speed x1200, how many hours pass in 10 seconds of watching?</li>
+      <li><b>Comparing formats</b>: say "17:00" — the child answers "5 in the evening", and the other way round.</li>
+    </ul>
+
+    <h3>5. Technical notes</h3>
+    <ul>
+      <li>Works in any modern browser on a computer, tablet or phone.</li>
+      <li>Can be "installed" as a separate app on a phone's home screen or in the Start menu.</li>
+      <li>After the first visit it works even without an internet connection.</li>
+    </ul>
+
+    <hr>
+    <p class="footer-note">Idea and requirements by: Anatolii Bondarenko</p>
+    </div>
   </div>
 </div>
+
+<script>
+// ---- Мови / Languages ----
+var I18N = {
+  uk: {
+    title: "Навчальний годинник",
+    h1: "🕒 Навчальний годинник",
+    hint: "Потягни стрілки пальцем або мишкою, щоб виставити свій час!",
+    showHands: "👁 Показати стрілки",
+    hourHand: "Годинникова",
+    minuteHand: "Хвилинна",
+    secondHand: "Секундна",
+    speedTitle: "⚡ Швидкість ходу",
+    realTime: "реальний час",
+    pause: "⏸ Пауза",
+    start: "▶ Старт",
+    back: "◀ Назад",
+    forward: "▶ Вперед",
+    now: "🕐 Поточний час",
+    downloadNote: "Файл можна відкрити офлайн у будь-якому браузері.<br>Автор: Anatolii Bondarenko, 17.09.2026",
+    helpBtn: "📖 Інструкція для батьків і вчителів",
+    close: "Закрити",
+    weekdays: ["неділя","понеділок","вівторок","середа","четвер","п'ятниця","субота"]
+  },
+  en: {
+    title: "Learning Clock",
+    h1: "🕒 Learning Clock",
+    hint: "Drag the hands with your finger or mouse to set your own time!",
+    showHands: "👁 Show the hands",
+    hourHand: "Hour hand",
+    minuteHand: "Minute hand",
+    secondHand: "Second hand",
+    speedTitle: "⚡ Clock speed",
+    realTime: "real time",
+    pause: "⏸ Pause",
+    start: "▶ Start",
+    back: "◀ Backward",
+    forward: "▶ Forward",
+    now: "🕐 Current time",
+    downloadNote: "This file works offline in any browser.<br>Author: Anatolii Bondarenko, 17.09.2026",
+    helpBtn: "📖 Guide for parents and teachers",
+    close: "Close",
+    weekdays: ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+    months: ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
+  }
+};
+
+var LANG = 'uk';
+
+function t(key){ return I18N[LANG][key]; }
+
+function detectLang(){
+  try{
+    var saved = localStorage.getItem('clockLang');
+    if(saved && I18N[saved]) return saved;
+  }catch(e){}
+  var nav = (navigator.language || 'uk').toLowerCase();
+  return nav.indexOf('en') === 0 ? 'en' : 'uk';
+}
+
+function applyLang(lang){
+  if(!I18N[lang]) lang = 'uk';
+  LANG = lang;
+  try{ localStorage.setItem('clockLang', lang); }catch(e){}
+  document.documentElement.lang = lang;
+  document.title = t('title');
+  document.querySelectorAll('[data-i18n]').forEach(function(el){
+    el.textContent = t(el.getAttribute('data-i18n'));
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach(function(el){
+    el.innerHTML = t(el.getAttribute('data-i18n-html'));
+  });
+  document.querySelectorAll('[data-i18n-aria]').forEach(function(el){
+    el.setAttribute('aria-label', t(el.getAttribute('data-i18n-aria')));
+  });
+  document.querySelectorAll('.help-body').forEach(function(el){
+    el.hidden = (el.getAttribute('data-lang') !== lang);
+  });
+  document.querySelectorAll('.lang-switch button').forEach(function(b){
+    var on = b.getAttribute('data-lang') === lang;
+    b.classList.toggle('active', on);
+    b.setAttribute('aria-pressed', on ? 'true' : 'false');
+  });
+  if(typeof window.onLangChange === 'function') window.onLangChange();
+}
+
+document.querySelectorAll('.lang-switch button').forEach(function(b){
+  b.addEventListener('click', function(){ applyLang(b.getAttribute('data-lang')); });
+});
+applyLang(detectLang());
+</script>
 
 <script>
 (function(){
@@ -515,9 +708,19 @@
   let lastTs = null;
   let activePointerId = null;
 
-  const weekdays = ["неділя","понеділок","вівторок","середа","четвер","п'ятниця","субота"];
-
   function pad(n){ return n.toString().padStart(2,'0'); }
+
+  function formatDateLabel(d){
+    if(LANG === 'en'){
+      return t('weekdays')[d.getDay()] + ', ' + d.getDate() + ' ' + t('months')[d.getMonth()] + ' ' + d.getFullYear();
+    }
+    return t('weekdays')[d.getDay()] + ', ' + pad(d.getDate())+'.'+pad(d.getMonth()+1)+'.'+d.getFullYear();
+  }
+
+  function updateButtons(){
+    pauseBtn.textContent = paused ? t('start') : t('pause');
+    reverseBtn.textContent = reverse ? t('forward') : t('back');
+  }
 
   function formatDateForInput(d){
     return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate());
@@ -545,7 +748,7 @@
     secondGroup.setAttribute('transform', 'rotate('+secondAngle+' '+CENTER+' '+CENTER+')');
 
     bigTime.textContent = pad(simTime.getHours())+':'+pad(m)+':'+pad(s);
-    weekdayEl.textContent = weekdays[simTime.getDay()] + ', ' + pad(simTime.getDate())+'.'+pad(simTime.getMonth()+1)+'.'+simTime.getFullYear();
+    weekdayEl.textContent = formatDateLabel(simTime);
 
     if(document.activeElement !== timeInput){
       timeInput.value = formatTimeForInput(simTime);
@@ -580,15 +783,35 @@
   updateVisibility();
 
   // Speed
+  const presets = Array.from(document.querySelectorAll('#speedPresets input'));
+
+  function clearPresets(){
+    presets.forEach(function(p){ p.checked = false; });
+  }
+
   speedRange.addEventListener('input', function(){
+    clearPresets();
     speed = parseFloat(speedRange.value);
     speedValue.textContent = 'x'+speed;
+  });
+
+  // Швидкі галочки: x300 / x600 / x1200 (активна лише одна; зняття — повернення до значення повзунка)
+  presets.forEach(function(p){
+    p.addEventListener('change', function(){
+      if(p.checked){
+        presets.forEach(function(o){ o.checked = (o === p); });
+        speed = parseFloat(p.value);
+      } else {
+        speed = parseFloat(speedRange.value);
+      }
+      speedValue.textContent = 'x'+speed;
+    });
   });
 
   // Pause / Start
   pauseBtn.addEventListener('click', function(){
     paused = !paused;
-    pauseBtn.textContent = paused ? '▶ Старт' : '⏸ Пауза';
+    updateButtons();
     pauseBtn.classList.toggle('playing', !paused);
   });
 
@@ -596,7 +819,7 @@
   reverseBtn.addEventListener('click', function(){
     reverse = !reverse;
     reverseBtn.classList.toggle('active', reverse);
-    reverseBtn.textContent = reverse ? '▶ Вперед' : '◀ Назад';
+    updateButtons();
   });
 
   // Now
@@ -605,11 +828,11 @@
     paused = false;
     reverse = false;
     speed = 1;
+    clearPresets();
     speedRange.value = 1;
     speedValue.textContent = 'x1';
-    pauseBtn.textContent = '⏸ Пауза';
     pauseBtn.classList.remove('playing');
-    reverseBtn.textContent = '◀ Назад';
+    updateButtons();
     reverseBtn.classList.remove('active');
   });
 
@@ -707,6 +930,12 @@
   window.addEventListener('pointerup', endDrag);
   window.addEventListener('pointercancel', endDrag);
 
+  window.onLangChange = function(){
+    updateButtons();
+    render();
+  };
+
+  updateButtons();
   render();
 })();
 
