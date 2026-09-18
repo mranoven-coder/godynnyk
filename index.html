@@ -384,7 +384,6 @@
     <div class="speed-label">
       <span data-i18n="realTime">реальний час</span>
       <span id="speedValue">x1</span>
-      <span id="speedMaxLabel">x300</span>
     </div>
     <div class="speed-presets" id="speedPresets">
       <label><input type="checkbox" value="300" checked> x300</label>
@@ -632,7 +631,6 @@ applyLang(detectLang());
   const chkSecond = document.getElementById('chkSecond');
   const speedRange = document.getElementById('speedRange');
   const speedValue = document.getElementById('speedValue');
-  const speedMaxLabel = document.getElementById('speedMaxLabel');
   const pauseBtn = document.getElementById('pauseBtn');
   const reverseBtn = document.getElementById('reverseBtn');
   const nowBtn = document.getElementById('nowBtn');
@@ -797,7 +795,6 @@ applyLang(detectLang());
     speedRange.value = val;
     speed = val;
     speedValue.textContent = 'x'+speed;
-    speedMaxLabel.textContent = 'x'+max;
   }
 
   // Обирає задану галочку як активну (єдину) і виставляє повзунку діапазон 1..її значення
