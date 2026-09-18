@@ -1,49 +1,67 @@
-// Автор ідеї та вимог: Anatolii Bondarenko
-const CACHE_NAME = 'navchalnyi-godynnyk-v1';
-const ASSETS_TO_CACHE = [
+// Service Worker для «Навчального годинника» (PWA, офлайн-режим)
+// Ця версія оновлює сама себе: HTML-сторінка завжди береться зі свіжої мережі
+// (і одразу перезаписує кеш), а інші файли оновлюються у фоні при кожному запиті.
+// Тому нічого в цьому файлі вручну змінювати більше не потрібно.
+const CACHE_NAME = 'godynnyk-cache';
+
+const ASSETS = [
   './',
   './index.html',
   './manifest.json',
+  './icons/apple-touch-icon.png',
   './icons/icon-192.png',
-  './icons/icon-512.png',
-  './icons/apple-touch-icon.png'
+  './icons/icon-512.png'
 ];
 
-// Встановлення: кладемо всі файли в кеш одразу
-self.addEventListener('install', (event) => {
-  event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS_TO_CACHE))
-  );
+// Встановлення: одразу активуємо нову версію (не чекаємо закриття всіх вкладок)
+self.addEventListener('install', function(event){
   self.skipWaiting();
-});
-
-// Активація: чистимо старі версії кешу
-self.addEventListener('activate', (event) => {
   event.waitUntil(
-    caches.keys().then((keys) =>
-      Promise.all(
-        keys.map((key) => {
-          if (key !== CACHE_NAME) return caches.delete(key);
-        })
-      )
-    )
+    caches.open(CACHE_NAME).then(function(cache){
+      return cache.addAll(ASSETS).catch(function(){ /* якщо якогось файлу нема — не критично */ });
+    })
   );
-  self.clients.claim();
 });
 
-// Запити: спершу кеш (щоб працювало офлайн), якщо немає — мережа
-self.addEventListener('fetch', (event) => {
-  if (event.request.method !== 'GET') return;
+// Активація: беремо керування всіма відкритими сторінками одразу
+self.addEventListener('activate', function(event){
+  event.waitUntil(self.clients.claim());
+});
+
+// Запити:
+// - HTML-сторінку завжди тягнемо першою чергою з мережі (щоб бачити свіжу версію),
+//   і лише якщо мережі немає — беремо з кешу (офлайн-режим).
+// - Інші файли (іконки, manifest тощо) — спочатку кеш, паралельно оновлюємо його з мережі.
+self.addEventListener('fetch', function(event){
+  const req = event.request;
+  const isHTML = req.mode === 'navigate' ||
+    (req.method === 'GET' && req.headers.get('accept') && req.headers.get('accept').indexOf('text/html') !== -1);
+
+  if(isHTML){
+    event.respondWith(
+      fetch(req).then(function(res){
+        const copy = res.clone();
+        caches.open(CACHE_NAME).then(function(cache){ cache.put(req, copy); });
+        return res;
+      }).catch(function(){
+        return caches.match(req).then(function(cached){
+          return cached || caches.match('./index.html');
+        });
+      })
+    );
+    return;
+  }
+
   event.respondWith(
-    caches.match(event.request).then((cached) => {
-      if (cached) return cached;
-      return fetch(event.request)
-        .then((response) => {
-          const clone = response.clone();
-          caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone));
-          return response;
-        })
-        .catch(() => caches.match('./index.html'));
+    caches.match(req).then(function(cached){
+      const network = fetch(req).then(function(res){
+        if(res && res.status === 200){
+          const copy = res.clone();
+          caches.open(CACHE_NAME).then(function(cache){ cache.put(req, copy); });
+        }
+        return res;
+      }).catch(function(){ return cached; });
+      return cached || network;
     })
   );
 });

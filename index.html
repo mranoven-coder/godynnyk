@@ -978,6 +978,16 @@ if ('serviceWorker' in navigator) {
       console.log('Service worker не зареєстровано:', err);
     });
   });
+
+  // Коли новий Service Worker бере керування (після оновлення сайту) —
+  // перезавантажуємо сторінку один раз, щоб показати свіжу версію
+  // без потреби вручну натискати Ctrl+F5.
+  var swRefreshed = false;
+  navigator.serviceWorker.addEventListener('controllerchange', function(){
+    if(swRefreshed) return;
+    swRefreshed = true;
+    window.location.reload();
+  });
 }
 
 // Панель інструкції для батьків/вчителів
