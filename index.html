@@ -387,7 +387,7 @@
       <span id="speedMaxLabel">x300</span>
     </div>
     <div class="speed-presets" id="speedPresets">
-      <label><input type="checkbox" value="300"> x300</label>
+      <label><input type="checkbox" value="300" checked> x300</label>
       <label><input type="checkbox" value="600"> x600</label>
       <label><input type="checkbox" value="1200"> x1200</label>
     </div>
@@ -787,12 +787,6 @@ applyLang(detectLang());
   // Speed
   const presets = Array.from(document.querySelectorAll('#speedPresets input'));
 
-  function clearPresets(){
-    presets.forEach(function(p){ p.checked = false; });
-  }
-
-  const DEFAULT_MIN = 1, DEFAULT_MAX = 300;
-
   function setSliderRange(min, max){
     speedRange.min = min;
     speedRange.max = max;
@@ -806,23 +800,32 @@ applyLang(detectLang());
     speedMaxLabel.textContent = 'x'+max;
   }
 
+  // Обирає задану галочку як активну (єдину) і виставляє повзунку діапазон 1..її значення
+  function selectPreset(target){
+    presets.forEach(function(o){ o.checked = (o === target); });
+    setSliderRange(1, parseFloat(target.value));
+  }
+
   speedRange.addEventListener('input', function(){
     speed = parseFloat(speedRange.value);
     speedValue.textContent = 'x'+speed;
   });
 
-  // Галочки x300 / x600 / x1200: перемикають діапазон повзунка (0..300 / 0..600 / 0..1200).
-  // Активна лише одна; зняття галочки повертає повзунок до звичайного діапазону (1..300).
+  // Галочки x300 / x600 / x1200 працюють як перемикач (радіо): активна завжди рівно одна.
+  // Тап на вже активну галочку не знімає її; тап на іншу — перемикає вибір на неї.
   presets.forEach(function(p){
     p.addEventListener('change', function(){
       if(p.checked){
-        presets.forEach(function(o){ o.checked = (o === p); });
-        setSliderRange(0, parseFloat(p.value));
+        selectPreset(p);
       } else {
-        setSliderRange(DEFAULT_MIN, DEFAULT_MAX);
+        // не дозволяємо знімати єдину активну галочку без вибору іншої
+        p.checked = true;
       }
     });
   });
+
+  // За замовчуванням активна галочка x300
+  selectPreset(presets[0]);
 
   // Pause / Start
   pauseBtn.addEventListener('click', function(){
@@ -843,9 +846,7 @@ applyLang(detectLang());
     simTime = new Date();
     paused = false;
     reverse = false;
-    speed = 1;
-    clearPresets();
-    setSliderRange(DEFAULT_MIN, DEFAULT_MAX);
+    selectPreset(presets[0]);
     speedRange.value = 1;
     speed = 1;
     speedValue.textContent = 'x1';
