@@ -1,6 +1,6 @@
 # Навчальний годинник / Learning Clock
 
-**Версія / Version:** 1.6 (19.09.2026)
+**Версія / Version:** 1.7 (19.09.2026)
 **Онлайн / Live:** https://mranoven-coder.github.io/godynnyk/
 
 🇺🇦 Інтерактивний аналоговий годинник, який вчить дітей визначати час. Безкоштовно, працює офлайн у будь-якому браузері, можна встановити як застосунок на телефон.
@@ -20,6 +20,8 @@
 - Кнопка «Встановити застосунок» (одним кліком на Android/комп'ютері, підказка для iPhone) / "Install app" button (one click on Android/desktop, instructions for iPhone)
 - Підказки зі списком функцій при кожному відкритті чи оновленні сторінки (тап закриває) та кнопка налаштувань ⚙, де їх можна вимкнути або показати знову / Tips listing all functions on every open or refresh (tap to close) and a ⚙ settings button to turn them off or show them again
 
+- Пошукова оптимізація (SEO): мета-теги, Open Graph, структуровані дані, canonical, `sitemap.xml`, короткий розділ «Про годинник» / Search engine optimization (SEO): meta tags, Open Graph, structured data, canonical, `sitemap.xml`, a short "About the clock" section
+
 ## Побажання та відповіді / Feedback and replies
 
 Кнопка «Залишити побажання» на сторінці відкриває анонімну форму: ми не збираємо ні імені, ні пошти, тому не можемо відповісти особисто. Проте кожне побажання прочитано, а зміни за вашими ідеями публікуються в історії змін нижче та позначаються 💌.
@@ -31,6 +33,12 @@ The "Send feedback" button on the page opens an anonymous form: we collect no na
 © 2026 Anatolii Bondarenko. [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/) — повний текст у файлі [LICENSE](LICENSE) / full text in [LICENSE](LICENSE).
 
 ## Історія змін / Changelog
+
+### v1.7 — 19.09.2026
+
+- Покращено пошукову оптимізацію (SEO): точніші заголовок і опис, мета-теги, структуровані дані (schema.org), canonical і `sitemap.xml` / Improved SEO: more precise title and description, meta tags, structured data (schema.org), canonical and `sitemap.xml`
+- Додано короткий розділ «Про годинник» із відповідями на поширені запитання / Added a short "About the clock" section with answers to common questions
+- Оновлено інструкцію та переклад / Updated the guide and the translation
 
 ### v1.6 — 19.09.2026
 

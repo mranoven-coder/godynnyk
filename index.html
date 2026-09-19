@@ -1,5 +1,5 @@
 <!--
-  Навчальний годинник / Learning Clock — v1.6 (19.09.2026)
+  Навчальний годинник / Learning Clock — v1.7 (19.09.2026)
   Автор ідеї та вимог / Author: Anatolii Bondarenko, створено / created 17.09.2026
   © 2026 Anatolii Bondarenko. Ліцензія / License: CC BY-NC-ND 4.0
   https://creativecommons.org/licenses/by-nc-nd/4.0/
@@ -10,27 +10,69 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Навчальний годинник</title>
-<meta name="description" content="Інтерактивний тренажер, який вчить дітей визначати час — безкоштовно, працює офлайн у будь-якому браузері.">
+<title>Навчальний годинник для дітей — тренажер часу | Learning Clock for Kids</title>
+<meta name="description" content="Безкоштовний навчальний годинник для дітей: тягніть стрілки, вивчайте 12- і 24-годинний формат, час вперед і назад. Працює в браузері й офлайн.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://mranoven-coder.github.io/godynnyk/">
 <meta name="author" content="Anatolii Bondarenko">
-<meta name="version" content="1.6">
+<meta name="version" content="1.7">
 <link rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">
 
 <!-- Open Graph (Facebook, Telegram, Viber, WhatsApp тощо) -->
 <meta property="og:type" content="website">
-<meta property="og:title" content="Навчальний годинник">
-<meta property="og:description" content="Інтерактивний тренажер, який вчить дітей визначати час — безкоштовно, працює офлайн у будь-якому браузері.">
+<meta property="og:title" content="Навчальний годинник для дітей — тренажер часу">
+<meta property="og:description" content="Безкоштовний навчальний годинник для дітей: тягніть стрілки, вивчайте 12- і 24-годинний формат, час вперед і назад. Працює в браузері й офлайн.">
 <meta property="og:image" content="https://mranoven-coder.github.io/godynnyk/icons/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:url" content="https://mranoven-coder.github.io/godynnyk/">
 <meta property="og:locale" content="uk_UA">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:site_name" content="Навчальний годинник / Learning Clock">
+<meta property="og:image:alt" content="Аналоговий годинник із кольоровими стрілками">
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Навчальний годинник">
-<meta name="twitter:description" content="Інтерактивний тренажер, який вчить дітей визначати час — безкоштовно, працює офлайн у будь-якому браузері.">
+<meta name="twitter:title" content="Навчальний годинник для дітей — тренажер часу">
+<meta name="twitter:description" content="Безкоштовний навчальний годинник для дітей: тягніть стрілки, вивчайте 12- і 24-годинний формат, час вперед і назад. Працює в браузері й офлайн.">
 <meta name="twitter:image" content="https://mranoven-coder.github.io/godynnyk/icons/og-image.png">
+<meta name="twitter:image:alt" content="Аналоговий годинник із кольоровими стрілками">
+
+<!-- Структуровані дані для пошукових систем (schema.org) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Навчальний годинник",
+  "alternateName": "Learning Clock",
+  "url": "https://mranoven-coder.github.io/godynnyk/",
+  "description": "Безкоштовний навчальний годинник для дітей: тягніть стрілки, вивчайте 12- і 24-годинний формат, час вперед і назад. Працює в браузері й офлайн.",
+  "applicationCategory": "EducationalApplication",
+  "operatingSystem": "Any (web browser)",
+  "browserRequirements": "Requires JavaScript",
+  "inLanguage": [
+    "uk",
+    "en"
+  ],
+  "isAccessibleForFree": true,
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "UAH"
+  },
+  "audience": {
+    "@type": "PeopleAudience",
+    "suggestedMinAge": 5,
+    "suggestedMaxAge": 9
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Anatolii Bondarenko"
+  },
+  "license": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
+  "image": "https://mranoven-coder.github.io/godynnyk/icons/og-image.png"
+}
+</script>
 
 <!-- PWA: manifest -->
 <link rel="manifest" href="manifest.json">
@@ -282,6 +324,17 @@
     font-size:0.8rem;
     margin-top:26px;
   }
+  .about-note{
+    max-width:640px;
+    margin:30px auto 0;
+    padding:0 16px;
+    color:#556;
+    font-size:0.9rem;
+    line-height:1.5;
+  }
+  .about-note h2{font-size:1.05rem;color:var(--accent);margin:0 0 8px;}
+  .about-note h3{font-size:0.95rem;color:#445;margin:12px 0 2px;}
+  .about-note p{margin:0 0 6px;}
   .bottom-actions{
     display:flex;
     justify-content:center;
@@ -583,7 +636,7 @@
 <div class="wrap">
 
   <div class="clock-col">
-    <svg id="clockSvg" viewBox="0 0 400 400">
+    <svg id="clockSvg" viewBox="0 0 400 400" role="img" aria-label="Аналоговий годинник" data-i18n-aria="clockLabel">
       <!-- Face -->
       <circle cx="200" cy="200" r="190" fill="#ffffff" stroke="#4a7fd6" stroke-width="6"/>
       <circle cx="200" cy="200" r="178" fill="none" stroke="#e6ecf5" stroke-width="2"/>
@@ -662,8 +715,31 @@
   <a class="wish-btn" href="https://docs.google.com/forms/d/e/1FAIpQLSdpUctYqMgFYDeexBtYSZYDe41halHKpTlVKkmlFlIHuFTi4Q/viewform" target="_blank" rel="noopener noreferrer" data-i18n="wishBtn">💌 Залишити побажання</a>
 </div>
 
+<section class="about-note">
+  <div class="help-body" data-lang="uk">
+    <h2>Про годинник</h2>
+    <p>Навчальний годинник — безкоштовний інтерактивний аналоговий годинник, який допомагає дітям навчитися визначати час. Тягніть стрілки пальцем чи мишкою, дивіться 12- і 24-годинний формат на одному циферблаті, прискорюйте час або пускайте його назад. Працює в браузері та офлайн, без реєстрації.</p>
+    <h3>Як навчити дитину визначати час за годинником?</h3>
+    <p>Почніть з годинникової стрілки: сховайте хвилинну й секундну стрілки галочками та попросіть назвати приблизну годину. Потім додайте хвилинну, а секундну — наприкінці. Докладний план занять є в «Інструкції для батьків і вчителів».</p>
+    <h3>Для якого віку цей годинник?</h3>
+    <p>Орієнтовно для дітей 5–9 років, які вчаться визначати час.</p>
+    <h3>Чи потрібен інтернет?</h3>
+    <p>Ні. Після першого відкриття годинник працює й без інтернету, а ще його можна встановити як застосунок на телефон чи комп'ютер.</p>
+  </div>
+  <div class="help-body" data-lang="en" hidden>
+    <h2>About the clock</h2>
+    <p>Learning Clock is a free interactive analog clock that helps children learn to tell the time. Drag the hands with a finger or the mouse, see the 12-hour and 24-hour formats on one dial, speed time up or run it backward. It works in the browser and offline, with no sign-up.</p>
+    <h3>How do I teach a child to tell the time on a clock?</h3>
+    <p>Start with the hour hand: hide the minute and second hands with the checkboxes and ask the child to name the approximate hour. Then add the minute hand, and the second hand last. A detailed lesson plan is in the "Guide for parents and teachers".</p>
+    <h3>What age is this clock for?</h3>
+    <p>Roughly children aged 5–9 who are learning to tell the time.</p>
+    <h3>Do I need the internet?</h3>
+    <p>No. After the first visit the clock also works without the internet, and it can be installed as an app on a phone or computer.</p>
+  </div>
+</section>
+
 <p class="download-note" data-i18n-html="downloadNote">Файл можна відкрити офлайн у будь-якому браузері.<br>Автор: Anatolii Bondarenko, 17.09.2026</p>
-<p class="download-note copyright-note" data-i18n-html="copyright">© 2026 Anatolii Bondarenko · <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.uk" target="_blank" rel="noopener noreferrer">CC BY-NC-ND 4.0</a> · v1.6 · 19.09.2026</p>
+<p class="download-note copyright-note" data-i18n-html="copyright">© 2026 Anatolii Bondarenko · <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.uk" target="_blank" rel="noopener noreferrer">CC BY-NC-ND 4.0</a> · v1.7 · 19.09.2026</p>
 
 <div class="help-overlay" id="helpOverlay">
   <div class="help-card">
@@ -722,6 +798,7 @@
       <li>Працює в будь-якому сучасному браузері на комп'ютері, планшеті й телефоні.</li>
       <li>Можна встановити як окремий застосунок кнопкою «Встановити застосунок» (Android, комп'ютер) — на iPhone вона покаже підказку через «Поділитися → На екран Домівки» в Safari.</li>
       <li>Після першого відкриття працює навіть без інтернету.</li>
+      <li>Внизу сторінки є короткий розділ «Про годинник» із відповідями на поширені запитання.</li>
       <li>Вибір щодо підказок і те, яку версію ви вже переглянули, зберігаються в браузері пристрою; в анонімній вкладці чи після очищення даних сайту підказки знову вмикаються, а позначка NEW з'являється знову.</li>
     </ul>
 
@@ -783,6 +860,7 @@
       <li>Works in any modern browser on a computer, tablet or phone.</li>
       <li>Can be installed as a standalone app with the "Install app" button (Android, desktop) — on iPhone it shows instructions via "Share → Add to Home Screen" in Safari.</li>
       <li>After the first visit it works even without an internet connection.</li>
+      <li>At the bottom of the page there is a short "About the clock" section with answers to common questions.</li>
       <li>Your choice about the tips and which version you have already viewed are saved in the device's browser; in a private tab or after clearing the site's data the tips are turned on again and the NEW mark appears again.</li>
     </ul>
 
@@ -874,6 +952,27 @@
 // номер версії внизу сторінки, позначка «NEW» на кнопці «Що нового» та анонс
 // у вікні підказок — підхоплюється з цього списку автоматично.
 var RELEASES = [
+  {
+    version: "1.7", date: "19.09.2026",
+    announce: {
+      uk: "годинник легше знайти в пошуку, а його посилання гарно виглядає в месенджерах; внизу — короткий розділ «Про годинник».",
+      en: "the clock is easier to find in search and its link looks better in messengers; there is a short \"About the clock\" section at the bottom."
+    },
+    items: {
+      uk: [
+        "Покращено пошукову оптимізацію (SEO): точніші заголовок і опис, мета-теги, структуровані дані та карта сайту",
+        "Посилання на годинник гарніше виглядає при поширенні в месенджерах і соцмережах",
+        "Додано короткий розділ «Про годинник» із відповідями на поширені запитання",
+        "Інструкцію оновлено: згадано розділ «Про годинник»"
+      ],
+      en: [
+        "Improved search engine optimization (SEO): more precise title and description, meta tags, structured data and a sitemap",
+        "The clock's link looks better when shared in messengers and social networks",
+        "Added a short \"About the clock\" section with answers to common questions",
+        "Updated the guide: mentioned the \"About the clock\" section"
+      ]
+    }
+  },
   {
     version: "1.6", date: "19.09.2026",
     announce: {
@@ -984,7 +1083,8 @@ var IS_RETURNING = (function(){
 // ---- Мови / Languages ----
 var I18N = {
   uk: {
-    title: "Навчальний годинник",
+    title: "Навчальний годинник для дітей — тренажер часу",
+    clockLabel: "Аналоговий годинник",
     h1: "🕒 Навчальний годинник",
     hint: "Потягни стрілки пальцем або мишкою, щоб виставити свій час!",
     showHands: "👁 Показати стрілки",
@@ -1020,7 +1120,8 @@ var I18N = {
     weekdays: ["неділя","понеділок","вівторок","середа","четвер","п'ятниця","субота"]
   },
   en: {
-    title: "Learning Clock",
+    title: "Learning Clock for Kids — practice telling the time",
+    clockLabel: "Analog clock",
     h1: "🕒 Learning Clock",
     hint: "Drag the hands with your finger or mouse to set your own time!",
     showHands: "👁 Show the hands",
