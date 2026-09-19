@@ -1,6 +1,6 @@
 # Навчальний годинник / Learning Clock
 
-**Версія / Version:** 1.4 (19.09.2026)
+**Версія / Version:** 1.5 (19.09.2026)
 **Онлайн / Live:** https://mranoven-coder.github.io/godynnyk/
 
 🇺🇦 Інтерактивний аналоговий годинник, який вчить дітей визначати час. Безкоштовно, працює офлайн у будь-якому браузері, можна встановити як застосунок на телефон.
@@ -18,7 +18,7 @@
 - Кнопка «Залишити побажання» відкриває анонімну форму для відгуків / "Send feedback" button opens an anonymous feedback form
 - Розділ «Що нового» на сторінці / "What's new" section on the page
 - Кнопка «Встановити застосунок» (одним кліком на Android/комп'ютері, підказка для iPhone) / "Install app" button (one click on Android/desktop, instructions for iPhone)
-- Підказки при запуску зі списком функцій (тап закриває) та кнопка налаштувань ⚙, де їх можна вимкнути або показати знову / Startup tips listing all functions (tap to close) and a ⚙ settings button to turn them off or show them again
+- Підказки зі списком функцій при кожному відкритті чи оновленні сторінки (тап закриває) та кнопка налаштувань ⚙, де їх можна вимкнути або показати знову / Tips listing all functions on every open or refresh (tap to close) and a ⚙ settings button to turn them off or show them again
 
 ## Побажання та відповіді / Feedback and replies
 
@@ -31,6 +31,11 @@ The "Send feedback" button on the page opens an anonymous form: we collect no na
 © 2026 Anatolii Bondarenko. [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/) — повний текст у файлі [LICENSE](LICENSE) / full text in [LICENSE](LICENSE).
 
 ## Історія змін / Changelog
+
+### v1.5 — 19.09.2026
+
+- Підказки тепер з'являються при кожному відкритті чи оновленні сторінки або застосунку; після автоматичного перезавантаження (оновлення сайту) вдруге не показуються / The tips now appear every time the page or the app is opened or refreshed; they are not shown a second time after the automatic reload (site update)
+- Оновлено інструкцію та «Що нового» / Updated the guide and "What's new"
 
 ### v1.4 — 19.09.2026
 

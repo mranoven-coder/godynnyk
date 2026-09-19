@@ -1,5 +1,5 @@
 <!--
-  Навчальний годинник / Learning Clock — v1.4 (19.09.2026)
+  Навчальний годинник / Learning Clock — v1.5 (19.09.2026)
   Автор ідеї та вимог / Author: Anatolii Bondarenko, створено / created 17.09.2026
   © 2026 Anatolii Bondarenko. Ліцензія / License: CC BY-NC-ND 4.0
   https://creativecommons.org/licenses/by-nc-nd/4.0/
@@ -13,7 +13,7 @@
 <title>Навчальний годинник</title>
 <meta name="description" content="Інтерактивний тренажер, який вчить дітей визначати час — безкоштовно, працює офлайн у будь-якому браузері.">
 <meta name="author" content="Anatolii Bondarenko">
-<meta name="version" content="1.4">
+<meta name="version" content="1.5">
 <link rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">
 
 <!-- Open Graph (Facebook, Telegram, Viber, WhatsApp тощо) -->
@@ -627,7 +627,7 @@
 </div>
 
 <p class="download-note" data-i18n-html="downloadNote">Файл можна відкрити офлайн у будь-якому браузері.<br>Автор: Anatolii Bondarenko, 17.09.2026</p>
-<p class="download-note copyright-note" data-i18n-html="copyright">© 2026 Anatolii Bondarenko · <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.uk" target="_blank" rel="noopener noreferrer">CC BY-NC-ND 4.0</a> · v1.4 · 19.09.2026</p>
+<p class="download-note copyright-note" data-i18n-html="copyright">© 2026 Anatolii Bondarenko · <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.uk" target="_blank" rel="noopener noreferrer">CC BY-NC-ND 4.0</a> · v1.5 · 19.09.2026</p>
 
 <div class="help-overlay" id="helpOverlay">
   <div class="help-card">
@@ -659,7 +659,7 @@
       <tr><td>Цифровий час і дата</td><td>Показує поточний час і дату текстом; поля можна редагувати з клавіатури</td></tr>
       <tr><td>Тягнення стрілок</td><td>Дитина бере пальцем/мишкою будь-яку стрілку і крутить — циферблат одразу показує новий час</td></tr>
       <tr><td>Тап/клік по циферблату</td><td>Швидкий спосіб поставити на паузу чи запустити знову — те саме, що кнопка «Пауза», але без пошуку кнопки під час заняття (тап саме по порожній частині циферблата, не по стрілці)</td></tr>
-      <tr><td>Підказки при запуску</td><td>Під час відкриття годинника з'являється вікно з переліком усіх його функцій. Тапніть у будь-якому місці вікна, щоб закрити його. Вікно показується один раз за відкриття</td></tr>
+      <tr><td>Підказки при запуску</td><td>Під час відкриття годинника з'являється вікно з переліком усіх його функцій. Тапніть у будь-якому місці вікна, щоб закрити його. Вікно з'являється при кожному відкритті чи оновленні сторінки або застосунку</td></tr>
       <tr><td>Кнопка ⚙ (налаштування)</td><td>Кнопка в правому верхньому куті. Тут можна вимкнути або знову ввімкнути підказки при запуску, а також показати їх одразу</td></tr>
     </table>
 
@@ -719,7 +719,7 @@
       <tr><td>Digital time and date</td><td>Shows the current time and date as text; the fields can be edited from the keyboard</td></tr>
       <tr><td>Dragging the hands</td><td>The child grabs any hand with a finger or the mouse and turns it — the clock face immediately shows the new time</td></tr>
       <tr><td>Tap/click on the clock face</td><td>A quick way to pause or resume — the same as the "Pause" button, but without hunting for it mid-lesson (tap the empty part of the face, not a hand)</td></tr>
-      <tr><td>Tips at startup</td><td>When the clock opens, a window lists all of its functions. Tap anywhere on the window to close it. It is shown once per visit</td></tr>
+      <tr><td>Tips at startup</td><td>When the clock opens, a window lists all of its functions. Tap anywhere on the window to close it. It appears every time the page or the app is opened or refreshed</td></tr>
       <tr><td>⚙ button (settings)</td><td>The button in the top right corner. Here you can turn the startup tips off or on again, or show them right away</td></tr>
     </table>
 
@@ -761,6 +761,11 @@
     <h2>Що нового</h2>
     <p class="subtitle">Зміни в годиннику. Значком 💌 позначено те, що додано за вашими побажаннями.</p>
 
+    <h3>v1.5 — 19.09.2026</h3>
+    <ul>
+      <li>Підказки тепер з'являються при кожному відкритті чи оновленні сторінки або застосунку (їх можна вимкнути в ⚙)</li>
+    </ul>
+
     <h3>v1.4 — 19.09.2026</h3>
     <ul>
       <li>Підказки при запуску: вікно зі списком усіх функцій годинника, закривається тапом у будь-якому місці</li>
@@ -800,6 +805,11 @@
     <div class="help-body" data-lang="en" hidden>
     <h2>What's new</h2>
     <p class="subtitle">Changes to the clock. The 💌 mark shows what was added following your wishes.</p>
+
+    <h3>v1.5 — 19.09.2026</h3>
+    <ul>
+      <li>The tips now appear every time the page or the app is opened or refreshed (they can be turned off in ⚙)</li>
+    </ul>
 
     <h3>v1.4 — 19.09.2026</h3>
     <ul>
@@ -904,7 +914,7 @@ var I18N = {
     forward: "▶ Вперед",
     now: "🕐 Поточний час",
     downloadNote: "Файл можна відкрити офлайн у будь-якому браузері.<br>Автор: Anatolii Bondarenko, 17.09.2026",
-    copyright: "© 2026 Anatolii Bondarenko · <a href=\"https://creativecommons.org/licenses/by-nc-nd/4.0/deed.uk\" target=\"_blank\" rel=\"noopener noreferrer\">CC BY-NC-ND 4.0</a> · v1.4 · 19.09.2026",
+    copyright: "© 2026 Anatolii Bondarenko · <a href=\"https://creativecommons.org/licenses/by-nc-nd/4.0/deed.uk\" target=\"_blank\" rel=\"noopener noreferrer\">CC BY-NC-ND 4.0</a> · v1.5 · 19.09.2026",
     helpBtn: "📖 Інструкція для батьків і вчителів",
     wishBtn: "💌 Залишити побажання",
     changesBtn: "🆕 Що нового",
@@ -938,7 +948,7 @@ var I18N = {
     forward: "▶ Forward",
     now: "🕐 Current time",
     downloadNote: "This file works offline in any browser.<br>Author: Anatolii Bondarenko, 17.09.2026",
-    copyright: "© 2026 Anatolii Bondarenko · <a href=\"https://creativecommons.org/licenses/by-nc-nd/4.0/deed.en\" target=\"_blank\" rel=\"noopener noreferrer\">CC BY-NC-ND 4.0</a> · v1.4 · 19.09.2026",
+    copyright: "© 2026 Anatolii Bondarenko · <a href=\"https://creativecommons.org/licenses/by-nc-nd/4.0/deed.en\" target=\"_blank\" rel=\"noopener noreferrer\">CC BY-NC-ND 4.0</a> · v1.5 · 19.09.2026",
     helpBtn: "📖 Guide for parents and teachers",
     wishBtn: "💌 Send feedback",
     changesBtn: "🆕 What's new",
@@ -1377,6 +1387,7 @@ if ('serviceWorker' in navigator) {
   navigator.serviceWorker.addEventListener('controllerchange', function(){
     if(swRefreshed) return;
     swRefreshed = true;
+    try{ sessionStorage.setItem('clockAutoReload', '1'); }catch(e){}
     window.location.reload();
   });
 }
@@ -1417,7 +1428,7 @@ if ('serviceWorker' in navigator) {
 // Підказки при запуску та налаштування (шестерня)
 (function(){
   const KEY = 'clockShowTips';        // '0' — підказки вимкнено; інакше — увімкнено
-  const SESSION_KEY = 'clockTipsShown'; // щоб не показувати повторно після автоперезавантаження сторінки
+  const AUTO_RELOAD_KEY = 'clockAutoReload'; // ставиться перед автоперезавантаженням після оновлення сайту
   const tipsOverlay = document.getElementById('tipsOverlay');
   const settingsOverlay = document.getElementById('settingsOverlay');
   const gearBtn = document.getElementById('gearBtn');
@@ -1460,12 +1471,16 @@ if ('serviceWorker' in navigator) {
     if(e.key === 'Escape'){ closeTips(); closeSettings(); }
   });
 
-  // Автоматичний показ при запуску — один раз за відкриття (сеанс), якщо не вимкнено
-  let alreadyShown = false;
-  try{ alreadyShown = sessionStorage.getItem(SESSION_KEY) === '1'; }catch(e){}
-  if(tipsEnabled() && !alreadyShown){
+  // Показ при кожному відкритті чи оновленні сторінки/застосунку, якщо не вимкнено.
+  // Виняток — автоматичне перезавантаження після оновлення сайту (не дія користувача):
+  // тоді підказки вже були показані перед ним, тож вдруге їх не відкриваємо.
+  let autoReloaded = false;
+  try{
+    autoReloaded = sessionStorage.getItem(AUTO_RELOAD_KEY) === '1';
+    sessionStorage.removeItem(AUTO_RELOAD_KEY);
+  }catch(e){}
+  if(tipsEnabled() && !autoReloaded){
     openTips();
-    try{ sessionStorage.setItem(SESSION_KEY, '1'); }catch(e){}
   }
 })();
 
