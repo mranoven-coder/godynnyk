@@ -1,6 +1,6 @@
 # Навчальний годинник / Learning Clock
 
-**Версія / Version:** 1.5 (19.09.2026)
+**Версія / Version:** 1.6 (19.09.2026)
 **Онлайн / Live:** https://mranoven-coder.github.io/godynnyk/
 
 🇺🇦 Інтерактивний аналоговий годинник, який вчить дітей визначати час. Безкоштовно, працює офлайн у будь-якому браузері, можна встановити як застосунок на телефон.
@@ -16,7 +16,7 @@
 - Українська та англійська мови (UA / EN) / Ukrainian and English (UA / EN)
 - Інструкція для батьків і вчителів обома мовами / Guide for parents and teachers in both languages
 - Кнопка «Залишити побажання» відкриває анонімну форму для відгуків / "Send feedback" button opens an anonymous feedback form
-- Розділ «Що нового» на сторінці / "What's new" section on the page
+- Розділ «Що нового» на сторінці; про нову версію повідомляє позначка «NEW» на кнопці та анонс у вікні підказок / "What's new" section on the page; a new version is announced by a "NEW" mark on the button and a notice in the tips window
 - Кнопка «Встановити застосунок» (одним кліком на Android/комп'ютері, підказка для iPhone) / "Install app" button (one click on Android/desktop, instructions for iPhone)
 - Підказки зі списком функцій при кожному відкритті чи оновленні сторінки (тап закриває) та кнопка налаштувань ⚙, де їх можна вимкнути або показати знову / Tips listing all functions on every open or refresh (tap to close) and a ⚙ settings button to turn them off or show them again
 
@@ -31,6 +31,12 @@ The "Send feedback" button on the page opens an anonymous form: we collect no na
 © 2026 Anatolii Bondarenko. [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/) — повний текст у файлі [LICENSE](LICENSE) / full text in [LICENSE](LICENSE).
 
 ## Історія змін / Changelog
+
+### v1.6 — 19.09.2026
+
+- Повідомлення про оновлення: позначка «NEW» на кнопці «Що нового» та короткий анонс у вікні підказок (не більше 3 разів на версію; новим відвідувачам не показується) / Update notices: a "NEW" mark on the "What's new" button and a short announcement in the tips window (at most 3 times per version; not shown to first-time visitors)
+- Історія змін на сторінці тепер збирається з єдиного списку версій у коді / The on-page changelog is now built from a single list of releases in the code
+- Оновлено інструкцію та переклад / Updated the guide and the translation
 
 ### v1.5 — 19.09.2026
 

@@ -1,5 +1,5 @@
 <!--
-  Навчальний годинник / Learning Clock — v1.5 (19.09.2026)
+  Навчальний годинник / Learning Clock — v1.6 (19.09.2026)
   Автор ідеї та вимог / Author: Anatolii Bondarenko, створено / created 17.09.2026
   © 2026 Anatolii Bondarenko. Ліцензія / License: CC BY-NC-ND 4.0
   https://creativecommons.org/licenses/by-nc-nd/4.0/
@@ -13,7 +13,7 @@
 <title>Навчальний годинник</title>
 <meta name="description" content="Інтерактивний тренажер, який вчить дітей визначати час — безкоштовно, працює офлайн у будь-якому браузері.">
 <meta name="author" content="Anatolii Bondarenko">
-<meta name="version" content="1.5">
+<meta name="version" content="1.6">
 <link rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">
 
 <!-- Open Graph (Facebook, Telegram, Viber, WhatsApp тощо) -->
@@ -307,6 +307,42 @@
     box-shadow:0 3px 8px rgba(0,0,0,0.15);
   }
   .changes-btn:active{transform:scale(0.97);}
+  .changes-btn{position:relative;}
+  .changes-btn.has-new::after{
+    content:'NEW';
+    position:absolute;
+    top:-9px;
+    right:-8px;
+    background:#e02424;
+    color:#fff;
+    font-size:0.65rem;
+    font-weight:bold;
+    line-height:1;
+    padding:3px 6px;
+    border-radius:999px;
+    box-shadow:0 1px 4px rgba(0,0,0,0.3);
+  }
+  .update-note{
+    clear:both;
+    background:#fff4e0;
+    border:2px solid #ffb84d;
+    border-radius:14px;
+    padding:10px 12px;
+    margin:8px 0 4px;
+    font-size:0.95rem;
+    line-height:1.4;
+    color:#5a3b00;
+  }
+  .update-note[hidden]{display:none;}
+  .update-note-btn{
+    display:inline-block;
+    flex:none;
+    min-width:0;
+    margin-top:8px;
+    padding:6px 14px;
+    font-size:0.85rem;
+    background:#ff8c00;
+  }
   .wish-btn{
     display:inline-flex;
     align-items:center;
@@ -627,7 +663,7 @@
 </div>
 
 <p class="download-note" data-i18n-html="downloadNote">Файл можна відкрити офлайн у будь-якому браузері.<br>Автор: Anatolii Bondarenko, 17.09.2026</p>
-<p class="download-note copyright-note" data-i18n-html="copyright">© 2026 Anatolii Bondarenko · <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.uk" target="_blank" rel="noopener noreferrer">CC BY-NC-ND 4.0</a> · v1.5 · 19.09.2026</p>
+<p class="download-note copyright-note" data-i18n-html="copyright">© 2026 Anatolii Bondarenko · <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.uk" target="_blank" rel="noopener noreferrer">CC BY-NC-ND 4.0</a> · v1.6 · 19.09.2026</p>
 
 <div class="help-overlay" id="helpOverlay">
   <div class="help-card">
@@ -660,6 +696,7 @@
       <tr><td>Тягнення стрілок</td><td>Дитина бере пальцем/мишкою будь-яку стрілку і крутить — циферблат одразу показує новий час</td></tr>
       <tr><td>Тап/клік по циферблату</td><td>Швидкий спосіб поставити на паузу чи запустити знову — те саме, що кнопка «Пауза», але без пошуку кнопки під час заняття (тап саме по порожній частині циферблата, не по стрілці)</td></tr>
       <tr><td>Підказки при запуску</td><td>Під час відкриття годинника з'являється вікно з переліком усіх його функцій. Тапніть у будь-якому місці вікна, щоб закрити його. Вікно з'являється при кожному відкритті чи оновленні сторінки або застосунку</td></tr>
+      <tr><td>Позначка «NEW» / анонс оновлення</td><td>Коли виходить нова версія, на кнопці «Що нового» з'являється червона позначка NEW, а у вікні підказок — короткий анонс. Позначка зникає, щойно ви відкриєте «Що нового». Тим, хто відкриває годинник уперше, позначка й анонс не показуються</td></tr>
       <tr><td>Кнопка ⚙ (налаштування)</td><td>Кнопка в правому верхньому куті. Тут можна вимкнути або знову ввімкнути підказки при запуску, а також показати їх одразу</td></tr>
     </table>
 
@@ -685,7 +722,7 @@
       <li>Працює в будь-якому сучасному браузері на комп'ютері, планшеті й телефоні.</li>
       <li>Можна встановити як окремий застосунок кнопкою «Встановити застосунок» (Android, комп'ютер) — на iPhone вона покаже підказку через «Поділитися → На екран Домівки» в Safari.</li>
       <li>Після першого відкриття працює навіть без інтернету.</li>
-      <li>Вибір щодо підказок зберігається в браузері пристрою; в анонімній вкладці чи після очищення даних сайту підказки знову вмикаються.</li>
+      <li>Вибір щодо підказок і те, яку версію ви вже переглянули, зберігаються в браузері пристрою; в анонімній вкладці чи після очищення даних сайту підказки знову вмикаються, а позначка NEW з'являється знову.</li>
     </ul>
 
     <hr>
@@ -720,6 +757,7 @@
       <tr><td>Dragging the hands</td><td>The child grabs any hand with a finger or the mouse and turns it — the clock face immediately shows the new time</td></tr>
       <tr><td>Tap/click on the clock face</td><td>A quick way to pause or resume — the same as the "Pause" button, but without hunting for it mid-lesson (tap the empty part of the face, not a hand)</td></tr>
       <tr><td>Tips at startup</td><td>When the clock opens, a window lists all of its functions. Tap anywhere on the window to close it. It appears every time the page or the app is opened or refreshed</td></tr>
+      <tr><td>"NEW" mark / update notice</td><td>When a new version is released, a red NEW mark appears on the "What's new" button and a short notice in the tips window. The mark disappears as soon as you open "What's new". People opening the clock for the first time do not see the mark or the notice</td></tr>
       <tr><td>⚙ button (settings)</td><td>The button in the top right corner. Here you can turn the startup tips off or on again, or show them right away</td></tr>
     </table>
 
@@ -745,7 +783,7 @@
       <li>Works in any modern browser on a computer, tablet or phone.</li>
       <li>Can be installed as a standalone app with the "Install app" button (Android, desktop) — on iPhone it shows instructions via "Share → Add to Home Screen" in Safari.</li>
       <li>After the first visit it works even without an internet connection.</li>
-      <li>Your choice about the tips is saved in the device's browser; in a private tab or after clearing the site's data the tips are turned on again.</li>
+      <li>Your choice about the tips and which version you have already viewed are saved in the device's browser; in a private tab or after clearing the site's data the tips are turned on again and the NEW mark appears again.</li>
     </ul>
 
     <hr>
@@ -761,42 +799,7 @@
     <h2>Що нового</h2>
     <p class="subtitle">Зміни в годиннику. Значком 💌 позначено те, що додано за вашими побажаннями.</p>
 
-    <h3>v1.5 — 19.09.2026</h3>
-    <ul>
-      <li>Підказки тепер з'являються при кожному відкритті чи оновленні сторінки або застосунку (їх можна вимкнути в ⚙)</li>
-    </ul>
-
-    <h3>v1.4 — 19.09.2026</h3>
-    <ul>
-      <li>Підказки при запуску: вікно зі списком усіх функцій годинника, закривається тапом у будь-якому місці</li>
-      <li>Кнопка ⚙ «Налаштування»: підказки можна вимкнути, знову ввімкнути або показати одразу</li>
-      <li>Інструкцію оновлено: описано підказки й налаштування</li>
-    </ul>
-
-    <h3>v1.3 — 19.09.2026</h3>
-    <ul>
-      <li>Додано кнопку «Встановити застосунок» — на Android і комп'ютері встановлює одним кліком, на iPhone показує підказку</li>
-      <li>Інструкцію оновлено: додано опис тапу по циферблату (пауза/старт) і уточнено спосіб встановлення</li>
-    </ul>
-
-    <h3>v1.2 — 19.09.2026</h3>
-    <ul>
-      <li>Додано розділ «Що нового»</li>
-    </ul>
-
-    <h3>v1.1 — 19.09.2026</h3>
-    <ul>
-      <li>Кнопка «Залишити побажання» (анонімна форма)</li>
-      <li>Кнопку інструкції перенесено під блок з годинником</li>
-    </ul>
-
-    <h3>v1.0 — 19.09.2026</h3>
-    <ul>
-      <li>Українська й англійська мови (UA / EN), переклад інструкції для батьків і вчителів</li>
-      <li>Галочки швидкості x300, x600, x1200</li>
-      <li>Кнопки «Підтримати проєкт» і «Поділитися»</li>
-      <li>Авторство, ліцензія CC BY-NC-ND 4.0 і номер версії</li>
-    </ul>
+    <div id="releasesUk"></div>
 
     <hr>
     <p class="footer-note">Є ідея? Натисніть «Залишити побажання» — ми читаємо кожне.</p>
@@ -806,42 +809,7 @@
     <h2>What's new</h2>
     <p class="subtitle">Changes to the clock. The 💌 mark shows what was added following your wishes.</p>
 
-    <h3>v1.5 — 19.09.2026</h3>
-    <ul>
-      <li>The tips now appear every time the page or the app is opened or refreshed (they can be turned off in ⚙)</li>
-    </ul>
-
-    <h3>v1.4 — 19.09.2026</h3>
-    <ul>
-      <li>Tips at startup: a window listing all the clock's functions, closed by tapping anywhere</li>
-      <li>⚙ "Settings" button: the tips can be turned off, turned on again or shown right away</li>
-      <li>Updated the guide: described the tips and the settings</li>
-    </ul>
-
-    <h3>v1.3 — 19.09.2026</h3>
-    <ul>
-      <li>Added an "Install app" button — installs with one click on Android and desktop, shows instructions on iPhone</li>
-      <li>Updated the guide: added tapping the clock face (pause/start) and clarified how to install</li>
-    </ul>
-
-    <h3>v1.2 — 19.09.2026</h3>
-    <ul>
-      <li>Added the "What's new" section</li>
-    </ul>
-
-    <h3>v1.1 — 19.09.2026</h3>
-    <ul>
-      <li>"Send feedback" button (anonymous form)</li>
-      <li>Moved the guide button below the clock block</li>
-    </ul>
-
-    <h3>v1.0 — 19.09.2026</h3>
-    <ul>
-      <li>Ukrainian and English (UA / EN), translated guide for parents and teachers</li>
-      <li>Speed checkboxes x300, x600, x1200</li>
-      <li>"Support the project" and "Share" buttons</li>
-      <li>Authorship, CC BY-NC-ND 4.0 license and version number</li>
-    </ul>
+    <div id="releasesEn"></div>
 
     <hr>
     <p class="footer-note">Got an idea? Press "Send feedback" — we read every one.</p>
@@ -852,6 +820,10 @@
 <div class="help-overlay tips-overlay" id="tipsOverlay" role="dialog" aria-modal="true">
   <div class="help-card tips-card">
     <button class="help-close" id="tipsClose" type="button" aria-label="Закрити" data-i18n-aria="close">✕</button>
+    <div class="update-note" id="updateNote" hidden>
+      <span id="updateNoteText"></span><br>
+      <button type="button" class="update-note-btn" id="updateNoteBtn" data-i18n="updateMore">Докладніше</button>
+    </div>
     <div class="help-body" data-lang="uk">
     <h2>Як користуватись годинником</h2>
     <ol>
@@ -896,6 +868,119 @@
 </div>
 
 <script>
+// ---- Список версій ----
+// Щоб випустити нову версію, додайте новий запис ПЕРШИМ у цей список (номер, дата, пункти
+// «Що нового» та короткий анонс українською й англійською). Усе інше — історія змін,
+// номер версії внизу сторінки, позначка «NEW» на кнопці «Що нового» та анонс
+// у вікні підказок — підхоплюється з цього списку автоматично.
+var RELEASES = [
+  {
+    version: "1.6", date: "19.09.2026",
+    announce: {
+      uk: "годинник тепер сам повідомляє про нові версії: позначка «NEW» на кнопці «Що нового» і цей анонс.",
+      en: "the clock now tells you about new versions: a \"NEW\" mark on the \"What's new\" button and this notice."
+    },
+    items: {
+      uk: [
+        "Повідомлення про оновлення: позначка «NEW» на кнопці «Що нового» та короткий анонс у вікні підказок",
+        "Інструкцію оновлено: описано повідомлення про оновлення"
+      ],
+      en: [
+        "Update notices: a \"NEW\" mark on the \"What's new\" button and a short announcement in the tips window",
+        "Updated the guide: described the update notices"
+      ]
+    }
+  },
+  {
+    version: "1.5", date: "19.09.2026",
+    announce: {
+      uk: "підказки з'являються при кожному відкритті; вимкнути їх можна в ⚙.",
+      en: "the tips appear every time you open the clock; you can turn them off in ⚙."
+    },
+    items: {
+      uk: ["Підказки тепер з'являються при кожному відкритті чи оновленні сторінки або застосунку (їх можна вимкнути в ⚙)"],
+      en: ["The tips now appear every time the page or the app is opened or refreshed (they can be turned off in ⚙)"]
+    }
+  },
+  {
+    version: "1.4", date: "19.09.2026",
+    announce: {
+      uk: "підказки при запуску та кнопка ⚙ «Налаштування».",
+      en: "startup tips and the ⚙ \"Settings\" button."
+    },
+    items: {
+      uk: [
+        "Підказки при запуску: вікно зі списком усіх функцій годинника, закривається тапом у будь-якому місці",
+        "Кнопка ⚙ «Налаштування»: підказки можна вимкнути, знову ввімкнути або показати одразу",
+        "Інструкцію оновлено: описано підказки й налаштування"
+      ],
+      en: [
+        "Tips at startup: a window listing all the clock's functions, closed by tapping anywhere",
+        "⚙ \"Settings\" button: the tips can be turned off, turned on again or shown right away",
+        "Updated the guide: described the tips and the settings"
+      ]
+    }
+  },
+  {
+    version: "1.3", date: "19.09.2026",
+    announce: {
+      uk: "кнопка «Встановити застосунок».",
+      en: "the \"Install app\" button."
+    },
+    items: {
+      uk: [
+        "Додано кнопку «Встановити застосунок» — на Android і комп'ютері встановлює одним кліком, на iPhone показує підказку",
+        "Інструкцію оновлено: додано опис тапу по циферблату (пауза/старт) і уточнено спосіб встановлення"
+      ],
+      en: [
+        "Added an \"Install app\" button — installs with one click on Android and desktop, shows instructions on iPhone",
+        "Updated the guide: added tapping the clock face (pause/start) and clarified how to install"
+      ]
+    }
+  },
+  {
+    version: "1.2", date: "19.09.2026",
+    announce: { uk: "розділ «Що нового».", en: "the \"What's new\" section." },
+    items: { uk: ["Додано розділ «Що нового»"], en: ["Added the \"What's new\" section"] }
+  },
+  {
+    version: "1.1", date: "19.09.2026",
+    announce: { uk: "кнопка «Залишити побажання».", en: "the \"Send feedback\" button." },
+    items: {
+      uk: ["Кнопка «Залишити побажання» (анонімна форма)", "Кнопку інструкції перенесено під блок з годинником"],
+      en: ["\"Send feedback\" button (anonymous form)", "Moved the guide button below the clock block"]
+    }
+  },
+  {
+    version: "1.0", date: "19.09.2026",
+    announce: { uk: "перша версія.", en: "the first version." },
+    items: {
+      uk: [
+        "Українська й англійська мови (UA / EN), переклад інструкції для батьків і вчителів",
+        "Галочки швидкості x300, x600, x1200",
+        "Кнопки «Підтримати проєкт» і «Поділитися»",
+        "Авторство, ліцензія CC BY-NC-ND 4.0 і номер версії"
+      ],
+      en: [
+        "Ukrainian and English (UA / EN), translated guide for parents and teachers",
+        "Speed checkboxes x300, x600, x1200",
+        "\"Support the project\" and \"Share\" buttons",
+        "Authorship, CC BY-NC-ND 4.0 license and version number"
+      ]
+    }
+  }
+];
+var APP_VERSION = RELEASES[0].version;
+var APP_DATE = RELEASES[0].date;
+
+// Чи відкривали годинник на цьому пристрої раніше. Визначається ДО applyLang(), який сам записує мову.
+// Потрібно, щоб цілком нові відвідувачі не бачили «оновлення»: для них усе й так нове.
+var IS_RETURNING = (function(){
+  try{
+    return localStorage.getItem('clockLang') !== null || localStorage.getItem('clockSeenVersion') !== null;
+  }catch(e){ return false; }
+})();
+
 // ---- Мови / Languages ----
 var I18N = {
   uk: {
@@ -914,7 +999,7 @@ var I18N = {
     forward: "▶ Вперед",
     now: "🕐 Поточний час",
     downloadNote: "Файл можна відкрити офлайн у будь-якому браузері.<br>Автор: Anatolii Bondarenko, 17.09.2026",
-    copyright: "© 2026 Anatolii Bondarenko · <a href=\"https://creativecommons.org/licenses/by-nc-nd/4.0/deed.uk\" target=\"_blank\" rel=\"noopener noreferrer\">CC BY-NC-ND 4.0</a> · v1.5 · 19.09.2026",
+    copyright: "© 2026 Anatolii Bondarenko · <a href=\"https://creativecommons.org/licenses/by-nc-nd/4.0/deed.uk\" target=\"_blank\" rel=\"noopener noreferrer\">CC BY-NC-ND 4.0</a> · v" + APP_VERSION + " · " + APP_DATE,
     helpBtn: "📖 Інструкція для батьків і вчителів",
     wishBtn: "💌 Залишити побажання",
     changesBtn: "🆕 Що нового",
@@ -923,6 +1008,8 @@ var I18N = {
     settingsShowTips: "Показувати підказки при запуску",
     settingsNote: "Підказки — це вікно зі списком функцій годинника. Тапніть на нього, щоб закрити.",
     settingsShowNow: "📋 Показати підказки зараз",
+    updatePrefix: "🆕 Оновлення",
+    updateMore: "Докладніше",
     donateBtn: "☕ Підтримати проєкт",
     inviteBtn: "📤 Поділитися",
     linkCopied: "Посилання скопійовано!",
@@ -948,7 +1035,7 @@ var I18N = {
     forward: "▶ Forward",
     now: "🕐 Current time",
     downloadNote: "This file works offline in any browser.<br>Author: Anatolii Bondarenko, 17.09.2026",
-    copyright: "© 2026 Anatolii Bondarenko · <a href=\"https://creativecommons.org/licenses/by-nc-nd/4.0/deed.en\" target=\"_blank\" rel=\"noopener noreferrer\">CC BY-NC-ND 4.0</a> · v1.5 · 19.09.2026",
+    copyright: "© 2026 Anatolii Bondarenko · <a href=\"https://creativecommons.org/licenses/by-nc-nd/4.0/deed.en\" target=\"_blank\" rel=\"noopener noreferrer\">CC BY-NC-ND 4.0</a> · v" + APP_VERSION + " · " + APP_DATE,
     helpBtn: "📖 Guide for parents and teachers",
     wishBtn: "💌 Send feedback",
     changesBtn: "🆕 What's new",
@@ -957,6 +1044,8 @@ var I18N = {
     settingsShowTips: "Show tips at startup",
     settingsNote: "The tips are a window listing the clock's functions. Tap it to close.",
     settingsShowNow: "📋 Show tips now",
+    updatePrefix: "🆕 Update",
+    updateMore: "Details",
     donateBtn: "☕ Support the project",
     inviteBtn: "📤 Share",
     linkCopied: "Link copied!",
@@ -1009,11 +1098,36 @@ function applyLang(lang){
     b.setAttribute('aria-pressed', on ? 'true' : 'false');
   });
   if(typeof window.onLangChange === 'function') window.onLangChange();
+  document.dispatchEvent(new Event('langchange'));
 }
 
 document.querySelectorAll('.lang-switch button').forEach(function(b){
   b.addEventListener('click', function(){ applyLang(b.getAttribute('data-lang')); });
 });
+
+// Історія змін збирається зі списку RELEASES (обома мовами)
+(function(){
+  ['uk', 'en'].forEach(function(lang){
+    const box = document.getElementById(lang === 'uk' ? 'releasesUk' : 'releasesEn');
+    if(!box) return;
+    box.textContent = '';
+    RELEASES.forEach(function(r){
+      const h = document.createElement('h3');
+      h.textContent = 'v' + r.version + ' — ' + r.date;
+      box.appendChild(h);
+      const ul = document.createElement('ul');
+      r.items[lang].forEach(function(txt){
+        const li = document.createElement('li');
+        li.textContent = txt;
+        ul.appendChild(li);
+      });
+      box.appendChild(ul);
+    });
+  });
+  const metaVersion = document.querySelector('meta[name="version"]');
+  if(metaVersion) metaVersion.setAttribute('content', APP_VERSION);
+})();
+
 applyLang(detectLang());
 </script>
 
@@ -1425,6 +1539,75 @@ if ('serviceWorker' in navigator) {
   });
 })();
 
+// Повідомлення про нові версії: позначка «NEW» на кнопці «Що нового» + анонс у вікні підказок
+(function(){
+  const SEEN_KEY = 'clockSeenVersion';   // остання версія, яку користувач переглянув у «Що нового»
+  const ANNOUNCE_KEY = 'clockAnnounce';  // лічильник показів анонсу: {v: версія, n: кількість}
+  const MAX_ANNOUNCE = 3;                // анонс у підказках показуємо не більше 3 разів на версію
+  const changesBtn = document.getElementById('changesBtn');
+  const changesOverlay = document.getElementById('changesOverlay');
+  const updateNote = document.getElementById('updateNote');
+  const updateNoteText = document.getElementById('updateNoteText');
+  const updateNoteBtn = document.getElementById('updateNoteBtn');
+  const latest = RELEASES[0];
+
+  let seenNow = false;       // на випадок, якщо localStorage недоступний
+  let noteAllowed = null;    // чи показувати анонс у цьому завантаженні (визначається один раз)
+
+  function isUnseen(){
+    if(seenNow) return false;
+    try{
+      const seen = localStorage.getItem(SEEN_KEY);
+      if(seen === null && !IS_RETURNING){
+        // Цілком новий відвідувач: показувати «оновлення» не потрібно — просто запам'ятовуємо поточну версію
+        localStorage.setItem(SEEN_KEY, latest.version);
+        return false;
+      }
+      return seen !== latest.version;
+    }catch(e){ return false; }   // сховище недоступне — не можемо відстежити, тож не набридаємо
+  }
+
+  function decideNote(){
+    if(noteAllowed !== null) return noteAllowed;
+    noteAllowed = false;
+    if(!isUnseen()) return false;
+    let rec = null;
+    try{ rec = JSON.parse(localStorage.getItem(ANNOUNCE_KEY) || 'null'); }catch(e){}
+    const n = (rec && rec.v === latest.version) ? (rec.n || 0) : 0;
+    if(n < MAX_ANNOUNCE){
+      noteAllowed = true;
+      try{ localStorage.setItem(ANNOUNCE_KEY, JSON.stringify({ v: latest.version, n: n + 1 })); }catch(e){}
+    }
+    return noteAllowed;
+  }
+
+  function refresh(){
+    const unseen = isUnseen();
+    changesBtn.classList.toggle('has-new', unseen);
+    const show = unseen && noteAllowed === true;
+    updateNote.hidden = !show;
+    if(show){
+      updateNoteText.textContent = t('updatePrefix') + ' v' + latest.version + ': ' + latest.announce[LANG];
+    }
+  }
+
+  function markSeen(){
+    seenNow = true;
+    try{ localStorage.setItem(SEEN_KEY, latest.version); }catch(e){}
+    refresh();
+  }
+
+  // Викликається під час відкриття вікна підказок
+  window.onTipsOpen = function(){ decideNote(); refresh(); };
+  document.addEventListener('langchange', refresh);
+  changesBtn.addEventListener('click', markSeen);
+  updateNoteBtn.addEventListener('click', function(){
+    changesOverlay.classList.add('open');
+    markSeen();
+  });
+  refresh();
+})();
+
 // Підказки при запуску та налаштування (шестерня)
 (function(){
   const KEY = 'clockShowTips';        // '0' — підказки вимкнено; інакше — увімкнено
@@ -1443,7 +1626,10 @@ if ('serviceWorker' in navigator) {
     try{ localStorage.setItem(KEY, on ? '1' : '0'); }catch(e){}
   }
 
-  function openTips(){ tipsOverlay.classList.add('open'); }
+  function openTips(){
+    if(typeof window.onTipsOpen === 'function') window.onTipsOpen();
+    tipsOverlay.classList.add('open');
+  }
   function closeTips(){ tipsOverlay.classList.remove('open'); }
   function openSettings(){
     tipsToggle.checked = tipsEnabled();
