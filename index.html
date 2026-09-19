@@ -1,4 +1,10 @@
-<!-- Автор ідеї та вимог: Anatolii Bondarenko, створено 17.09.2026 -->
+<!--
+  Навчальний годинник / Learning Clock — v1.0 (19.09.2026)
+  Автор ідеї та вимог / Author: Anatolii Bondarenko, створено / created 17.09.2026
+  © 2026 Anatolii Bondarenko. Ліцензія / License: CC BY-NC-ND 4.0
+  https://creativecommons.org/licenses/by-nc-nd/4.0/
+  Оригінал / Original: https://mranoven-coder.github.io/godynnyk/
+-->
 <!DOCTYPE html>
 <html lang="uk">
 <head>
@@ -6,6 +12,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Навчальний годинник</title>
 <meta name="description" content="Інтерактивний тренажер, який вчить дітей визначати час — безкоштовно, працює офлайн у будь-якому браузері.">
+<meta name="author" content="Anatolii Bondarenko">
+<meta name="version" content="1.0">
+<link rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">
 
 <!-- Open Graph (Facebook, Telegram, Viber, WhatsApp тощо) -->
 <meta property="og:type" content="website">
@@ -229,6 +238,8 @@
     font-size:0.8rem;
     margin-top:26px;
   }
+  .copyright-note{margin-top:6px;}
+  .copyright-note a{color:inherit;}
   .help-btn{
     display:block;
     margin:18px auto 0;
@@ -494,6 +505,7 @@
 </div>
 
 <p class="download-note" data-i18n-html="downloadNote">Файл можна відкрити офлайн у будь-якому браузері.<br>Автор: Anatolii Bondarenko, 17.09.2026</p>
+<p class="download-note copyright-note" data-i18n-html="copyright">© 2026 Anatolii Bondarenko · <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.uk" target="_blank" rel="noopener noreferrer">CC BY-NC-ND 4.0</a> · v1.0 · 19.09.2026</p>
 
 <button class="help-btn" id="helpBtn" type="button" data-i18n="helpBtn">📖 Інструкція для батьків і вчителів</button>
 
@@ -633,6 +645,7 @@ var I18N = {
     forward: "▶ Вперед",
     now: "🕐 Поточний час",
     downloadNote: "Файл можна відкрити офлайн у будь-якому браузері.<br>Автор: Anatolii Bondarenko, 17.09.2026",
+    copyright: "© 2026 Anatolii Bondarenko · <a href=\"https://creativecommons.org/licenses/by-nc-nd/4.0/deed.uk\" target=\"_blank\" rel=\"noopener noreferrer\">CC BY-NC-ND 4.0</a> · v1.0 · 19.09.2026",
     helpBtn: "📖 Інструкція для батьків і вчителів",
     donateBtn: "☕ Підтримати проєкт",
     inviteBtn: "📤 Поділитися",
@@ -657,6 +670,7 @@ var I18N = {
     forward: "▶ Forward",
     now: "🕐 Current time",
     downloadNote: "This file works offline in any browser.<br>Author: Anatolii Bondarenko, 17.09.2026",
+    copyright: "© 2026 Anatolii Bondarenko · <a href=\"https://creativecommons.org/licenses/by-nc-nd/4.0/deed.en\" target=\"_blank\" rel=\"noopener noreferrer\">CC BY-NC-ND 4.0</a> · v1.0 · 19.09.2026",
     helpBtn: "📖 Guide for parents and teachers",
     donateBtn: "☕ Support the project",
     inviteBtn: "📤 Share",
