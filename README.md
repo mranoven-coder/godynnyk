@@ -1,6 +1,6 @@
 # Навчальний годинник / Learning Clock
 
-**Версія / Version:** 1.3 (19.09.2026)
+**Версія / Version:** 1.4 (19.09.2026)
 **Онлайн / Live:** https://mranoven-coder.github.io/godynnyk/
 
 🇺🇦 Інтерактивний аналоговий годинник, який вчить дітей визначати час. Безкоштовно, працює офлайн у будь-якому браузері, можна встановити як застосунок на телефон.
@@ -18,6 +18,7 @@
 - Кнопка «Залишити побажання» відкриває анонімну форму для відгуків / "Send feedback" button opens an anonymous feedback form
 - Розділ «Що нового» на сторінці / "What's new" section on the page
 - Кнопка «Встановити застосунок» (одним кліком на Android/комп'ютері, підказка для iPhone) / "Install app" button (one click on Android/desktop, instructions for iPhone)
+- Підказки при запуску зі списком функцій (тап закриває) та кнопка налаштувань ⚙, де їх можна вимкнути або показати знову / Startup tips listing all functions (tap to close) and a ⚙ settings button to turn them off or show them again
 
 ## Побажання та відповіді / Feedback and replies
 
@@ -30,6 +31,12 @@ The "Send feedback" button on the page opens an anonymous form: we collect no na
 © 2026 Anatolii Bondarenko. [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/) — повний текст у файлі [LICENSE](LICENSE) / full text in [LICENSE](LICENSE).
 
 ## Історія змін / Changelog
+
+### v1.4 — 19.09.2026
+
+- Додано підказки при запуску: вікно зі списком усіх функцій годинника, закривається тапом у будь-якому місці / Added startup tips: a window listing all the clock's functions, closed by tapping anywhere
+- Додано кнопку ⚙ «Налаштування»: підказки можна вимкнути, знову ввімкнути або показати одразу; вибір зберігається в браузері / Added a ⚙ "Settings" button: the tips can be turned off, turned on again or shown right away; the choice is saved in the browser
+- Інструкцію для батьків і вчителів оновлено: описано підказки та налаштування, український та англійський переклад / Updated the parent/teacher guide: described the tips and the settings, in Ukrainian and English
 
 ### v1.3 — 19.09.2026
 

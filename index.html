@@ -1,5 +1,5 @@
 <!--
-  Навчальний годинник / Learning Clock — v1.3 (19.09.2026)
+  Навчальний годинник / Learning Clock — v1.4 (19.09.2026)
   Автор ідеї та вимог / Author: Anatolii Bondarenko, створено / created 17.09.2026
   © 2026 Anatolii Bondarenko. Ліцензія / License: CC BY-NC-ND 4.0
   https://creativecommons.org/licenses/by-nc-nd/4.0/
@@ -13,7 +13,7 @@
 <title>Навчальний годинник</title>
 <meta name="description" content="Інтерактивний тренажер, який вчить дітей визначати час — безкоштовно, працює офлайн у будь-якому браузері.">
 <meta name="author" content="Anatolii Bondarenko">
-<meta name="version" content="1.3">
+<meta name="version" content="1.4">
 <link rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">
 
 <!-- Open Graph (Facebook, Telegram, Viber, WhatsApp тощо) -->
@@ -232,6 +232,50 @@
     color:#fff;
   }
   .help-body[hidden]{display:none;}
+  .gear-btn{
+    position:fixed;
+    top:calc(10px + env(safe-area-inset-top, 0px));
+    right:calc(10px + env(safe-area-inset-right, 0px));
+    z-index:50;
+    flex:none;
+    min-width:0;
+    width:42px;
+    height:42px;
+    padding:0;
+    border-radius:50%;
+    background:#fff;
+    color:var(--accent);
+    border:2px solid var(--accent);
+    font-size:1.3rem;
+    line-height:1;
+    box-shadow:0 2px 6px rgba(0,0,0,0.15);
+  }
+  .tips-overlay{cursor:pointer;}
+  .tips-card{max-width:520px;margin-top:40px;}
+  .tips-card li{font-size:1.02rem;margin-bottom:8px;}
+  .tips-card li::marker{color:#ff8c00;font-weight:bold;}
+  .settings-card{max-width:440px;margin-top:60px;}
+  .settings-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:14px;
+    margin:16px 0 6px;
+    font-size:1rem;
+    cursor:pointer;
+  }
+  .settings-row input{
+    width:24px;
+    height:24px;
+    flex:none;
+    accent-color:var(--accent);
+  }
+  .settings-note{color:#888;font-size:0.85rem;margin:6px 0 14px;}
+  .settings-action{
+    display:block;
+    width:100%;
+    min-width:0;
+  }
   .download-note{
     text-align:center;
     color:#999;
@@ -475,6 +519,8 @@
 </head>
 <body>
 
+<button type="button" class="gear-btn" id="gearBtn" aria-label="Налаштування" title="Налаштування" data-i18n-aria="settingsBtn" data-i18n-title="settingsBtn">⚙</button>
+
 <div class="lang-switch" role="group" aria-label="Language / Мова">
   <button type="button" data-lang="uk" title="Українська">UA</button>
   <button type="button" data-lang="en" title="English">EN</button>
@@ -581,7 +627,7 @@
 </div>
 
 <p class="download-note" data-i18n-html="downloadNote">Файл можна відкрити офлайн у будь-якому браузері.<br>Автор: Anatolii Bondarenko, 17.09.2026</p>
-<p class="download-note copyright-note" data-i18n-html="copyright">© 2026 Anatolii Bondarenko · <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.uk" target="_blank" rel="noopener noreferrer">CC BY-NC-ND 4.0</a> · v1.2 · 19.09.2026</p>
+<p class="download-note copyright-note" data-i18n-html="copyright">© 2026 Anatolii Bondarenko · <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.uk" target="_blank" rel="noopener noreferrer">CC BY-NC-ND 4.0</a> · v1.4 · 19.09.2026</p>
 
 <div class="help-overlay" id="helpOverlay">
   <div class="help-card">
@@ -613,6 +659,8 @@
       <tr><td>Цифровий час і дата</td><td>Показує поточний час і дату текстом; поля можна редагувати з клавіатури</td></tr>
       <tr><td>Тягнення стрілок</td><td>Дитина бере пальцем/мишкою будь-яку стрілку і крутить — циферблат одразу показує новий час</td></tr>
       <tr><td>Тап/клік по циферблату</td><td>Швидкий спосіб поставити на паузу чи запустити знову — те саме, що кнопка «Пауза», але без пошуку кнопки під час заняття (тап саме по порожній частині циферблата, не по стрілці)</td></tr>
+      <tr><td>Підказки при запуску</td><td>Під час відкриття годинника з'являється вікно з переліком усіх його функцій. Тапніть у будь-якому місці вікна, щоб закрити його. Вікно показується один раз за відкриття</td></tr>
+      <tr><td>Кнопка ⚙ (налаштування)</td><td>Кнопка в правому верхньому куті. Тут можна вимкнути або знову ввімкнути підказки при запуску, а також показати їх одразу</td></tr>
     </table>
 
     <h3>3. Як користуватись покроково</h3>
@@ -637,6 +685,7 @@
       <li>Працює в будь-якому сучасному браузері на комп'ютері, планшеті й телефоні.</li>
       <li>Можна встановити як окремий застосунок кнопкою «Встановити застосунок» (Android, комп'ютер) — на iPhone вона покаже підказку через «Поділитися → На екран Домівки» в Safari.</li>
       <li>Після першого відкриття працює навіть без інтернету.</li>
+      <li>Вибір щодо підказок зберігається в браузері пристрою; в анонімній вкладці чи після очищення даних сайту підказки знову вмикаються.</li>
     </ul>
 
     <hr>
@@ -670,6 +719,8 @@
       <tr><td>Digital time and date</td><td>Shows the current time and date as text; the fields can be edited from the keyboard</td></tr>
       <tr><td>Dragging the hands</td><td>The child grabs any hand with a finger or the mouse and turns it — the clock face immediately shows the new time</td></tr>
       <tr><td>Tap/click on the clock face</td><td>A quick way to pause or resume — the same as the "Pause" button, but without hunting for it mid-lesson (tap the empty part of the face, not a hand)</td></tr>
+      <tr><td>Tips at startup</td><td>When the clock opens, a window lists all of its functions. Tap anywhere on the window to close it. It is shown once per visit</td></tr>
+      <tr><td>⚙ button (settings)</td><td>The button in the top right corner. Here you can turn the startup tips off or on again, or show them right away</td></tr>
     </table>
 
     <h3>3. How to use it, step by step</h3>
@@ -694,6 +745,7 @@
       <li>Works in any modern browser on a computer, tablet or phone.</li>
       <li>Can be installed as a standalone app with the "Install app" button (Android, desktop) — on iPhone it shows instructions via "Share → Add to Home Screen" in Safari.</li>
       <li>After the first visit it works even without an internet connection.</li>
+      <li>Your choice about the tips is saved in the device's browser; in a private tab or after clearing the site's data the tips are turned on again.</li>
     </ul>
 
     <hr>
@@ -708,6 +760,13 @@
     <div class="help-body" data-lang="uk">
     <h2>Що нового</h2>
     <p class="subtitle">Зміни в годиннику. Значком 💌 позначено те, що додано за вашими побажаннями.</p>
+
+    <h3>v1.4 — 19.09.2026</h3>
+    <ul>
+      <li>Підказки при запуску: вікно зі списком усіх функцій годинника, закривається тапом у будь-якому місці</li>
+      <li>Кнопка ⚙ «Налаштування»: підказки можна вимкнути, знову ввімкнути або показати одразу</li>
+      <li>Інструкцію оновлено: описано підказки й налаштування</li>
+    </ul>
 
     <h3>v1.3 — 19.09.2026</h3>
     <ul>
@@ -742,6 +801,13 @@
     <h2>What's new</h2>
     <p class="subtitle">Changes to the clock. The 💌 mark shows what was added following your wishes.</p>
 
+    <h3>v1.4 — 19.09.2026</h3>
+    <ul>
+      <li>Tips at startup: a window listing all the clock's functions, closed by tapping anywhere</li>
+      <li>⚙ "Settings" button: the tips can be turned off, turned on again or shown right away</li>
+      <li>Updated the guide: described the tips and the settings</li>
+    </ul>
+
     <h3>v1.3 — 19.09.2026</h3>
     <ul>
       <li>Added an "Install app" button — installs with one click on Android and desktop, shows instructions on iPhone</li>
@@ -773,6 +839,52 @@
   </div>
 </div>
 
+<div class="help-overlay tips-overlay" id="tipsOverlay" role="dialog" aria-modal="true">
+  <div class="help-card tips-card">
+    <button class="help-close" id="tipsClose" type="button" aria-label="Закрити" data-i18n-aria="close">✕</button>
+    <div class="help-body" data-lang="uk">
+    <h2>Як користуватись годинником</h2>
+    <ol>
+      <li><b>Тап по циферблату</b> — пауза / старт (тапайте по порожній частині, не по стрілці).</li>
+      <li><b>Тягніть стрілки</b> пальцем або мишкою — виставте свій час.</li>
+      <li><b>«Показати стрілки»</b> — галочками ховайте й показуйте годинникову, хвилинну та секундну стрілки.</li>
+      <li><b>Повзунок швидкості</b> — прискорює хід годинника; <b>x300 / x600 / x1200</b> задають найбільшу швидкість.</li>
+      <li><b>«Пауза / Старт»</b> — зупиняє й продовжує хід.</li>
+      <li><b>«Назад»</b> — годинник іде у зворотний бік; натисніть ще раз, щоб знову йти вперед.</li>
+      <li><b>«Поточний час»</b> — повертає реальний час і скидає налаштування.</li>
+      <li><b>Цифровий час і дата</b> — їх можна ввести вручну.</li>
+      <li><b>⚙</b> у правому верхньому куті — налаштування: тут ці підказки можна вимкнути або показати знову.</li>
+    </ol>
+    <p class="footer-note">Тапніть будь-де, щоб закрити.</p>
+    </div>
+    <div class="help-body" data-lang="en" hidden>
+    <h2>How to use the clock</h2>
+    <ol>
+      <li><b>Tap the clock face</b> — pause / start (tap the empty part, not a hand).</li>
+      <li><b>Drag the hands</b> with a finger or the mouse — set your own time.</li>
+      <li><b>"Show the hands"</b> — use the checkboxes to hide and show the hour, minute and second hands.</li>
+      <li><b>Speed slider</b> — makes the clock run faster; <b>x300 / x600 / x1200</b> set the top speed.</li>
+      <li><b>"Pause / Start"</b> — stops and resumes the clock.</li>
+      <li><b>"Backward"</b> — the clock runs the other way; press again to go forward.</li>
+      <li><b>"Current time"</b> — returns to the real time and resets the settings.</li>
+      <li><b>Digital time and date</b> — you can type them in.</li>
+      <li><b>⚙</b> in the top right corner — settings: turn these tips off or show them again.</li>
+    </ol>
+    <p class="footer-note">Tap anywhere to close.</p>
+    </div>
+  </div>
+</div>
+
+<div class="help-overlay" id="settingsOverlay" role="dialog" aria-modal="true">
+  <div class="help-card settings-card">
+    <button class="help-close" id="settingsClose" type="button" aria-label="Закрити" data-i18n-aria="close">✕</button>
+    <h2 data-i18n="settingsTitle">⚙ Налаштування</h2>
+    <label class="settings-row"><span data-i18n="settingsShowTips">Показувати підказки при запуску</span><input type="checkbox" id="tipsToggle"></label>
+    <p class="settings-note" data-i18n="settingsNote">Підказки — це вікно зі списком функцій годинника. Тапніть на нього, щоб закрити.</p>
+    <button type="button" class="settings-action" id="tipsShowNow" data-i18n="settingsShowNow">📋 Показати підказки зараз</button>
+  </div>
+</div>
+
 <script>
 // ---- Мови / Languages ----
 var I18N = {
@@ -792,10 +904,15 @@ var I18N = {
     forward: "▶ Вперед",
     now: "🕐 Поточний час",
     downloadNote: "Файл можна відкрити офлайн у будь-якому браузері.<br>Автор: Anatolii Bondarenko, 17.09.2026",
-    copyright: "© 2026 Anatolii Bondarenko · <a href=\"https://creativecommons.org/licenses/by-nc-nd/4.0/deed.uk\" target=\"_blank\" rel=\"noopener noreferrer\">CC BY-NC-ND 4.0</a> · v1.3 · 19.09.2026",
+    copyright: "© 2026 Anatolii Bondarenko · <a href=\"https://creativecommons.org/licenses/by-nc-nd/4.0/deed.uk\" target=\"_blank\" rel=\"noopener noreferrer\">CC BY-NC-ND 4.0</a> · v1.4 · 19.09.2026",
     helpBtn: "📖 Інструкція для батьків і вчителів",
     wishBtn: "💌 Залишити побажання",
     changesBtn: "🆕 Що нового",
+    settingsBtn: "Налаштування",
+    settingsTitle: "⚙ Налаштування",
+    settingsShowTips: "Показувати підказки при запуску",
+    settingsNote: "Підказки — це вікно зі списком функцій годинника. Тапніть на нього, щоб закрити.",
+    settingsShowNow: "📋 Показати підказки зараз",
     donateBtn: "☕ Підтримати проєкт",
     inviteBtn: "📤 Поділитися",
     linkCopied: "Посилання скопійовано!",
@@ -821,10 +938,15 @@ var I18N = {
     forward: "▶ Forward",
     now: "🕐 Current time",
     downloadNote: "This file works offline in any browser.<br>Author: Anatolii Bondarenko, 17.09.2026",
-    copyright: "© 2026 Anatolii Bondarenko · <a href=\"https://creativecommons.org/licenses/by-nc-nd/4.0/deed.en\" target=\"_blank\" rel=\"noopener noreferrer\">CC BY-NC-ND 4.0</a> · v1.3 · 19.09.2026",
+    copyright: "© 2026 Anatolii Bondarenko · <a href=\"https://creativecommons.org/licenses/by-nc-nd/4.0/deed.en\" target=\"_blank\" rel=\"noopener noreferrer\">CC BY-NC-ND 4.0</a> · v1.4 · 19.09.2026",
     helpBtn: "📖 Guide for parents and teachers",
     wishBtn: "💌 Send feedback",
     changesBtn: "🆕 What's new",
+    settingsBtn: "Settings",
+    settingsTitle: "⚙ Settings",
+    settingsShowTips: "Show tips at startup",
+    settingsNote: "The tips are a window listing the clock's functions. Tap it to close.",
+    settingsShowNow: "📋 Show tips now",
     donateBtn: "☕ Support the project",
     inviteBtn: "📤 Share",
     linkCopied: "Link copied!",
@@ -864,6 +986,9 @@ function applyLang(lang){
   });
   document.querySelectorAll('[data-i18n-aria]').forEach(function(el){
     el.setAttribute('aria-label', t(el.getAttribute('data-i18n-aria')));
+  });
+  document.querySelectorAll('[data-i18n-title]').forEach(function(el){
+    el.setAttribute('title', t(el.getAttribute('data-i18n-title')));
   });
   document.querySelectorAll('.help-body').forEach(function(el){
     el.hidden = (el.getAttribute('data-lang') !== lang);
@@ -1287,6 +1412,61 @@ if ('serviceWorker' in navigator) {
   changesOverlay.addEventListener('click', function(e){
     if(e.target === changesOverlay) changesOverlay.classList.remove('open');
   });
+})();
+
+// Підказки при запуску та налаштування (шестерня)
+(function(){
+  const KEY = 'clockShowTips';        // '0' — підказки вимкнено; інакше — увімкнено
+  const SESSION_KEY = 'clockTipsShown'; // щоб не показувати повторно після автоперезавантаження сторінки
+  const tipsOverlay = document.getElementById('tipsOverlay');
+  const settingsOverlay = document.getElementById('settingsOverlay');
+  const gearBtn = document.getElementById('gearBtn');
+  const settingsClose = document.getElementById('settingsClose');
+  const tipsToggle = document.getElementById('tipsToggle');
+  const tipsShowNow = document.getElementById('tipsShowNow');
+
+  function tipsEnabled(){
+    try{ return localStorage.getItem(KEY) !== '0'; }catch(e){ return true; }
+  }
+  function setTipsEnabled(on){
+    try{ localStorage.setItem(KEY, on ? '1' : '0'); }catch(e){}
+  }
+
+  function openTips(){ tipsOverlay.classList.add('open'); }
+  function closeTips(){ tipsOverlay.classList.remove('open'); }
+  function openSettings(){
+    tipsToggle.checked = tipsEnabled();
+    settingsOverlay.classList.add('open');
+  }
+  function closeSettings(){ settingsOverlay.classList.remove('open'); }
+
+  // Тап у будь-якому місці вікна підказок закриває його
+  tipsOverlay.addEventListener('click', closeTips);
+
+  gearBtn.addEventListener('click', openSettings);
+  settingsClose.addEventListener('click', closeSettings);
+  settingsOverlay.addEventListener('click', function(e){
+    if(e.target === settingsOverlay) closeSettings();
+  });
+  tipsToggle.addEventListener('change', function(){
+    setTipsEnabled(tipsToggle.checked);
+  });
+  tipsShowNow.addEventListener('click', function(){
+    closeSettings();
+    openTips();
+  });
+
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape'){ closeTips(); closeSettings(); }
+  });
+
+  // Автоматичний показ при запуску — один раз за відкриття (сеанс), якщо не вимкнено
+  let alreadyShown = false;
+  try{ alreadyShown = sessionStorage.getItem(SESSION_KEY) === '1'; }catch(e){}
+  if(tipsEnabled() && !alreadyShown){
+    openTips();
+    try{ sessionStorage.setItem(SESSION_KEY, '1'); }catch(e){}
+  }
 })();
 
 // Кнопка «Поділитися»: рідне меню поширення (телефон) або копіювання посилання (десктоп)
