@@ -1,5 +1,5 @@
 <!--
-  Навчальний годинник / Learning Clock — v1.1 (19.09.2026)
+  Навчальний годинник / Learning Clock — v1.2 (19.09.2026)
   Автор ідеї та вимог / Author: Anatolii Bondarenko, створено / created 17.09.2026
   © 2026 Anatolii Bondarenko. Ліцензія / License: CC BY-NC-ND 4.0
   https://creativecommons.org/licenses/by-nc-nd/4.0/
@@ -13,7 +13,7 @@
 <title>Навчальний годинник</title>
 <meta name="description" content="Інтерактивний тренажер, який вчить дітей визначати час — безкоштовно, працює офлайн у будь-якому браузері.">
 <meta name="author" content="Anatolii Bondarenko">
-<meta name="version" content="1.1">
+<meta name="version" content="1.2">
 <link rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">
 
 <!-- Open Graph (Facebook, Telegram, Viber, WhatsApp тощо) -->
@@ -247,6 +247,22 @@
     margin-top:18px;
   }
   .bottom-actions .help-btn{margin:0;flex:none;min-width:0;}
+  .changes-btn{
+    display:block;
+    flex:none;
+    min-width:0;
+    background:#2e9e6b;
+    color:#fff;
+    border:none;
+    border-radius:14px;
+    padding:12px 22px;
+    font-size:1rem;
+    font-family:inherit;
+    font-weight:bold;
+    cursor:pointer;
+    box-shadow:0 3px 8px rgba(0,0,0,0.15);
+  }
+  .changes-btn:active{transform:scale(0.97);}
   .wish-btn{
     display:inline-flex;
     align-items:center;
@@ -532,11 +548,12 @@
 
 <div class="bottom-actions">
   <button class="help-btn" id="helpBtn" type="button" data-i18n="helpBtn">📖 Інструкція для батьків і вчителів</button>
+  <button class="changes-btn" id="changesBtn" type="button" data-i18n="changesBtn">🆕 Що нового</button>
   <a class="wish-btn" href="https://docs.google.com/forms/d/e/1FAIpQLSdpUctYqMgFYDeexBtYSZYDe41halHKpTlVKkmlFlIHuFTi4Q/viewform" target="_blank" rel="noopener noreferrer" data-i18n="wishBtn">💌 Залишити побажання</a>
 </div>
 
 <p class="download-note" data-i18n-html="downloadNote">Файл можна відкрити офлайн у будь-якому браузері.<br>Автор: Anatolii Bondarenko, 17.09.2026</p>
-<p class="download-note copyright-note" data-i18n-html="copyright">© 2026 Anatolii Bondarenko · <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.uk" target="_blank" rel="noopener noreferrer">CC BY-NC-ND 4.0</a> · v1.1 · 19.09.2026</p>
+<p class="download-note copyright-note" data-i18n-html="copyright">© 2026 Anatolii Bondarenko · <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.uk" target="_blank" rel="noopener noreferrer">CC BY-NC-ND 4.0</a> · v1.2 · 19.09.2026</p>
 
 <div class="help-overlay" id="helpOverlay">
   <div class="help-card">
@@ -655,6 +672,65 @@
   </div>
 </div>
 
+<div class="help-overlay" id="changesOverlay">
+  <div class="help-card">
+    <button class="help-close" id="changesClose" type="button" aria-label="Закрити" data-i18n-aria="close">✕</button>
+    <div class="help-body" data-lang="uk">
+    <h2>Що нового</h2>
+    <p class="subtitle">Зміни в годиннику. Значком 💌 позначено те, що додано за вашими побажаннями.</p>
+
+    <h3>v1.2 — 19.09.2026</h3>
+    <ul>
+      <li>Додано розділ «Що нового»</li>
+    </ul>
+
+    <h3>v1.1 — 19.09.2026</h3>
+    <ul>
+      <li>Кнопка «Залишити побажання» (анонімна форма)</li>
+      <li>Кнопку інструкції перенесено під блок з годинником</li>
+    </ul>
+
+    <h3>v1.0 — 19.09.2026</h3>
+    <ul>
+      <li>Українська й англійська мови (UA / EN), переклад інструкції для батьків і вчителів</li>
+      <li>Галочки швидкості x300, x600, x1200</li>
+      <li>Кнопки «Підтримати проєкт» і «Поділитися»</li>
+      <li>Авторство, ліцензія CC BY-NC-ND 4.0 і номер версії</li>
+    </ul>
+
+    <hr>
+    <p class="footer-note">Є ідея? Натисніть «Залишити побажання» — ми читаємо кожне.</p>
+    </div>
+
+    <div class="help-body" data-lang="en" hidden>
+    <h2>What's new</h2>
+    <p class="subtitle">Changes to the clock. The 💌 mark shows what was added following your wishes.</p>
+
+    <h3>v1.2 — 19.09.2026</h3>
+    <ul>
+      <li>Added the "What's new" section</li>
+    </ul>
+
+    <h3>v1.1 — 19.09.2026</h3>
+    <ul>
+      <li>"Send feedback" button (anonymous form)</li>
+      <li>Moved the guide button below the clock block</li>
+    </ul>
+
+    <h3>v1.0 — 19.09.2026</h3>
+    <ul>
+      <li>Ukrainian and English (UA / EN), translated guide for parents and teachers</li>
+      <li>Speed checkboxes x300, x600, x1200</li>
+      <li>"Support the project" and "Share" buttons</li>
+      <li>Authorship, CC BY-NC-ND 4.0 license and version number</li>
+    </ul>
+
+    <hr>
+    <p class="footer-note">Got an idea? Press "Send feedback" — we read every one.</p>
+    </div>
+  </div>
+</div>
+
 <script>
 // ---- Мови / Languages ----
 var I18N = {
@@ -674,9 +750,10 @@ var I18N = {
     forward: "▶ Вперед",
     now: "🕐 Поточний час",
     downloadNote: "Файл можна відкрити офлайн у будь-якому браузері.<br>Автор: Anatolii Bondarenko, 17.09.2026",
-    copyright: "© 2026 Anatolii Bondarenko · <a href=\"https://creativecommons.org/licenses/by-nc-nd/4.0/deed.uk\" target=\"_blank\" rel=\"noopener noreferrer\">CC BY-NC-ND 4.0</a> · v1.1 · 19.09.2026",
+    copyright: "© 2026 Anatolii Bondarenko · <a href=\"https://creativecommons.org/licenses/by-nc-nd/4.0/deed.uk\" target=\"_blank\" rel=\"noopener noreferrer\">CC BY-NC-ND 4.0</a> · v1.2 · 19.09.2026",
     helpBtn: "📖 Інструкція для батьків і вчителів",
     wishBtn: "💌 Залишити побажання",
+    changesBtn: "🆕 Що нового",
     donateBtn: "☕ Підтримати проєкт",
     inviteBtn: "📤 Поділитися",
     linkCopied: "Посилання скопійовано!",
@@ -700,9 +777,10 @@ var I18N = {
     forward: "▶ Forward",
     now: "🕐 Current time",
     downloadNote: "This file works offline in any browser.<br>Author: Anatolii Bondarenko, 17.09.2026",
-    copyright: "© 2026 Anatolii Bondarenko · <a href=\"https://creativecommons.org/licenses/by-nc-nd/4.0/deed.en\" target=\"_blank\" rel=\"noopener noreferrer\">CC BY-NC-ND 4.0</a> · v1.1 · 19.09.2026",
+    copyright: "© 2026 Anatolii Bondarenko · <a href=\"https://creativecommons.org/licenses/by-nc-nd/4.0/deed.en\" target=\"_blank\" rel=\"noopener noreferrer\">CC BY-NC-ND 4.0</a> · v1.2 · 19.09.2026",
     helpBtn: "📖 Guide for parents and teachers",
     wishBtn: "💌 Send feedback",
+    changesBtn: "🆕 What's new",
     donateBtn: "☕ Support the project",
     inviteBtn: "📤 Share",
     linkCopied: "Link copied!",
@@ -1149,6 +1227,19 @@ if ('serviceWorker' in navigator) {
   helpClose.addEventListener('click', closeHelp);
   helpOverlay.addEventListener('click', function(e){
     if(e.target === helpOverlay) closeHelp();
+  });
+})();
+
+// Панель «Що нового»
+(function(){
+  const changesBtn = document.getElementById('changesBtn');
+  const changesOverlay = document.getElementById('changesOverlay');
+  const changesClose = document.getElementById('changesClose');
+
+  changesBtn.addEventListener('click', function(){ changesOverlay.classList.add('open'); });
+  changesClose.addEventListener('click', function(){ changesOverlay.classList.remove('open'); });
+  changesOverlay.addEventListener('click', function(e){
+    if(e.target === changesOverlay) changesOverlay.classList.remove('open');
   });
 })();
 
