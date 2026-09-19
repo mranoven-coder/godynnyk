@@ -1,5 +1,5 @@
 <!--
-  Навчальний годинник / Learning Clock — v1.7 (19.09.2026)
+  Навчальний годинник / Learning Clock — v1.8 (19.09.2026)
   Автор ідеї та вимог / Author: Anatolii Bondarenko, створено / created 17.09.2026
   © 2026 Anatolii Bondarenko. Ліцензія / License: CC BY-NC-ND 4.0
   https://creativecommons.org/licenses/by-nc-nd/4.0/
@@ -9,13 +9,13 @@
 <html lang="uk">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Навчальний годинник для дітей — тренажер часу | Learning Clock for Kids</title>
 <meta name="description" content="Безкоштовний навчальний годинник для дітей: тягніть стрілки, вивчайте 12- і 24-годинний формат, час вперед і назад. Працює в браузері й офлайн.">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://mranoven-coder.github.io/godynnyk/">
 <meta name="author" content="Anatolii Bondarenko">
-<meta name="version" content="1.7">
+<meta name="version" content="1.8">
 <meta name="google-site-verification" content="0kAWkHnkUetvqLp91TnaHS1QHfxsoHvwadKuok6HM8w" />
 <link rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">
 
@@ -740,7 +740,7 @@
 </section>
 
 <p class="download-note" data-i18n-html="downloadNote">Файл можна відкрити офлайн у будь-якому браузері.<br>Автор: Anatolii Bondarenko, 17.09.2026</p>
-<p class="download-note copyright-note" data-i18n-html="copyright">© 2026 Anatolii Bondarenko · <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.uk" target="_blank" rel="noopener noreferrer">CC BY-NC-ND 4.0</a> · v1.7 · 19.09.2026</p>
+<p class="download-note copyright-note" data-i18n-html="copyright">© 2026 Anatolii Bondarenko · <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.uk" target="_blank" rel="noopener noreferrer">CC BY-NC-ND 4.0</a> · v1.8 · 19.09.2026</p>
 
 <div class="help-overlay" id="helpOverlay">
   <div class="help-card">
@@ -953,6 +953,21 @@
 // номер версії внизу сторінки, позначка «NEW» на кнопці «Що нового» та анонс
 // у вікні підказок — підхоплюється з цього списку автоматично.
 var RELEASES = [
+  {
+    version: "1.8", date: "19.09.2026",
+    announce: {
+      uk: "сторінку тепер можна збільшувати жестом — зручніше людям зі слабким зором.",
+      en: "the page can now be zoomed with a pinch gesture — easier for people with low vision."
+    },
+    items: {
+      uk: [
+        "Дозволено масштабування сторінки жестом (прибрано заборону user-scalable) — покращення доступності"
+      ],
+      en: [
+        "Allowed pinch-to-zoom on the page (removed the user-scalable restriction) — an accessibility improvement"
+      ]
+    }
+  },
   {
     version: "1.7", date: "19.09.2026",
     announce: {
