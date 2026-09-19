@@ -273,7 +273,7 @@
     margin:14px 0 6px;
   }
   .top-actions .donate-btn{margin:0;}
-  .share-btn{
+  .invite-btn{
     display:inline-flex;
     align-items:center;
     gap:8px;
@@ -290,7 +290,7 @@
     cursor:pointer;
     box-shadow:0 3px 8px rgba(0,0,0,0.15);
   }
-  .share-btn:active{transform:scale(0.97);}
+  .invite-btn:active{transform:scale(0.97);}
 
   .toast{
     position:fixed;
@@ -412,7 +412,7 @@
 
 <div class="top-actions">
   <a class="donate-btn" href="https://send.monobank.ua/jar/5gJoV4qc3n" target="_blank" rel="noopener noreferrer" data-i18n="donateBtn">☕ Підтримати проєкт</a>
-  <button type="button" class="share-btn" id="shareBtn" data-i18n="shareBtn">📤 Поділитися</button>
+  <button type="button" class="invite-btn" id="inviteBtn" data-i18n="inviteBtn">📤 Поділитися</button>
 </div>
 
 <div class="toast" id="toast" data-i18n="linkCopied">Посилання скопійовано!</div>
@@ -635,7 +635,7 @@ var I18N = {
     downloadNote: "Файл можна відкрити офлайн у будь-якому браузері.<br>Автор: Anatolii Bondarenko, 17.09.2026",
     helpBtn: "📖 Інструкція для батьків і вчителів",
     donateBtn: "☕ Підтримати проєкт",
-    shareBtn: "📤 Поділитися",
+    inviteBtn: "📤 Поділитися",
     linkCopied: "Посилання скопійовано!",
     shareText: "Навчальний годинник — безкоштовний інтерактивний тренажер, який вчить дітей визначати час!",
     close: "Закрити",
@@ -659,7 +659,7 @@ var I18N = {
     downloadNote: "This file works offline in any browser.<br>Author: Anatolii Bondarenko, 17.09.2026",
     helpBtn: "📖 Guide for parents and teachers",
     donateBtn: "☕ Support the project",
-    shareBtn: "📤 Share",
+    inviteBtn: "📤 Share",
     linkCopied: "Link copied!",
     shareText: "Learning Clock — a free interactive tool that teaches kids to tell time!",
     close: "Close",
@@ -1109,7 +1109,7 @@ if ('serviceWorker' in navigator) {
 
 // Кнопка «Поділитися»: рідне меню поширення (телефон) або копіювання посилання (десктоп)
 (function(){
-  const shareBtn = document.getElementById('shareBtn');
+  const inviteBtn = document.getElementById('inviteBtn');
   const toast = document.getElementById('toast');
   const shareUrl = 'https://mranoven-coder.github.io/godynnyk/';
   let toastTimer = null;
@@ -1134,7 +1134,7 @@ if ('serviceWorker' in navigator) {
     document.body.removeChild(ta);
   }
 
-  shareBtn.addEventListener('click', function(){
+  inviteBtn.addEventListener('click', function(){
     const shareData = {
       title: t('h1'),
       text: t('shareText'),
