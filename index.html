@@ -1,5 +1,5 @@
 <!--
-  Навчальний годинник / Learning Clock — v1.0 (19.09.2026)
+  Навчальний годинник / Learning Clock — v1.1 (19.09.2026)
   Автор ідеї та вимог / Author: Anatolii Bondarenko, створено / created 17.09.2026
   © 2026 Anatolii Bondarenko. Ліцензія / License: CC BY-NC-ND 4.0
   https://creativecommons.org/licenses/by-nc-nd/4.0/
@@ -13,7 +13,7 @@
 <title>Навчальний годинник</title>
 <meta name="description" content="Інтерактивний тренажер, який вчить дітей визначати час — безкоштовно, працює офлайн у будь-якому браузері.">
 <meta name="author" content="Anatolii Bondarenko">
-<meta name="version" content="1.0">
+<meta name="version" content="1.1">
 <link rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">
 
 <!-- Open Graph (Facebook, Telegram, Viber, WhatsApp тощо) -->
@@ -238,6 +238,32 @@
     font-size:0.8rem;
     margin-top:26px;
   }
+  .bottom-actions{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:18px;
+  }
+  .bottom-actions .help-btn{margin:0;}
+  .wish-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:#8e5bd0;
+    color:#fff;
+    border:none;
+    border-radius:14px;
+    padding:12px 22px;
+    font-size:1rem;
+    font-family:inherit;
+    font-weight:bold;
+    cursor:pointer;
+    text-decoration:none;
+    box-shadow:0 3px 8px rgba(0,0,0,0.15);
+  }
+  .wish-btn:active{transform:scale(0.97);}
   .copyright-note{margin-top:6px;}
   .copyright-note a{color:inherit;}
   .help-btn{
@@ -504,10 +530,13 @@
 
 </div>
 
-<button class="help-btn" id="helpBtn" type="button" data-i18n="helpBtn">📖 Інструкція для батьків і вчителів</button>
+<div class="bottom-actions">
+  <button class="help-btn" id="helpBtn" type="button" data-i18n="helpBtn">📖 Інструкція для батьків і вчителів</button>
+  <a class="wish-btn" href="https://docs.google.com/forms/d/e/1FAIpQLSdpUctYqMgFYDeexBtYSZYDe41halHKpTlVKkmlFlIHuFTi4Q/viewform" target="_blank" rel="noopener noreferrer" data-i18n="wishBtn">💌 Залишити побажання</a>
+</div>
 
 <p class="download-note" data-i18n-html="downloadNote">Файл можна відкрити офлайн у будь-якому браузері.<br>Автор: Anatolii Bondarenko, 17.09.2026</p>
-<p class="download-note copyright-note" data-i18n-html="copyright">© 2026 Anatolii Bondarenko · <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.uk" target="_blank" rel="noopener noreferrer">CC BY-NC-ND 4.0</a> · v1.0 · 19.09.2026</p>
+<p class="download-note copyright-note" data-i18n-html="copyright">© 2026 Anatolii Bondarenko · <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.uk" target="_blank" rel="noopener noreferrer">CC BY-NC-ND 4.0</a> · v1.1 · 19.09.2026</p>
 
 <div class="help-overlay" id="helpOverlay">
   <div class="help-card">
@@ -645,8 +674,9 @@ var I18N = {
     forward: "▶ Вперед",
     now: "🕐 Поточний час",
     downloadNote: "Файл можна відкрити офлайн у будь-якому браузері.<br>Автор: Anatolii Bondarenko, 17.09.2026",
-    copyright: "© 2026 Anatolii Bondarenko · <a href=\"https://creativecommons.org/licenses/by-nc-nd/4.0/deed.uk\" target=\"_blank\" rel=\"noopener noreferrer\">CC BY-NC-ND 4.0</a> · v1.0 · 19.09.2026",
+    copyright: "© 2026 Anatolii Bondarenko · <a href=\"https://creativecommons.org/licenses/by-nc-nd/4.0/deed.uk\" target=\"_blank\" rel=\"noopener noreferrer\">CC BY-NC-ND 4.0</a> · v1.1 · 19.09.2026",
     helpBtn: "📖 Інструкція для батьків і вчителів",
+    wishBtn: "💌 Залишити побажання",
     donateBtn: "☕ Підтримати проєкт",
     inviteBtn: "📤 Поділитися",
     linkCopied: "Посилання скопійовано!",
@@ -670,8 +700,9 @@ var I18N = {
     forward: "▶ Forward",
     now: "🕐 Current time",
     downloadNote: "This file works offline in any browser.<br>Author: Anatolii Bondarenko, 17.09.2026",
-    copyright: "© 2026 Anatolii Bondarenko · <a href=\"https://creativecommons.org/licenses/by-nc-nd/4.0/deed.en\" target=\"_blank\" rel=\"noopener noreferrer\">CC BY-NC-ND 4.0</a> · v1.0 · 19.09.2026",
+    copyright: "© 2026 Anatolii Bondarenko · <a href=\"https://creativecommons.org/licenses/by-nc-nd/4.0/deed.en\" target=\"_blank\" rel=\"noopener noreferrer\">CC BY-NC-ND 4.0</a> · v1.1 · 19.09.2026",
     helpBtn: "📖 Guide for parents and teachers",
+    wishBtn: "💌 Send feedback",
     donateBtn: "☕ Support the project",
     inviteBtn: "📤 Share",
     linkCopied: "Link copied!",
