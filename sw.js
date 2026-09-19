@@ -2,7 +2,10 @@
 // Ця версія оновлює сама себе: HTML-сторінка завжди береться зі свіжої мережі
 // (і одразу перезаписує кеш), а інші файли оновлюються у фоні при кожному запиті.
 // Тому нічого в цьому файлі вручну змінювати більше не потрібно.
-const CACHE_NAME = 'godynnyk-cache';
+// Запити до мережі йдуть з cache:'no-cache' — тобто завжди перевіряються на сервері
+// і не беруться зі звичайного HTTP-кешу браузера (GitHub Pages віддає файли з max-age=600).
+// Змінюйте номер у CACHE_NAME лише щоб примусово очистити всі старі кеші.
+const CACHE_NAME = 'godynnyk-v3';
 
 const ASSETS = [
   './',
@@ -24,8 +27,14 @@ self.addEventListener('install', function(event){
 });
 
 // Активація: беремо керування всіма відкритими сторінками одразу
+// та видаляємо всі старі кеші з іншими іменами
 self.addEventListener('activate', function(event){
-  event.waitUntil(self.clients.claim());
+  event.waitUntil(
+    caches.keys().then(function(keys){
+      return Promise.all(keys.filter(function(k){ return k !== CACHE_NAME; })
+                             .map(function(k){ return caches.delete(k); }));
+    }).then(function(){ return self.clients.claim(); })
+  );
 });
 
 // Запити:
@@ -39,9 +48,11 @@ self.addEventListener('fetch', function(event){
 
   if(isHTML){
     event.respondWith(
-      fetch(req).then(function(res){
-        const copy = res.clone();
-        caches.open(CACHE_NAME).then(function(cache){ cache.put(req, copy); });
+      fetch(req, { cache: 'no-cache' }).then(function(res){
+        if(res && res.ok){
+          const copy = res.clone();
+          caches.open(CACHE_NAME).then(function(cache){ cache.put(req, copy); });
+        }
         return res;
       }).catch(function(){
         return caches.match(req).then(function(cached){
@@ -54,7 +65,7 @@ self.addEventListener('fetch', function(event){
 
   event.respondWith(
     caches.match(req).then(function(cached){
-      const network = fetch(req).then(function(res){
+      const network = fetch(req, { cache: 'no-cache' }).then(function(res){
         if(res && res.status === 200){
           const copy = res.clone();
           caches.open(CACHE_NAME).then(function(cache){ cache.put(req, copy); });
