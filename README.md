@@ -1,6 +1,6 @@
 # Навчальний годинник / Learning Clock
 
-**Версія / Version:** 1.2 (19.09.2026)
+**Версія / Version:** 1.3 (19.09.2026)
 **Онлайн / Live:** https://mranoven-coder.github.io/godynnyk/
 
 🇺🇦 Інтерактивний аналоговий годинник, який вчить дітей визначати час. Безкоштовно, працює офлайн у будь-якому браузері, можна встановити як застосунок на телефон.
@@ -17,6 +17,7 @@
 - Інструкція для батьків і вчителів обома мовами / Guide for parents and teachers in both languages
 - Кнопка «Залишити побажання» відкриває анонімну форму для відгуків / "Send feedback" button opens an anonymous feedback form
 - Розділ «Що нового» на сторінці / "What's new" section on the page
+- Кнопка «Встановити застосунок» (одним кліком на Android/комп'ютері, підказка для iPhone) / "Install app" button (one click on Android/desktop, instructions for iPhone)
 
 ## Побажання та відповіді / Feedback and replies
 
@@ -29,6 +30,11 @@ The "Send feedback" button on the page opens an anonymous form: we collect no na
 © 2026 Anatolii Bondarenko. [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/) — повний текст у файлі [LICENSE](LICENSE) / full text in [LICENSE](LICENSE).
 
 ## Історія змін / Changelog
+
+### v1.3 — 19.09.2026
+
+- Додано кнопку «Встановити застосунок»: на Android/комп'ютері встановлює одним кліком, на iPhone показує підказку через Safari / Added an "Install app" button: installs with one click on Android/desktop, shows instructions via Safari on iPhone
+- Інструкцію для батьків і вчителів оновлено відповідно до поточного функціоналу (тап по циферблату, уточнено спосіб встановлення) / Updated the parent/teacher guide to match current functionality (tap on the clock face, clarified how to install)
 
 ### v1.2 — 19.09.2026
 

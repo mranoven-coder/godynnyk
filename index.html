@@ -1,5 +1,5 @@
 <!--
-  Навчальний годинник / Learning Clock — v1.2 (19.09.2026)
+  Навчальний годинник / Learning Clock — v1.3 (19.09.2026)
   Автор ідеї та вимог / Author: Anatolii Bondarenko, створено / created 17.09.2026
   © 2026 Anatolii Bondarenko. Ліцензія / License: CC BY-NC-ND 4.0
   https://creativecommons.org/licenses/by-nc-nd/4.0/
@@ -13,7 +13,7 @@
 <title>Навчальний годинник</title>
 <meta name="description" content="Інтерактивний тренажер, який вчить дітей визначати час — безкоштовно, працює офлайн у будь-якому браузері.">
 <meta name="author" content="Anatolii Bondarenko">
-<meta name="version" content="1.2">
+<meta name="version" content="1.3">
 <link rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">
 
 <!-- Open Graph (Facebook, Telegram, Viber, WhatsApp тощо) -->
@@ -345,6 +345,26 @@
   }
   .invite-btn:active{transform:scale(0.97);}
 
+  .install-btn{
+    display:none;
+    align-items:center;
+    gap:8px;
+    flex:none;
+    min-width:0;
+    background:#2e9e6b;
+    color:#fff;
+    border:none;
+    border-radius:14px;
+    padding:12px 22px;
+    font-size:1rem;
+    font-family:inherit;
+    font-weight:bold;
+    cursor:pointer;
+    box-shadow:0 3px 8px rgba(0,0,0,0.15);
+  }
+  .install-btn.visible{display:inline-flex;}
+  .install-btn:active{transform:scale(0.97);}
+
   .toast{
     position:fixed;
     left:50%;
@@ -466,6 +486,14 @@
 <div class="top-actions">
   <a class="donate-btn" href="https://send.monobank.ua/jar/5gJoV4qc3n" target="_blank" rel="noopener noreferrer" data-i18n="donateBtn">☕ Підтримати проєкт</a>
   <button type="button" class="invite-btn" id="inviteBtn" data-i18n="inviteBtn">📤 Поділитися</button>
+  <button type="button" class="install-btn" id="installBtn" data-i18n="installBtn">📲 Встановити застосунок</button>
+</div>
+
+<div class="help-overlay" id="iosInstallOverlay">
+  <div class="help-card" style="max-width:420px;text-align:center;">
+    <button class="help-close" id="iosInstallClose" type="button" aria-label="Закрити" data-i18n-aria="close">✕</button>
+    <p id="iosInstallText" style="font-size:1.05rem;margin-top:26px;line-height:1.6;"></p>
+  </div>
 </div>
 
 <div class="toast" id="toast" data-i18n="linkCopied">Посилання скопійовано!</div>
@@ -584,6 +612,7 @@
       <tr><td>Поточний час</td><td>Миттєво повертає годинник до реального часу й скидає налаштування</td></tr>
       <tr><td>Цифровий час і дата</td><td>Показує поточний час і дату текстом; поля можна редагувати з клавіатури</td></tr>
       <tr><td>Тягнення стрілок</td><td>Дитина бере пальцем/мишкою будь-яку стрілку і крутить — циферблат одразу показує новий час</td></tr>
+      <tr><td>Тап/клік по циферблату</td><td>Швидкий спосіб поставити на паузу чи запустити знову — те саме, що кнопка «Пауза», але без пошуку кнопки під час заняття (тап саме по порожній частині циферблата, не по стрілці)</td></tr>
     </table>
 
     <h3>3. Як користуватись покроково</h3>
@@ -606,7 +635,7 @@
     <h3>5. Технічні примітки</h3>
     <ul>
       <li>Працює в будь-якому сучасному браузері на комп'ютері, планшеті й телефоні.</li>
-      <li>Можна «встановити» як окремий застосунок на головний екран телефона чи в меню «Пуск».</li>
+      <li>Можна встановити як окремий застосунок кнопкою «Встановити застосунок» (Android, комп'ютер) — на iPhone вона покаже підказку через «Поділитися → На екран Домівки» в Safari.</li>
       <li>Після першого відкриття працює навіть без інтернету.</li>
     </ul>
 
@@ -640,6 +669,7 @@
       <tr><td>Current time</td><td>Instantly returns the clock to the real time and resets the settings</td></tr>
       <tr><td>Digital time and date</td><td>Shows the current time and date as text; the fields can be edited from the keyboard</td></tr>
       <tr><td>Dragging the hands</td><td>The child grabs any hand with a finger or the mouse and turns it — the clock face immediately shows the new time</td></tr>
+      <tr><td>Tap/click on the clock face</td><td>A quick way to pause or resume — the same as the "Pause" button, but without hunting for it mid-lesson (tap the empty part of the face, not a hand)</td></tr>
     </table>
 
     <h3>3. How to use it, step by step</h3>
@@ -662,7 +692,7 @@
     <h3>5. Technical notes</h3>
     <ul>
       <li>Works in any modern browser on a computer, tablet or phone.</li>
-      <li>Can be "installed" as a separate app on a phone's home screen or in the Start menu.</li>
+      <li>Can be installed as a standalone app with the "Install app" button (Android, desktop) — on iPhone it shows instructions via "Share → Add to Home Screen" in Safari.</li>
       <li>After the first visit it works even without an internet connection.</li>
     </ul>
 
@@ -678,6 +708,12 @@
     <div class="help-body" data-lang="uk">
     <h2>Що нового</h2>
     <p class="subtitle">Зміни в годиннику. Значком 💌 позначено те, що додано за вашими побажаннями.</p>
+
+    <h3>v1.3 — 19.09.2026</h3>
+    <ul>
+      <li>Додано кнопку «Встановити застосунок» — на Android і комп'ютері встановлює одним кліком, на iPhone показує підказку</li>
+      <li>Інструкцію оновлено: додано опис тапу по циферблату (пауза/старт) і уточнено спосіб встановлення</li>
+    </ul>
 
     <h3>v1.2 — 19.09.2026</h3>
     <ul>
@@ -705,6 +741,12 @@
     <div class="help-body" data-lang="en" hidden>
     <h2>What's new</h2>
     <p class="subtitle">Changes to the clock. The 💌 mark shows what was added following your wishes.</p>
+
+    <h3>v1.3 — 19.09.2026</h3>
+    <ul>
+      <li>Added an "Install app" button — installs with one click on Android and desktop, shows instructions on iPhone</li>
+      <li>Updated the guide: added tapping the clock face (pause/start) and clarified how to install</li>
+    </ul>
 
     <h3>v1.2 — 19.09.2026</h3>
     <ul>
@@ -750,7 +792,7 @@ var I18N = {
     forward: "▶ Вперед",
     now: "🕐 Поточний час",
     downloadNote: "Файл можна відкрити офлайн у будь-якому браузері.<br>Автор: Anatolii Bondarenko, 17.09.2026",
-    copyright: "© 2026 Anatolii Bondarenko · <a href=\"https://creativecommons.org/licenses/by-nc-nd/4.0/deed.uk\" target=\"_blank\" rel=\"noopener noreferrer\">CC BY-NC-ND 4.0</a> · v1.2 · 19.09.2026",
+    copyright: "© 2026 Anatolii Bondarenko · <a href=\"https://creativecommons.org/licenses/by-nc-nd/4.0/deed.uk\" target=\"_blank\" rel=\"noopener noreferrer\">CC BY-NC-ND 4.0</a> · v1.3 · 19.09.2026",
     helpBtn: "📖 Інструкція для батьків і вчителів",
     wishBtn: "💌 Залишити побажання",
     changesBtn: "🆕 Що нового",
@@ -759,6 +801,8 @@ var I18N = {
     linkCopied: "Посилання скопійовано!",
     shareText: "Навчальний годинник — безкоштовний інтерактивний тренажер, який вчить дітей визначати час!",
     close: "Закрити",
+    installBtn: "📲 Встановити застосунок",
+    iosInstallText: "Щоб встановити застосунок на iPhone: натисніть кнопку «Поділитися» внизу екрана Safari, потім оберіть «На екран Домівки».",
     weekdays: ["неділя","понеділок","вівторок","середа","четвер","п'ятниця","субота"]
   },
   en: {
@@ -777,7 +821,7 @@ var I18N = {
     forward: "▶ Forward",
     now: "🕐 Current time",
     downloadNote: "This file works offline in any browser.<br>Author: Anatolii Bondarenko, 17.09.2026",
-    copyright: "© 2026 Anatolii Bondarenko · <a href=\"https://creativecommons.org/licenses/by-nc-nd/4.0/deed.en\" target=\"_blank\" rel=\"noopener noreferrer\">CC BY-NC-ND 4.0</a> · v1.2 · 19.09.2026",
+    copyright: "© 2026 Anatolii Bondarenko · <a href=\"https://creativecommons.org/licenses/by-nc-nd/4.0/deed.en\" target=\"_blank\" rel=\"noopener noreferrer\">CC BY-NC-ND 4.0</a> · v1.3 · 19.09.2026",
     helpBtn: "📖 Guide for parents and teachers",
     wishBtn: "💌 Send feedback",
     changesBtn: "🆕 What's new",
@@ -786,6 +830,8 @@ var I18N = {
     linkCopied: "Link copied!",
     shareText: "Learning Clock — a free interactive tool that teaches kids to tell time!",
     close: "Close",
+    installBtn: "📲 Install app",
+    iosInstallText: "To install on iPhone: tap the Share button in Safari, then choose \"Add to Home Screen\".",
     weekdays: ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
     months: ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
   }
@@ -1290,6 +1336,61 @@ if ('serviceWorker' in navigator) {
       showToast();
     }
   });
+})();
+
+// Кнопка «Встановити застосунок»: рідний диспетчер встановлення (Android/десктоп)
+// або підказка для iPhone, де браузер не дозволяє викликати це програмно.
+(function(){
+  const installBtn = document.getElementById('installBtn');
+  const iosOverlay = document.getElementById('iosInstallOverlay');
+  const iosClose = document.getElementById('iosInstallClose');
+  const iosText = document.getElementById('iosInstallText');
+
+  let deferredPrompt = null;
+
+  function isStandalone(){
+    return window.matchMedia('(display-mode: standalone)').matches ||
+           window.navigator.standalone === true;
+  }
+
+  function isIos(){
+    return /iphone|ipad|ipod/i.test(navigator.userAgent) && !window.MSStream;
+  }
+
+  if(isStandalone()){
+    // Застосунок уже встановлено (або відкрито як standalone) — кнопка не потрібна
+  } else if(isIos()){
+    // На iOS немає події beforeinstallprompt — показуємо кнопку одразу,
+    // а по кліку пояснюємо, як встановити вручну через Safari
+    installBtn.classList.add('visible');
+    installBtn.addEventListener('click', function(){
+      iosText.textContent = t('iosInstallText');
+      iosOverlay.classList.add('open');
+    });
+    iosClose.addEventListener('click', function(){ iosOverlay.classList.remove('open'); });
+    iosOverlay.addEventListener('click', function(e){
+      if(e.target === iosOverlay) iosOverlay.classList.remove('open');
+    });
+  } else {
+    // Android / десктопний Chrome, Edge тощо: чекаємо на подію готовності
+    window.addEventListener('beforeinstallprompt', function(e){
+      e.preventDefault();
+      deferredPrompt = e;
+      installBtn.classList.add('visible');
+    });
+    installBtn.addEventListener('click', function(){
+      if(!deferredPrompt) return;
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.finally(function(){
+        deferredPrompt = null;
+        installBtn.classList.remove('visible');
+      });
+    });
+    window.addEventListener('appinstalled', function(){
+      installBtn.classList.remove('visible');
+      deferredPrompt = null;
+    });
+  }
 })();
 </script>
 
