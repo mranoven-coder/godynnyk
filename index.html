@@ -228,6 +228,25 @@
   }
   .help-btn:active{transform:scale(0.97);}
 
+  .donate-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    margin:14px auto 0;
+    background:linear-gradient(135deg,#ff6a88,#ff4757);
+    color:#fff;
+    border:none;
+    border-radius:14px;
+    padding:12px 22px;
+    font-size:1rem;
+    font-family:inherit;
+    font-weight:bold;
+    cursor:pointer;
+    text-decoration:none;
+    box-shadow:0 3px 8px rgba(0,0,0,0.15);
+  }
+  .donate-btn:active{transform:scale(0.97);}
+
   .help-overlay{
     display:none;
     position:fixed;
@@ -406,6 +425,10 @@
 
 <button class="help-btn" id="helpBtn" type="button" data-i18n="helpBtn">📖 Інструкція для батьків і вчителів</button>
 
+<div style="text-align:center;">
+  <a class="donate-btn" href="https://send.monobank.ua/jar/5gJoV4qc3n" target="_blank" rel="noopener noreferrer" data-i18n="donateBtn">☕ Підтримати проєкт</a>
+</div>
+
 <div class="help-overlay" id="helpOverlay">
   <div class="help-card">
     <button class="help-close" id="helpClose" type="button" aria-label="Закрити" data-i18n-aria="close">✕</button>
@@ -543,6 +566,7 @@ var I18N = {
     now: "🕐 Поточний час",
     downloadNote: "Файл можна відкрити офлайн у будь-якому браузері.<br>Автор: Anatolii Bondarenko, 17.09.2026",
     helpBtn: "📖 Інструкція для батьків і вчителів",
+    donateBtn: "☕ Підтримати проєкт",
     close: "Закрити",
     weekdays: ["неділя","понеділок","вівторок","середа","четвер","п'ятниця","субота"]
   },
@@ -563,6 +587,7 @@ var I18N = {
     now: "🕐 Current time",
     downloadNote: "This file works offline in any browser.<br>Author: Anatolii Bondarenko, 17.09.2026",
     helpBtn: "📖 Guide for parents and teachers",
+    donateBtn: "☕ Support the project",
     close: "Close",
     weekdays: ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
     months: ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
