@@ -1,5 +1,5 @@
 <!--
-  Навчальний годинник / Learning Clock — v1.8 (19.09.2026)
+  Навчальний годинник / Learning Clock — v1.9 (19.09.2026)
   Автор ідеї та вимог / Author: Anatolii Bondarenko, створено / created 17.09.2026
   © 2026 Anatolii Bondarenko. Ліцензія / License: CC BY-NC-ND 4.0
   https://creativecommons.org/licenses/by-nc-nd/4.0/
@@ -15,7 +15,7 @@
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://mranoven-coder.github.io/godynnyk/">
 <meta name="author" content="Anatolii Bondarenko">
-<meta name="version" content="1.8">
+<meta name="version" content="1.9">
 <meta name="google-site-verification" content="0kAWkHnkUetvqLp91TnaHS1QHfxsoHvwadKuok6HM8w" />
 <link rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">
 
@@ -71,7 +71,9 @@
     "name": "Anatolii Bondarenko"
   },
   "license": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
-  "image": "https://mranoven-coder.github.io/godynnyk/icons/og-image.png"
+  "image": "https://mranoven-coder.github.io/godynnyk/icons/og-image.png",
+  "datePublished": "2026-09-17",
+  "softwareVersion": "1.9"
 }
 </script>
 
@@ -740,7 +742,7 @@
 </section>
 
 <p class="download-note" data-i18n-html="downloadNote">Файл можна відкрити офлайн у будь-якому браузері.<br>Автор: Anatolii Bondarenko, 17.09.2026</p>
-<p class="download-note copyright-note" data-i18n-html="copyright">© 2026 Anatolii Bondarenko · <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.uk" target="_blank" rel="noopener noreferrer">CC BY-NC-ND 4.0</a> · v1.8 · 19.09.2026</p>
+<p class="download-note copyright-note" data-i18n-html="copyright">© 2026 Anatolii Bondarenko · <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.uk" target="_blank" rel="noopener noreferrer">CC BY-NC-ND 4.0</a> · v1.9 · 19.09.2026</p>
 
 <div class="help-overlay" id="helpOverlay">
   <div class="help-card">
@@ -953,6 +955,21 @@
 // номер версії внизу сторінки, позначка «NEW» на кнопці «Що нового» та анонс
 // у вікні підказок — підхоплюється з цього списку автоматично.
 var RELEASES = [
+  {
+    version: "1.9", date: "19.09.2026",
+    announce: {
+      uk: "Google точніше визначає дату публікації та версію застосунку.",
+      en: "Google now reads the app's publish date and version more precisely."
+    },
+    items: {
+      uk: [
+        "У структуровані дані (JSON-LD) додано дату публікації та номер версії — точніше для пошукових систем"
+      ],
+      en: [
+        "Added a publish date and version number to the structured data (JSON-LD) — more precise for search engines"
+      ]
+    }
+  },
   {
     version: "1.8", date: "19.09.2026",
     announce: {
