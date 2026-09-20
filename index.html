@@ -1,5 +1,5 @@
 <!--
-  Навчальний годинник / Learning Clock — v2.3 (20.09.2026)
+  Навчальний годинник / Learning Clock — v2.4 (20.09.2026)
   Автор ідеї та вимог / Author: Anatolii Bondarenko, створено / created 17.09.2026
   © 2026 Anatolii Bondarenko. Ліцензія / License: CC BY-NC-ND 4.0
   https://creativecommons.org/licenses/by-nc-nd/4.0/
@@ -15,7 +15,7 @@
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://mranoven-coder.github.io/godynnyk/">
 <meta name="author" content="Anatolii Bondarenko">
-<meta name="version" content="2.3">
+<meta name="version" content="2.4">
 <meta name="google-site-verification" content="0kAWkHnkUetvqLp91TnaHS1QHfxsoHvwadKuok6HM8w" />
 <link rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">
 
@@ -73,7 +73,8 @@
   "license": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
   "image": "https://mranoven-coder.github.io/godynnyk/icons/og-image.png",
   "datePublished": "2026-09-17",
-  "softwareVersion": "2.3"
+  "dateModified": "2026-09-20",
+  "softwareVersion": "2.4"
 }
 </script>
 
@@ -727,7 +728,7 @@
 </section>
 
 <p class="download-note" data-i18n-html="downloadNote">Файл можна відкрити офлайн у будь-якому браузері.<br>Автор: Anatolii Bondarenko, 17.09.2026</p>
-<p class="download-note copyright-note" data-i18n-html="copyright">© 2026 Anatolii Bondarenko · <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.uk" target="_blank" rel="noopener noreferrer">CC BY-NC-ND 4.0</a> · v2.3 · 20.09.2026</p>
+<p class="download-note copyright-note" data-i18n-html="copyright">© 2026 Anatolii Bondarenko · <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.uk" target="_blank" rel="noopener noreferrer">CC BY-NC-ND 4.0</a> · v2.4 · 20.09.2026</p>
 
 <div class="help-overlay" id="helpOverlay">
   <div class="help-card">
@@ -768,7 +769,7 @@
     <p><b>Крок 1. Просто спостерігати.</b> Залиште годинник у звичайному режимі (швидкість x1, усі стрілки ввімкнено) і попросіть дитину стежити за секундною стрілкою протягом хвилини.</p>
     <p><b>Крок 2. Вимкнути зайві стрілки.</b> Зніміть галочки з «Хвилинна» і «Секундна» — залишиться тільки годинникова. Попросіть дитину сказати, «яка зараз приблизно година», лише за її положенням.</p>
     <p><b>Крок 3. Прискорити час.</b> Пересуньте повзунок на x30–x60 — година мине приблизно за 1–2 хвилини. Щоб побачити, як ціла година минає за лічені секунди, оберіть галочку x1200 і пересуньте повзунок до кінця праворуч: година мине приблизно за 3 секунди (при x600 — за 6, при x300 — за 12).</p>
-    <p><b>Крок 4. Виставити час самостійно.</b> Натисніть «Пауза» і попросіть дитину виставити стрілки на названий вами час — перевірте за цифровим годинником.</p>
+    <p><b>Крок 4. Виставити час самостійно.</b> Натисніть «Пауза» і попросіть дитину виставити стрілки на названий вами час — перевірте за полем часу під циферблатом.</p>
     <p><b>Крок 5. Зворотний хід.</b> Натисніть «Поточний час», потім «Назад». Запитайте: «Який час був 15 хвилин тому?»</p>
     <p><b>Крок 6. 24-годинний формат.</b> Покажіть внутрішнє коло чисел 13–24 і поясніть, що «14:00» — це «2 години дня».</p>
 
@@ -830,7 +831,7 @@
     <p><b>Step 1. Just watch.</b> Leave the clock in its normal mode (speed x1, all hands on) and ask the child to follow the second hand for one minute.</p>
     <p><b>Step 2. Hide the extra hands.</b> Untick "Minute hand" and "Second hand" — only the hour hand remains. Ask the child to say "roughly what hour it is" from its position alone.</p>
     <p><b>Step 3. Speed up time.</b> Move the slider to x30–x60 — an hour passes in about 1–2 minutes. To see a whole hour pass in just a few seconds, choose the x1200 checkbox and drag the slider all the way to the right: an hour passes in about 3 seconds (about 6 at x600, about 12 at x300).</p>
-    <p><b>Step 4. Set the time yourself.</b> Press "Pause" and ask the child to set the hands to a time you name — check it against the digital clock.</p>
+    <p><b>Step 4. Set the time yourself.</b> Press "Pause" and ask the child to set the hands to a time you name — check it against the time field under the clock face.</p>
     <p><b>Step 5. Run it backward.</b> Press "Current time", then "Backward". Ask: "What time was it 15 minutes ago?"</p>
     <p><b>Step 6. The 24-hour format.</b> Point to the inner ring of numbers 13–24 and explain that "14:00" means "2 o'clock in the afternoon".</p>
 
@@ -939,9 +940,27 @@
 // ---- Список версій ----
 // Щоб випустити нову версію, додайте новий запис ПЕРШИМ у цей список (номер, дата, пункти
 // «Що нового» та короткий анонс українською й англійською). Усе інше — історія змін,
-// номер версії внизу сторінки, позначка «NEW» на кнопці «Що нового» та анонс
-// у вікні підказок — підхоплюється з цього списку автоматично.
+// номер версії внизу сторінки, мета-тег версії, структуровані дані (JSON-LD),
+// позначка «NEW» на кнопці «Що нового» та анонс у вікні підказок — підхоплюється
+// з цього списку автоматично.
 var RELEASES = [
+  {
+    version: "2.4", date: "20.09.2026",
+    announce: {
+      uk: "уточнено інструкцію (крок 4) після спрощення блоку під годинником.",
+      en: "clarified the guide (step 4) after the block under the clock was simplified."
+    },
+    items: {
+      uk: [
+        "Інструкцію уточнено: крок 4 тепер посилається на поле часу під циферблатом (великого цифрового годинника вже немає)",
+        "Версія та дата останнього оновлення в структурованих даних (JSON-LD) тепер підставляються автоматично зі списку версій — пошукові системи завжди бачать актуальні дані"
+      ],
+      en: [
+        "Clarified the guide: step 4 now refers to the time field under the clock face (the large digital clock is gone)",
+        "The version and last-updated date in the structured data (JSON-LD) are now filled in automatically from the list of releases — search engines always see current data"
+      ]
+    }
+  },
   {
     version: "2.3", date: "20.09.2026",
     announce: {
@@ -1308,6 +1327,18 @@ document.querySelectorAll('.lang-switch button').forEach(function(b){
   });
   const metaVersion = document.querySelector('meta[name="version"]');
   if(metaVersion) metaVersion.setAttribute('content', APP_VERSION);
+
+  // Структуровані дані (JSON-LD): версія й дата останнього оновлення беруться зі списку RELEASES
+  try{
+    const ldEl = document.querySelector('script[type="application/ld+json"]');
+    if(ldEl){
+      const ld = JSON.parse(ldEl.textContent);
+      ld.softwareVersion = APP_VERSION;
+      const dp = APP_DATE.split('.');   // ДД.ММ.РРРР → РРРР-ММ-ДД
+      if(dp.length === 3) ld.dateModified = dp[2] + '-' + dp[1] + '-' + dp[0];
+      ldEl.textContent = JSON.stringify(ld, null, 2);
+    }
+  }catch(e){}
 })();
 
 applyLang(detectLang());
