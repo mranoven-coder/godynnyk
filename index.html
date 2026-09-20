@@ -1,5 +1,5 @@
 <!--
-  Навчальний годинник / Learning Clock — v2.6 (20.09.2026)
+  Навчальний годинник / Learning Clock — v2.7 (20.09.2026)
   Автор ідеї та вимог / Author: Anatolii Bondarenko, створено / created 17.09.2026
   © 2026 Anatolii Bondarenko. Ліцензія / License: CC BY-NC-ND 4.0
   https://creativecommons.org/licenses/by-nc-nd/4.0/
@@ -15,7 +15,7 @@
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://mranoven-coder.github.io/godynnyk/">
 <meta name="author" content="Anatolii Bondarenko">
-<meta name="version" content="2.6">
+<meta name="version" content="2.7">
 <meta name="google-site-verification" content="0kAWkHnkUetvqLp91TnaHS1QHfxsoHvwadKuok6HM8w" />
 <link rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">
 
@@ -74,7 +74,7 @@
   "image": "https://mranoven-coder.github.io/godynnyk/icons/og-image.png",
   "datePublished": "2026-09-17",
   "dateModified": "2026-09-20",
-  "softwareVersion": "2.6"
+  "softwareVersion": "2.7"
 }
 </script>
 
@@ -316,6 +316,16 @@
     font-size:1.3rem;
     line-height:1;
     box-shadow:0 2px 6px rgba(0,0,0,0.15);
+  }
+  /* На комп'ютерах (основний вказівник — миша) шестерня стоїть у ряду кнопок праворуч від «Поділитися»;
+     на телефонах і планшетах (палець) лишається прикріпленою до правого верхнього кута. */
+  @media (pointer:fine){
+    .gear-btn{
+      position:static;
+      top:auto;
+      right:auto;
+      z-index:auto;
+    }
   }
   .tips-overlay{cursor:pointer;}
   .tips-card{max-width:520px;margin-top:40px;}
@@ -652,8 +662,6 @@
 </head>
 <body>
 
-<button type="button" class="gear-btn" id="gearBtn" aria-label="Налаштування" title="Налаштування" data-i18n-aria="settingsBtn" data-i18n-title="settingsBtn">⚙</button>
-
 <div class="lang-switch" role="group" aria-label="Language / Мова">
   <button type="button" data-lang="uk" title="Українська">UA</button>
   <button type="button" data-lang="en" title="English">EN</button>
@@ -665,6 +673,7 @@
 <div class="top-actions">
   <a class="donate-btn" href="https://send.monobank.ua/jar/5gJoV4qc3n" target="_blank" rel="noopener noreferrer" data-i18n="donateBtn">☕ Підтримати проєкт</a>
   <button type="button" class="invite-btn" id="inviteBtn" data-i18n="inviteBtn">📤 Поділитися</button>
+  <button type="button" class="gear-btn" id="gearBtn" aria-label="Налаштування" title="Налаштування" data-i18n-aria="settingsBtn" data-i18n-title="settingsBtn">⚙</button>
   <button type="button" class="install-btn" id="installBtn" data-i18n="installBtn">📲 Встановити застосунок</button>
 </div>
 
@@ -780,7 +789,7 @@
 </section>
 
 <p class="download-note" data-i18n-html="downloadNote">Файл можна відкрити офлайн у будь-якому браузері.<br>Автор: Anatolii Bondarenko, 17.09.2026</p>
-<p class="download-note copyright-note" data-i18n-html="copyright">© 2026 Anatolii Bondarenko · <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.uk" target="_blank" rel="noopener noreferrer">CC BY-NC-ND 4.0</a> · v2.6 · 20.09.2026</p>
+<p class="download-note copyright-note" data-i18n-html="copyright">© 2026 Anatolii Bondarenko · <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.uk" target="_blank" rel="noopener noreferrer">CC BY-NC-ND 4.0</a> · v2.7 · 20.09.2026</p>
 
 <div class="help-overlay" id="helpOverlay">
   <div class="help-card">
@@ -814,7 +823,7 @@
       <tr><td>Тап/клік по циферблату</td><td>Швидкий спосіб поставити на паузу чи запустити знову — те саме, що кнопка «Пауза», але без пошуку кнопки під час заняття (тап саме по порожній частині циферблата, не по стрілці)</td></tr>
       <tr><td>Підказки при запуску</td><td>Під час відкриття годинника з'являється вікно з переліком усіх його функцій. Тапніть у будь-якому місці вікна, щоб закрити його. Вікно з'являється при кожному відкритті чи оновленні сторінки або застосунку</td></tr>
       <tr><td>Позначка «NEW» / анонс оновлення</td><td>Коли виходить нова версія, на кнопці «Що нового» з'являється червона позначка NEW, а у вікні підказок — короткий анонс. Позначка зникає, щойно ви відкриєте «Що нового». Тим, хто відкриває годинник уперше, позначка й анонс не показуються</td></tr>
-      <tr><td>Кнопка ⚙ (налаштування)</td><td>Кнопка в правому верхньому куті. Тут можна вимкнути або знову ввімкнути підказки при запуску, показати їх одразу, вибрати розмір годинника, а також сховати блок «Показати стрілки» — щоб спростити екран для дитини (сам циферблат зі стрілками завжди залишається видимим)</td></tr>
+      <tr><td>Кнопка ⚙ (налаштування)</td><td>На комп'ютері кнопка стоїть праворуч від «Поділитися», на телефоні й планшеті — у правому верхньому куті. Тут можна вимкнути або знову ввімкнути підказки при запуску, показати їх одразу, вибрати розмір годинника, а також сховати блок «Показати стрілки» — щоб спростити екран для дитини (сам циферблат зі стрілками завжди залишається видимим)</td></tr>
       <tr><td>Розмір годинника (у ⚙)</td><td>Чотири кроки: 100 %, 125 %, 150 % і 175 %. Збільшується весь циферблат разом зі стрілками й цифрами — зручно для великого екрана чи проєктора. На вузьких екранах (телефон) розмір обмежено шириною екрана, а на невисоких — ще й висотою вікна. Вибір зберігається в браузері пристрою</td></tr>
     </table>
 
@@ -877,7 +886,7 @@
       <tr><td>Tap/click on the clock face</td><td>A quick way to pause or resume — the same as the "Pause" button, but without hunting for it mid-lesson (tap the empty part of the face, not a hand)</td></tr>
       <tr><td>Tips at startup</td><td>When the clock opens, a window lists all of its functions. Tap anywhere on the window to close it. It appears every time the page or the app is opened or refreshed</td></tr>
       <tr><td>"NEW" mark / update notice</td><td>When a new version is released, a red NEW mark appears on the "What's new" button and a short notice in the tips window. The mark disappears as soon as you open "What's new". People opening the clock for the first time do not see the mark or the notice</td></tr>
-      <tr><td>⚙ button (settings)</td><td>The button in the top right corner. Here you can turn the startup tips off or on again, show them right away, choose the clock size, and also hide the "Show the hands" block — to simplify the screen for a child (the clock face with the hands always stays visible)</td></tr>
+      <tr><td>⚙ button (settings)</td><td>On a computer the button sits to the right of "Share"; on a phone or tablet it is in the top right corner. Here you can turn the startup tips off or on again, show them right away, choose the clock size, and also hide the "Show the hands" block — to simplify the screen for a child (the clock face with the hands always stays visible)</td></tr>
       <tr><td>Clock size (in ⚙)</td><td>Four steps: 100%, 125%, 150% and 175%. The whole clock face grows together with the hands and numbers — handy for a big screen or a projector. On narrow screens (phones) the size is limited by the screen width, and on short screens also by the window height. Your choice is saved in the device's browser</td></tr>
     </table>
 
@@ -956,7 +965,7 @@
       <li><b>«Назад»</b> — годинник іде у зворотний бік; натисніть ще раз, щоб знову йти вперед.</li>
       <li><b>«Поточний час»</b> — повертає реальний час і скидає налаштування.</li>
       <li><b>Поле часу</b> — його можна ввести вручну (на телефоні — у системному вікні вибору).</li>
-      <li><b>⚙</b> у правому верхньому куті — налаштування: підказки, розмір годинника, а також сховати блок «Показати стрілки» (годинник зі стрілками завжди лишається видимим).</li>
+      <li><b>⚙</b> (на комп'ютері — праворуч від «Поділитися», на телефоні — у правому верхньому куті) — налаштування: підказки, розмір годинника, а також сховати блок «Показати стрілки» (годинник зі стрілками завжди лишається видимим).</li>
     </ol>
     <p class="footer-note">Тапніть будь-де, щоб закрити.</p>
     </div>
@@ -971,7 +980,7 @@
       <li><b>"Backward"</b> — the clock runs the other way; press again to go forward.</li>
       <li><b>"Current time"</b> — returns to the real time and resets the settings.</li>
       <li><b>Time field</b> — you can type it in (on a phone, in the system picker).</li>
-      <li><b>⚙</b> in the top right corner — settings: tips, clock size, plus hiding the "Show the hands" block (the clock with the hands always stays visible).</li>
+      <li><b>⚙</b> (to the right of "Share" on a computer, in the top right corner on a phone) — settings: tips, clock size, plus hiding the "Show the hands" block (the clock with the hands always stays visible).</li>
     </ol>
     <p class="footer-note">Tap anywhere to close.</p>
     </div>
@@ -1007,6 +1016,23 @@
 // позначка «NEW» на кнопці «Що нового» та анонс у вікні підказок — підхоплюється
 // з цього списку автоматично.
 var RELEASES = [
+  {
+    version: "2.7", date: "20.09.2026",
+    announce: {
+      uk: "на комп'ютері кнопка ⚙ тепер стоїть праворуч від «Поділитися».",
+      en: "on a computer the ⚙ button now sits to the right of \"Share\"."
+    },
+    items: {
+      uk: [
+        "На комп'ютері кнопку ⚙ перенесено в ряд верхніх кнопок, праворуч від «Поділитися»; на телефонах і планшетах вона лишилась у правому верхньому куті",
+        "Інструкцію та підказки оновлено: описано розташування кнопки ⚙"
+      ],
+      en: [
+        "On a computer the ⚙ button has moved into the row of top buttons, to the right of \"Share\"; on phones and tablets it stays in the top right corner",
+        "Updated the guide and the tips: described where the ⚙ button is"
+      ]
+    }
+  },
   {
     version: "2.6", date: "20.09.2026",
     announce: {

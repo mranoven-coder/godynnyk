@@ -1,6 +1,6 @@
 # Навчальний годинник / Learning Clock
 
-**Версія / Version:** 2.6 (20.09.2026)
+**Версія / Version:** 2.7 (20.09.2026)
 **Онлайн / Live:** https://mranoven-coder.github.io/godynnyk/
 
 🇺🇦 Інтерактивний аналоговий годинник, який вчить дітей визначати час. Безкоштовно, працює офлайн у будь-якому браузері, можна встановити як застосунок на телефон.
@@ -43,6 +43,11 @@ Only these need updating by hand: the comment at the top of the file, the fallba
 © 2026 Anatolii Bondarenko. [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/) — повний текст у файлі [LICENSE](LICENSE) / full text in [LICENSE](LICENSE).
 
 ## Історія змін / Changelog
+
+### v2.7 — 20.09.2026
+
+- На комп'ютері кнопку ⚙ перенесено в ряд верхніх кнопок, праворуч від «Поділитися»; на телефонах і планшетах вона лишилась у правому верхньому куті / On a computer the ⚙ button has moved into the row of top buttons, to the right of "Share"; on phones and tablets it stays in the top right corner
+- Інструкцію та підказки оновлено: описано розташування кнопки ⚙ / Updated the guide and the tips: described where the ⚙ button is
 
 ### v2.6 — 20.09.2026
 
