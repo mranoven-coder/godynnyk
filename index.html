@@ -1,5 +1,5 @@
 <!--
-  Навчальний годинник / Learning Clock — v2.2 (20.09.2026)
+  Навчальний годинник / Learning Clock — v2.3 (20.09.2026)
   Автор ідеї та вимог / Author: Anatolii Bondarenko, створено / created 17.09.2026
   © 2026 Anatolii Bondarenko. Ліцензія / License: CC BY-NC-ND 4.0
   https://creativecommons.org/licenses/by-nc-nd/4.0/
@@ -15,7 +15,7 @@
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://mranoven-coder.github.io/godynnyk/">
 <meta name="author" content="Anatolii Bondarenko">
-<meta name="version" content="2.2">
+<meta name="version" content="2.3">
 <meta name="google-site-verification" content="0kAWkHnkUetvqLp91TnaHS1QHfxsoHvwadKuok6HM8w" />
 <link rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">
 
@@ -73,7 +73,7 @@
   "license": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
   "image": "https://mranoven-coder.github.io/godynnyk/icons/og-image.png",
   "datePublished": "2026-09-17",
-  "softwareVersion": "2.2"
+  "softwareVersion": "2.3"
 }
 </script>
 
@@ -156,22 +156,9 @@
     box-shadow:0 4px 12px rgba(0,0,0,0.12);
     text-align:center;
   }
-  .digital .big-time{
-    font-size:2.1rem;
-    font-weight:bold;
-    color:#333;
-    letter-spacing:1px;
-    margin-bottom:6px;
-  }
-  .weekday{
-    color:var(--accent);
-    font-size:1rem;
-    margin-bottom:10px;
-  }
-  .digital input[type=time],
-  .digital input[type=date]{
-    font-size:1.1rem;
-    padding:6px 8px;
+  .digital input[type=time]{
+    font-size:1.6rem;
+    padding:8px 12px;
     border-radius:10px;
     border:2px solid #cfd9e8;
     margin:4px;
@@ -672,12 +659,7 @@
     </svg>
 
     <div class="digital">
-      <div class="big-time" id="bigTime">00:00:00</div>
-      <div class="weekday" id="weekday">—</div>
-      <div>
-        <input type="time" id="timeInput" step="1">
-        <input type="date" id="dateInput">
-      </div>
+      <input type="time" id="timeInput" step="1">
     </div>
   </div>
 
@@ -745,7 +727,7 @@
 </section>
 
 <p class="download-note" data-i18n-html="downloadNote">Файл можна відкрити офлайн у будь-якому браузері.<br>Автор: Anatolii Bondarenko, 17.09.2026</p>
-<p class="download-note copyright-note" data-i18n-html="copyright">© 2026 Anatolii Bondarenko · <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.uk" target="_blank" rel="noopener noreferrer">CC BY-NC-ND 4.0</a> · v2.2 · 20.09.2026</p>
+<p class="download-note copyright-note" data-i18n-html="copyright">© 2026 Anatolii Bondarenko · <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.uk" target="_blank" rel="noopener noreferrer">CC BY-NC-ND 4.0</a> · v2.3 · 20.09.2026</p>
 
 <div class="help-overlay" id="helpOverlay">
   <div class="help-card">
@@ -774,7 +756,7 @@
       <tr><td>Пауза / Старт</td><td>Зупиняє й відновлює рух стрілок</td></tr>
       <tr><td>Назад</td><td>Перемикає напрямок ходу годинника — стрілки рухаються у зворотний бік</td></tr>
       <tr><td>Поточний час</td><td>Миттєво повертає годинник до реального часу й скидає налаштування</td></tr>
-      <tr><td>Цифровий час і дата</td><td>Показує поточний час і дату текстом; поля можна редагувати з клавіатури</td></tr>
+      <tr><td>Поле часу</td><td>Показує поточний час і дозволяє виставити його вручну з клавіатури або стрілочками</td></tr>
       <tr><td>Тягнення стрілок</td><td>Дитина бере пальцем/мишкою будь-яку стрілку і крутить — циферблат одразу показує новий час</td></tr>
       <tr><td>Тап/клік по циферблату</td><td>Швидкий спосіб поставити на паузу чи запустити знову — те саме, що кнопка «Пауза», але без пошуку кнопки під час заняття (тап саме по порожній частині циферблата, не по стрілці)</td></tr>
       <tr><td>Підказки при запуску</td><td>Під час відкриття годинника з'являється вікно з переліком усіх його функцій. Тапніть у будь-якому місці вікна, щоб закрити його. Вікно з'являється при кожному відкритті чи оновленні сторінки або застосунку</td></tr>
@@ -836,7 +818,7 @@
       <tr><td>Pause / Start</td><td>Stops and resumes the movement of the hands</td></tr>
       <tr><td>Backward</td><td>Switches the direction of the clock — the hands move the other way</td></tr>
       <tr><td>Current time</td><td>Instantly returns the clock to the real time and resets the settings</td></tr>
-      <tr><td>Digital time and date</td><td>Shows the current time and date as text; the fields can be edited from the keyboard</td></tr>
+      <tr><td>Time field</td><td>Shows the current time and lets you set it manually from the keyboard or the arrows</td></tr>
       <tr><td>Dragging the hands</td><td>The child grabs any hand with a finger or the mouse and turns it — the clock face immediately shows the new time</td></tr>
       <tr><td>Tap/click on the clock face</td><td>A quick way to pause or resume — the same as the "Pause" button, but without hunting for it mid-lesson (tap the empty part of the face, not a hand)</td></tr>
       <tr><td>Tips at startup</td><td>When the clock opens, a window lists all of its functions. Tap anywhere on the window to close it. It appears every time the page or the app is opened or refreshed</td></tr>
@@ -918,7 +900,7 @@
       <li><b>«Пауза / Старт»</b> — зупиняє й продовжує хід.</li>
       <li><b>«Назад»</b> — годинник іде у зворотний бік; натисніть ще раз, щоб знову йти вперед.</li>
       <li><b>«Поточний час»</b> — повертає реальний час і скидає налаштування.</li>
-      <li><b>Цифровий час і дата</b> — їх можна ввести вручну.</li>
+      <li><b>Поле часу</b> — його можна ввести вручну.</li>
       <li><b>⚙</b> у правому верхньому куті — налаштування: підказки, а також сховати блок «Показати стрілки» (годинник зі стрілками завжди лишається видимим).</li>
     </ol>
     <p class="footer-note">Тапніть будь-де, щоб закрити.</p>
@@ -933,7 +915,7 @@
       <li><b>"Pause / Start"</b> — stops and resumes the clock.</li>
       <li><b>"Backward"</b> — the clock runs the other way; press again to go forward.</li>
       <li><b>"Current time"</b> — returns to the real time and resets the settings.</li>
-      <li><b>Digital time and date</b> — you can type them in.</li>
+      <li><b>Time field</b> — you can type it in.</li>
       <li><b>⚙</b> in the top right corner — settings: tips, plus hiding the "Show the hands" block (the clock with the hands always stays visible).</li>
     </ol>
     <p class="footer-note">Tap anywhere to close.</p>
@@ -960,6 +942,21 @@
 // номер версії внизу сторінки, позначка «NEW» на кнопці «Що нового» та анонс
 // у вікні підказок — підхоплюється з цього списку автоматично.
 var RELEASES = [
+  {
+    version: "2.3", date: "20.09.2026",
+    announce: {
+      uk: "спрощено блок під годинником — залишилось тільки поле для встановлення часу.",
+      en: "simplified the block under the clock — only the time-setting field remains."
+    },
+    items: {
+      uk: [
+        "Прибрано великий цифровий час, день тижня і дату під годинником, а також поле дати — залишилось тільки поле для встановлення часу"
+      ],
+      en: [
+        "Removed the large digital time, weekday and date under the clock, and the date field — only the time-setting field remains"
+      ]
+    }
+  },
   {
     version: "2.2", date: "20.09.2026",
     announce: {
@@ -1202,8 +1199,7 @@ var I18N = {
     shareText: "Навчальний годинник — безкоштовний інтерактивний тренажер, який вчить дітей визначати час!",
     close: "Закрити",
     installBtn: "📲 Встановити застосунок",
-    iosInstallText: "Щоб встановити застосунок на iPhone: натисніть кнопку «Поділитися» внизу екрана Safari, потім оберіть «На екран Домівки».",
-    weekdays: ["неділя","понеділок","вівторок","середа","четвер","п'ятниця","субота"]
+    iosInstallText: "Щоб встановити застосунок на iPhone: натисніть кнопку «Поділитися» внизу екрана Safari, потім оберіть «На екран Домівки»."
   },
   en: {
     title: "Learning Clock for Kids — practice telling the time",
@@ -1240,9 +1236,7 @@ var I18N = {
     shareText: "Learning Clock — a free interactive tool that teaches kids to tell time!",
     close: "Close",
     installBtn: "📲 Install app",
-    iosInstallText: "To install on iPhone: tap the Share button in Safari, then choose \"Add to Home Screen\".",
-    weekdays: ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
-    months: ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
+    iosInstallText: "To install on iPhone: tap the Share button in Safari, then choose \"Add to Home Screen\"."
   }
 };
 
@@ -1327,10 +1321,7 @@ applyLang(detectLang());
   const secondGroup = document.getElementById('secondGroup');
   const ticksG = document.getElementById('ticks');
   const numbersG = document.getElementById('numbers');
-  const bigTime = document.getElementById('bigTime');
-  const weekdayEl = document.getElementById('weekday');
   const timeInput = document.getElementById('timeInput');
-  const dateInput = document.getElementById('dateInput');
   const chkHour = document.getElementById('chkHour');
   const chkMinute = document.getElementById('chkMinute');
   const chkSecond = document.getElementById('chkSecond');
@@ -1415,21 +1406,11 @@ applyLang(detectLang());
 
   function pad(n){ return n.toString().padStart(2,'0'); }
 
-  function formatDateLabel(d){
-    if(LANG === 'en'){
-      return t('weekdays')[d.getDay()] + ', ' + d.getDate() + ' ' + t('months')[d.getMonth()] + ' ' + d.getFullYear();
-    }
-    return t('weekdays')[d.getDay()] + ', ' + pad(d.getDate())+'.'+pad(d.getMonth()+1)+'.'+d.getFullYear();
-  }
-
   function updateButtons(){
     pauseBtn.textContent = paused ? t('start') : t('pause');
     reverseBtn.textContent = reverse ? t('forward') : t('back');
   }
 
-  function formatDateForInput(d){
-    return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate());
-  }
   function formatTimeForInput(d){
     return pad(d.getHours())+':'+pad(d.getMinutes())+':'+pad(d.getSeconds());
   }
@@ -1452,14 +1433,8 @@ applyLang(detectLang());
     minuteGroup.setAttribute('transform', 'rotate('+minuteAngle+' '+CENTER+' '+CENTER+')');
     secondGroup.setAttribute('transform', 'rotate('+secondAngle+' '+CENTER+' '+CENTER+')');
 
-    bigTime.textContent = pad(simTime.getHours())+':'+pad(m)+':'+pad(s);
-    weekdayEl.textContent = formatDateLabel(simTime);
-
     if(document.activeElement !== timeInput){
       timeInput.value = formatTimeForInput(simTime);
-    }
-    if(document.activeElement !== dateInput){
-      dateInput.value = formatDateForInput(simTime);
     }
   }
 
@@ -1567,18 +1542,6 @@ applyLang(detectLang());
     const s = parts.length>2 ? (parseInt(parts[2],10)||0) : 0;
     const nt = new Date(simTime);
     nt.setHours(h,m,s,0);
-    simTime = nt;
-  });
-
-  dateInput.addEventListener('change', function(){
-    const val = dateInput.value; // YYYY-MM-DD
-    if(!val) return;
-    const parts = val.split('-');
-    const y = parseInt(parts[0],10);
-    const mo = parseInt(parts[1],10)-1;
-    const d = parseInt(parts[2],10);
-    const nt = new Date(simTime);
-    nt.setFullYear(y,mo,d);
     simTime = nt;
   });
 
