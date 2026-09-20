@@ -1,6 +1,6 @@
 # Навчальний годинник / Learning Clock
 
-**Версія / Version:** 2.5 (20.09.2026)
+**Версія / Version:** 2.6 (20.09.2026)
 **Онлайн / Live:** https://mranoven-coder.github.io/godynnyk/
 
 🇺🇦 Інтерактивний аналоговий годинник, який вчить дітей визначати час. Безкоштовно, працює офлайн у будь-якому браузері, можна встановити як застосунок на телефон.
@@ -13,7 +13,7 @@
 - 12- і 24-годинний формат на одному циферблаті / 12-hour and 24-hour formats on one dial
 - Показ і приховування стрілок, пауза, хід назад / Show or hide hands, pause, run backward
 - Швидкість ходу: повзунок і вибір максимуму x300 / x600 / x1200 / Clock speed: slider with a maximum of x300 / x600 / x1200
-- Поле для встановлення часу вручну / A field to set the time manually
+- Поле для встановлення часу (на телефоні — системне вікно вибору, оформлене як на комп'ютері) / A field to set the time (on a phone — the system picker, styled like on a computer)
 - Українська та англійська мови (UA / EN) / Ukrainian and English (UA / EN)
 - Інструкція для батьків і вчителів обома мовами / Guide for parents and teachers in both languages
 - Підказки зі списком функцій при кожному відкритті чи оновленні сторінки (тап закриває) / Tips listing all functions on every open or refresh (tap to close)
@@ -43,6 +43,11 @@ Only these need updating by hand: the comment at the top of the file, the fallba
 © 2026 Anatolii Bondarenko. [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/) — повний текст у файлі [LICENSE](LICENSE) / full text in [LICENSE](LICENSE).
 
 ## Історія змін / Changelog
+
+### v2.6 — 20.09.2026
+
+- Поле часу на телефонах і планшетах має той самий компактний вигляд, що й на комп'ютері: вужча біла картка, світла рамка та іконка годинника замість системної стрілки / The time field on phones and tablets has the same compact look as on a computer: a narrower white card, a light border and a clock icon instead of the system arrow
+- Інструкцію та підказки оновлено: на телефоні тап по полю часу відкриває системне вікно вибору часу / Updated the guide and the tips: on a phone, tapping the time field opens the system time picker
 
 ### v2.5 — 20.09.2026
 

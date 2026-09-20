@@ -1,5 +1,5 @@
 <!--
-  Навчальний годинник / Learning Clock — v2.5 (20.09.2026)
+  Навчальний годинник / Learning Clock — v2.6 (20.09.2026)
   Автор ідеї та вимог / Author: Anatolii Bondarenko, створено / created 17.09.2026
   © 2026 Anatolii Bondarenko. Ліцензія / License: CC BY-NC-ND 4.0
   https://creativecommons.org/licenses/by-nc-nd/4.0/
@@ -15,7 +15,7 @@
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://mranoven-coder.github.io/godynnyk/">
 <meta name="author" content="Anatolii Bondarenko">
-<meta name="version" content="2.5">
+<meta name="version" content="2.6">
 <meta name="google-site-verification" content="0kAWkHnkUetvqLp91TnaHS1QHfxsoHvwadKuok6HM8w" />
 <link rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">
 
@@ -74,7 +74,7 @@
   "image": "https://mranoven-coder.github.io/godynnyk/icons/og-image.png",
   "datePublished": "2026-09-17",
   "dateModified": "2026-09-20",
-  "softwareVersion": "2.5"
+  "softwareVersion": "2.6"
 }
 </script>
 
@@ -172,6 +172,31 @@
     border:2px solid #cfd9e8;
     margin:4px;
     font-family:inherit;
+  }
+  /* Телефони й планшети (основний вказівник — палець): замість системної «таблетки» зі стрілкою
+     робимо таке саме компактне біле поле з іконкою годинника, як на комп'ютері. Комп'ютери не чіпаємо. */
+  @media (pointer:coarse){
+    .digital{
+      width:fit-content;
+      max-width:88vw;
+    }
+    .digital input[type=time]{
+      -webkit-appearance:none;
+      appearance:none;
+      box-sizing:border-box;
+      width:12rem;
+      max-width:100%;
+      min-height:3.2rem;
+      padding:8px 46px 8px 14px;
+      text-align:left;
+      color:#222;
+      background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23222' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M12 7v5l3 2'/%3E%3C/svg%3E") no-repeat right 12px center / 24px 24px;
+    }
+    .digital input[type=time]:focus{
+      outline:none;
+      border-color:var(--accent);
+    }
+    .digital input[type=time]::-webkit-calendar-picker-indicator{display:none;}
   }
   .hidden{display:none !important;}
   .panel{
@@ -755,7 +780,7 @@
 </section>
 
 <p class="download-note" data-i18n-html="downloadNote">Файл можна відкрити офлайн у будь-якому браузері.<br>Автор: Anatolii Bondarenko, 17.09.2026</p>
-<p class="download-note copyright-note" data-i18n-html="copyright">© 2026 Anatolii Bondarenko · <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.uk" target="_blank" rel="noopener noreferrer">CC BY-NC-ND 4.0</a> · v2.5 · 20.09.2026</p>
+<p class="download-note copyright-note" data-i18n-html="copyright">© 2026 Anatolii Bondarenko · <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.uk" target="_blank" rel="noopener noreferrer">CC BY-NC-ND 4.0</a> · v2.6 · 20.09.2026</p>
 
 <div class="help-overlay" id="helpOverlay">
   <div class="help-card">
@@ -784,7 +809,7 @@
       <tr><td>Пауза / Старт</td><td>Зупиняє й відновлює рух стрілок</td></tr>
       <tr><td>Назад</td><td>Перемикає напрямок ходу годинника — стрілки рухаються у зворотний бік</td></tr>
       <tr><td>Поточний час</td><td>Миттєво повертає годинник до реального часу й скидає налаштування</td></tr>
-      <tr><td>Поле часу</td><td>Показує поточний час і дозволяє виставити його вручну з клавіатури або стрілочками</td></tr>
+      <tr><td>Поле часу</td><td>Показує поточний час і дозволяє виставити його вручну з клавіатури або стрілочками. На телефоні й планшеті тап по полю відкриває системне вікно вибору часу</td></tr>
       <tr><td>Тягнення стрілок</td><td>Дитина бере пальцем/мишкою будь-яку стрілку і крутить — циферблат одразу показує новий час</td></tr>
       <tr><td>Тап/клік по циферблату</td><td>Швидкий спосіб поставити на паузу чи запустити знову — те саме, що кнопка «Пауза», але без пошуку кнопки під час заняття (тап саме по порожній частині циферблата, не по стрілці)</td></tr>
       <tr><td>Підказки при запуску</td><td>Під час відкриття годинника з'являється вікно з переліком усіх його функцій. Тапніть у будь-якому місці вікна, щоб закрити його. Вікно з'являється при кожному відкритті чи оновленні сторінки або застосунку</td></tr>
@@ -847,7 +872,7 @@
       <tr><td>Pause / Start</td><td>Stops and resumes the movement of the hands</td></tr>
       <tr><td>Backward</td><td>Switches the direction of the clock — the hands move the other way</td></tr>
       <tr><td>Current time</td><td>Instantly returns the clock to the real time and resets the settings</td></tr>
-      <tr><td>Time field</td><td>Shows the current time and lets you set it manually from the keyboard or the arrows</td></tr>
+      <tr><td>Time field</td><td>Shows the current time and lets you set it manually from the keyboard or the arrows. On a phone or tablet, tapping the field opens the system time picker</td></tr>
       <tr><td>Dragging the hands</td><td>The child grabs any hand with a finger or the mouse and turns it — the clock face immediately shows the new time</td></tr>
       <tr><td>Tap/click on the clock face</td><td>A quick way to pause or resume — the same as the "Pause" button, but without hunting for it mid-lesson (tap the empty part of the face, not a hand)</td></tr>
       <tr><td>Tips at startup</td><td>When the clock opens, a window lists all of its functions. Tap anywhere on the window to close it. It appears every time the page or the app is opened or refreshed</td></tr>
@@ -930,7 +955,7 @@
       <li><b>«Пауза / Старт»</b> — зупиняє й продовжує хід.</li>
       <li><b>«Назад»</b> — годинник іде у зворотний бік; натисніть ще раз, щоб знову йти вперед.</li>
       <li><b>«Поточний час»</b> — повертає реальний час і скидає налаштування.</li>
-      <li><b>Поле часу</b> — його можна ввести вручну.</li>
+      <li><b>Поле часу</b> — його можна ввести вручну (на телефоні — у системному вікні вибору).</li>
       <li><b>⚙</b> у правому верхньому куті — налаштування: підказки, розмір годинника, а також сховати блок «Показати стрілки» (годинник зі стрілками завжди лишається видимим).</li>
     </ol>
     <p class="footer-note">Тапніть будь-де, щоб закрити.</p>
@@ -945,7 +970,7 @@
       <li><b>"Pause / Start"</b> — stops and resumes the clock.</li>
       <li><b>"Backward"</b> — the clock runs the other way; press again to go forward.</li>
       <li><b>"Current time"</b> — returns to the real time and resets the settings.</li>
-      <li><b>Time field</b> — you can type it in.</li>
+      <li><b>Time field</b> — you can type it in (on a phone, in the system picker).</li>
       <li><b>⚙</b> in the top right corner — settings: tips, clock size, plus hiding the "Show the hands" block (the clock with the hands always stays visible).</li>
     </ol>
     <p class="footer-note">Tap anywhere to close.</p>
@@ -982,6 +1007,23 @@
 // позначка «NEW» на кнопці «Що нового» та анонс у вікні підказок — підхоплюється
 // з цього списку автоматично.
 var RELEASES = [
+  {
+    version: "2.6", date: "20.09.2026",
+    announce: {
+      uk: "поле часу на телефоні тепер виглядає так само компактно, як на комп'ютері.",
+      en: "the time field on a phone now looks as compact as on a computer."
+    },
+    items: {
+      uk: [
+        "Поле часу на телефонах і планшетах має той самий компактний вигляд, що й на комп'ютері: вужча біла картка, світла рамка та іконка годинника замість системної стрілки",
+        "Інструкцію та підказки оновлено: на телефоні тап по полю часу відкриває системне вікно вибору часу"
+      ],
+      en: [
+        "The time field on phones and tablets has the same compact look as on a computer: a narrower white card, a light border and a clock icon instead of the system arrow",
+        "Updated the guide and the tips: on a phone, tapping the time field opens the system time picker"
+      ]
+    }
+  },
   {
     version: "2.5", date: "20.09.2026",
     announce: {
