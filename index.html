@@ -1,5 +1,5 @@
 <!--
-  Навчальний годинник / Learning Clock — v2.0 (19.09.2026)
+  Навчальний годинник / Learning Clock — v2.1 (20.09.2026)
   Автор ідеї та вимог / Author: Anatolii Bondarenko, створено / created 17.09.2026
   © 2026 Anatolii Bondarenko. Ліцензія / License: CC BY-NC-ND 4.0
   https://creativecommons.org/licenses/by-nc-nd/4.0/
@@ -15,7 +15,7 @@
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://mranoven-coder.github.io/godynnyk/">
 <meta name="author" content="Anatolii Bondarenko">
-<meta name="version" content="2.0">
+<meta name="version" content="2.1">
 <meta name="google-site-verification" content="0kAWkHnkUetvqLp91TnaHS1QHfxsoHvwadKuok6HM8w" />
 <link rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">
 
@@ -73,7 +73,7 @@
   "license": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
   "image": "https://mranoven-coder.github.io/godynnyk/icons/og-image.png",
   "datePublished": "2026-09-17",
-  "softwareVersion": "2.0"
+  "softwareVersion": "2.1"
 }
 </script>
 
@@ -742,7 +742,7 @@
 </section>
 
 <p class="download-note" data-i18n-html="downloadNote">Файл можна відкрити офлайн у будь-якому браузері.<br>Автор: Anatolii Bondarenko, 17.09.2026</p>
-<p class="download-note copyright-note" data-i18n-html="copyright">© 2026 Anatolii Bondarenko · <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.uk" target="_blank" rel="noopener noreferrer">CC BY-NC-ND 4.0</a> · v2.0 · 19.09.2026</p>
+<p class="download-note copyright-note" data-i18n-html="copyright">© 2026 Anatolii Bondarenko · <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.uk" target="_blank" rel="noopener noreferrer">CC BY-NC-ND 4.0</a> · v2.1 · 20.09.2026</p>
 
 <div class="help-overlay" id="helpOverlay">
   <div class="help-card">
@@ -955,6 +955,21 @@
 // номер версії внизу сторінки, позначка «NEW» на кнопці «Що нового» та анонс
 // у вікні підказок — підхоплюється з цього списку автоматично.
 var RELEASES = [
+  {
+    version: "2.1", date: "20.09.2026",
+    announce: {
+      uk: "спливаючі вікна тепер зручніші для керування з клавіатури.",
+      en: "pop-up windows are now easier to navigate with a keyboard."
+    },
+    items: {
+      uk: [
+        "Додано керування фокусом у всіх спливаючих вікнах (інструкція, «Що нового», підказки, налаштування): Tab більше не виходить за межі вікна, Escape закриває його, а фокус повертається на кнопку, яка його відкрила"
+      ],
+      en: [
+        "Added focus management to all pop-up windows (guide, what's new, tips, settings): Tab no longer leaves the window, Escape closes it, and focus returns to the button that opened it"
+      ]
+    }
+  },
   {
     version: "2.0", date: "19.09.2026",
     announce: {
@@ -1921,6 +1936,59 @@ if ('serviceWorker' in navigator) {
       deferredPrompt = null;
     });
   }
+})();
+
+// Доступність модальних вікон: Tab-пастка всередині вікна, закриття по Escape,
+// повернення фокусу на кнопку, яка відкрила вікно. Працює автоматично для
+// будь-якого вікна з класом .help-overlay — нічого іншого чіпати не треба.
+(function(){
+  const FOCUSABLE = 'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+  const lastFocused = new WeakMap();
+
+  function trapKeydown(e){
+    const overlay = e.currentTarget;
+    if(e.key === 'Escape'){
+      overlay.classList.remove('open');
+      return;
+    }
+    if(e.key !== 'Tab') return;
+    const focusables = Array.prototype.slice.call(overlay.querySelectorAll(FOCUSABLE))
+      .filter(function(el){ return el.offsetParent !== null; });
+    if(focusables.length === 0) return;
+    const first = focusables[0];
+    const last = focusables[focusables.length - 1];
+    if(e.shiftKey && document.activeElement === first){
+      e.preventDefault();
+      last.focus();
+    } else if(!e.shiftKey && document.activeElement === last){
+      e.preventDefault();
+      first.focus();
+    }
+  }
+
+  function onOverlayOpened(overlay){
+    lastFocused.set(overlay, document.activeElement);
+    const focusables = overlay.querySelectorAll(FOCUSABLE);
+    if(focusables.length){ focusables[0].focus(); }
+    overlay.addEventListener('keydown', trapKeydown);
+  }
+
+  function onOverlayClosed(overlay){
+    overlay.removeEventListener('keydown', trapKeydown);
+    const toFocus = lastFocused.get(overlay);
+    if(toFocus && typeof toFocus.focus === 'function'){ toFocus.focus(); }
+  }
+
+  document.querySelectorAll('.help-overlay').forEach(function(overlay){
+    let wasOpen = overlay.classList.contains('open');
+    const observer = new MutationObserver(function(){
+      const isOpen = overlay.classList.contains('open');
+      if(isOpen && !wasOpen){ onOverlayOpened(overlay); }
+      else if(!isOpen && wasOpen){ onOverlayClosed(overlay); }
+      wasOpen = isOpen;
+    });
+    observer.observe(overlay, { attributes: true, attributeFilter: ['class'] });
+  });
 })();
 </script>
 
