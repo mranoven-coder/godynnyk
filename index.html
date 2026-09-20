@@ -1,5 +1,5 @@
 <!--
-  Навчальний годинник / Learning Clock — v1.9 (19.09.2026)
+  Навчальний годинник / Learning Clock — v2.0 (19.09.2026)
   Автор ідеї та вимог / Author: Anatolii Bondarenko, створено / created 17.09.2026
   © 2026 Anatolii Bondarenko. Ліцензія / License: CC BY-NC-ND 4.0
   https://creativecommons.org/licenses/by-nc-nd/4.0/
@@ -15,7 +15,7 @@
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://mranoven-coder.github.io/godynnyk/">
 <meta name="author" content="Anatolii Bondarenko">
-<meta name="version" content="1.9">
+<meta name="version" content="2.0">
 <meta name="google-site-verification" content="0kAWkHnkUetvqLp91TnaHS1QHfxsoHvwadKuok6HM8w" />
 <link rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">
 
@@ -73,7 +73,7 @@
   "license": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
   "image": "https://mranoven-coder.github.io/godynnyk/icons/og-image.png",
   "datePublished": "2026-09-17",
-  "softwareVersion": "1.9"
+  "softwareVersion": "2.0"
 }
 </script>
 
@@ -95,7 +95,7 @@
     --hour-color:#000000;
     --minute-color:#1155cc;
     --second-color:#e02424;
-    --number-color:#ff8c00;
+    --number-color:#b35900;
     --bg:#fdf6e3;
     --panel:#ffffff;
     --accent:#4a7fd6;
@@ -116,7 +116,7 @@
   }
   .hint{
     text-align:center;
-    color:#777;
+    color:#666;
     margin:0 0 14px;
     font-size:0.95rem;
   }
@@ -252,7 +252,7 @@
   }
   button:active{transform:scale(0.95);}
   button.pause{background:#4a7fd6;}
-  button.pause.playing{background:#e0a02a;}
+  button.pause.playing{background:#a86709;}
   button.now{background:#5cb85c;}
   button.reverse{background:#9b6bd6;}
   button.reverse.active{background:#6a3ea6;}
@@ -298,7 +298,7 @@
   .tips-overlay{cursor:pointer;}
   .tips-card{max-width:520px;margin-top:40px;}
   .tips-card li{font-size:1.02rem;margin-bottom:8px;}
-  .tips-card li::marker{color:#ff8c00;font-weight:bold;}
+  .tips-card li::marker{color:#b35900;font-weight:bold;}
   .settings-card{max-width:440px;margin-top:60px;}
   .settings-row{
     display:flex;
@@ -315,7 +315,7 @@
     flex:none;
     accent-color:var(--accent);
   }
-  .settings-note{color:#888;font-size:0.85rem;margin:6px 0 14px;}
+  .settings-note{color:#6b6b6b;font-size:0.85rem;margin:6px 0 14px;}
   .settings-action{
     display:block;
     width:100%;
@@ -323,7 +323,7 @@
   }
   .download-note{
     text-align:center;
-    color:#999;
+    color:#707070;
     font-size:0.8rem;
     margin-top:26px;
   }
@@ -397,7 +397,7 @@
     margin-top:8px;
     padding:6px 14px;
     font-size:0.85rem;
-    background:#ff8c00;
+    background:#b35900;
   }
   .wish-btn{
     display:inline-flex;
@@ -421,7 +421,7 @@
   .help-btn{
     display:block;
     margin:18px auto 0;
-    background:#ff8c00;
+    background:#b35900;
     color:#fff;
     border:none;
     border-radius:14px;
@@ -561,7 +561,7 @@
     font-size:1.4rem;
   }
   .help-card h3{
-    color:#ff8c00;
+    color:#b35900;
     margin:20px 0 6px;
     font-size:1.1rem;
   }
@@ -591,7 +591,7 @@
     color:var(--accent);
   }
   .help-card .subtitle{
-    color:#888;
+    color:#6b6b6b;
     font-size:0.85rem;
     margin-top:-4px;
     margin-bottom:14px;
@@ -602,7 +602,7 @@
     margin:20px 0;
   }
   .help-card .footer-note{
-    color:#999;
+    color:#707070;
     font-size:0.8rem;
     text-align:center;
     margin-top:20px;
@@ -742,7 +742,7 @@
 </section>
 
 <p class="download-note" data-i18n-html="downloadNote">Файл можна відкрити офлайн у будь-якому браузері.<br>Автор: Anatolii Bondarenko, 17.09.2026</p>
-<p class="download-note copyright-note" data-i18n-html="copyright">© 2026 Anatolii Bondarenko · <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.uk" target="_blank" rel="noopener noreferrer">CC BY-NC-ND 4.0</a> · v1.9 · 19.09.2026</p>
+<p class="download-note copyright-note" data-i18n-html="copyright">© 2026 Anatolii Bondarenko · <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.uk" target="_blank" rel="noopener noreferrer">CC BY-NC-ND 4.0</a> · v2.0 · 19.09.2026</p>
 
 <div class="help-overlay" id="helpOverlay">
   <div class="help-card">
@@ -955,6 +955,21 @@
 // номер версії внизу сторінки, позначка «NEW» на кнопці «Що нового» та анонс
 // у вікні підказок — підхоплюється з цього списку автоматично.
 var RELEASES = [
+  {
+    version: "2.0", date: "19.09.2026",
+    announce: {
+      uk: "покращено контрастність тексту й цифр на циферблаті — легше читати, особливо людям зі слабким зором.",
+      en: "improved text and clock-number contrast — easier to read, especially for people with low vision."
+    },
+    items: {
+      uk: [
+        "Проведено аудит доступності (за критеріями Lighthouse) і виправлено недостатню контрастність: помаранчеві цифри циферблата, внутрішнє коло 24-годинного формату, кнопки «Інструкція» та «Пауза», а також дрібний підписовий текст"
+      ],
+      en: [
+        "Ran an accessibility audit (Lighthouse criteria) and fixed low-contrast text: the clock's orange numbers, the 24-hour inner ring, the \"Guide\" and \"Pause\" buttons, and small caption text"
+      ]
+    }
+  },
   {
     version: "1.9", date: "19.09.2026",
     announce: {
@@ -1345,7 +1360,7 @@ applyLang(detectLang());
     text.setAttribute('font-size','15');
     text.setAttribute('font-weight','bold');
     text.setAttribute('font-family','Verdana, Arial, sans-serif');
-    text.setAttribute('fill','#7d8aa3');
+    text.setAttribute('fill','#56607a');
     text.textContent = value;
     numbersG.appendChild(text);
   }
