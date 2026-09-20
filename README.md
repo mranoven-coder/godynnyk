@@ -1,6 +1,6 @@
 # Навчальний годинник / Learning Clock
 
-**Версія / Version:** 2.4 (20.09.2026)
+**Версія / Version:** 2.5 (20.09.2026)
 **Онлайн / Live:** https://mranoven-coder.github.io/godynnyk/
 
 🇺🇦 Інтерактивний аналоговий годинник, який вчить дітей визначати час. Безкоштовно, працює офлайн у будь-якому браузері, можна встановити як застосунок на телефон.
@@ -17,7 +17,7 @@
 - Українська та англійська мови (UA / EN) / Ukrainian and English (UA / EN)
 - Інструкція для батьків і вчителів обома мовами / Guide for parents and teachers in both languages
 - Підказки зі списком функцій при кожному відкритті чи оновленні сторінки (тап закриває) / Tips listing all functions on every open or refresh (tap to close)
-- Кнопка налаштувань ⚙: підказки при запуску та приховування блоку «Показати стрілки» / A ⚙ settings button: startup tips and hiding the "Show the hands" block
+- Кнопка налаштувань ⚙: підказки при запуску, розмір годинника (100–175 %) та приховування блоку «Показати стрілки» / A ⚙ settings button: startup tips, clock size (100–175%) and hiding the "Show the hands" block
 - Розділ «Що нового» на сторінці; про нову версію повідомляє позначка «NEW» на кнопці та анонс у вікні підказок / "What's new" section on the page; a new version is announced by a "NEW" mark on the button and a notice in the tips window
 - Кнопка «Залишити побажання» відкриває анонімну форму для відгуків / "Send feedback" button opens an anonymous feedback form
 - Кнопка «Встановити застосунок» (одним кліком на Android/комп'ютері, підказка для iPhone) / "Install app" button (one click on Android/desktop, instructions for iPhone)
@@ -43,6 +43,13 @@ Only these need updating by hand: the comment at the top of the file, the fallba
 © 2026 Anatolii Bondarenko. [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/) — повний текст у файлі [LICENSE](LICENSE) / full text in [LICENSE](LICENSE).
 
 ## Історія змін / Changelog
+
+### v2.5 — 20.09.2026
+
+- У налаштуваннях (⚙) додано вибір розміру годинника: 100 %, 125 %, 150 % або 175 % — збільшується весь циферблат разом зі стрілками й цифрами; вибір зберігається в браузері / Added a clock size choice in settings (⚙): 100%, 125%, 150% or 175% — the whole clock face grows together with the hands and numbers; the choice is saved in the browser
+- Розмір годинника тепер задається явно (за замовчуванням 420 px, на вузьких екранах — за шириною екрана) і не залежить від ширини поля часу під ним — після спрощення блоку у версії 2.3 циферблат став меншим, ніж задумано / The clock size is now set explicitly (420 px by default, limited by the screen width on narrow screens) and no longer depends on the width of the time field under it — after the block was simplified in version 2.3 the clock face had become smaller than intended
+- На невисоких екранах збільшений годинник додатково обмежується висотою вікна, щоб кнопки не йшли далеко вниз / On short screens the enlarged clock is also limited by the window height, so the buttons do not end up far below
+- Інструкцію й підказки оновлено: описано вибір розміру / Updated the guide and the tips: described the size choice
 
 ### v2.4 — 20.09.2026
 

@@ -1,5 +1,5 @@
 <!--
-  Навчальний годинник / Learning Clock — v2.4 (20.09.2026)
+  Навчальний годинник / Learning Clock — v2.5 (20.09.2026)
   Автор ідеї та вимог / Author: Anatolii Bondarenko, створено / created 17.09.2026
   © 2026 Anatolii Bondarenko. Ліцензія / License: CC BY-NC-ND 4.0
   https://creativecommons.org/licenses/by-nc-nd/4.0/
@@ -15,7 +15,7 @@
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://mranoven-coder.github.io/godynnyk/">
 <meta name="author" content="Anatolii Bondarenko">
-<meta name="version" content="2.4">
+<meta name="version" content="2.5">
 <meta name="google-site-verification" content="0kAWkHnkUetvqLp91TnaHS1QHfxsoHvwadKuok6HM8w" />
 <link rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">
 
@@ -74,7 +74,7 @@
   "image": "https://mranoven-coder.github.io/godynnyk/icons/og-image.png",
   "datePublished": "2026-09-17",
   "dateModified": "2026-09-20",
-  "softwareVersion": "2.4"
+  "softwareVersion": "2.5"
 }
 </script>
 
@@ -142,6 +142,14 @@
     height:auto;
     filter:drop-shadow(0 6px 14px rgba(0,0,0,0.15));
     cursor:pointer;
+  }
+  /* Розмір годинника задається явно (а не шириною сусідніх блоків).
+     100 % = 420 px; на вузьких екранах — не ширше за 88vw; на невисоких — збільшений годинник
+     додатково обмежується висотою вікна (85vh), але не стає меншим за 420 px. */
+  :root{ --clock-scale:1; }
+  #clockSvg{
+    width:min(88vw, max(420px, min(calc(420px * var(--clock-scale)), 85vh)));
+    max-width:none;
   }
   .hand{cursor:grab;}
   .hand:active{cursor:grabbing;}
@@ -303,6 +311,25 @@
     height:24px;
     flex:none;
     accent-color:var(--accent);
+  }
+  .size-options{
+    display:flex;
+    gap:8px;
+    margin:8px 0 6px;
+  }
+  .size-btn{
+    flex:1;
+    min-width:0;
+    padding:8px 4px;
+    font-size:0.95rem;
+    background:#fff;
+    color:#2a5db0;
+    border:2px solid #2a5db0;
+    border-radius:12px;
+  }
+  .size-btn.active{
+    background:#2a5db0;
+    color:#fff;
   }
   .settings-note{color:#6b6b6b;font-size:0.85rem;margin:6px 0 14px;}
   .settings-action{
@@ -728,7 +755,7 @@
 </section>
 
 <p class="download-note" data-i18n-html="downloadNote">Файл можна відкрити офлайн у будь-якому браузері.<br>Автор: Anatolii Bondarenko, 17.09.2026</p>
-<p class="download-note copyright-note" data-i18n-html="copyright">© 2026 Anatolii Bondarenko · <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.uk" target="_blank" rel="noopener noreferrer">CC BY-NC-ND 4.0</a> · v2.4 · 20.09.2026</p>
+<p class="download-note copyright-note" data-i18n-html="copyright">© 2026 Anatolii Bondarenko · <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.uk" target="_blank" rel="noopener noreferrer">CC BY-NC-ND 4.0</a> · v2.5 · 20.09.2026</p>
 
 <div class="help-overlay" id="helpOverlay">
   <div class="help-card">
@@ -762,7 +789,8 @@
       <tr><td>Тап/клік по циферблату</td><td>Швидкий спосіб поставити на паузу чи запустити знову — те саме, що кнопка «Пауза», але без пошуку кнопки під час заняття (тап саме по порожній частині циферблата, не по стрілці)</td></tr>
       <tr><td>Підказки при запуску</td><td>Під час відкриття годинника з'являється вікно з переліком усіх його функцій. Тапніть у будь-якому місці вікна, щоб закрити його. Вікно з'являється при кожному відкритті чи оновленні сторінки або застосунку</td></tr>
       <tr><td>Позначка «NEW» / анонс оновлення</td><td>Коли виходить нова версія, на кнопці «Що нового» з'являється червона позначка NEW, а у вікні підказок — короткий анонс. Позначка зникає, щойно ви відкриєте «Що нового». Тим, хто відкриває годинник уперше, позначка й анонс не показуються</td></tr>
-      <tr><td>Кнопка ⚙ (налаштування)</td><td>Кнопка в правому верхньому куті. Тут можна вимкнути або знову ввімкнути підказки при запуску, показати їх одразу, а також сховати блок «Показати стрілки» — щоб спростити екран для дитини (сам циферблат зі стрілками завжди залишається видимим і не міняє розмір)</td></tr>
+      <tr><td>Кнопка ⚙ (налаштування)</td><td>Кнопка в правому верхньому куті. Тут можна вимкнути або знову ввімкнути підказки при запуску, показати їх одразу, вибрати розмір годинника, а також сховати блок «Показати стрілки» — щоб спростити екран для дитини (сам циферблат зі стрілками завжди залишається видимим)</td></tr>
+      <tr><td>Розмір годинника (у ⚙)</td><td>Чотири кроки: 100 %, 125 %, 150 % і 175 %. Збільшується весь циферблат разом зі стрілками й цифрами — зручно для великого екрана чи проєктора. На вузьких екранах (телефон) розмір обмежено шириною екрана, а на невисоких — ще й висотою вікна. Вибір зберігається в браузері пристрою</td></tr>
     </table>
 
     <h3>3. Як користуватись покроково</h3>
@@ -824,7 +852,8 @@
       <tr><td>Tap/click on the clock face</td><td>A quick way to pause or resume — the same as the "Pause" button, but without hunting for it mid-lesson (tap the empty part of the face, not a hand)</td></tr>
       <tr><td>Tips at startup</td><td>When the clock opens, a window lists all of its functions. Tap anywhere on the window to close it. It appears every time the page or the app is opened or refreshed</td></tr>
       <tr><td>"NEW" mark / update notice</td><td>When a new version is released, a red NEW mark appears on the "What's new" button and a short notice in the tips window. The mark disappears as soon as you open "What's new". People opening the clock for the first time do not see the mark or the notice</td></tr>
-      <tr><td>⚙ button (settings)</td><td>The button in the top right corner. Here you can turn the startup tips off or on again, show them right away, and also hide the "Show the hands" block — to simplify the screen for a child (the clock face with the hands always stays visible and never changes size)</td></tr>
+      <tr><td>⚙ button (settings)</td><td>The button in the top right corner. Here you can turn the startup tips off or on again, show them right away, choose the clock size, and also hide the "Show the hands" block — to simplify the screen for a child (the clock face with the hands always stays visible)</td></tr>
+      <tr><td>Clock size (in ⚙)</td><td>Four steps: 100%, 125%, 150% and 175%. The whole clock face grows together with the hands and numbers — handy for a big screen or a projector. On narrow screens (phones) the size is limited by the screen width, and on short screens also by the window height. Your choice is saved in the device's browser</td></tr>
     </table>
 
     <h3>3. How to use it, step by step</h3>
@@ -902,7 +931,7 @@
       <li><b>«Назад»</b> — годинник іде у зворотний бік; натисніть ще раз, щоб знову йти вперед.</li>
       <li><b>«Поточний час»</b> — повертає реальний час і скидає налаштування.</li>
       <li><b>Поле часу</b> — його можна ввести вручну.</li>
-      <li><b>⚙</b> у правому верхньому куті — налаштування: підказки, а також сховати блок «Показати стрілки» (годинник зі стрілками завжди лишається видимим).</li>
+      <li><b>⚙</b> у правому верхньому куті — налаштування: підказки, розмір годинника, а також сховати блок «Показати стрілки» (годинник зі стрілками завжди лишається видимим).</li>
     </ol>
     <p class="footer-note">Тапніть будь-де, щоб закрити.</p>
     </div>
@@ -917,7 +946,7 @@
       <li><b>"Backward"</b> — the clock runs the other way; press again to go forward.</li>
       <li><b>"Current time"</b> — returns to the real time and resets the settings.</li>
       <li><b>Time field</b> — you can type it in.</li>
-      <li><b>⚙</b> in the top right corner — settings: tips, plus hiding the "Show the hands" block (the clock with the hands always stays visible).</li>
+      <li><b>⚙</b> in the top right corner — settings: tips, clock size, plus hiding the "Show the hands" block (the clock with the hands always stays visible).</li>
     </ol>
     <p class="footer-note">Tap anywhere to close.</p>
     </div>
@@ -933,6 +962,15 @@
     <button type="button" class="settings-action" id="tipsShowNow" data-i18n="settingsShowNow">📋 Показати підказки зараз</button>
 
     <label class="settings-row"><span data-i18n="settingsHideHandsPanel">Приховати блок «Показати стрілки»</span><input type="checkbox" id="handsPanelToggle"></label>
+
+    <div class="settings-row"><span data-i18n="settingsClockSize">Розмір годинника</span></div>
+    <div class="size-options" role="group" aria-label="Розмір годинника" data-i18n-aria="settingsClockSize">
+      <button type="button" class="size-btn" data-size="1">100%</button>
+      <button type="button" class="size-btn" data-size="1.25">125%</button>
+      <button type="button" class="size-btn" data-size="1.5">150%</button>
+      <button type="button" class="size-btn" data-size="1.75">175%</button>
+    </div>
+    <p class="settings-note" data-i18n="settingsSizeNote">Збільшується весь циферблат разом зі стрілками. На вузьких екранах (телефон) розмір обмежено шириною екрана.</p>
   </div>
 </div>
 
@@ -944,6 +982,27 @@
 // позначка «NEW» на кнопці «Що нового» та анонс у вікні підказок — підхоплюється
 // з цього списку автоматично.
 var RELEASES = [
+  {
+    version: "2.5", date: "20.09.2026",
+    announce: {
+      uk: "годинник можна збільшити в ⚙ — до 175 %.",
+      en: "you can enlarge the clock in ⚙ — up to 175%."
+    },
+    items: {
+      uk: [
+        "У налаштуваннях (⚙) додано вибір розміру годинника: 100 %, 125 %, 150 % або 175 % — збільшується весь циферблат разом зі стрілками й цифрами; вибір зберігається в браузері",
+        "Розмір годинника тепер задається явно (за замовчуванням 420 px, на вузьких екранах — за шириною екрана) і не залежить від ширини поля часу під ним — після спрощення блоку у версії 2.3 циферблат став меншим, ніж задумано",
+        "На невисоких екранах збільшений годинник додатково обмежується висотою вікна, щоб кнопки не йшли далеко вниз",
+        "Інструкцію й підказки оновлено: описано вибір розміру"
+      ],
+      en: [
+        "Added a clock size choice in settings (⚙): 100%, 125%, 150% or 175% — the whole clock face grows together with the hands and numbers; the choice is saved in the browser",
+        "The clock size is now set explicitly (420 px by default, limited by the screen width on narrow screens) and no longer depends on the width of the time field under it — after the block was simplified in version 2.3 the clock face had become smaller than intended",
+        "On short screens the enlarged clock is also limited by the window height, so the buttons do not end up far below",
+        "Updated the guide and the tips: described the size choice"
+      ]
+    }
+  },
   {
     version: "2.4", date: "20.09.2026",
     announce: {
@@ -1210,6 +1269,8 @@ var I18N = {
     settingsNote: "Підказки — це вікно зі списком функцій годинника. Тапніть на нього, щоб закрити.",
     settingsShowNow: "📋 Показати підказки зараз",
     settingsHideHandsPanel: "Приховати блок «Показати стрілки»",
+    settingsClockSize: "Розмір годинника",
+    settingsSizeNote: "Збільшується весь циферблат разом зі стрілками. На вузьких екранах (телефон) розмір обмежено шириною екрана.",
     updatePrefix: "🆕 Оновлення",
     updateMore: "Докладніше",
     donateBtn: "☕ Підтримати проєкт",
@@ -1247,6 +1308,8 @@ var I18N = {
     settingsNote: "The tips are a window listing the clock's functions. Tap it to close.",
     settingsShowNow: "📋 Show tips now",
     settingsHideHandsPanel: "Hide the \"Show the hands\" block",
+    settingsClockSize: "Clock size",
+    settingsSizeNote: "The whole clock face grows together with the hands. On narrow screens (phones) the size is limited by the screen width.",
     updatePrefix: "🆕 Update",
     updateMore: "Details",
     donateBtn: "☕ Support the project",
@@ -1803,6 +1866,9 @@ if ('serviceWorker' in navigator) {
   const tipsShowNow = document.getElementById('tipsShowNow');
   const handsPanelToggle = document.getElementById('handsPanelToggle');
   const handsSection = document.getElementById('handsSection');
+  const SIZE_KEY = 'clockSize';                  // масштаб годинника: 1, 1.25, 1.5 або 1.75
+  const SIZES = [1, 1.25, 1.5, 1.75];
+  const sizeButtons = Array.prototype.slice.call(document.querySelectorAll('.size-btn'));
 
   function tipsEnabled(){
     try{ return localStorage.getItem(KEY) !== '0'; }catch(e){ return true; }
@@ -1819,6 +1885,25 @@ if ('serviceWorker' in navigator) {
     handsSection.classList.toggle('hidden', hide);
   }
 
+  function getClockSize(){
+    try{
+      const v = parseFloat(localStorage.getItem(SIZE_KEY));
+      return SIZES.indexOf(v) !== -1 ? v : 1;
+    }catch(e){ return 1; }
+  }
+  function applyClockSize(v){
+    document.documentElement.style.setProperty('--clock-scale', String(v));
+    sizeButtons.forEach(function(b){
+      const on = parseFloat(b.getAttribute('data-size')) === v;
+      b.classList.toggle('active', on);
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+  }
+  function setClockSize(v){
+    try{ localStorage.setItem(SIZE_KEY, String(v)); }catch(e){}
+    applyClockSize(v);
+  }
+
   function openTips(){
     if(typeof window.onTipsOpen === 'function') window.onTipsOpen();
     tipsOverlay.classList.add('open');
@@ -1833,6 +1918,7 @@ if ('serviceWorker' in navigator) {
 
   // Застосовуємо збережений стан одразу при завантаженні сторінки
   setHandsPanelHidden(handsPanelHidden());
+  applyClockSize(getClockSize());
 
   // Тап у будь-якому місці вікна підказок закриває його
   tipsOverlay.addEventListener('click', closeTips);
@@ -1847,6 +1933,11 @@ if ('serviceWorker' in navigator) {
   });
   handsPanelToggle.addEventListener('change', function(){
     setHandsPanelHidden(handsPanelToggle.checked);
+  });
+  sizeButtons.forEach(function(b){
+    b.addEventListener('click', function(){
+      setClockSize(parseFloat(b.getAttribute('data-size')));
+    });
   });
   tipsShowNow.addEventListener('click', function(){
     closeSettings();
