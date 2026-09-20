@@ -1,5 +1,5 @@
 <!--
-  Навчальний годинник / Learning Clock — v2.1 (20.09.2026)
+  Навчальний годинник / Learning Clock — v2.2 (20.09.2026)
   Автор ідеї та вимог / Author: Anatolii Bondarenko, створено / created 17.09.2026
   © 2026 Anatolii Bondarenko. Ліцензія / License: CC BY-NC-ND 4.0
   https://creativecommons.org/licenses/by-nc-nd/4.0/
@@ -15,7 +15,7 @@
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://mranoven-coder.github.io/godynnyk/">
 <meta name="author" content="Anatolii Bondarenko">
-<meta name="version" content="2.1">
+<meta name="version" content="2.2">
 <meta name="google-site-verification" content="0kAWkHnkUetvqLp91TnaHS1QHfxsoHvwadKuok6HM8w" />
 <link rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">
 
@@ -73,7 +73,7 @@
   "license": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
   "image": "https://mranoven-coder.github.io/godynnyk/icons/og-image.png",
   "datePublished": "2026-09-17",
-  "softwareVersion": "2.1"
+  "softwareVersion": "2.2"
 }
 </script>
 
@@ -177,6 +177,7 @@
     margin:4px;
     font-family:inherit;
   }
+  .hidden{display:none !important;}
   .panel{
     background:var(--panel);
     border-radius:20px;
@@ -681,13 +682,15 @@
   </div>
 
   <div class="panel">
-    <h2 data-i18n="showHands">👁 Показати стрілки</h2>
-    <div class="row"><label><span class="swatch hour"></span> <span data-i18n="hourHand">Годинникова</span></label>
-      <input type="checkbox" id="chkHour" checked></div>
-    <div class="row"><label><span class="swatch minute"></span> <span data-i18n="minuteHand">Хвилинна</span></label>
-      <input type="checkbox" id="chkMinute" checked></div>
-    <div class="row"><label><span class="swatch second"></span> <span data-i18n="secondHand">Секундна</span></label>
-      <input type="checkbox" id="chkSecond" checked></div>
+    <div id="handsSection">
+      <h2 data-i18n="showHands">👁 Показати стрілки</h2>
+      <div class="row"><label><span class="swatch hour"></span> <span data-i18n="hourHand">Годинникова</span></label>
+        <input type="checkbox" id="chkHour" checked></div>
+      <div class="row"><label><span class="swatch minute"></span> <span data-i18n="minuteHand">Хвилинна</span></label>
+        <input type="checkbox" id="chkMinute" checked></div>
+      <div class="row"><label><span class="swatch second"></span> <span data-i18n="secondHand">Секундна</span></label>
+        <input type="checkbox" id="chkSecond" checked></div>
+    </div>
 
     <h2 style="margin-top:16px;" data-i18n="speedTitle">⚡ Швидкість ходу</h2>
     <input type="range" id="speedRange" min="1" max="300" value="1" step="1">
@@ -742,7 +745,7 @@
 </section>
 
 <p class="download-note" data-i18n-html="downloadNote">Файл можна відкрити офлайн у будь-якому браузері.<br>Автор: Anatolii Bondarenko, 17.09.2026</p>
-<p class="download-note copyright-note" data-i18n-html="copyright">© 2026 Anatolii Bondarenko · <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.uk" target="_blank" rel="noopener noreferrer">CC BY-NC-ND 4.0</a> · v2.1 · 20.09.2026</p>
+<p class="download-note copyright-note" data-i18n-html="copyright">© 2026 Anatolii Bondarenko · <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.uk" target="_blank" rel="noopener noreferrer">CC BY-NC-ND 4.0</a> · v2.2 · 20.09.2026</p>
 
 <div class="help-overlay" id="helpOverlay">
   <div class="help-card">
@@ -776,7 +779,7 @@
       <tr><td>Тап/клік по циферблату</td><td>Швидкий спосіб поставити на паузу чи запустити знову — те саме, що кнопка «Пауза», але без пошуку кнопки під час заняття (тап саме по порожній частині циферблата, не по стрілці)</td></tr>
       <tr><td>Підказки при запуску</td><td>Під час відкриття годинника з'являється вікно з переліком усіх його функцій. Тапніть у будь-якому місці вікна, щоб закрити його. Вікно з'являється при кожному відкритті чи оновленні сторінки або застосунку</td></tr>
       <tr><td>Позначка «NEW» / анонс оновлення</td><td>Коли виходить нова версія, на кнопці «Що нового» з'являється червона позначка NEW, а у вікні підказок — короткий анонс. Позначка зникає, щойно ви відкриєте «Що нового». Тим, хто відкриває годинник уперше, позначка й анонс не показуються</td></tr>
-      <tr><td>Кнопка ⚙ (налаштування)</td><td>Кнопка в правому верхньому куті. Тут можна вимкнути або знову ввімкнути підказки при запуску, а також показати їх одразу</td></tr>
+      <tr><td>Кнопка ⚙ (налаштування)</td><td>Кнопка в правому верхньому куті. Тут можна вимкнути або знову ввімкнути підказки при запуску, показати їх одразу, а також сховати блок «Показати стрілки» — щоб спростити екран для дитини (сам циферблат зі стрілками завжди залишається видимим і не міняє розмір)</td></tr>
     </table>
 
     <h3>3. Як користуватись покроково</h3>
@@ -838,7 +841,7 @@
       <tr><td>Tap/click on the clock face</td><td>A quick way to pause or resume — the same as the "Pause" button, but without hunting for it mid-lesson (tap the empty part of the face, not a hand)</td></tr>
       <tr><td>Tips at startup</td><td>When the clock opens, a window lists all of its functions. Tap anywhere on the window to close it. It appears every time the page or the app is opened or refreshed</td></tr>
       <tr><td>"NEW" mark / update notice</td><td>When a new version is released, a red NEW mark appears on the "What's new" button and a short notice in the tips window. The mark disappears as soon as you open "What's new". People opening the clock for the first time do not see the mark or the notice</td></tr>
-      <tr><td>⚙ button (settings)</td><td>The button in the top right corner. Here you can turn the startup tips off or on again, or show them right away</td></tr>
+      <tr><td>⚙ button (settings)</td><td>The button in the top right corner. Here you can turn the startup tips off or on again, show them right away, and also hide the "Show the hands" block — to simplify the screen for a child (the clock face with the hands always stays visible and never changes size)</td></tr>
     </table>
 
     <h3>3. How to use it, step by step</h3>
@@ -916,7 +919,7 @@
       <li><b>«Назад»</b> — годинник іде у зворотний бік; натисніть ще раз, щоб знову йти вперед.</li>
       <li><b>«Поточний час»</b> — повертає реальний час і скидає налаштування.</li>
       <li><b>Цифровий час і дата</b> — їх можна ввести вручну.</li>
-      <li><b>⚙</b> у правому верхньому куті — налаштування: тут ці підказки можна вимкнути або показати знову.</li>
+      <li><b>⚙</b> у правому верхньому куті — налаштування: підказки, а також сховати блок «Показати стрілки» (годинник зі стрілками завжди лишається видимим).</li>
     </ol>
     <p class="footer-note">Тапніть будь-де, щоб закрити.</p>
     </div>
@@ -931,7 +934,7 @@
       <li><b>"Backward"</b> — the clock runs the other way; press again to go forward.</li>
       <li><b>"Current time"</b> — returns to the real time and resets the settings.</li>
       <li><b>Digital time and date</b> — you can type them in.</li>
-      <li><b>⚙</b> in the top right corner — settings: turn these tips off or show them again.</li>
+      <li><b>⚙</b> in the top right corner — settings: tips, plus hiding the "Show the hands" block (the clock with the hands always stays visible).</li>
     </ol>
     <p class="footer-note">Tap anywhere to close.</p>
     </div>
@@ -945,6 +948,8 @@
     <label class="settings-row"><span data-i18n="settingsShowTips">Показувати підказки при запуску</span><input type="checkbox" id="tipsToggle"></label>
     <p class="settings-note" data-i18n="settingsNote">Підказки — це вікно зі списком функцій годинника. Тапніть на нього, щоб закрити.</p>
     <button type="button" class="settings-action" id="tipsShowNow" data-i18n="settingsShowNow">📋 Показати підказки зараз</button>
+
+    <label class="settings-row"><span data-i18n="settingsHideHandsPanel">Приховати блок «Показати стрілки»</span><input type="checkbox" id="handsPanelToggle"></label>
   </div>
 </div>
 
@@ -955,6 +960,23 @@
 // номер версії внизу сторінки, позначка «NEW» на кнопці «Що нового» та анонс
 // у вікні підказок — підхоплюється з цього списку автоматично.
 var RELEASES = [
+  {
+    version: "2.2", date: "20.09.2026",
+    announce: {
+      uk: "у ⚙ додано перемикач, щоб ховати блок «Показати стрілки».",
+      en: "added a toggle in ⚙ to hide the \"Show the hands\" block."
+    },
+    items: {
+      uk: [
+        "У налаштуваннях (⚙) додано галочку «Приховати блок «Показати стрілки»» — увімкнена галочка ховає весь цей блок (заголовок і три чекбокси стрілок) разом",
+        "Аналоговий циферблат зі стрілками завжди залишається видимим і не змінює розмір, незалежно від цього налаштування"
+      ],
+      en: [
+        "Added a \"Hide the 'Show the hands' block\" toggle in settings (⚙) — when checked, it hides that whole block (the heading and all three hand checkboxes) together",
+        "The analog clock face with the hands always stays visible and never changes size, regardless of this setting"
+      ]
+    }
+  },
   {
     version: "2.1", date: "20.09.2026",
     announce: {
@@ -1171,6 +1193,7 @@ var I18N = {
     settingsShowTips: "Показувати підказки при запуску",
     settingsNote: "Підказки — це вікно зі списком функцій годинника. Тапніть на нього, щоб закрити.",
     settingsShowNow: "📋 Показати підказки зараз",
+    settingsHideHandsPanel: "Приховати блок «Показати стрілки»",
     updatePrefix: "🆕 Оновлення",
     updateMore: "Докладніше",
     donateBtn: "☕ Підтримати проєкт",
@@ -1208,6 +1231,7 @@ var I18N = {
     settingsShowTips: "Show tips at startup",
     settingsNote: "The tips are a window listing the clock's functions. Tap it to close.",
     settingsShowNow: "📋 Show tips now",
+    settingsHideHandsPanel: "Hide the \"Show the hands\" block",
     updatePrefix: "🆕 Update",
     updateMore: "Details",
     donateBtn: "☕ Support the project",
@@ -1775,6 +1799,7 @@ if ('serviceWorker' in navigator) {
 // Підказки при запуску та налаштування (шестерня)
 (function(){
   const KEY = 'clockShowTips';        // '0' — підказки вимкнено; інакше — увімкнено
+  const HIDE_HANDS_PANEL_KEY = 'clockHideHandsPanel'; // '1' — блок «Показати стрілки» сховано; інакше — показано
   const AUTO_RELOAD_KEY = 'clockAutoReload'; // ставиться перед автоперезавантаженням після оновлення сайту
   const tipsOverlay = document.getElementById('tipsOverlay');
   const settingsOverlay = document.getElementById('settingsOverlay');
@@ -1782,12 +1807,22 @@ if ('serviceWorker' in navigator) {
   const settingsClose = document.getElementById('settingsClose');
   const tipsToggle = document.getElementById('tipsToggle');
   const tipsShowNow = document.getElementById('tipsShowNow');
+  const handsPanelToggle = document.getElementById('handsPanelToggle');
+  const handsSection = document.getElementById('handsSection');
 
   function tipsEnabled(){
     try{ return localStorage.getItem(KEY) !== '0'; }catch(e){ return true; }
   }
   function setTipsEnabled(on){
     try{ localStorage.setItem(KEY, on ? '1' : '0'); }catch(e){}
+  }
+
+  function handsPanelHidden(){
+    try{ return localStorage.getItem(HIDE_HANDS_PANEL_KEY) === '1'; }catch(e){ return false; }
+  }
+  function setHandsPanelHidden(hide){
+    try{ localStorage.setItem(HIDE_HANDS_PANEL_KEY, hide ? '1' : '0'); }catch(e){}
+    handsSection.classList.toggle('hidden', hide);
   }
 
   function openTips(){
@@ -1797,9 +1832,13 @@ if ('serviceWorker' in navigator) {
   function closeTips(){ tipsOverlay.classList.remove('open'); }
   function openSettings(){
     tipsToggle.checked = tipsEnabled();
+    handsPanelToggle.checked = handsPanelHidden();
     settingsOverlay.classList.add('open');
   }
   function closeSettings(){ settingsOverlay.classList.remove('open'); }
+
+  // Застосовуємо збережений стан одразу при завантаженні сторінки
+  setHandsPanelHidden(handsPanelHidden());
 
   // Тап у будь-якому місці вікна підказок закриває його
   tipsOverlay.addEventListener('click', closeTips);
@@ -1811,6 +1850,9 @@ if ('serviceWorker' in navigator) {
   });
   tipsToggle.addEventListener('change', function(){
     setTipsEnabled(tipsToggle.checked);
+  });
+  handsPanelToggle.addEventListener('change', function(){
+    setHandsPanelHidden(handsPanelToggle.checked);
   });
   tipsShowNow.addEventListener('click', function(){
     closeSettings();
