@@ -1,5 +1,5 @@
 <!--
-  Навчальний годинник / Learning Clock — v2.8 (21.09.2026)
+  Навчальний годинник / Learning Clock — v2.9 (21.09.2026)
   Автор ідеї та вимог / Author: Anatolii Bondarenko, створено / created 17.09.2026
   © 2026 Anatolii Bondarenko. Ліцензія / License: CC BY-NC-ND 4.0
   https://creativecommons.org/licenses/by-nc-nd/4.0/
@@ -15,7 +15,7 @@
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://mranoven-coder.github.io/godynnyk/">
 <meta name="author" content="Anatolii Bondarenko">
-<meta name="version" content="2.8">
+<meta name="version" content="2.9">
 <meta name="google-site-verification" content="0kAWkHnkUetvqLp91TnaHS1QHfxsoHvwadKuok6HM8w" />
 <link rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">
 
@@ -74,7 +74,7 @@
   "image": "https://mranoven-coder.github.io/godynnyk/icons/og-image.png",
   "datePublished": "2026-09-17",
   "dateModified": "2026-09-21",
-  "softwareVersion": "2.8"
+  "softwareVersion": "2.9"
 }
 </script>
 
@@ -114,6 +114,27 @@
     color:#4a7fd6;
     font-size:1.8rem;
     margin:14px 0 4px;
+  }
+  .title-row{
+    display:flex;
+    justify-content:center;
+    align-items:baseline;
+    flex-wrap:wrap;
+    gap:0 10px;
+  }
+  .version-badge{
+    flex:none;
+    min-width:0;
+    min-height:24px;
+    padding:3px 10px;
+    font-size:0.8rem;
+    font-weight:normal;
+    color:#3d5a8a;
+    background:rgba(255,255,255,0.75);
+    border:1px solid #b7c6e0;
+    border-radius:999px;
+    cursor:pointer;
+    margin-bottom:4px;
   }
   .hint{
     text-align:center;
@@ -667,7 +688,10 @@
   <button type="button" data-lang="en" title="English">EN</button>
 </div>
 
-<h1 data-i18n="h1">🕒 Навчальний годинник</h1>
+<div class="title-row">
+  <h1 data-i18n="h1">🕒 Навчальний годинник</h1>
+  <button type="button" class="version-badge" id="versionBadge">v2.9</button>
+</div>
 <p class="hint" data-i18n="hint">Потягни стрілки пальцем або мишкою, щоб виставити свій час!</p>
 
 <div class="top-actions">
@@ -789,7 +813,7 @@
 </section>
 
 <p class="download-note" data-i18n-html="downloadNote">Файл можна відкрити офлайн у будь-якому браузері.<br>Автор: Anatolii Bondarenko, 17.09.2026</p>
-<p class="download-note copyright-note" data-i18n-html="copyright">© 2026 Anatolii Bondarenko · <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.uk" target="_blank" rel="noopener noreferrer">CC BY-NC-ND 4.0</a> · v2.8 · 21.09.2026</p>
+<p class="download-note copyright-note" data-i18n-html="copyright">© 2026 Anatolii Bondarenko · <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.uk" target="_blank" rel="noopener noreferrer">CC BY-NC-ND 4.0</a> · v2.9 · 21.09.2026</p>
 
 <div class="help-overlay" id="helpOverlay">
   <div class="help-card">
@@ -850,6 +874,7 @@
       <li>Можна встановити як окремий застосунок кнопкою «Встановити застосунок»: на Android і комп'ютері вона відкриває системне вікно встановлення, а якщо браузер його не дає (або на iPhone) — показує підказку, як встановити вручну. У вже встановленому застосунку кнопки немає.</li>
       <li>Після першого відкриття працює навіть без інтернету.</li>
       <li>Внизу сторінки є короткий розділ «Про годинник» із відповідями на поширені запитання.</li>
+      <li>Поруч із заголовком стоїть маленька мітка з номером версії (наприклад, v2.9): дотик до неї відкриває «Що нового».</li>
       <li>Вибір щодо підказок і те, яку версію ви вже переглянули, зберігаються в браузері пристрою; в анонімній вкладці чи після очищення даних сайту підказки знову вмикаються, а позначка NEW з'являється знову.</li>
     </ul>
 
@@ -913,6 +938,7 @@
       <li>Can be installed as a standalone app with the "Install app" button: on Android and desktop it opens the system install window, and if the browser does not provide one (or on iPhone) it shows instructions for installing manually. In an already installed app the button is not shown.</li>
       <li>After the first visit it works even without an internet connection.</li>
       <li>At the bottom of the page there is a short "About the clock" section with answers to common questions.</li>
+      <li>Next to the title there is a small badge with the version number (for example, v2.9): tapping it opens "What's new".</li>
       <li>Your choice about the tips and which version you have already viewed are saved in the device's browser; in a private tab or after clearing the site's data the tips are turned on again and the NEW mark appears again.</li>
     </ul>
 
@@ -1016,6 +1042,23 @@
 // позначка «NEW» на кнопці «Що нового» та анонс у вікні підказок — підхоплюється
 // з цього списку автоматично.
 var RELEASES = [
+  {
+    version: "2.9", date: "21.09.2026",
+    announce: {
+      uk: "поруч із заголовком тепер видно номер версії.",
+      en: "the version number is now shown next to the title."
+    },
+    items: {
+      uk: [
+        "Номер версії тепер показується поруч із заголовком маленькою міткою; дотик до неї відкриває «Що нового». Номер береться зі списку версій автоматично",
+        "Інструкцію оновлено: згадано мітку версії"
+      ],
+      en: [
+        "The version number is now shown next to the title as a small badge; tapping it opens \"What's new\". The number is taken from the list of releases automatically",
+        "Updated the guide: mentioned the version badge"
+      ]
+    }
+  },
   {
     version: "2.8", date: "21.09.2026",
     announce: {
@@ -1332,6 +1375,7 @@ var I18N = {
   uk: {
     title: "Навчальний годинник для дітей — тренажер часу",
     clockLabel: "Аналоговий годинник",
+    versionBadgeLabel: "Версія {v}. Відкрити «Що нового»",
     h1: "🕒 Навчальний годинник",
     hint: "Потягни стрілки пальцем або мишкою, щоб виставити свій час!",
     showHands: "👁 Показати стрілки",
@@ -1373,6 +1417,7 @@ var I18N = {
   en: {
     title: "Learning Clock for Kids — practice telling the time",
     clockLabel: "Analog clock",
+    versionBadgeLabel: "Version {v}. Open \"What's new\"",
     h1: "🕒 Learning Clock",
     hint: "Drag the hands with your finger or mouse to set your own time!",
     showHands: "👁 Show the hands",
@@ -1481,6 +1526,21 @@ document.querySelectorAll('.lang-switch button').forEach(function(b){
   });
   const metaVersion = document.querySelector('meta[name="version"]');
   if(metaVersion) metaVersion.setAttribute('content', APP_VERSION);
+
+  // Мітка версії поруч із заголовком: номер береться зі списку RELEASES, дотик відкриває «Що нового»
+  const versionBadge = document.getElementById('versionBadge');
+  if(versionBadge){
+    versionBadge.textContent = 'v' + APP_VERSION;
+    document.addEventListener('langchange', function(){
+      const label = t('versionBadgeLabel').replace('{v}', APP_VERSION);
+      versionBadge.setAttribute('aria-label', label);
+      versionBadge.setAttribute('title', label);
+    });
+    versionBadge.addEventListener('click', function(){
+      const changesBtnEl = document.getElementById('changesBtn');
+      if(changesBtnEl) changesBtnEl.click();
+    });
+  }
 
   // Структуровані дані (JSON-LD): версія й дата останнього оновлення беруться зі списку RELEASES
   try{

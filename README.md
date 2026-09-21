@@ -1,6 +1,6 @@
 # Навчальний годинник / Learning Clock
 
-**Версія / Version:** 2.8 (21.09.2026)
+**Версія / Version:** 2.9 (21.09.2026)
 **Онлайн / Live:** https://mranoven-coder.github.io/godynnyk/
 
 🇺🇦 Інтерактивний аналоговий годинник, який вчить дітей визначати час. Безкоштовно, працює офлайн у будь-якому браузері, можна встановити як застосунок на телефон.
@@ -18,6 +18,7 @@
 - Інструкція для батьків і вчителів обома мовами / Guide for parents and teachers in both languages
 - Підказки зі списком функцій при кожному відкритті чи оновленні сторінки (тап закриває) / Tips listing all functions on every open or refresh (tap to close)
 - Кнопка налаштувань ⚙: підказки при запуску, розмір годинника (100–175 %) та приховування блоку «Показати стрілки» / A ⚙ settings button: startup tips, clock size (100–175%) and hiding the "Show the hands" block
+- Мітка версії поруч із заголовком (дотик відкриває «Що нового») / A version badge next to the title (tap opens "What's new")
 - Розділ «Що нового» на сторінці; про нову версію повідомляє позначка «NEW» на кнопці та анонс у вікні підказок / "What's new" section on the page; a new version is announced by a "NEW" mark on the button and a notice in the tips window
 - Кнопка «Залишити побажання» відкриває анонімну форму для відгуків / "Send feedback" button opens an anonymous feedback form
 - Кнопка «Встановити застосунок»: системне вікно встановлення, а якщо браузер його не дає — підказка, як встановити вручну / "Install app" button: the system install window, or instructions for installing manually if the browser does not provide one
@@ -32,10 +33,10 @@ The "Send feedback" button on the page opens an anonymous form: we collect no na
 
 ## Для розробників / For maintainers
 
-Список версій `RELEASES` на початку `index.html` — єдине джерело для сторінки. Щоб випустити нову версію, додайте новий запис ПЕРШИМ (номер, дата, пункти змін і короткий анонс двома мовами). Автоматично підхоплюються: історія змін «Що нового», версія внизу сторінки, мета-тег версії, `softwareVersion` і `dateModified` у структурованих даних, позначка «NEW» та анонс.
+Список версій `RELEASES` на початку `index.html` — єдине джерело для сторінки. Щоб випустити нову версію, додайте новий запис ПЕРШИМ (номер, дата, пункти змін і короткий анонс двома мовами). Автоматично підхоплюються: історія змін «Що нового», версія внизу сторінки, мітка версії біля заголовка, мета-тег версії, `softwareVersion` і `dateModified` у структурованих даних, позначка «NEW» та анонс.
 Вручну треба оновити лише: коментар на початку файлу, запасні значення версії в HTML (мета-тег, нижній рядок, JSON-LD), `<lastmod>` у `sitemap.xml` і цей файл (версія й історія змін).
 
-The `RELEASES` list at the top of `index.html` is the single source for the page. To publish a new version, add a new entry FIRST (number, date, change items and a short announcement in both languages). Picked up automatically: the "What's new" changelog, the version at the bottom of the page, the version meta tag, `softwareVersion` and `dateModified` in the structured data, the "NEW" mark and the notice.
+The `RELEASES` list at the top of `index.html` is the single source for the page. To publish a new version, add a new entry FIRST (number, date, change items and a short announcement in both languages). Picked up automatically: the "What's new" changelog, the version at the bottom of the page, the version badge next to the title, the version meta tag, `softwareVersion` and `dateModified` in the structured data, the "NEW" mark and the notice.
 Only these need updating by hand: the comment at the top of the file, the fallback version values in the HTML (meta tag, footer, JSON-LD), `<lastmod>` in `sitemap.xml`, and this file (version and changelog).
 
 ## Ліцензія / License
@@ -43,6 +44,11 @@ Only these need updating by hand: the comment at the top of the file, the fallba
 © 2026 Anatolii Bondarenko. [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/) — повний текст у файлі [LICENSE](LICENSE) / full text in [LICENSE](LICENSE).
 
 ## Історія змін / Changelog
+
+### v2.9 — 21.09.2026
+
+- Номер версії тепер показується поруч із заголовком маленькою міткою; дотик до неї відкриває «Що нового». Номер береться зі списку версій автоматично / The version number is now shown next to the title as a small badge; tapping it opens "What's new". The number is taken from the list of releases automatically
+- Інструкцію оновлено: згадано мітку версії / Updated the guide: mentioned the version badge
 
 ### v2.8 — 21.09.2026
 
