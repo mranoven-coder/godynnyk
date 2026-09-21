@@ -1,5 +1,5 @@
 <!--
-  Навчальний годинник / Learning Clock — v2.91 (21.09.2026)
+  Навчальний годинник / Learning Clock — v2.93 (21.09.2026)
   Автор ідеї та вимог / Author: Anatolii Bondarenko, створено / created 17.09.2026
   © 2026 Anatolii Bondarenko. Ліцензія / License: CC BY-NC-ND 4.0
   https://creativecommons.org/licenses/by-nc-nd/4.0/
@@ -15,7 +15,7 @@
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://mranoven-coder.github.io/godynnyk/">
 <meta name="author" content="Anatolii Bondarenko">
-<meta name="version" content="2.91">
+<meta name="version" content="2.93">
 <meta name="google-site-verification" content="0kAWkHnkUetvqLp91TnaHS1QHfxsoHvwadKuok6HM8w" />
 <link rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">
 
@@ -74,7 +74,7 @@
   "image": "https://mranoven-coder.github.io/godynnyk/icons/og-image.png",
   "datePublished": "2026-09-17",
   "dateModified": "2026-09-21",
-  "softwareVersion": "2.91"
+  "softwareVersion": "2.93"
 }
 </script>
 
@@ -156,7 +156,7 @@
     align-items:center;
   }
   svg{
-    touch-action:none;
+    touch-action:manipulation;
     -webkit-user-select:none;
     user-select:none;
     max-width:min(88vw,420px);
@@ -172,7 +172,7 @@
     width:min(88vw, max(420px, min(calc(420px * var(--clock-scale)), 85vh)));
     max-width:none;
   }
-  .hand{cursor:grab;}
+  .hand{cursor:grab;touch-action:none;}
   .hand:active{cursor:grabbing;}
   .hit{
     stroke:rgba(0,0,0,0.001);
@@ -205,8 +205,11 @@
       -webkit-appearance:none;
       appearance:none;
       box-sizing:border-box;
-      width:12rem;
+      /* Ширина росте разом зі шрифтом (ch — ширина цифри «0» у шрифті поля), але не менше 12rem,
+         щоб цифри секунд не обрізались при більшому чи ширшому шрифті */
+      width:max(12rem, calc(9ch + 68px));
       max-width:100%;
+      font-variant-numeric:tabular-nums;
       min-height:3.2rem;
       padding:8px 46px 8px 14px;
       text-align:left;
@@ -691,7 +694,7 @@
 
 <div class="title-row">
   <h1 data-i18n="h1">🕒 Навчальний годинник</h1>
-  <button type="button" class="version-badge" id="versionBadge">v2.91</button>
+  <button type="button" class="version-badge" id="versionBadge">v2.93</button>
 </div>
 <p class="hint" data-i18n="hint">Потягни стрілки пальцем або мишкою, щоб виставити свій час!</p>
 
@@ -814,7 +817,7 @@
 </section>
 
 <p class="download-note" data-i18n-html="downloadNote">Файл можна відкрити офлайн у будь-якому браузері.<br>Автор: Anatolii Bondarenko, 17.09.2026</p>
-<p class="download-note copyright-note" data-i18n-html="copyright">© 2026 Anatolii Bondarenko · <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.uk" target="_blank" rel="noopener noreferrer">CC BY-NC-ND 4.0</a> · v2.91 · 21.09.2026</p>
+<p class="download-note copyright-note" data-i18n-html="copyright">© 2026 Anatolii Bondarenko · <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.uk" target="_blank" rel="noopener noreferrer">CC BY-NC-ND 4.0</a> · v2.93 · 21.09.2026</p>
 
 <div class="help-overlay" id="helpOverlay">
   <div class="help-card">
@@ -845,7 +848,7 @@
       <tr><td>Поточний час</td><td>Миттєво повертає годинник до реального часу й скидає налаштування</td></tr>
       <tr><td>Поле часу</td><td>Показує поточний час і дозволяє виставити його вручну з клавіатури або стрілочками. На телефоні й планшеті тап по полю відкриває системне вікно вибору часу</td></tr>
       <tr><td>Тягнення стрілок</td><td>Дитина бере пальцем/мишкою будь-яку стрілку і крутить — циферблат одразу показує новий час</td></tr>
-      <tr><td>Тап/клік по циферблату</td><td>Швидкий спосіб поставити на паузу чи запустити знову — те саме, що кнопка «Пауза», але без пошуку кнопки під час заняття (тап саме по порожній частині циферблата, не по стрілці)</td></tr>
+      <tr><td>Тап/клік по циферблату</td><td>Швидкий спосіб поставити на паузу чи запустити знову — те саме, що кнопка «Пауза», але без пошуку кнопки під час заняття (тап саме по порожній частині циферблата, не по стрілці). Проведення пальцем по порожній частині циферблата прокручує сторінку, а стрілки тягніть за самі стрілки</td></tr>
       <tr><td>Підказки при запуску</td><td>Під час відкриття годинника з'являється вікно з переліком усіх його функцій. Тапніть у будь-якому місці вікна, щоб закрити його. Вікно з'являється при кожному відкритті чи оновленні сторінки або застосунку</td></tr>
       <tr><td>Позначка «NEW» / анонс оновлення</td><td>Коли виходить нова версія, на кнопці «Що нового» з'являється червона позначка NEW, а у вікні підказок — короткий анонс. Позначка зникає, щойно ви відкриєте «Що нового». Тим, хто відкриває годинник уперше, позначка й анонс не показуються</td></tr>
       <tr><td>Кнопка ⚙ (налаштування)</td><td>На комп'ютері кнопка стоїть праворуч від «Поділитися», на телефоні й планшеті — у правому верхньому куті. Тут можна вимкнути або знову ввімкнути підказки при запуску, показати їх одразу, вибрати розмір годинника, увімкнути «Не вимикати екран», а також сховати блок «Показати стрілки» — щоб спростити екран для дитини (сам циферблат зі стрілками завжди залишається видимим)</td></tr>
@@ -876,7 +879,7 @@
       <li>Можна встановити як окремий застосунок кнопкою «Встановити застосунок»: на Android і комп'ютері вона відкриває системне вікно встановлення, а якщо браузер його не дає (або на iPhone) — показує підказку, як встановити вручну. У вже встановленому застосунку кнопки немає.</li>
       <li>Після першого відкриття працює навіть без інтернету.</li>
       <li>Внизу сторінки є короткий розділ «Про годинник» із відповідями на поширені запитання.</li>
-      <li>Поруч із заголовком стоїть маленька мітка з номером версії (наприклад, v2.91): дотик до неї відкриває «Що нового».</li>
+      <li>Поруч із заголовком стоїть маленька мітка з номером версії (наприклад, v2.93): дотик до неї відкриває «Що нового».</li>
       <li>Вибір щодо підказок і те, яку версію ви вже переглянули, зберігаються в браузері пристрою; в анонімній вкладці чи після очищення даних сайту підказки знову вмикаються, а позначка NEW з'являється знову.</li>
     </ul>
 
@@ -910,7 +913,7 @@
       <tr><td>Current time</td><td>Instantly returns the clock to the real time and resets the settings</td></tr>
       <tr><td>Time field</td><td>Shows the current time and lets you set it manually from the keyboard or the arrows. On a phone or tablet, tapping the field opens the system time picker</td></tr>
       <tr><td>Dragging the hands</td><td>The child grabs any hand with a finger or the mouse and turns it — the clock face immediately shows the new time</td></tr>
-      <tr><td>Tap/click on the clock face</td><td>A quick way to pause or resume — the same as the "Pause" button, but without hunting for it mid-lesson (tap the empty part of the face, not a hand)</td></tr>
+      <tr><td>Tap/click on the clock face</td><td>A quick way to pause or resume — the same as the "Pause" button, but without hunting for it mid-lesson (tap the empty part of the face, not a hand). Swiping over the empty part of the face scrolls the page; drag the hands by the hands themselves</td></tr>
       <tr><td>Tips at startup</td><td>When the clock opens, a window lists all of its functions. Tap anywhere on the window to close it. It appears every time the page or the app is opened or refreshed</td></tr>
       <tr><td>"NEW" mark / update notice</td><td>When a new version is released, a red NEW mark appears on the "What's new" button and a short notice in the tips window. The mark disappears as soon as you open "What's new". People opening the clock for the first time do not see the mark or the notice</td></tr>
       <tr><td>⚙ button (settings)</td><td>On a computer the button sits to the right of "Share"; on a phone or tablet it is in the top right corner. Here you can turn the startup tips off or on again, show them right away, choose the clock size, keep the screen on, and also hide the "Show the hands" block — to simplify the screen for a child (the clock face with the hands always stays visible)</td></tr>
@@ -941,7 +944,7 @@
       <li>Can be installed as a standalone app with the "Install app" button: on Android and desktop it opens the system install window, and if the browser does not provide one (or on iPhone) it shows instructions for installing manually. In an already installed app the button is not shown.</li>
       <li>After the first visit it works even without an internet connection.</li>
       <li>At the bottom of the page there is a short "About the clock" section with answers to common questions.</li>
-      <li>Next to the title there is a small badge with the version number (for example, v2.91): tapping it opens "What's new".</li>
+      <li>Next to the title there is a small badge with the version number (for example, v2.93): tapping it opens "What's new".</li>
       <li>Your choice about the tips and which version you have already viewed are saved in the device's browser; in a private tab or after clearing the site's data the tips are turned on again and the NEW mark appears again.</li>
     </ul>
 
@@ -1048,6 +1051,42 @@
 // позначка «NEW» на кнопці «Що нового» та анонс у вікні підказок — підхоплюється
 // з цього списку автоматично.
 var RELEASES = [
+  {
+    version: "2.93", date: "21.09.2026",
+    announce: {
+      uk: "виправлено обрізання цифр у полі часу на деяких телефонах.",
+      en: "fixed the digits being cut off in the time field on some phones."
+    },
+    items: {
+      uk: [
+        "Поле часу на телефонах і планшетах тепер розширюється разом зі шрифтом, тож цифри (зокрема секунди) більше не обрізаються при більшому чи ширшому шрифті",
+        "Цифри в полі часу мають однакову ширину, тому поле не «стрибає» під час ходу годинника"
+      ],
+      en: [
+        "The time field on phones and tablets now widens together with the font, so the digits (including the seconds) are no longer cut off with a larger or wider font",
+        "The digits in the time field have equal width, so the field does not \"jump\" while the clock runs"
+      ]
+    }
+  },
+  {
+    version: "2.92", date: "21.09.2026",
+    announce: {
+      uk: "по порожньому циферблату тепер можна прокручувати сторінку пальцем.",
+      en: "you can now scroll the page with your finger over the empty clock face."
+    },
+    items: {
+      uk: [
+        "Проведення пальцем по порожній частині циферблата тепер прокручує сторінку, як і на решті екрана; раніше весь циферблат «блокував» прокручування",
+        "Перетягування стрілок і тап по порожньому циферблату (пауза / старт) працюють, як і раніше",
+        "Інструкцію оновлено: описано прокручування над циферблатом"
+      ],
+      en: [
+        "Swiping a finger over the empty part of the clock face now scrolls the page like the rest of the screen; before, the whole clock face blocked scrolling",
+        "Dragging the hands and tapping the empty clock face (pause / start) work as before",
+        "Updated the guide: described scrolling over the clock face"
+      ]
+    }
+  },
   {
     version: "2.91", date: "21.09.2026",
     announce: {
@@ -1880,12 +1919,21 @@ applyLang(detectLang());
       dragging = null;
       activePointerId = null;
       lastTs = null;
+      // Після торкання стрілки на телефоні click може не прийти (жест погашено) — скидаємо прапорець самі,
+      // щоб перший тап по циферблату після перетягування не «з'їдався»
+      setTimeout(function(){ handWasTapped = false; }, 60);
     }
   }
 
   hourGroup.addEventListener('pointerdown', function(e){ startDrag('hour', e); });
   minuteGroup.addEventListener('pointerdown', function(e){ startDrag('minute', e); });
   secondGroup.addEventListener('pointerdown', function(e){ startDrag('second', e); });
+
+  // Торкання стрілки не має прокручувати сторінку, а решта циферблата прокручується як звичайно.
+  // (Окрім CSS touch-action на стрілках, гасимо жест ще й тут — це надійно працює в усіх браузерах.)
+  [hourGroup, minuteGroup, secondGroup].forEach(function(g){
+    g.addEventListener('touchstart', function(e){ e.preventDefault(); }, { passive:false });
+  });
 
   svg.addEventListener('pointermove', onPointerMove);
   window.addEventListener('pointerup', endDrag);

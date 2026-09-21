@@ -1,6 +1,6 @@
 # Навчальний годинник / Learning Clock
 
-**Версія / Version:** 2.91 (21.09.2026)
+**Версія / Version:** 2.93 (21.09.2026)
 **Онлайн / Live:** https://mranoven-coder.github.io/godynnyk/
 
 🇺🇦 Інтерактивний аналоговий годинник, який вчить дітей визначати час. Безкоштовно, працює офлайн у будь-якому браузері, можна встановити як застосунок на телефон.
@@ -44,6 +44,17 @@ Only these need updating by hand: the comment at the top of the file, the fallba
 © 2026 Anatolii Bondarenko. [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/) — повний текст у файлі [LICENSE](LICENSE) / full text in [LICENSE](LICENSE).
 
 ## Історія змін / Changelog
+
+### v2.93 — 21.09.2026
+
+- Поле часу на телефонах і планшетах тепер розширюється разом зі шрифтом, тож цифри (зокрема секунди) більше не обрізаються при більшому чи ширшому шрифті / The time field on phones and tablets now widens together with the font, so the digits (including the seconds) are no longer cut off with a larger or wider font
+- Цифри в полі часу мають однакову ширину, тому поле не «стрибає» під час ходу годинника / The digits in the time field have equal width, so the field does not "jump" while the clock runs
+
+### v2.92 — 21.09.2026
+
+- Проведення пальцем по порожній частині циферблата тепер прокручує сторінку, як і на решті екрана; раніше весь циферблат «блокував» прокручування / Swiping a finger over the empty part of the clock face now scrolls the page like the rest of the screen; before, the whole clock face blocked scrolling
+- Перетягування стрілок і тап по порожньому циферблату (пауза / старт) працюють, як і раніше / Dragging the hands and tapping the empty clock face (pause / start) work as before
+- Інструкцію оновлено: описано прокручування над циферблатом / Updated the guide: described scrolling over the clock face
 
 ### v2.91 — 21.09.2026
 
