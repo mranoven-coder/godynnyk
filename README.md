@@ -1,6 +1,6 @@
 # Навчальний годинник / Learning Clock
 
-**Версія / Version:** 2.7 (20.09.2026)
+**Версія / Version:** 2.8 (21.09.2026)
 **Онлайн / Live:** https://mranoven-coder.github.io/godynnyk/
 
 🇺🇦 Інтерактивний аналоговий годинник, який вчить дітей визначати час. Безкоштовно, працює офлайн у будь-якому браузері, можна встановити як застосунок на телефон.
@@ -20,7 +20,7 @@
 - Кнопка налаштувань ⚙: підказки при запуску, розмір годинника (100–175 %) та приховування блоку «Показати стрілки» / A ⚙ settings button: startup tips, clock size (100–175%) and hiding the "Show the hands" block
 - Розділ «Що нового» на сторінці; про нову версію повідомляє позначка «NEW» на кнопці та анонс у вікні підказок / "What's new" section on the page; a new version is announced by a "NEW" mark on the button and a notice in the tips window
 - Кнопка «Залишити побажання» відкриває анонімну форму для відгуків / "Send feedback" button opens an anonymous feedback form
-- Кнопка «Встановити застосунок» (одним кліком на Android/комп'ютері, підказка для iPhone) / "Install app" button (one click on Android/desktop, instructions for iPhone)
+- Кнопка «Встановити застосунок»: системне вікно встановлення, а якщо браузер його не дає — підказка, як встановити вручну / "Install app" button: the system install window, or instructions for installing manually if the browser does not provide one
 - Доступність: достатня контрастність, керування спливаючими вікнами з клавіатури, масштабування жестом / Accessibility: sufficient contrast, keyboard-friendly pop-ups, pinch-to-zoom
 - Пошукова оптимізація (SEO): мета-теги, Open Graph, структуровані дані, canonical, `sitemap.xml`, короткий розділ «Про годинник» / Search engine optimization (SEO): meta tags, Open Graph, structured data, canonical, `sitemap.xml`, a short "About the clock" section
 
@@ -43,6 +43,12 @@ Only these need updating by hand: the comment at the top of the file, the fallba
 © 2026 Anatolii Bondarenko. [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/) — повний текст у файлі [LICENSE](LICENSE) / full text in [LICENSE](LICENSE).
 
 ## Історія змін / Changelog
+
+### v2.8 — 21.09.2026
+
+- Кнопка «Встановити застосунок» тепер завжди видима, доки годинник відкрито в браузері: якщо браузер дає системне вікно встановлення — вона відкриває його, якщо ні — показує підказку, як встановити вручну (Android, комп'ютер, iPhone) / The "Install app" button is now always visible while the clock is open in a browser: if the browser provides a system install window it opens it, otherwise it shows instructions for installing manually (Android, desktop, iPhone)
+- У вже встановленому застосунку кнопка, як і раніше, прихована / In an already installed app the button is still hidden
+- Інструкцію оновлено: описано нову поведінку кнопки / Updated the guide: described the button's new behavior
 
 ### v2.7 — 20.09.2026
 

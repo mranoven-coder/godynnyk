@@ -1,5 +1,5 @@
 <!--
-  Навчальний годинник / Learning Clock — v2.7 (20.09.2026)
+  Навчальний годинник / Learning Clock — v2.8 (21.09.2026)
   Автор ідеї та вимог / Author: Anatolii Bondarenko, створено / created 17.09.2026
   © 2026 Anatolii Bondarenko. Ліцензія / License: CC BY-NC-ND 4.0
   https://creativecommons.org/licenses/by-nc-nd/4.0/
@@ -15,7 +15,7 @@
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://mranoven-coder.github.io/godynnyk/">
 <meta name="author" content="Anatolii Bondarenko">
-<meta name="version" content="2.7">
+<meta name="version" content="2.8">
 <meta name="google-site-verification" content="0kAWkHnkUetvqLp91TnaHS1QHfxsoHvwadKuok6HM8w" />
 <link rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">
 
@@ -73,8 +73,8 @@
   "license": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
   "image": "https://mranoven-coder.github.io/godynnyk/icons/og-image.png",
   "datePublished": "2026-09-17",
-  "dateModified": "2026-09-20",
-  "softwareVersion": "2.7"
+  "dateModified": "2026-09-21",
+  "softwareVersion": "2.8"
 }
 </script>
 
@@ -789,7 +789,7 @@
 </section>
 
 <p class="download-note" data-i18n-html="downloadNote">Файл можна відкрити офлайн у будь-якому браузері.<br>Автор: Anatolii Bondarenko, 17.09.2026</p>
-<p class="download-note copyright-note" data-i18n-html="copyright">© 2026 Anatolii Bondarenko · <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.uk" target="_blank" rel="noopener noreferrer">CC BY-NC-ND 4.0</a> · v2.7 · 20.09.2026</p>
+<p class="download-note copyright-note" data-i18n-html="copyright">© 2026 Anatolii Bondarenko · <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.uk" target="_blank" rel="noopener noreferrer">CC BY-NC-ND 4.0</a> · v2.8 · 21.09.2026</p>
 
 <div class="help-overlay" id="helpOverlay">
   <div class="help-card">
@@ -847,7 +847,7 @@
     <h3>5. Технічні примітки</h3>
     <ul>
       <li>Працює в будь-якому сучасному браузері на комп'ютері, планшеті й телефоні.</li>
-      <li>Можна встановити як окремий застосунок кнопкою «Встановити застосунок» (Android, комп'ютер) — на iPhone вона покаже підказку через «Поділитися → На екран Домівки» в Safari.</li>
+      <li>Можна встановити як окремий застосунок кнопкою «Встановити застосунок»: на Android і комп'ютері вона відкриває системне вікно встановлення, а якщо браузер його не дає (або на iPhone) — показує підказку, як встановити вручну. У вже встановленому застосунку кнопки немає.</li>
       <li>Після першого відкриття працює навіть без інтернету.</li>
       <li>Внизу сторінки є короткий розділ «Про годинник» із відповідями на поширені запитання.</li>
       <li>Вибір щодо підказок і те, яку версію ви вже переглянули, зберігаються в браузері пристрою; в анонімній вкладці чи після очищення даних сайту підказки знову вмикаються, а позначка NEW з'являється знову.</li>
@@ -910,7 +910,7 @@
     <h3>5. Technical notes</h3>
     <ul>
       <li>Works in any modern browser on a computer, tablet or phone.</li>
-      <li>Can be installed as a standalone app with the "Install app" button (Android, desktop) — on iPhone it shows instructions via "Share → Add to Home Screen" in Safari.</li>
+      <li>Can be installed as a standalone app with the "Install app" button: on Android and desktop it opens the system install window, and if the browser does not provide one (or on iPhone) it shows instructions for installing manually. In an already installed app the button is not shown.</li>
       <li>After the first visit it works even without an internet connection.</li>
       <li>At the bottom of the page there is a short "About the clock" section with answers to common questions.</li>
       <li>Your choice about the tips and which version you have already viewed are saved in the device's browser; in a private tab or after clearing the site's data the tips are turned on again and the NEW mark appears again.</li>
@@ -1016,6 +1016,25 @@
 // позначка «NEW» на кнопці «Що нового» та анонс у вікні підказок — підхоплюється
 // з цього списку автоматично.
 var RELEASES = [
+  {
+    version: "2.8", date: "21.09.2026",
+    announce: {
+      uk: "кнопка «Встановити застосунок» тепер завжди на місці й підкаже, як встановити вручну.",
+      en: "the \"Install app\" button is now always there and tells you how to install manually."
+    },
+    items: {
+      uk: [
+        "Кнопка «Встановити застосунок» тепер завжди видима, доки годинник відкрито в браузері: якщо браузер дає системне вікно встановлення — вона відкриває його, якщо ні — показує підказку, як встановити вручну (Android, комп'ютер, iPhone)",
+        "У вже встановленому застосунку кнопка, як і раніше, прихована",
+        "Інструкцію оновлено: описано нову поведінку кнопки"
+      ],
+      en: [
+        "The \"Install app\" button is now always visible while the clock is open in a browser: if the browser provides a system install window it opens it, otherwise it shows instructions for installing manually (Android, desktop, iPhone)",
+        "In an already installed app the button is still hidden",
+        "Updated the guide: described the button's new behavior"
+      ]
+    }
+  },
   {
     version: "2.7", date: "20.09.2026",
     announce: {
@@ -1347,7 +1366,9 @@ var I18N = {
     shareText: "Навчальний годинник — безкоштовний інтерактивний тренажер, який вчить дітей визначати час!",
     close: "Закрити",
     installBtn: "📲 Встановити застосунок",
-    iosInstallText: "Щоб встановити застосунок на iPhone: натисніть кнопку «Поділитися» внизу екрана Safari, потім оберіть «На екран Домівки»."
+    iosInstallText: "Щоб встановити застосунок на iPhone: натисніть кнопку «Поділитися» внизу екрана Safari, потім оберіть «На екран Домівки».",
+    androidInstallText: "Щоб встановити застосунок: натисніть ⋮ у Chrome і виберіть «Встановити застосунок» (або «Додати на головний екран»). Якщо такого пункту немає, оновіть Chrome та відкрийте сайт ще раз.",
+    desktopInstallText: "Щоб встановити застосунок на комп'ютері: у Chrome чи Edge натисніть значок встановлення праворуч в адресному рядку або знайдіть у меню браузера пункт «Встановити застосунок». Якщо такого пункту немає, ваш браузер не підтримує встановлення."
   },
   en: {
     title: "Learning Clock for Kids — practice telling the time",
@@ -1386,7 +1407,9 @@ var I18N = {
     shareText: "Learning Clock — a free interactive tool that teaches kids to tell time!",
     close: "Close",
     installBtn: "📲 Install app",
-    iosInstallText: "To install on iPhone: tap the Share button in Safari, then choose \"Add to Home Screen\"."
+    iosInstallText: "To install on iPhone: tap the Share button in Safari, then choose \"Add to Home Screen\".",
+    androidInstallText: "To install the app: tap ⋮ in Chrome and choose \"Install app\" (or \"Add to Home screen\"). If there is no such item, update Chrome and open the site again.",
+    desktopInstallText: "To install the app on a computer: in Chrome or Edge, click the install icon on the right of the address bar or find \"Install app\" in the browser menu. If there is no such item, your browser does not support installing."
   }
 };
 
@@ -2078,8 +2101,10 @@ if ('serviceWorker' in navigator) {
   });
 })();
 
-// Кнопка «Встановити застосунок»: рідний диспетчер встановлення (Android/десктоп)
-// або підказка для iPhone, де браузер не дозволяє викликати це програмно.
+// Кнопка «Встановити застосунок»: завжди видима, поки годинник відкрито в браузері.
+// Якщо браузер дав системне вікно встановлення (beforeinstallprompt) — відкриваємо його;
+// якщо ні (iPhone, Firefox або Chrome ще не «дав добро») — показуємо коротку підказку,
+// як встановити вручну. У вже встановленому застосунку кнопка прихована.
 (function(){
   const installBtn = document.getElementById('installBtn');
   const iosOverlay = document.getElementById('iosInstallOverlay');
@@ -2097,40 +2122,56 @@ if ('serviceWorker' in navigator) {
     return /iphone|ipad|ipod/i.test(navigator.userAgent) && !window.MSStream;
   }
 
+  function isAndroid(){
+    return /android/i.test(navigator.userAgent);
+  }
+
+  function manualTextKey(){
+    if(isIos()) return 'iosInstallText';
+    if(isAndroid()) return 'androidInstallText';
+    return 'desktopInstallText';
+  }
+
+  function showManual(){
+    iosText.textContent = t(manualTextKey());
+    iosOverlay.classList.add('open');
+  }
+
+  iosClose.addEventListener('click', function(){ iosOverlay.classList.remove('open'); });
+  iosOverlay.addEventListener('click', function(e){
+    if(e.target === iosOverlay) iosOverlay.classList.remove('open');
+  });
+
   if(isStandalone()){
     // Застосунок уже встановлено (або відкрито як standalone) — кнопка не потрібна
-  } else if(isIos()){
-    // На iOS немає події beforeinstallprompt — показуємо кнопку одразу,
-    // а по кліку пояснюємо, як встановити вручну через Safari
-    installBtn.classList.add('visible');
-    installBtn.addEventListener('click', function(){
-      iosText.textContent = t('iosInstallText');
-      iosOverlay.classList.add('open');
-    });
-    iosClose.addEventListener('click', function(){ iosOverlay.classList.remove('open'); });
-    iosOverlay.addEventListener('click', function(e){
-      if(e.target === iosOverlay) iosOverlay.classList.remove('open');
-    });
-  } else {
-    // Android / десктопний Chrome, Edge тощо: чекаємо на подію готовності
-    window.addEventListener('beforeinstallprompt', function(e){
-      e.preventDefault();
-      deferredPrompt = e;
-      installBtn.classList.add('visible');
-    });
-    installBtn.addEventListener('click', function(){
-      if(!deferredPrompt) return;
-      deferredPrompt.prompt();
-      deferredPrompt.userChoice.finally(function(){
-        deferredPrompt = null;
-        installBtn.classList.remove('visible');
-      });
-    });
-    window.addEventListener('appinstalled', function(){
-      installBtn.classList.remove('visible');
-      deferredPrompt = null;
-    });
+    return;
   }
+
+  installBtn.classList.add('visible');
+
+  // Chrome, Edge та інші: запам'ятовуємо системне вікно встановлення, коли браузер його дає
+  window.addEventListener('beforeinstallprompt', function(e){
+    e.preventDefault();
+    deferredPrompt = e;
+  });
+
+  installBtn.addEventListener('click', function(){
+    if(deferredPrompt){
+      const promptEvent = deferredPrompt;
+      deferredPrompt = null;   // цю подію можна використати лише один раз
+      promptEvent.prompt();
+      promptEvent.userChoice.then(function(choice){
+        if(choice && choice.outcome === 'accepted') installBtn.classList.remove('visible');
+      }).catch(function(){});
+      return;
+    }
+    showManual();              // системного вікна немає — показуємо підказку
+  });
+
+  window.addEventListener('appinstalled', function(){
+    installBtn.classList.remove('visible');
+    deferredPrompt = null;
+  });
 })();
 
 // Доступність модальних вікон: Tab-пастка всередині вікна, закриття по Escape,
