@@ -1,5 +1,5 @@
 <!--
-  Навчальний годинник / Learning Clock — v2.9 (21.09.2026)
+  Навчальний годинник / Learning Clock — v2.91 (21.09.2026)
   Автор ідеї та вимог / Author: Anatolii Bondarenko, створено / created 17.09.2026
   © 2026 Anatolii Bondarenko. Ліцензія / License: CC BY-NC-ND 4.0
   https://creativecommons.org/licenses/by-nc-nd/4.0/
@@ -15,7 +15,7 @@
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://mranoven-coder.github.io/godynnyk/">
 <meta name="author" content="Anatolii Bondarenko">
-<meta name="version" content="2.9">
+<meta name="version" content="2.91">
 <meta name="google-site-verification" content="0kAWkHnkUetvqLp91TnaHS1QHfxsoHvwadKuok6HM8w" />
 <link rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">
 
@@ -74,7 +74,7 @@
   "image": "https://mranoven-coder.github.io/godynnyk/icons/og-image.png",
   "datePublished": "2026-09-17",
   "dateModified": "2026-09-21",
-  "softwareVersion": "2.9"
+  "softwareVersion": "2.91"
 }
 </script>
 
@@ -388,6 +388,7 @@
     color:#fff;
   }
   .settings-note{color:#6b6b6b;font-size:0.85rem;margin:6px 0 14px;}
+  .settings-row[hidden], .settings-note[hidden]{display:none;}
   .settings-action{
     display:block;
     width:100%;
@@ -690,7 +691,7 @@
 
 <div class="title-row">
   <h1 data-i18n="h1">🕒 Навчальний годинник</h1>
-  <button type="button" class="version-badge" id="versionBadge">v2.9</button>
+  <button type="button" class="version-badge" id="versionBadge">v2.91</button>
 </div>
 <p class="hint" data-i18n="hint">Потягни стрілки пальцем або мишкою, щоб виставити свій час!</p>
 
@@ -813,7 +814,7 @@
 </section>
 
 <p class="download-note" data-i18n-html="downloadNote">Файл можна відкрити офлайн у будь-якому браузері.<br>Автор: Anatolii Bondarenko, 17.09.2026</p>
-<p class="download-note copyright-note" data-i18n-html="copyright">© 2026 Anatolii Bondarenko · <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.uk" target="_blank" rel="noopener noreferrer">CC BY-NC-ND 4.0</a> · v2.9 · 21.09.2026</p>
+<p class="download-note copyright-note" data-i18n-html="copyright">© 2026 Anatolii Bondarenko · <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.uk" target="_blank" rel="noopener noreferrer">CC BY-NC-ND 4.0</a> · v2.91 · 21.09.2026</p>
 
 <div class="help-overlay" id="helpOverlay">
   <div class="help-card">
@@ -847,8 +848,9 @@
       <tr><td>Тап/клік по циферблату</td><td>Швидкий спосіб поставити на паузу чи запустити знову — те саме, що кнопка «Пауза», але без пошуку кнопки під час заняття (тап саме по порожній частині циферблата, не по стрілці)</td></tr>
       <tr><td>Підказки при запуску</td><td>Під час відкриття годинника з'являється вікно з переліком усіх його функцій. Тапніть у будь-якому місці вікна, щоб закрити його. Вікно з'являється при кожному відкритті чи оновленні сторінки або застосунку</td></tr>
       <tr><td>Позначка «NEW» / анонс оновлення</td><td>Коли виходить нова версія, на кнопці «Що нового» з'являється червона позначка NEW, а у вікні підказок — короткий анонс. Позначка зникає, щойно ви відкриєте «Що нового». Тим, хто відкриває годинник уперше, позначка й анонс не показуються</td></tr>
-      <tr><td>Кнопка ⚙ (налаштування)</td><td>На комп'ютері кнопка стоїть праворуч від «Поділитися», на телефоні й планшеті — у правому верхньому куті. Тут можна вимкнути або знову ввімкнути підказки при запуску, показати їх одразу, вибрати розмір годинника, а також сховати блок «Показати стрілки» — щоб спростити екран для дитини (сам циферблат зі стрілками завжди залишається видимим)</td></tr>
+      <tr><td>Кнопка ⚙ (налаштування)</td><td>На комп'ютері кнопка стоїть праворуч від «Поділитися», на телефоні й планшеті — у правому верхньому куті. Тут можна вимкнути або знову ввімкнути підказки при запуску, показати їх одразу, вибрати розмір годинника, увімкнути «Не вимикати екран», а також сховати блок «Показати стрілки» — щоб спростити екран для дитини (сам циферблат зі стрілками завжди залишається видимим)</td></tr>
       <tr><td>Розмір годинника (у ⚙)</td><td>Чотири кроки: 100 %, 125 %, 150 % і 175 %. Збільшується весь циферблат разом зі стрілками й цифрами — зручно для великого екрана чи проєктора. На вузьких екранах (телефон) розмір обмежено шириною екрана, а на невисоких — ще й висотою вікна. Вибір зберігається в браузері пристрою</td></tr>
+      <tr><td>Не вимикати екран (у ⚙)</td><td>Галочка не дає екрану телефона чи комп'ютера гаснути, поки годинник відкрито, — зручно, коли він стоїть на столі чи на проєкторі. Галочка знімається щоразу, коли годинник відкривають чи оновлюють. Якщо годинник згорнути, блокування тимчасово знімається й відновлюється, коли повернетесь. Працює в Chrome, Edge, Firefox (від версії 126) і Safari (у встановленому застосунку на iPhone — від iOS 18.4); якщо браузер не підтримує, галочки немає. Утримання екрана швидше розряджає батарею</td></tr>
     </table>
 
     <h3>3. Як користуватись покроково</h3>
@@ -874,7 +876,7 @@
       <li>Можна встановити як окремий застосунок кнопкою «Встановити застосунок»: на Android і комп'ютері вона відкриває системне вікно встановлення, а якщо браузер його не дає (або на iPhone) — показує підказку, як встановити вручну. У вже встановленому застосунку кнопки немає.</li>
       <li>Після першого відкриття працює навіть без інтернету.</li>
       <li>Внизу сторінки є короткий розділ «Про годинник» із відповідями на поширені запитання.</li>
-      <li>Поруч із заголовком стоїть маленька мітка з номером версії (наприклад, v2.9): дотик до неї відкриває «Що нового».</li>
+      <li>Поруч із заголовком стоїть маленька мітка з номером версії (наприклад, v2.91): дотик до неї відкриває «Що нового».</li>
       <li>Вибір щодо підказок і те, яку версію ви вже переглянули, зберігаються в браузері пристрою; в анонімній вкладці чи після очищення даних сайту підказки знову вмикаються, а позначка NEW з'являється знову.</li>
     </ul>
 
@@ -911,8 +913,9 @@
       <tr><td>Tap/click on the clock face</td><td>A quick way to pause or resume — the same as the "Pause" button, but without hunting for it mid-lesson (tap the empty part of the face, not a hand)</td></tr>
       <tr><td>Tips at startup</td><td>When the clock opens, a window lists all of its functions. Tap anywhere on the window to close it. It appears every time the page or the app is opened or refreshed</td></tr>
       <tr><td>"NEW" mark / update notice</td><td>When a new version is released, a red NEW mark appears on the "What's new" button and a short notice in the tips window. The mark disappears as soon as you open "What's new". People opening the clock for the first time do not see the mark or the notice</td></tr>
-      <tr><td>⚙ button (settings)</td><td>On a computer the button sits to the right of "Share"; on a phone or tablet it is in the top right corner. Here you can turn the startup tips off or on again, show them right away, choose the clock size, and also hide the "Show the hands" block — to simplify the screen for a child (the clock face with the hands always stays visible)</td></tr>
+      <tr><td>⚙ button (settings)</td><td>On a computer the button sits to the right of "Share"; on a phone or tablet it is in the top right corner. Here you can turn the startup tips off or on again, show them right away, choose the clock size, keep the screen on, and also hide the "Show the hands" block — to simplify the screen for a child (the clock face with the hands always stays visible)</td></tr>
       <tr><td>Clock size (in ⚙)</td><td>Four steps: 100%, 125%, 150% and 175%. The whole clock face grows together with the hands and numbers — handy for a big screen or a projector. On narrow screens (phones) the size is limited by the screen width, and on short screens also by the window height. Your choice is saved in the device's browser</td></tr>
+      <tr><td>Keep the screen on (in ⚙)</td><td>The checkbox stops the screen of a phone or computer from turning off while the clock is open — handy when it stands on a table or on a projector. The checkbox is cleared every time the clock is opened or refreshed. If the clock is minimized, the lock is released temporarily and comes back when you return. Works in Chrome, Edge, Firefox (from version 126) and Safari (in an installed app on iPhone — from iOS 18.4); if the browser does not support it, the checkbox is not shown. Keeping the screen on drains the battery faster</td></tr>
     </table>
 
     <h3>3. How to use it, step by step</h3>
@@ -938,7 +941,7 @@
       <li>Can be installed as a standalone app with the "Install app" button: on Android and desktop it opens the system install window, and if the browser does not provide one (or on iPhone) it shows instructions for installing manually. In an already installed app the button is not shown.</li>
       <li>After the first visit it works even without an internet connection.</li>
       <li>At the bottom of the page there is a short "About the clock" section with answers to common questions.</li>
-      <li>Next to the title there is a small badge with the version number (for example, v2.9): tapping it opens "What's new".</li>
+      <li>Next to the title there is a small badge with the version number (for example, v2.91): tapping it opens "What's new".</li>
       <li>Your choice about the tips and which version you have already viewed are saved in the device's browser; in a private tab or after clearing the site's data the tips are turned on again and the NEW mark appears again.</li>
     </ul>
 
@@ -991,7 +994,7 @@
       <li><b>«Назад»</b> — годинник іде у зворотний бік; натисніть ще раз, щоб знову йти вперед.</li>
       <li><b>«Поточний час»</b> — повертає реальний час і скидає налаштування.</li>
       <li><b>Поле часу</b> — його можна ввести вручну (на телефоні — у системному вікні вибору).</li>
-      <li><b>⚙</b> (на комп'ютері — праворуч від «Поділитися», на телефоні — у правому верхньому куті) — налаштування: підказки, розмір годинника, а також сховати блок «Показати стрілки» (годинник зі стрілками завжди лишається видимим).</li>
+      <li><b>⚙</b> (на комп'ютері — праворуч від «Поділитися», на телефоні — у правому верхньому куті) — налаштування: підказки, розмір годинника, «Не вимикати екран», а також сховати блок «Показати стрілки» (годинник зі стрілками завжди лишається видимим).</li>
     </ol>
     <p class="footer-note">Тапніть будь-де, щоб закрити.</p>
     </div>
@@ -1006,7 +1009,7 @@
       <li><b>"Backward"</b> — the clock runs the other way; press again to go forward.</li>
       <li><b>"Current time"</b> — returns to the real time and resets the settings.</li>
       <li><b>Time field</b> — you can type it in (on a phone, in the system picker).</li>
-      <li><b>⚙</b> (to the right of "Share" on a computer, in the top right corner on a phone) — settings: tips, clock size, plus hiding the "Show the hands" block (the clock with the hands always stays visible).</li>
+      <li><b>⚙</b> (to the right of "Share" on a computer, in the top right corner on a phone) — settings: tips, clock size, keeping the screen on, plus hiding the "Show the hands" block (the clock with the hands always stays visible).</li>
     </ol>
     <p class="footer-note">Tap anywhere to close.</p>
     </div>
@@ -1031,6 +1034,9 @@
       <button type="button" class="size-btn" data-size="1.75">175%</button>
     </div>
     <p class="settings-note" data-i18n="settingsSizeNote">Збільшується весь циферблат разом зі стрілками. На вузьких екранах (телефон) розмір обмежено шириною екрана.</p>
+
+    <label class="settings-row" id="wakeLockRow"><span data-i18n="settingsWakeLock">Не вимикати екран</span><input type="checkbox" id="wakeLockToggle" autocomplete="off"></label>
+    <p class="settings-note" id="wakeLockNote" data-i18n="settingsWakeLockNote">Поки галочка стоїть, екран не гасне. Вона знімається щоразу, коли годинник відкривають чи оновлюють. Це швидше розряджає батарею.</p>
   </div>
 </div>
 
@@ -1042,6 +1048,25 @@
 // позначка «NEW» на кнопці «Що нового» та анонс у вікні підказок — підхоплюється
 // з цього списку автоматично.
 var RELEASES = [
+  {
+    version: "2.91", date: "21.09.2026",
+    announce: {
+      uk: "у ⚙ з'явилась галочка «Не вимикати екран».",
+      en: "a \"Keep the screen on\" checkbox has appeared in ⚙."
+    },
+    items: {
+      uk: [
+        "У налаштуваннях (⚙) додано галочку «Не вимикати екран»: поки вона стоїть, екран телефона не гасне, а комп'ютер не вимикає екран (якщо браузер це підтримує)",
+        "Галочка знімається щоразу, коли годинник відкривають чи оновлюють, тож блокування не лишається ввімкненим випадково; якщо годинник згорнути, блокування відновиться, коли ви повернетесь",
+        "Інструкцію й підказки оновлено: описано нову галочку"
+      ],
+      en: [
+        "Added a \"Keep the screen on\" checkbox in settings (⚙): while it is ticked, a phone screen does not dim and a computer does not turn its display off (if the browser supports it)",
+        "The checkbox is cleared every time the clock is opened or refreshed, so the lock does not stay on by accident; if the clock is minimized, the lock comes back when you return",
+        "Updated the guide and the tips: described the new checkbox"
+      ]
+    }
+  },
   {
     version: "2.9", date: "21.09.2026",
     announce: {
@@ -1402,6 +1427,8 @@ var I18N = {
     settingsHideHandsPanel: "Приховати блок «Показати стрілки»",
     settingsClockSize: "Розмір годинника",
     settingsSizeNote: "Збільшується весь циферблат разом зі стрілками. На вузьких екранах (телефон) розмір обмежено шириною екрана.",
+    settingsWakeLock: "Не вимикати екран",
+    settingsWakeLockNote: "Поки галочка стоїть, екран не гасне. Вона знімається щоразу, коли годинник відкривають чи оновлюють. Це швидше розряджає батарею.",
     updatePrefix: "🆕 Оновлення",
     updateMore: "Докладніше",
     donateBtn: "☕ Підтримати проєкт",
@@ -1444,6 +1471,8 @@ var I18N = {
     settingsHideHandsPanel: "Hide the \"Show the hands\" block",
     settingsClockSize: "Clock size",
     settingsSizeNote: "The whole clock face grows together with the hands. On narrow screens (phones) the size is limited by the screen width.",
+    settingsWakeLock: "Keep the screen on",
+    settingsWakeLockNote: "While the box is ticked, the screen does not turn off. It is cleared every time the clock is opened or refreshed. This drains the battery faster.",
     updatePrefix: "🆕 Update",
     updateMore: "Details",
     donateBtn: "☕ Support the project",
@@ -2110,6 +2139,60 @@ if ('serviceWorker' in navigator) {
   if(tipsEnabled() && !autoReloaded){
     openTips();
   }
+})();
+
+// «Не вимикати екран» (Screen Wake Lock API): екран не гасне, поки годинник відкрито й галочка стоїть.
+// Галочка не запам'ятовується: при кожному відкритті чи оновленні сторінки вона знята.
+// Якщо годинник згорнули, браузер сам знімає блокування — воно відновлюється, коли повертаєтесь.
+(function(){
+  const row = document.getElementById('wakeLockRow');
+  const note = document.getElementById('wakeLockNote');
+  const toggle = document.getElementById('wakeLockToggle');
+  if(!row || !toggle) return;
+
+  if(!navigator.wakeLock || typeof navigator.wakeLock.request !== 'function'){
+    // Браузер не підтримує — ховаємо галочку, щоб не вводити в оману
+    row.hidden = true;
+    if(note) note.hidden = true;
+    return;
+  }
+
+  toggle.checked = false;   // на випадок, коли браузер відновив стан форми після оновлення
+  let sentinel = null;
+
+  async function acquire(){
+    try{
+      const lock = await navigator.wakeLock.request('screen');
+      if(!toggle.checked){          // за час запиту галочку вже зняли
+        lock.release().catch(function(){});
+        return;
+      }
+      sentinel = lock;
+      lock.addEventListener('release', function(){
+        if(sentinel === lock) sentinel = null;   // блокування зняв браузер (згорнули вкладку, економія батареї тощо)
+      });
+    }catch(e){
+      sentinel = null;
+      toggle.checked = false;       // браузер відмовив — не залишаємо галочку «вмиканою»
+    }
+  }
+
+  function release(){
+    if(sentinel){
+      const lock = sentinel;
+      sentinel = null;
+      lock.release().catch(function(){});
+    }
+  }
+
+  toggle.addEventListener('change', function(){
+    if(toggle.checked) acquire(); else release();
+  });
+
+  // Коли повертаємось до годинника — відновлюємо блокування, якщо галочка стоїть
+  document.addEventListener('visibilitychange', function(){
+    if(document.visibilityState === 'visible' && toggle.checked && !sentinel) acquire();
+  });
 })();
 
 // Кнопка «Поділитися»: рідне меню поширення (телефон) або копіювання посилання (десктоп)

@@ -1,6 +1,6 @@
 # Навчальний годинник / Learning Clock
 
-**Версія / Version:** 2.9 (21.09.2026)
+**Версія / Version:** 2.91 (21.09.2026)
 **Онлайн / Live:** https://mranoven-coder.github.io/godynnyk/
 
 🇺🇦 Інтерактивний аналоговий годинник, який вчить дітей визначати час. Безкоштовно, працює офлайн у будь-якому браузері, можна встановити як застосунок на телефон.
@@ -17,7 +17,7 @@
 - Українська та англійська мови (UA / EN) / Ukrainian and English (UA / EN)
 - Інструкція для батьків і вчителів обома мовами / Guide for parents and teachers in both languages
 - Підказки зі списком функцій при кожному відкритті чи оновленні сторінки (тап закриває) / Tips listing all functions on every open or refresh (tap to close)
-- Кнопка налаштувань ⚙: підказки при запуску, розмір годинника (100–175 %) та приховування блоку «Показати стрілки» / A ⚙ settings button: startup tips, clock size (100–175%) and hiding the "Show the hands" block
+- Кнопка налаштувань ⚙: підказки при запуску, розмір годинника (100–175 %), «Не вимикати екран» та приховування блоку «Показати стрілки» / A ⚙ settings button: startup tips, clock size (100–175%), keep-screen-on and hiding the "Show the hands" block
 - Мітка версії поруч із заголовком (дотик відкриває «Що нового») / A version badge next to the title (tap opens "What's new")
 - Розділ «Що нового» на сторінці; про нову версію повідомляє позначка «NEW» на кнопці та анонс у вікні підказок / "What's new" section on the page; a new version is announced by a "NEW" mark on the button and a notice in the tips window
 - Кнопка «Залишити побажання» відкриває анонімну форму для відгуків / "Send feedback" button opens an anonymous feedback form
@@ -44,6 +44,12 @@ Only these need updating by hand: the comment at the top of the file, the fallba
 © 2026 Anatolii Bondarenko. [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/) — повний текст у файлі [LICENSE](LICENSE) / full text in [LICENSE](LICENSE).
 
 ## Історія змін / Changelog
+
+### v2.91 — 21.09.2026
+
+- У налаштуваннях (⚙) додано галочку «Не вимикати екран»: поки вона стоїть, екран телефона не гасне, а комп'ютер не вимикає екран (якщо браузер це підтримує) / Added a "Keep the screen on" checkbox in settings (⚙): while it is ticked, a phone screen does not dim and a computer does not turn its display off (if the browser supports it)
+- Галочка знімається щоразу, коли годинник відкривають чи оновлюють, тож блокування не лишається ввімкненим випадково; якщо годинник згорнути, блокування відновиться, коли ви повернетесь / The checkbox is cleared every time the clock is opened or refreshed, so the lock does not stay on by accident; if the clock is minimized, the lock comes back when you return
+- Інструкцію й підказки оновлено: описано нову галочку / Updated the guide and the tips: described the new checkbox
 
 ### v2.9 — 21.09.2026
 
