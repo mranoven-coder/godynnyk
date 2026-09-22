@@ -1,6 +1,6 @@
 # Навчальний годинник / Learning Clock
 
-**Версія / Version:** 2.93 (21.09.2026)
+**Версія / Version:** 2.95 (22.09.2026)
 **Онлайн / Live:** https://mranoven-coder.github.io/godynnyk/
 
 🇺🇦 Інтерактивний аналоговий годинник, який вчить дітей визначати час. Безкоштовно, працює офлайн у будь-якому браузері, можна встановити як застосунок на телефон.
@@ -17,7 +17,7 @@
 - Українська та англійська мови (UA / EN) / Ukrainian and English (UA / EN)
 - Інструкція для батьків і вчителів обома мовами / Guide for parents and teachers in both languages
 - Підказки зі списком функцій при кожному відкритті чи оновленні сторінки (тап закриває) / Tips listing all functions on every open or refresh (tap to close)
-- Кнопка налаштувань ⚙: підказки при запуску, розмір годинника (100–175 %), «Не вимикати екран» та приховування блоку «Показати стрілки» / A ⚙ settings button: startup tips, clock size (100–175%), keep-screen-on and hiding the "Show the hands" block
+- Кнопка налаштувань ⚙: підказки при запуску, розмір годинника (100–175 %), розблокування руху пальцем, «Не вимикати екран» та приховування блоку «Показати стрілки» / A ⚙ settings button: startup tips, clock size (100–175%), finger-movement unlock, keep-screen-on and hiding the "Show the hands" block
 - Мітка версії поруч із заголовком (дотик відкриває «Що нового») / A version badge next to the title (tap opens "What's new")
 - Розділ «Що нового» на сторінці; про нову версію повідомляє позначка «NEW» на кнопці та анонс у вікні підказок / "What's new" section on the page; a new version is announced by a "NEW" mark on the button and a notice in the tips window
 - Кнопка «Залишити побажання» відкриває анонімну форму для відгуків / "Send feedback" button opens an anonymous feedback form
@@ -44,6 +44,17 @@ Only these need updating by hand: the comment at the top of the file, the fallba
 © 2026 Anatolii Bondarenko. [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/) — повний текст у файлі [LICENSE](LICENSE) / full text in [LICENSE](LICENSE).
 
 ## Історія змін / Changelog
+
+### v2.95 — 22.09.2026
+
+- Галочку в ⚙ перейменовано на «Розблокувати рух пальцем по годиннику» з простішим описом: за замовчуванням годинник заблокований від руху пальцем угору-вниз, галочка це розблоковує / Renamed the checkbox in ⚙ to "Unlock moving your finger over the clock" with a simpler description: by default the clock is locked against an up-and-down finger movement, the checkbox unlocks it
+- Поведінка галочки не змінилась — уточнено лише назву й текст / The checkbox's behavior has not changed — only the name and text were clarified
+
+### v2.94 — 21.09.2026
+
+- Повернено поведінку версії 2.91: за замовчуванням дотик до циферблата не гортає сторінку — так виставлений час не зіб'ється випадковим рухом пальця / Restored the behavior of version 2.91: by default, touching the clock face does not scroll the page — so the time you have set is not disturbed by an accidental swipe
+- У налаштуваннях (⚙) додано галочку «Розблокувати прокручування над годинником»: вмикає звичайне гортання пальцем над порожньою частиною циферблата, як у версії 2.92. Перетягування стрілок і тап по циферблату (пауза / старт) не залежать від цієї галочки / Added a "Unlock scrolling over the clock" checkbox in settings (⚙): turns on ordinary swipe-scrolling over the empty part of the face, like in version 2.92. Dragging the hands and tapping the clock face (pause / start) do not depend on this checkbox
+- Інструкцію оновлено: описано нову галочку / Updated the guide: described the new checkbox
 
 ### v2.93 — 21.09.2026
 

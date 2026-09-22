@@ -1,5 +1,5 @@
 <!--
-  Навчальний годинник / Learning Clock — v2.93 (21.09.2026)
+  Навчальний годинник / Learning Clock — v2.95 (22.09.2026)
   Автор ідеї та вимог / Author: Anatolii Bondarenko, створено / created 17.09.2026
   © 2026 Anatolii Bondarenko. Ліцензія / License: CC BY-NC-ND 4.0
   https://creativecommons.org/licenses/by-nc-nd/4.0/
@@ -15,7 +15,7 @@
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://mranoven-coder.github.io/godynnyk/">
 <meta name="author" content="Anatolii Bondarenko">
-<meta name="version" content="2.93">
+<meta name="version" content="2.95">
 <meta name="google-site-verification" content="0kAWkHnkUetvqLp91TnaHS1QHfxsoHvwadKuok6HM8w" />
 <link rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">
 
@@ -73,8 +73,8 @@
   "license": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
   "image": "https://mranoven-coder.github.io/godynnyk/icons/og-image.png",
   "datePublished": "2026-09-17",
-  "dateModified": "2026-09-21",
-  "softwareVersion": "2.93"
+  "dateModified": "2026-09-22",
+  "softwareVersion": "2.95"
 }
 </script>
 
@@ -156,7 +156,7 @@
     align-items:center;
   }
   svg{
-    touch-action:manipulation;
+    touch-action:none;
     -webkit-user-select:none;
     user-select:none;
     max-width:min(88vw,420px);
@@ -173,6 +173,7 @@
     max-width:none;
   }
   .hand{cursor:grab;touch-action:none;}
+  #clockSvg.scroll-unlocked{touch-action:manipulation;}
   .hand:active{cursor:grabbing;}
   .hit{
     stroke:rgba(0,0,0,0.001);
@@ -694,7 +695,7 @@
 
 <div class="title-row">
   <h1 data-i18n="h1">🕒 Навчальний годинник</h1>
-  <button type="button" class="version-badge" id="versionBadge">v2.93</button>
+  <button type="button" class="version-badge" id="versionBadge">v2.95</button>
 </div>
 <p class="hint" data-i18n="hint">Потягни стрілки пальцем або мишкою, щоб виставити свій час!</p>
 
@@ -817,7 +818,7 @@
 </section>
 
 <p class="download-note" data-i18n-html="downloadNote">Файл можна відкрити офлайн у будь-якому браузері.<br>Автор: Anatolii Bondarenko, 17.09.2026</p>
-<p class="download-note copyright-note" data-i18n-html="copyright">© 2026 Anatolii Bondarenko · <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.uk" target="_blank" rel="noopener noreferrer">CC BY-NC-ND 4.0</a> · v2.93 · 21.09.2026</p>
+<p class="download-note copyright-note" data-i18n-html="copyright">© 2026 Anatolii Bondarenko · <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.uk" target="_blank" rel="noopener noreferrer">CC BY-NC-ND 4.0</a> · v2.95 · 22.09.2026</p>
 
 <div class="help-overlay" id="helpOverlay">
   <div class="help-card">
@@ -848,11 +849,12 @@
       <tr><td>Поточний час</td><td>Миттєво повертає годинник до реального часу й скидає налаштування</td></tr>
       <tr><td>Поле часу</td><td>Показує поточний час і дозволяє виставити його вручну з клавіатури або стрілочками. На телефоні й планшеті тап по полю відкриває системне вікно вибору часу</td></tr>
       <tr><td>Тягнення стрілок</td><td>Дитина бере пальцем/мишкою будь-яку стрілку і крутить — циферблат одразу показує новий час</td></tr>
-      <tr><td>Тап/клік по циферблату</td><td>Швидкий спосіб поставити на паузу чи запустити знову — те саме, що кнопка «Пауза», але без пошуку кнопки під час заняття (тап саме по порожній частині циферблата, не по стрілці). Проведення пальцем по порожній частині циферблата прокручує сторінку, а стрілки тягніть за самі стрілки</td></tr>
+      <tr><td>Тап/клік по циферблату</td><td>Швидкий спосіб поставити на паузу чи запустити знову — те саме, що кнопка «Пауза», але без пошуку кнопки під час заняття (тап саме по порожній частині циферблата, не по стрілці). За замовчуванням дотик до циферблата не гортає сторінку — це можна змінити галочкою в ⚙</td></tr>
       <tr><td>Підказки при запуску</td><td>Під час відкриття годинника з'являється вікно з переліком усіх його функцій. Тапніть у будь-якому місці вікна, щоб закрити його. Вікно з'являється при кожному відкритті чи оновленні сторінки або застосунку</td></tr>
       <tr><td>Позначка «NEW» / анонс оновлення</td><td>Коли виходить нова версія, на кнопці «Що нового» з'являється червона позначка NEW, а у вікні підказок — короткий анонс. Позначка зникає, щойно ви відкриєте «Що нового». Тим, хто відкриває годинник уперше, позначка й анонс не показуються</td></tr>
-      <tr><td>Кнопка ⚙ (налаштування)</td><td>На комп'ютері кнопка стоїть праворуч від «Поділитися», на телефоні й планшеті — у правому верхньому куті. Тут можна вимкнути або знову ввімкнути підказки при запуску, показати їх одразу, вибрати розмір годинника, увімкнути «Не вимикати екран», а також сховати блок «Показати стрілки» — щоб спростити екран для дитини (сам циферблат зі стрілками завжди залишається видимим)</td></tr>
+      <tr><td>Кнопка ⚙ (налаштування)</td><td>На комп'ютері кнопка стоїть праворуч від «Поділитися», на телефоні й планшеті — у правому верхньому куті. Тут можна вимкнути або знову ввімкнути підказки при запуску, показати їх одразу, вибрати розмір годинника, розблокувати рух пальцем по годиннику, увімкнути «Не вимикати екран», а також сховати блок «Показати стрілки» — щоб спростити екран для дитини (сам циферблат зі стрілками завжди залишається видимим)</td></tr>
       <tr><td>Розмір годинника (у ⚙)</td><td>Чотири кроки: 100 %, 125 %, 150 % і 175 %. Збільшується весь циферблат разом зі стрілками й цифрами — зручно для великого екрана чи проєктора. На вузьких екранах (телефон) розмір обмежено шириною екрана, а на невисоких — ще й висотою вікна. Вибір зберігається в браузері пристрою</td></tr>
+      <tr><td>Розблокувати рух пальцем по годиннику (у ⚙)</td><td>За замовчуванням аналоговий годинник заблокований від руху пальцем угору-вниз: сторінка не гортається, поки палець на циферблаті — так виставлений час не зіб'ється випадковим рухом. Галочка розблоковує рух пальцем: сторінку можна гортати прямо на годиннику (стрілки, як і завжди, тягнуться за самі стрілки). Вибір зберігається в браузері пристрою</td></tr>
       <tr><td>Не вимикати екран (у ⚙)</td><td>Галочка не дає екрану телефона чи комп'ютера гаснути, поки годинник відкрито, — зручно, коли він стоїть на столі чи на проєкторі. Галочка знімається щоразу, коли годинник відкривають чи оновлюють. Якщо годинник згорнути, блокування тимчасово знімається й відновлюється, коли повернетесь. Працює в Chrome, Edge, Firefox (від версії 126) і Safari (у встановленому застосунку на iPhone — від iOS 18.4); якщо браузер не підтримує, галочки немає. Утримання екрана швидше розряджає батарею</td></tr>
     </table>
 
@@ -879,7 +881,7 @@
       <li>Можна встановити як окремий застосунок кнопкою «Встановити застосунок»: на Android і комп'ютері вона відкриває системне вікно встановлення, а якщо браузер його не дає (або на iPhone) — показує підказку, як встановити вручну. У вже встановленому застосунку кнопки немає.</li>
       <li>Після першого відкриття працює навіть без інтернету.</li>
       <li>Внизу сторінки є короткий розділ «Про годинник» із відповідями на поширені запитання.</li>
-      <li>Поруч із заголовком стоїть маленька мітка з номером версії (наприклад, v2.93): дотик до неї відкриває «Що нового».</li>
+      <li>Поруч із заголовком стоїть маленька мітка з номером версії (наприклад, v2.95): дотик до неї відкриває «Що нового».</li>
       <li>Вибір щодо підказок і те, яку версію ви вже переглянули, зберігаються в браузері пристрою; в анонімній вкладці чи після очищення даних сайту підказки знову вмикаються, а позначка NEW з'являється знову.</li>
     </ul>
 
@@ -913,11 +915,12 @@
       <tr><td>Current time</td><td>Instantly returns the clock to the real time and resets the settings</td></tr>
       <tr><td>Time field</td><td>Shows the current time and lets you set it manually from the keyboard or the arrows. On a phone or tablet, tapping the field opens the system time picker</td></tr>
       <tr><td>Dragging the hands</td><td>The child grabs any hand with a finger or the mouse and turns it — the clock face immediately shows the new time</td></tr>
-      <tr><td>Tap/click on the clock face</td><td>A quick way to pause or resume — the same as the "Pause" button, but without hunting for it mid-lesson (tap the empty part of the face, not a hand). Swiping over the empty part of the face scrolls the page; drag the hands by the hands themselves</td></tr>
+      <tr><td>Tap/click on the clock face</td><td>A quick way to pause or resume — the same as the "Pause" button, but without hunting for it mid-lesson (tap the empty part of the face, not a hand). By default, touching the clock face does not scroll the page — this can be changed with a checkbox in ⚙</td></tr>
       <tr><td>Tips at startup</td><td>When the clock opens, a window lists all of its functions. Tap anywhere on the window to close it. It appears every time the page or the app is opened or refreshed</td></tr>
       <tr><td>"NEW" mark / update notice</td><td>When a new version is released, a red NEW mark appears on the "What's new" button and a short notice in the tips window. The mark disappears as soon as you open "What's new". People opening the clock for the first time do not see the mark or the notice</td></tr>
-      <tr><td>⚙ button (settings)</td><td>On a computer the button sits to the right of "Share"; on a phone or tablet it is in the top right corner. Here you can turn the startup tips off or on again, show them right away, choose the clock size, keep the screen on, and also hide the "Show the hands" block — to simplify the screen for a child (the clock face with the hands always stays visible)</td></tr>
+      <tr><td>⚙ button (settings)</td><td>On a computer the button sits to the right of "Share"; on a phone or tablet it is in the top right corner. Here you can turn the startup tips off or on again, show them right away, choose the clock size, unlock finger movement over the clock, keep the screen on, and also hide the "Show the hands" block — to simplify the screen for a child (the clock face with the hands always stays visible)</td></tr>
       <tr><td>Clock size (in ⚙)</td><td>Four steps: 100%, 125%, 150% and 175%. The whole clock face grows together with the hands and numbers — handy for a big screen or a projector. On narrow screens (phones) the size is limited by the screen width, and on short screens also by the window height. Your choice is saved in the device's browser</td></tr>
+      <tr><td>Unlock moving your finger over the clock (in ⚙)</td><td>By default, the analog clock is locked against an up-and-down finger movement: the page does not scroll while your finger is on the clock face — so the time you have set is not disturbed by an accidental movement. This checkbox unlocks the finger movement: the page can be scrolled right on the clock (the hands are still dragged by the hands themselves). The choice is saved in the device's browser</td></tr>
       <tr><td>Keep the screen on (in ⚙)</td><td>The checkbox stops the screen of a phone or computer from turning off while the clock is open — handy when it stands on a table or on a projector. The checkbox is cleared every time the clock is opened or refreshed. If the clock is minimized, the lock is released temporarily and comes back when you return. Works in Chrome, Edge, Firefox (from version 126) and Safari (in an installed app on iPhone — from iOS 18.4); if the browser does not support it, the checkbox is not shown. Keeping the screen on drains the battery faster</td></tr>
     </table>
 
@@ -944,7 +947,7 @@
       <li>Can be installed as a standalone app with the "Install app" button: on Android and desktop it opens the system install window, and if the browser does not provide one (or on iPhone) it shows instructions for installing manually. In an already installed app the button is not shown.</li>
       <li>After the first visit it works even without an internet connection.</li>
       <li>At the bottom of the page there is a short "About the clock" section with answers to common questions.</li>
-      <li>Next to the title there is a small badge with the version number (for example, v2.93): tapping it opens "What's new".</li>
+      <li>Next to the title there is a small badge with the version number (for example, v2.95): tapping it opens "What's new".</li>
       <li>Your choice about the tips and which version you have already viewed are saved in the device's browser; in a private tab or after clearing the site's data the tips are turned on again and the NEW mark appears again.</li>
     </ul>
 
@@ -997,7 +1000,7 @@
       <li><b>«Назад»</b> — годинник іде у зворотний бік; натисніть ще раз, щоб знову йти вперед.</li>
       <li><b>«Поточний час»</b> — повертає реальний час і скидає налаштування.</li>
       <li><b>Поле часу</b> — його можна ввести вручну (на телефоні — у системному вікні вибору).</li>
-      <li><b>⚙</b> (на комп'ютері — праворуч від «Поділитися», на телефоні — у правому верхньому куті) — налаштування: підказки, розмір годинника, «Не вимикати екран», а також сховати блок «Показати стрілки» (годинник зі стрілками завжди лишається видимим).</li>
+      <li><b>⚙</b> (на комп'ютері — праворуч від «Поділитися», на телефоні — у правому верхньому куті) — налаштування: підказки, розмір годинника, розблокування руху пальцем, «Не вимикати екран», а також сховати блок «Показати стрілки» (годинник зі стрілками завжди лишається видимим).</li>
     </ol>
     <p class="footer-note">Тапніть будь-де, щоб закрити.</p>
     </div>
@@ -1012,7 +1015,7 @@
       <li><b>"Backward"</b> — the clock runs the other way; press again to go forward.</li>
       <li><b>"Current time"</b> — returns to the real time and resets the settings.</li>
       <li><b>Time field</b> — you can type it in (on a phone, in the system picker).</li>
-      <li><b>⚙</b> (to the right of "Share" on a computer, in the top right corner on a phone) — settings: tips, clock size, keeping the screen on, plus hiding the "Show the hands" block (the clock with the hands always stays visible).</li>
+      <li><b>⚙</b> (to the right of "Share" on a computer, in the top right corner on a phone) — settings: tips, clock size, unlocking finger movement over the clock, keeping the screen on, plus hiding the "Show the hands" block (the clock with the hands always stays visible).</li>
     </ol>
     <p class="footer-note">Tap anywhere to close.</p>
     </div>
@@ -1038,6 +1041,9 @@
     </div>
     <p class="settings-note" data-i18n="settingsSizeNote">Збільшується весь циферблат разом зі стрілками. На вузьких екранах (телефон) розмір обмежено шириною екрана.</p>
 
+    <label class="settings-row"><span data-i18n="settingsScrollUnlock">Розблокувати прокручування над годинником</span><input type="checkbox" id="scrollUnlockToggle"></label>
+    <p class="settings-note" data-i18n="settingsScrollUnlockNote">За замовчуванням дотик до циферблата належить лише годиннику й не гортає сторінку — зручно, коли годинник виставляють на конкретний час. Увімкніть, якщо хочете гортати сторінку пальцем просто над годинником.</p>
+
     <label class="settings-row" id="wakeLockRow"><span data-i18n="settingsWakeLock">Не вимикати екран</span><input type="checkbox" id="wakeLockToggle" autocomplete="off"></label>
     <p class="settings-note" id="wakeLockNote" data-i18n="settingsWakeLockNote">Поки галочка стоїть, екран не гасне. Вона знімається щоразу, коли годинник відкривають чи оновлюють. Це швидше розряджає батарею.</p>
   </div>
@@ -1051,6 +1057,42 @@
 // позначка «NEW» на кнопці «Що нового» та анонс у вікні підказок — підхоплюється
 // з цього списку автоматично.
 var RELEASES = [
+  {
+    version: "2.95", date: "22.09.2026",
+    announce: {
+      uk: "уточнено назву й опис галочки про рух пальцем по годиннику.",
+      en: "clarified the name and description of the finger-movement checkbox."
+    },
+    items: {
+      uk: [
+        "Галочку в ⚙ перейменовано на «Розблокувати рух пальцем по годиннику» з простішим описом: за замовчуванням годинник заблокований від руху пальцем угору-вниз, галочка це розблоковує",
+        "Поведінка галочки не змінилась — уточнено лише назву й текст"
+      ],
+      en: [
+        "Renamed the checkbox in ⚙ to \"Unlock moving your finger over the clock\" with a simpler description: by default the clock is locked against an up-and-down finger movement, the checkbox unlocks it",
+        "The checkbox's behavior has not changed — only the name and text were clarified"
+      ]
+    }
+  },
+  {
+    version: "2.94", date: "21.09.2026",
+    announce: {
+      uk: "у ⚙ можна розблокувати прокручування сторінки над годинником.",
+      en: "in ⚙ you can now unlock page scrolling over the clock."
+    },
+    items: {
+      uk: [
+        "Повернено поведінку версії 2.91: за замовчуванням дотик до циферблата не гортає сторінку — так виставлений час не зіб'ється випадковим рухом пальця",
+        "У налаштуваннях (⚙) додано галочку «Розблокувати прокручування над годинником»: вмикає звичайне гортання пальцем над порожньою частиною циферблата, як у версії 2.92. Перетягування стрілок і тап по циферблату (пауза / старт) не залежать від цієї галочки",
+        "Інструкцію оновлено: описано нову галочку"
+      ],
+      en: [
+        "Restored the behavior of version 2.91: by default, touching the clock face does not scroll the page — so the time you have set is not disturbed by an accidental swipe",
+        "Added a \"Unlock scrolling over the clock\" checkbox in settings (⚙): turns on ordinary swipe-scrolling over the empty part of the face, like in version 2.92. Dragging the hands and tapping the clock face (pause / start) do not depend on this checkbox",
+        "Updated the guide: described the new checkbox"
+      ]
+    }
+  },
   {
     version: "2.93", date: "21.09.2026",
     announce: {
@@ -1464,6 +1506,8 @@ var I18N = {
     settingsNote: "Підказки — це вікно зі списком функцій годинника. Тапніть на нього, щоб закрити.",
     settingsShowNow: "📋 Показати підказки зараз",
     settingsHideHandsPanel: "Приховати блок «Показати стрілки»",
+    settingsScrollUnlock: "Розблокувати рух пальцем по годиннику",
+    settingsScrollUnlockNote: "За замовчуванням аналоговий годинник заблокований від руху пальцем угору-вниз: сторінка не гортається, поки палець на циферблаті. Увімкніть цю галочку, щоб можна було гортати сторінку пальцем прямо на годиннику.",
     settingsClockSize: "Розмір годинника",
     settingsSizeNote: "Збільшується весь циферблат разом зі стрілками. На вузьких екранах (телефон) розмір обмежено шириною екрана.",
     settingsWakeLock: "Не вимикати екран",
@@ -1508,6 +1552,8 @@ var I18N = {
     settingsNote: "The tips are a window listing the clock's functions. Tap it to close.",
     settingsShowNow: "📋 Show tips now",
     settingsHideHandsPanel: "Hide the \"Show the hands\" block",
+    settingsScrollUnlock: "Unlock moving your finger over the clock",
+    settingsScrollUnlockNote: "By default, the analog clock is locked against an up-and-down finger movement: the page does not scroll while your finger is on the clock face. Turn on this checkbox to be able to scroll the page with your finger right on the clock.",
     settingsClockSize: "Clock size",
     settingsSizeNote: "The whole clock face grows together with the hands. On narrow screens (phones) the size is limited by the screen width.",
     settingsWakeLock: "Keep the screen on",
@@ -2094,6 +2140,9 @@ if ('serviceWorker' in navigator) {
   const tipsShowNow = document.getElementById('tipsShowNow');
   const handsPanelToggle = document.getElementById('handsPanelToggle');
   const handsSection = document.getElementById('handsSection');
+  const SCROLL_KEY = 'clockScrollUnlocked';
+  const scrollUnlockToggle = document.getElementById('scrollUnlockToggle');
+  const clockSvgEl = document.getElementById('clockSvg');
   const SIZE_KEY = 'clockSize';                  // масштаб годинника: 1, 1.25, 1.5 або 1.75
   const SIZES = [1, 1.25, 1.5, 1.75];
   const sizeButtons = Array.prototype.slice.call(document.querySelectorAll('.size-btn'));
@@ -2111,6 +2160,18 @@ if ('serviceWorker' in navigator) {
   function setHandsPanelHidden(hide){
     try{ localStorage.setItem(HIDE_HANDS_PANEL_KEY, hide ? '1' : '0'); }catch(e){}
     handsSection.classList.toggle('hidden', hide);
+  }
+
+  function scrollUnlocked(){
+    try{ return localStorage.getItem(SCROLL_KEY) === '1'; }catch(e){ return false; }
+  }
+  function applyScrollUnlock(on){
+    if(clockSvgEl) clockSvgEl.classList.toggle('scroll-unlocked', on);
+    if(scrollUnlockToggle) scrollUnlockToggle.checked = on;
+  }
+  function setScrollUnlock(on){
+    try{ localStorage.setItem(SCROLL_KEY, on ? '1' : '0'); }catch(e){}
+    applyScrollUnlock(on);
   }
 
   function getClockSize(){
@@ -2147,6 +2208,7 @@ if ('serviceWorker' in navigator) {
   // Застосовуємо збережений стан одразу при завантаженні сторінки
   setHandsPanelHidden(handsPanelHidden());
   applyClockSize(getClockSize());
+  applyScrollUnlock(scrollUnlocked());
 
   // Тап у будь-якому місці вікна підказок закриває його
   tipsOverlay.addEventListener('click', closeTips);
@@ -2167,6 +2229,11 @@ if ('serviceWorker' in navigator) {
       setClockSize(parseFloat(b.getAttribute('data-size')));
     });
   });
+  if(scrollUnlockToggle){
+    scrollUnlockToggle.addEventListener('change', function(){
+      setScrollUnlock(scrollUnlockToggle.checked);
+    });
+  }
   tipsShowNow.addEventListener('click', function(){
     closeSettings();
     openTips();
