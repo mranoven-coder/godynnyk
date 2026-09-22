@@ -1,6 +1,6 @@
 # Навчальний годинник / Learning Clock
 
-**Версія / Version:** 2.98 (22.09.2026)
+**Версія / Version:** 2.99 (22.09.2026)
 **Онлайн / Live:** https://mranoven-coder.github.io/godynnyk/
 
 🇺🇦 Інтерактивний аналоговий годинник, який вчить дітей визначати час. Безкоштовно, працює офлайн у будь-якому браузері, можна встановити як застосунок на телефон.
@@ -14,7 +14,7 @@
 - Показ і приховування стрілок, пауза, хід назад / Show or hide hands, pause, run backward
 - Швидкість ходу: повзунок і вибір максимуму x300 / x600 / x1200 / Clock speed: slider with a maximum of x300 / x600 / x1200
 - Поле для встановлення часу (на телефоні — системне вікно вибору, оформлене як на комп'ютері) / A field to set the time (on a phone — the system picker, styled like on a computer)
-- Українська, англійська й іспанська для основного інтерфейсу (UA / EN / ES); довгі розділи поки uk/en / Ukrainian, English and Spanish for the main interface (UA / EN / ES); long sections are uk/en for now
+- Українська, англійська й іспанська (UA / EN / ES): повний переклад інструкції; «Що нового» перекладено для версій 2.91–2.99, старіші версії показують англійську / Ukrainian, English and Spanish (UA / EN / ES): the guide is fully translated; "What's new" is translated for versions 2.91–2.99, older versions show in English
 - Інструкція для батьків і вчителів обома мовами / Guide for parents and teachers in both languages
 - Підказки зі списком функцій при кожному відкритті чи оновленні сторінки (тап закриває) / Tips listing all functions on every open or refresh (tap to close)
 - Кнопка налаштувань ⚙: підказки при запуску, розмір годинника (100–175 %), розблокування руху пальцем, «Не вимикати екран» та приховування блоку «Показати стрілки» / A ⚙ settings button: startup tips, clock size (100–175%), finger-movement unlock, keep-screen-on and hiding the "Show the hands" block
@@ -44,6 +44,11 @@ Only these need updating by hand: the comment at the top of the file, the fallba
 © 2026 Anatolii Bondarenko. [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/) — повний текст у файлі [LICENSE](LICENSE) / full text in [LICENSE](LICENSE).
 
 ## Історія змін / Changelog
+
+### v2.99 — 22.09.2026
+
+- Іспанською перекладено повну інструкцію для батьків і вчителів / Translated the full parent/teacher guide into Spanish
+- Іспанською перекладено записи «Що нового» для версій 2.91–2.99; старіші версії поки показуються англійською (працює автоматичний перехід на англійську, якщо перекладу ще немає) / Translated the "What's new" entries for versions 2.91–2.99 into Spanish; older versions still show in English (an automatic fallback to English kicks in wherever a translation isn't ready yet)
 
 ### v2.98 — 22.09.2026
 
