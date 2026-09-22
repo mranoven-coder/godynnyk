@@ -1,5 +1,5 @@
 <!--
-  Навчальний годинник / Learning Clock — v2.96 (22.09.2026)
+  Навчальний годинник / Learning Clock — v2.97 (22.09.2026)
   Автор ідеї та вимог / Author: Anatolii Bondarenko, створено / created 17.09.2026
   © 2026 Anatolii Bondarenko. Ліцензія / License: CC BY-NC-ND 4.0
   https://creativecommons.org/licenses/by-nc-nd/4.0/
@@ -15,7 +15,7 @@
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://mranoven-coder.github.io/godynnyk/">
 <meta name="author" content="Anatolii Bondarenko">
-<meta name="version" content="2.96">
+<meta name="version" content="2.97">
 <meta name="google-site-verification" content="0kAWkHnkUetvqLp91TnaHS1QHfxsoHvwadKuok6HM8w" />
 <link rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">
 
@@ -74,7 +74,7 @@
   "image": "https://mranoven-coder.github.io/godynnyk/icons/og-image.png",
   "datePublished": "2026-09-17",
   "dateModified": "2026-09-22",
-  "softwareVersion": "2.96"
+  "softwareVersion": "2.97"
 }
 </script>
 
@@ -711,14 +711,15 @@
 </head>
 <body>
 
-<div class="lang-switch" role="group" aria-label="Language / Мова">
+<div class="lang-switch" role="group" aria-label="Language / Мова / Idioma">
   <button type="button" data-lang="uk" title="Українська">UA</button>
   <button type="button" data-lang="en" title="English">EN</button>
+  <button type="button" data-lang="es" title="Español">ES</button>
 </div>
 
 <div class="title-row">
   <h1 data-i18n="h1">🕒 Навчальний годинник</h1>
-  <button type="button" class="version-badge" id="versionBadge">v2.96</button>
+  <button type="button" class="version-badge" id="versionBadge">v2.97</button>
 </div>
 <p class="hint" data-i18n="hint">Потягни стрілки пальцем або мишкою, щоб виставити свій час!</p>
 
@@ -841,7 +842,7 @@
 </section>
 
 <p class="download-note" data-i18n-html="downloadNote">Файл можна відкрити офлайн у будь-якому браузері.<br>Автор: Anatolii Bondarenko, 17.09.2026</p>
-<p class="download-note copyright-note" data-i18n-html="copyright">© 2026 Anatolii Bondarenko · <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.uk" target="_blank" rel="noopener noreferrer">CC BY-NC-ND 4.0</a> · v2.96 · 22.09.2026</p>
+<p class="download-note copyright-note" data-i18n-html="copyright">© 2026 Anatolii Bondarenko · <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.uk" target="_blank" rel="noopener noreferrer">CC BY-NC-ND 4.0</a> · v2.97 · 22.09.2026</p>
 
 <div class="help-overlay" id="helpOverlay">
   <div class="help-card">
@@ -905,7 +906,7 @@
       <li>Можна встановити як окремий застосунок кнопкою «Встановити застосунок»: на Android і комп'ютері вона відкриває системне вікно встановлення, а якщо браузер його не дає (або на iPhone) — показує підказку, як встановити вручну. У вже встановленому застосунку кнопки немає.</li>
       <li>Після першого відкриття працює навіть без інтернету.</li>
       <li>Внизу сторінки є короткий розділ «Про годинник» із відповідями на поширені запитання.</li>
-      <li>Поруч із заголовком стоїть маленька мітка з номером версії (наприклад, v2.96): дотик до неї відкриває «Що нового».</li>
+      <li>Поруч із заголовком стоїть маленька мітка з номером версії (наприклад, v2.97): дотик до неї відкриває «Що нового».</li>
       <li>Вибір щодо підказок і те, яку версію ви вже переглянули, зберігаються в браузері пристрою; в анонімній вкладці чи після очищення даних сайту підказки знову вмикаються, а позначка NEW з'являється знову.</li>
     </ul>
 
@@ -972,7 +973,7 @@
       <li>Can be installed as a standalone app with the "Install app" button: on Android and desktop it opens the system install window, and if the browser does not provide one (or on iPhone) it shows instructions for installing manually. In an already installed app the button is not shown.</li>
       <li>After the first visit it works even without an internet connection.</li>
       <li>At the bottom of the page there is a short "About the clock" section with answers to common questions.</li>
-      <li>Next to the title there is a small badge with the version number (for example, v2.96): tapping it opens "What's new".</li>
+      <li>Next to the title there is a small badge with the version number (for example, v2.97): tapping it opens "What's new".</li>
       <li>Your choice about the tips and which version you have already viewed are saved in the device's browser; in a private tab or after clearing the site's data the tips are turned on again and the NEW mark appears again.</li>
     </ul>
 
@@ -1106,6 +1107,23 @@
 // позначка «NEW» на кнопці «Що нового» та анонс у вікні підказок — підхоплюється
 // з цього списку автоматично.
 var RELEASES = [
+  {
+    version: "2.97", date: "22.09.2026",
+    announce: {
+      uk: "додано іспанську мову (ES) для основного інтерфейсу.",
+      en: "Spanish (ES) added for the main interface."
+    },
+    items: {
+      uk: [
+        "Додано перемикач ES: основний інтерфейс годинника (заголовок, кнопки, налаштування, підказка ⚙) тепер доступний іспанською",
+        "Довгі розділи — інструкція для батьків і вчителів, підказки при запуску, «Що нового», «Про годинник», вибір способу підтримки — поки показуються англійською, коли обрано ES; іспанський переклад цих розділів додамо окремим оновленням"
+      ],
+      en: [
+        "Added an ES switch: the clock's main interface (title, buttons, settings, ⚙ hint) is now available in Spanish",
+        "Long sections — the parent/teacher guide, startup tips, \"What's new\", \"About the clock\", the donation choice — still show in English when ES is selected; their Spanish translation will be added in a separate update"
+      ]
+    }
+  },
   {
     version: "2.96", date: "22.09.2026",
     announce: {
@@ -1635,12 +1653,63 @@ var I18N = {
     iosInstallText: "To install on iPhone: tap the Share button in Safari, then choose \"Add to Home Screen\".",
     androidInstallText: "To install the app: tap ⋮ in Chrome and choose \"Install app\" (or \"Add to Home screen\"). If there is no such item, update Chrome and open the site again.",
     desktopInstallText: "To install the app on a computer: in Chrome or Edge, click the install icon on the right of the address bar or find \"Install app\" in the browser menu. If there is no such item, your browser does not support installing."
+  },
+  es: {
+    title: "Reloj educativo para ni\u00f1os \u2014 entrenador de la hora",
+    clockLabel: "Reloj anal\u00f3gico",
+    versionBadgeLabel: "Versi\u00f3n {v}. Abrir \u00abNovedades\u00bb",
+    h1: "\ud83d\udd52 Reloj educativo",
+    hint: "\u00a1Arrastra las manecillas con el dedo o el rat\u00f3n para poner tu hora!",
+    showHands: "\ud83d\udc41 Mostrar manecillas",
+    hourHand: "Horario",
+    minuteHand: "Minutero",
+    secondHand: "Segundero",
+    speedTitle: "\u26a1 Velocidad",
+    realTime: "tiempo real",
+    pause: "\u23f8 Pausa",
+    start: "\u25b6 Iniciar",
+    back: "\u25c0 Atr\u00e1s",
+    forward: "\u25b6 Adelante",
+    now: "\ud83d\udd50 Hora actual",
+    downloadNote: "El archivo se puede abrir sin conexi\u00f3n en cualquier navegador.<br>Autor: Anatolii Bondarenko, 17.09.2026",
+    copyright: "\u00a9 2026 Anatolii Bondarenko \u00b7 <a href=\"https://creativecommons.org/licenses/by-nc-nd/4.0/deed.es\" target=\"_blank\" rel=\"noopener noreferrer\">CC BY-NC-ND 4.0</a> \u00b7 v" + APP_VERSION + " \u00b7 " + APP_DATE,
+    helpBtn: "\ud83d\udcd6 Gu\u00eda para padres y profesores",
+    wishBtn: "\ud83d\udc8c Dejar una sugerencia",
+    changesBtn: "\ud83c\udd95 Novedades",
+    settingsBtn: "Ajustes",
+    settingsTitle: "\u2699 Ajustes",
+    settingsShowTips: "Mostrar consejos al iniciar",
+    settingsNote: "Los consejos son una ventana con la lista de funciones del reloj. T\u00f3cala para cerrarla.",
+    settingsShowNow: "\ud83d\udccb Mostrar los consejos ahora",
+    settingsHideHandsPanel: "Ocultar el bloque \u00abMostrar manecillas\u00bb",
+    settingsScrollUnlock: "Desbloquear el movimiento del dedo sobre el reloj",
+    settingsScrollUnlockNote: "De forma predeterminada, el reloj anal\u00f3gico est\u00e1 bloqueado ante el movimiento del dedo hacia arriba y abajo: la p\u00e1gina no se desplaza mientras el dedo est\u00e1 sobre la esfera. Activa esta casilla para poder desplazar la p\u00e1gina con el dedo directamente sobre el reloj.",
+    settingsClockSize: "Tama\u00f1o del reloj",
+    settingsSizeNote: "Toda la esfera crece junto con las manecillas. En pantallas estrechas (tel\u00e9fono) el tama\u00f1o est\u00e1 limitado por el ancho de la pantalla.",
+    settingsWakeLock: "Mantener la pantalla encendida",
+    settingsWakeLockNote: "Mientras la casilla est\u00e9 marcada, la pantalla no se apaga. Se desmarca cada vez que se abre o actualiza el reloj. Esto consume la bater\u00eda m\u00e1s r\u00e1pido.",
+    updatePrefix: "\ud83c\udd95 Actualizaci\u00f3n",
+    updateMore: "M\u00e1s informaci\u00f3n",
+    donateBtn: "\u2615 Apoyar el proyecto",
+    inviteBtn: "\ud83d\udce4 Compartir",
+    linkCopied: "\u00a1Enlace copiado!",
+    shareText: "Reloj educativo \u2014 \u00a1un entrenador interactivo gratuito que ense\u00f1a a los ni\u00f1os a decir la hora!",
+    close: "Cerrar",
+    installBtn: "\ud83d\udcf2 Instalar la aplicaci\u00f3n",
+    iosInstallText: "Para instalar en iPhone: toca el bot\u00f3n \u00abCompartir\u00bb en la parte inferior de Safari y luego elige \u00abA\u00f1adir a pantalla de inicio\u00bb.",
+    androidInstallText: "Para instalar la aplicaci\u00f3n: toca \u22ee en Chrome y elige \u00abInstalar aplicaci\u00f3n\u00bb (o \u00abA\u00f1adir a pantalla de inicio\u00bb). Si no aparece esa opci\u00f3n, actualiza Chrome y vuelve a abrir el sitio.",
+    desktopInstallText: "Para instalar la aplicaci\u00f3n en un ordenador: en Chrome o Edge, pulsa el icono de instalaci\u00f3n a la derecha de la barra de direcciones, o busca \u00abInstalar aplicaci\u00f3n\u00bb en el men\u00fa del navegador. Si no existe esa opci\u00f3n, tu navegador no admite la instalaci\u00f3n."
   }
 };
 
 var LANG = 'uk';
 
-function t(key){ return I18N[LANG][key]; }
+function t(key){
+  var dict = I18N[LANG] || I18N.uk;
+  if(dict[key] !== undefined) return dict[key];
+  if(I18N.en[key] !== undefined) return I18N.en[key];
+  return I18N.uk[key];
+}
 
 function detectLang(){
   try{
@@ -1648,6 +1717,7 @@ function detectLang(){
     if(saved && I18N[saved]) return saved;
   }catch(e){}
   var nav = (navigator.language || 'uk').toLowerCase();
+  if(nav.indexOf('es') === 0) return 'es';
   return nav.indexOf('en') === 0 ? 'en' : 'uk';
 }
 
@@ -1669,8 +1739,24 @@ function applyLang(lang){
   document.querySelectorAll('[data-i18n-title]').forEach(function(el){
     el.setAttribute('title', t(el.getAttribute('data-i18n-title')));
   });
+  // Довгі розділи (інструкція, підказки, «Що нового», «Про годинник», вибір підтримки) поки
+  // перекладені лише на uk/en. Для мов без такого блоку в межах цього ж вікна показуємо
+  // англійський варіант, а не порожнє вікно.
+  var helpGroups = [];
   document.querySelectorAll('.help-body').forEach(function(el){
-    el.hidden = (el.getAttribute('data-lang') !== lang);
+    var parent = el.parentElement;
+    var entry = null;
+    for(var i = 0; i < helpGroups.length; i++){ if(helpGroups[i].parent === parent){ entry = helpGroups[i]; break; } }
+    if(!entry){ entry = { parent: parent, els: [] }; helpGroups.push(entry); }
+    entry.els.push(el);
+  });
+  helpGroups.forEach(function(group){
+    var hasLang = false;
+    for(var i = 0; i < group.els.length; i++){ if(group.els[i].getAttribute('data-lang') === lang){ hasLang = true; break; } }
+    var target = hasLang ? lang : 'en';
+    group.els.forEach(function(el){
+      el.hidden = (el.getAttribute('data-lang') !== target);
+    });
   });
   document.querySelectorAll('.lang-switch button').forEach(function(b){
     var on = b.getAttribute('data-lang') === lang;
