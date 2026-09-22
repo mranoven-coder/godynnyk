@@ -1,5 +1,5 @@
 <!--
-  Навчальний годинник / Learning Clock — v2.95 (22.09.2026)
+  Навчальний годинник / Learning Clock — v2.96 (22.09.2026)
   Автор ідеї та вимог / Author: Anatolii Bondarenko, створено / created 17.09.2026
   © 2026 Anatolii Bondarenko. Ліцензія / License: CC BY-NC-ND 4.0
   https://creativecommons.org/licenses/by-nc-nd/4.0/
@@ -15,7 +15,7 @@
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://mranoven-coder.github.io/godynnyk/">
 <meta name="author" content="Anatolii Bondarenko">
-<meta name="version" content="2.95">
+<meta name="version" content="2.96">
 <meta name="google-site-verification" content="0kAWkHnkUetvqLp91TnaHS1QHfxsoHvwadKuok6HM8w" />
 <link rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">
 
@@ -74,7 +74,7 @@
   "image": "https://mranoven-coder.github.io/godynnyk/icons/og-image.png",
   "datePublished": "2026-09-17",
   "dateModified": "2026-09-22",
-  "softwareVersion": "2.95"
+  "softwareVersion": "2.96"
 }
 </script>
 
@@ -511,6 +511,29 @@
   }
   .help-btn:active{transform:scale(0.97);}
 
+  .donate-options{max-width:380px;margin-top:40px;}
+  .donate-options h2{margin-top:0;}
+  .donate-links{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    margin-top:16px;
+  }
+  .donate-links a{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:14px 16px;
+    border-radius:14px;
+    color:#fff;
+    text-decoration:none;
+    font-weight:bold;
+    font-size:1.02rem;
+  }
+  .donate-links a:active{transform:scale(0.98);}
+  .donate-link-mono{background:linear-gradient(135deg,#000a3d,#1a2b6d);}
+  .donate-link-bmc{background:#ffdd00;color:#222 !important;}
+  .donate-link-kofi{background:#ff5f5f;}
   .donate-btn{
     display:inline-flex;
     align-items:center;
@@ -695,12 +718,12 @@
 
 <div class="title-row">
   <h1 data-i18n="h1">🕒 Навчальний годинник</h1>
-  <button type="button" class="version-badge" id="versionBadge">v2.95</button>
+  <button type="button" class="version-badge" id="versionBadge">v2.96</button>
 </div>
 <p class="hint" data-i18n="hint">Потягни стрілки пальцем або мишкою, щоб виставити свій час!</p>
 
 <div class="top-actions">
-  <a class="donate-btn" href="https://send.monobank.ua/jar/5gJoV4qc3n" target="_blank" rel="noopener noreferrer" data-i18n="donateBtn">☕ Підтримати проєкт</a>
+  <button type="button" class="donate-btn" id="donateBtn" data-i18n="donateBtn">☕ Підтримати проєкт</button>
   <button type="button" class="invite-btn" id="inviteBtn" data-i18n="inviteBtn">📤 Поділитися</button>
   <button type="button" class="gear-btn" id="gearBtn" aria-label="Налаштування" title="Налаштування" data-i18n-aria="settingsBtn" data-i18n-title="settingsBtn">⚙</button>
   <button type="button" class="install-btn" id="installBtn" data-i18n="installBtn">📲 Встановити застосунок</button>
@@ -818,7 +841,7 @@
 </section>
 
 <p class="download-note" data-i18n-html="downloadNote">Файл можна відкрити офлайн у будь-якому браузері.<br>Автор: Anatolii Bondarenko, 17.09.2026</p>
-<p class="download-note copyright-note" data-i18n-html="copyright">© 2026 Anatolii Bondarenko · <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.uk" target="_blank" rel="noopener noreferrer">CC BY-NC-ND 4.0</a> · v2.95 · 22.09.2026</p>
+<p class="download-note copyright-note" data-i18n-html="copyright">© 2026 Anatolii Bondarenko · <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.uk" target="_blank" rel="noopener noreferrer">CC BY-NC-ND 4.0</a> · v2.96 · 22.09.2026</p>
 
 <div class="help-overlay" id="helpOverlay">
   <div class="help-card">
@@ -843,6 +866,7 @@
       <tr><th>Елемент</th><th>Що робить</th></tr>
       <tr><td>Циферблат</td><td>Класичний круглий годинник із трьома стрілками: годинникова (чорна), хвилинна (синя), секундна (червона)</td></tr>
       <tr><td>Показати стрілки (3 галочки)</td><td>Вмикає/вимикає кожну стрілку окремо</td></tr>
+              <tr><td>Підтримати проєкт</td><td>Відкриває вікно вибору способу: банка monobank (гривня), Buy Me a Coffee або Ko-fi (картка, PayPal, долари/євро)</td></tr>
       <tr><td>Швидкість ходу (повзунок і галочки x300, x600, x1200)</td><td>Повзунок регулює, наскільки швидко рухаються стрілки: від x1 (реальний час) до вибраного максимуму. Галочки x300, x600 і x1200 задають цей максимум — найправіше положення повзунка. Активна завжди одна, за замовчуванням x300</td></tr>
       <tr><td>Пауза / Старт</td><td>Зупиняє й відновлює рух стрілок</td></tr>
       <tr><td>Назад</td><td>Перемикає напрямок ходу годинника — стрілки рухаються у зворотний бік</td></tr>
@@ -881,7 +905,7 @@
       <li>Можна встановити як окремий застосунок кнопкою «Встановити застосунок»: на Android і комп'ютері вона відкриває системне вікно встановлення, а якщо браузер його не дає (або на iPhone) — показує підказку, як встановити вручну. У вже встановленому застосунку кнопки немає.</li>
       <li>Після першого відкриття працює навіть без інтернету.</li>
       <li>Внизу сторінки є короткий розділ «Про годинник» із відповідями на поширені запитання.</li>
-      <li>Поруч із заголовком стоїть маленька мітка з номером версії (наприклад, v2.95): дотик до неї відкриває «Що нового».</li>
+      <li>Поруч із заголовком стоїть маленька мітка з номером версії (наприклад, v2.96): дотик до неї відкриває «Що нового».</li>
       <li>Вибір щодо підказок і те, яку версію ви вже переглянули, зберігаються в браузері пристрою; в анонімній вкладці чи після очищення даних сайту підказки знову вмикаються, а позначка NEW з'являється знову.</li>
     </ul>
 
@@ -909,6 +933,7 @@
       <tr><th>Element</th><th>What it does</th></tr>
       <tr><td>Clock face</td><td>A classic round clock with three hands: hour (black), minute (blue), second (red)</td></tr>
       <tr><td>Show the hands (3 checkboxes)</td><td>Turns each hand on or off separately</td></tr>
+              <tr><td>Support the project</td><td>Opens a window with the choice of a way to donate: monobank jar (UAH), Buy Me a Coffee, or Ko-fi (card, PayPal, USD/EUR)</td></tr>
       <tr><td>Clock speed (slider and the x300, x600, x1200 checkboxes)</td><td>The slider controls how fast the hands move: from x1 (real time) up to the selected maximum. The x300, x600 and x1200 checkboxes set that maximum — the far-right position of the slider. Exactly one is always active; x300 by default</td></tr>
       <tr><td>Pause / Start</td><td>Stops and resumes the movement of the hands</td></tr>
       <tr><td>Backward</td><td>Switches the direction of the clock — the hands move the other way</td></tr>
@@ -947,7 +972,7 @@
       <li>Can be installed as a standalone app with the "Install app" button: on Android and desktop it opens the system install window, and if the browser does not provide one (or on iPhone) it shows instructions for installing manually. In an already installed app the button is not shown.</li>
       <li>After the first visit it works even without an internet connection.</li>
       <li>At the bottom of the page there is a short "About the clock" section with answers to common questions.</li>
-      <li>Next to the title there is a small badge with the version number (for example, v2.95): tapping it opens "What's new".</li>
+      <li>Next to the title there is a small badge with the version number (for example, v2.96): tapping it opens "What's new".</li>
       <li>Your choice about the tips and which version you have already viewed are saved in the device's browser; in a private tab or after clearing the site's data the tips are turned on again and the NEW mark appears again.</li>
     </ul>
 
@@ -1022,6 +1047,30 @@
   </div>
 </div>
 
+<div class="help-overlay" id="donateOverlay" role="dialog" aria-modal="true">
+  <div class="help-card donate-options">
+    <button class="help-close" id="donateClose" type="button" aria-label="Закрити" data-i18n-aria="close">✕</button>
+    <div class="help-body" data-lang="uk">
+    <h2>Як підтримати проєкт</h2>
+    <p>Оберіть зручний спосіб — дякуємо за будь-яку підтримку!</p>
+    <div class="donate-links">
+      <a class="donate-link-mono" href="https://send.monobank.ua/jar/5gJoV4qc3n" target="_blank" rel="noopener noreferrer">💳 Банка monobank (гривня)</a>
+      <a class="donate-link-bmc" href="https://www.buymeacoffee.com/mranoven" target="_blank" rel="noopener noreferrer">☕ Buy Me a Coffee (USD / EUR, картка)</a>
+      <a class="donate-link-kofi" href="https://ko-fi.com/mranoven" target="_blank" rel="noopener noreferrer">❤️ Ko-fi (картка, PayPal)</a>
+    </div>
+    </div>
+    <div class="help-body" data-lang="en" hidden>
+    <h2>How to support the project</h2>
+    <p>Pick whichever way is convenient — thank you for any support!</p>
+    <div class="donate-links">
+      <a class="donate-link-mono" href="https://send.monobank.ua/jar/5gJoV4qc3n" target="_blank" rel="noopener noreferrer">💳 monobank jar (UAH)</a>
+      <a class="donate-link-bmc" href="https://www.buymeacoffee.com/mranoven" target="_blank" rel="noopener noreferrer">☕ Buy Me a Coffee (USD / EUR, card)</a>
+      <a class="donate-link-kofi" href="https://ko-fi.com/mranoven" target="_blank" rel="noopener noreferrer">❤️ Ko-fi (card, PayPal)</a>
+    </div>
+    </div>
+  </div>
+</div>
+
 <div class="help-overlay" id="settingsOverlay" role="dialog" aria-modal="true">
   <div class="help-card settings-card">
     <button class="help-close" id="settingsClose" type="button" aria-label="Закрити" data-i18n-aria="close">✕</button>
@@ -1057,6 +1106,23 @@
 // позначка «NEW» на кнопці «Що нового» та анонс у вікні підказок — підхоплюється
 // з цього списку автоматично.
 var RELEASES = [
+  {
+    version: "2.96", date: "22.09.2026",
+    announce: {
+      uk: "у «Підтримати проєкт» додано Buy Me a Coffee та Ko-fi.",
+      en: "\"Support the project\" now also offers Buy Me a Coffee and Ko-fi."
+    },
+    items: {
+      uk: [
+        "Кнопка «Підтримати проєкт» тепер відкриває вікно з вибором способу: банка monobank (гривня), Buy Me a Coffee або Ko-fi (картка, PayPal, долари/євро) — зручно для тих, хто підтримує проєкт з-за кордону",
+        "Інструкцію оновлено: описано нове вікно вибору"
+      ],
+      en: [
+        "The \"Support the project\" button now opens a window to choose a way to donate: monobank jar (UAH), Buy Me a Coffee, or Ko-fi (card, PayPal, USD/EUR) — handy for supporters abroad",
+        "Updated the guide: described the new choice window"
+      ]
+    }
+  },
   {
     version: "2.95", date: "22.09.2026",
     announce: {
@@ -2308,6 +2374,19 @@ if ('serviceWorker' in navigator) {
   document.addEventListener('visibilitychange', function(){
     if(document.visibilityState === 'visible' && toggle.checked && !sentinel) acquire();
   });
+})();
+
+// Кнопка «Підтримати проєкт»: відкриває вікно вибору способу (Monobank / Buy Me a Coffee / Ko-fi)
+  (function(){
+    const donateBtn = document.getElementById('donateBtn');
+    const donateOverlay = document.getElementById('donateOverlay');
+    const donateClose = document.getElementById('donateClose');
+    if(!donateBtn || !donateOverlay) return;
+    donateBtn.addEventListener('click', function(){ donateOverlay.classList.add('open'); });
+    donateClose.addEventListener('click', function(){ donateOverlay.classList.remove('open'); });
+    donateOverlay.addEventListener('click', function(e){
+      if(e.target === donateOverlay) donateOverlay.classList.remove('open');
+    });
 })();
 
 // Кнопка «Поділитися»: рідне меню поширення (телефон) або копіювання посилання (десктоп)

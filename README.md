@@ -1,6 +1,6 @@
 # Навчальний годинник / Learning Clock
 
-**Версія / Version:** 2.95 (22.09.2026)
+**Версія / Version:** 2.96 (22.09.2026)
 **Онлайн / Live:** https://mranoven-coder.github.io/godynnyk/
 
 🇺🇦 Інтерактивний аналоговий годинник, який вчить дітей визначати час. Безкоштовно, працює офлайн у будь-якому браузері, можна встановити як застосунок на телефон.
@@ -44,6 +44,11 @@ Only these need updating by hand: the comment at the top of the file, the fallba
 © 2026 Anatolii Bondarenko. [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/) — повний текст у файлі [LICENSE](LICENSE) / full text in [LICENSE](LICENSE).
 
 ## Історія змін / Changelog
+
+### v2.96 — 22.09.2026
+
+- Кнопка «Підтримати проєкт» тепер відкриває вікно з вибором способу: банка monobank (гривня), Buy Me a Coffee або Ko-fi (картка, PayPal, долари/євро) — зручно для тих, хто підтримує проєкт з-за кордону / The "Support the project" button now opens a window to choose a way to donate: monobank jar (UAH), Buy Me a Coffee, or Ko-fi (card, PayPal, USD/EUR) — handy for supporters abroad
+- Інструкцію оновлено: описано нове вікно вибору / Updated the guide: described the new choice window
 
 ### v2.95 — 22.09.2026
 
