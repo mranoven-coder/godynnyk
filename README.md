@@ -1,6 +1,6 @@
 # Навчальний годинник / Learning Clock
 
-**Версія / Version:** 2.99 (22.09.2026)
+**Версія / Version:** 3.00 (22.09.2026)
 **Онлайн / Live:** https://mranoven-coder.github.io/godynnyk/
 
 🇺🇦 Інтерактивний аналоговий годинник, який вчить дітей визначати час. Безкоштовно, працює офлайн у будь-якому браузері, можна встановити як застосунок на телефон.
@@ -14,7 +14,7 @@
 - Показ і приховування стрілок, пауза, хід назад / Show or hide hands, pause, run backward
 - Швидкість ходу: повзунок і вибір максимуму x300 / x600 / x1200 / Clock speed: slider with a maximum of x300 / x600 / x1200
 - Поле для встановлення часу (на телефоні — системне вікно вибору, оформлене як на комп'ютері) / A field to set the time (on a phone — the system picker, styled like on a computer)
-- Українська, англійська й іспанська (UA / EN / ES): повний переклад інструкції; «Що нового» перекладено для версій 2.91–2.99, старіші версії показують англійську / Ukrainian, English and Spanish (UA / EN / ES): the guide is fully translated; "What's new" is translated for versions 2.91–2.99, older versions show in English
+- Українська, англійська й іспанська (UA / EN / ES): повний переклад інтерфейсу, інструкції та всієї історії версій / Ukrainian, English and Spanish (UA / EN / ES): full translation of the interface, the guide, and the entire version history
 - Інструкція для батьків і вчителів обома мовами / Guide for parents and teachers in both languages
 - Підказки зі списком функцій при кожному відкритті чи оновленні сторінки (тап закриває) / Tips listing all functions on every open or refresh (tap to close)
 - Кнопка налаштувань ⚙: підказки при запуску, розмір годинника (100–175 %), розблокування руху пальцем, «Не вимикати екран» та приховування блоку «Показати стрілки» / A ⚙ settings button: startup tips, clock size (100–175%), finger-movement unlock, keep-screen-on and hiding the "Show the hands" block
@@ -44,6 +44,10 @@ Only these need updating by hand: the comment at the top of the file, the fallba
 © 2026 Anatolii Bondarenko. [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/) — повний текст у файлі [LICENSE](LICENSE) / full text in [LICENSE](LICENSE).
 
 ## Історія змін / Changelog
+
+### v3.00 — 22.09.2026
+
+- Іспанською перекладено всі записи «Що нового» для версій 1.0–2.9 (раніше було перекладено лише 2.91–2.99) — тепер уся історія версій доступна трьома мовами без фолбеку на англійську / Translated all remaining "What's new" entries for versions 1.0–2.9 into Spanish (previously only 2.91–2.99 were translated) — the entire version history is now available in all three languages with no English fallback
 
 ### v2.99 — 22.09.2026
 
