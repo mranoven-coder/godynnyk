@@ -1,5 +1,5 @@
 <!--
-  Навчальний годинник / Learning Clock — v3.00 (22.09.2026)
+  Навчальний годинник / Learning Clock — v3.01 (23.09.2026)
   Автор ідеї та вимог / Author: Anatolii Bondarenko, створено / created 17.09.2026
   © 2026 Anatolii Bondarenko. Ліцензія / License: CC BY-NC-ND 4.0
   https://creativecommons.org/licenses/by-nc-nd/4.0/
@@ -15,7 +15,7 @@
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://mranoven-coder.github.io/godynnyk/">
 <meta name="author" content="Anatolii Bondarenko">
-<meta name="version" content="3.00">
+<meta name="version" content="3.01">
 <meta name="google-site-verification" content="0kAWkHnkUetvqLp91TnaHS1QHfxsoHvwadKuok6HM8w" />
 <link rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">
 
@@ -73,8 +73,8 @@
   "license": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
   "image": "https://mranoven-coder.github.io/godynnyk/icons/og-image.png",
   "datePublished": "2026-09-17",
-  "dateModified": "2026-09-22",
-  "softwareVersion": "3.00"
+  "dateModified": "2026-09-23",
+  "softwareVersion": "3.01"
 }
 </script>
 
@@ -493,6 +493,47 @@
     box-shadow:0 3px 8px rgba(0,0,0,0.15);
   }
   .wish-btn:active{transform:scale(0.97);}
+  .alarm-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    flex:none;
+    min-width:0;
+    background:#0f9b8e;
+    color:#fff;
+    border:none;
+    border-radius:14px;
+    padding:12px 22px;
+    font-size:1rem;
+    font-family:inherit;
+    font-weight:bold;
+    cursor:pointer;
+    box-shadow:0 3px 8px rgba(0,0,0,0.15);
+  }
+  .alarm-btn:active{transform:scale(0.97);}
+  .alarm-card{max-width:380px;margin-top:70px;text-align:center;}
+  .alarm-card h2{margin-top:0;}
+  .alarm-target{
+    font-size:2.1rem;
+    font-weight:bold;
+    color:var(--accent);
+    margin:14px 0;
+  }
+  .alarm-actions{
+    display:flex;
+    gap:10px;
+    justify-content:center;
+    flex-wrap:wrap;
+    margin-top:6px;
+  }
+  .alarm-actions button{flex:none;min-width:0;}
+  .alarm-result{
+    font-weight:bold;
+    min-height:1.4em;
+    margin-top:14px;
+  }
+  .alarm-result.correct{color:#2e9e6b;}
+  .alarm-result.wrong{color:#c0392b;}
   .copyright-note{margin-top:6px;}
   .copyright-note a{color:inherit;}
   .help-btn{
@@ -719,7 +760,7 @@
 
 <div class="title-row">
   <h1 data-i18n="h1">🕒 Навчальний годинник</h1>
-  <button type="button" class="version-badge" id="versionBadge">v3.00</button>
+  <button type="button" class="version-badge" id="versionBadge">v3.01</button>
 </div>
 <p class="hint" data-i18n="hint">Потягни стрілки пальцем або мишкою, щоб виставити свій час!</p>
 
@@ -815,6 +856,7 @@
 <div class="bottom-actions">
   <button class="help-btn" id="helpBtn" type="button" data-i18n="helpBtn">📖 Інструкція для батьків і вчителів</button>
   <button class="changes-btn" id="changesBtn" type="button" data-i18n="changesBtn">🆕 Що нового</button>
+  <button class="alarm-btn" id="alarmBtn" type="button" data-i18n="alarmBtn">⏰ Гра «Постав час»</button>
   <a class="wish-btn" href="https://docs.google.com/forms/d/e/1FAIpQLSdpUctYqMgFYDeexBtYSZYDe41halHKpTlVKkmlFlIHuFTi4Q/viewform" target="_blank" rel="noopener noreferrer" data-i18n="wishBtn">💌 Залишити побажання</a>
 </div>
 
@@ -852,7 +894,7 @@
 </section>
 
 <p class="download-note" data-i18n-html="downloadNote">Файл можна відкрити офлайн у будь-якому браузері.<br>Автор: Anatolii Bondarenko, 17.09.2026</p>
-<p class="download-note copyright-note" data-i18n-html="copyright">© 2026 Anatolii Bondarenko · <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.uk" target="_blank" rel="noopener noreferrer">CC BY-NC-ND 4.0</a> · v3.00 · 22.09.2026</p>
+<p class="download-note copyright-note" data-i18n-html="copyright">© 2026 Anatolii Bondarenko · <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.uk" target="_blank" rel="noopener noreferrer">CC BY-NC-ND 4.0</a> · v3.01 · 23.09.2026</p>
 
 <div class="help-overlay" id="helpOverlay">
   <div class="help-card">
@@ -887,7 +929,8 @@
       <tr><td>Тап/клік по циферблату</td><td>Швидкий спосіб поставити на паузу чи запустити знову — те саме, що кнопка «Пауза», але без пошуку кнопки під час заняття (тап саме по порожній частині циферблата, не по стрілці). За замовчуванням дотик до циферблата не гортає сторінку — це можна змінити галочкою в ⚙</td></tr>
       <tr><td>Підказки при запуску</td><td>Під час відкриття годинника з'являється вікно з переліком усіх його функцій. Тапніть у будь-якому місці вікна, щоб закрити його. Вікно з'являється при кожному відкритті чи оновленні сторінки або застосунку</td></tr>
       <tr><td>Позначка «NEW» / анонс оновлення</td><td>Коли виходить нова версія, на кнопці «Що нового» з'являється червона позначка NEW, а у вікні підказок — короткий анонс. Позначка зникає, щойно ви відкриєте «Що нового». Тим, хто відкриває годинник уперше, позначка й анонс не показуються</td></tr>
-      <tr><td>Кнопка ⚙ (налаштування)</td><td>На комп'ютері кнопка стоїть праворуч від «Поділитися», на телефоні й планшеті — у правому верхньому куті. Тут можна вимкнути або знову ввімкнути підказки при запуску, показати їх одразу, вибрати розмір годинника, розблокувати рух пальцем по годиннику, увімкнути «Не вимикати екран», а також сховати блок «Показати стрілки» — щоб спростити екран для дитини (сам циферблат зі стрілками завжди залишається видимим)</td></tr>
+      <tr><td>Гра «Постав час»</td><td>Кнопка внизу сторінки. Показує випадковий час (наприклад, 08:00) — виставте його на годиннику стрілками або полем часу і натисніть «Перевірити». Правильна відповідь і підказка напрямку (вперед/назад) при помилці. Під час гри годинник автоматично на паузі; кнопка «Нове завдання» дає інший час без перевірки</td></tr>
+              <tr><td>Кнопка ⚙ (налаштування)</td><td>На комп'ютері кнопка стоїть праворуч від «Поділитися», на телефоні й планшеті — у правому верхньому куті. Тут можна вимкнути або знову ввімкнути підказки при запуску, показати їх одразу, вибрати розмір годинника, розблокувати рух пальцем по годиннику, увімкнути «Не вимикати екран», а також сховати блок «Показати стрілки» — щоб спростити екран для дитини (сам циферблат зі стрілками завжди залишається видимим)</td></tr>
       <tr><td>Розмір годинника (у ⚙)</td><td>Чотири кроки: 100 %, 125 %, 150 % і 175 %. Збільшується весь циферблат разом зі стрілками й цифрами — зручно для великого екрана чи проєктора. На вузьких екранах (телефон) розмір обмежено шириною екрана, а на невисоких — ще й висотою вікна. Вибір зберігається в браузері пристрою</td></tr>
       <tr><td>Розблокувати рух пальцем по годиннику (у ⚙)</td><td>За замовчуванням аналоговий годинник заблокований від руху пальцем угору-вниз: сторінка не гортається, поки палець на циферблаті — так виставлений час не зіб'ється випадковим рухом. Галочка розблоковує рух пальцем: сторінку можна гортати прямо на годиннику (стрілки, як і завжди, тягнуться за самі стрілки). Вибір зберігається в браузері пристрою</td></tr>
       <tr><td>Не вимикати екран (у ⚙)</td><td>Галочка не дає екрану телефона чи комп'ютера гаснути, поки годинник відкрито, — зручно, коли він стоїть на столі чи на проєкторі. Галочка знімається щоразу, коли годинник відкривають чи оновлюють. Якщо годинник згорнути, блокування тимчасово знімається й відновлюється, коли повернетесь. Працює в Chrome, Edge, Firefox (від версії 126) і Safari (у встановленому застосунку на iPhone — від iOS 18.4); якщо браузер не підтримує, галочки немає. Утримання екрана швидше розряджає батарею</td></tr>
@@ -916,7 +959,7 @@
       <li>Можна встановити як окремий застосунок кнопкою «Встановити застосунок»: на Android і комп'ютері вона відкриває системне вікно встановлення, а якщо браузер його не дає (або на iPhone) — показує підказку, як встановити вручну. У вже встановленому застосунку кнопки немає.</li>
       <li>Після першого відкриття працює навіть без інтернету.</li>
       <li>Внизу сторінки є короткий розділ «Про годинник» із відповідями на поширені запитання.</li>
-      <li>Поруч із заголовком стоїть маленька мітка з номером версії (наприклад, v3.00): дотик до неї відкриває «Що нового».</li>
+      <li>Поруч із заголовком стоїть маленька мітка з номером версії (наприклад, v3.01): дотик до неї відкриває «Що нового».</li>
       <li>Вибір щодо підказок і те, яку версію ви вже переглянули, зберігаються в браузері пристрою; в анонімній вкладці чи після очищення даних сайту підказки знову вмикаються, а позначка NEW з'являється знову.</li>
     </ul>
 
@@ -954,7 +997,8 @@
       <tr><td>Tap/click on the clock face</td><td>A quick way to pause or resume — the same as the "Pause" button, but without hunting for it mid-lesson (tap the empty part of the face, not a hand). By default, touching the clock face does not scroll the page — this can be changed with a checkbox in ⚙</td></tr>
       <tr><td>Tips at startup</td><td>When the clock opens, a window lists all of its functions. Tap anywhere on the window to close it. It appears every time the page or the app is opened or refreshed</td></tr>
       <tr><td>"NEW" mark / update notice</td><td>When a new version is released, a red NEW mark appears on the "What's new" button and a short notice in the tips window. The mark disappears as soon as you open "What's new". People opening the clock for the first time do not see the mark or the notice</td></tr>
-      <tr><td>⚙ button (settings)</td><td>On a computer the button sits to the right of "Share"; on a phone or tablet it is in the top right corner. Here you can turn the startup tips off or on again, show them right away, choose the clock size, unlock finger movement over the clock, keep the screen on, and also hide the "Show the hands" block — to simplify the screen for a child (the clock face with the hands always stays visible)</td></tr>
+      <tr><td>"Set the time" game</td><td>A button at the bottom of the page. Shows a random time (e.g. 08:00) — set the clock to it using the hands or the time field, then press "Check". Confirms correct answers and hints at the direction (forward/back) on a miss. The clock is auto-paused during the game; "New task" gives a different time without checking</td></tr>
+              <tr><td>⚙ button (settings)</td><td>On a computer the button sits to the right of "Share"; on a phone or tablet it is in the top right corner. Here you can turn the startup tips off or on again, show them right away, choose the clock size, unlock finger movement over the clock, keep the screen on, and also hide the "Show the hands" block — to simplify the screen for a child (the clock face with the hands always stays visible)</td></tr>
       <tr><td>Clock size (in ⚙)</td><td>Four steps: 100%, 125%, 150% and 175%. The whole clock face grows together with the hands and numbers — handy for a big screen or a projector. On narrow screens (phones) the size is limited by the screen width, and on short screens also by the window height. Your choice is saved in the device's browser</td></tr>
       <tr><td>Unlock moving your finger over the clock (in ⚙)</td><td>By default, the analog clock is locked against an up-and-down finger movement: the page does not scroll while your finger is on the clock face — so the time you have set is not disturbed by an accidental movement. This checkbox unlocks the finger movement: the page can be scrolled right on the clock (the hands are still dragged by the hands themselves). The choice is saved in the device's browser</td></tr>
       <tr><td>Keep the screen on (in ⚙)</td><td>The checkbox stops the screen of a phone or computer from turning off while the clock is open — handy when it stands on a table or on a projector. The checkbox is cleared every time the clock is opened or refreshed. If the clock is minimized, the lock is released temporarily and comes back when you return. Works in Chrome, Edge, Firefox (from version 126) and Safari (in an installed app on iPhone — from iOS 18.4); if the browser does not support it, the checkbox is not shown. Keeping the screen on drains the battery faster</td></tr>
@@ -983,7 +1027,7 @@
       <li>Can be installed as a standalone app with the "Install app" button: on Android and desktop it opens the system install window, and if the browser does not provide one (or on iPhone) it shows instructions for installing manually. In an already installed app the button is not shown.</li>
       <li>After the first visit it works even without an internet connection.</li>
       <li>At the bottom of the page there is a short "About the clock" section with answers to common questions.</li>
-      <li>Next to the title there is a small badge with the version number (for example, v3.00): tapping it opens "What's new".</li>
+      <li>Next to the title there is a small badge with the version number (for example, v3.01): tapping it opens "What's new".</li>
       <li>Your choice about the tips and which version you have already viewed are saved in the device's browser; in a private tab or after clearing the site's data the tips are turned on again and the NEW mark appears again.</li>
     </ul>
 
@@ -1021,7 +1065,8 @@
       <tr><td>Tocar/hacer clic en la esfera</td><td>Una forma rápida de pausar o reanudar — lo mismo que el botón «Pausa», pero sin tener que buscarlo durante la clase (toca la parte vacía de la esfera, no una manecilla). Por defecto, tocar la esfera no desplaza la página — esto se puede cambiar con una casilla en ⚙</td></tr>
       <tr><td>Consejos al iniciar</td><td>Al abrir el reloj aparece una ventana con la lista de todas sus funciones. Toca en cualquier lugar de la ventana para cerrarla. La ventana aparece cada vez que se abre o se actualiza la página o la aplicación</td></tr>
       <tr><td>Marca «NEW» / aviso de actualización</td><td>Cuando sale una versión nueva, aparece una marca roja NEW en el botón «Novedades» y un breve aviso en la ventana de consejos. La marca desaparece en cuanto abres «Novedades». A quienes abren el reloj por primera vez no se les muestra ni la marca ni el aviso</td></tr>
-      <tr><td>Botón ⚙ (ajustes)</td><td>En el ordenador, el botón está a la derecha de «Compartir»; en el teléfono o la tableta, en la esquina superior derecha. Aquí puedes desactivar o volver a activar los consejos al iniciar, mostrarlos de inmediato, elegir el tamaño del reloj, desbloquear el movimiento del dedo sobre el reloj, activar «Mantener la pantalla encendida», y también ocultar el bloque «Mostrar manecillas» — para simplificar la pantalla para un niño (la esfera con las manecillas siempre queda visible)</td></tr>
+      <tr><td>Juego «Pon la hora»</td><td>Un botón al final de la página. Muestra una hora al azar (por ejemplo, 08:00) — ponla en el reloj con las manecillas o el campo de hora y pulsa «Comprobar». Confirma las respuestas correctas y da una pista de dirección (adelante/atrás) si te equivocas. Durante el juego el reloj se pausa automáticamente; «Nueva tarea» da otra hora sin comprobar</td></tr>
+              <tr><td>Botón ⚙ (ajustes)</td><td>En el ordenador, el botón está a la derecha de «Compartir»; en el teléfono o la tableta, en la esquina superior derecha. Aquí puedes desactivar o volver a activar los consejos al iniciar, mostrarlos de inmediato, elegir el tamaño del reloj, desbloquear el movimiento del dedo sobre el reloj, activar «Mantener la pantalla encendida», y también ocultar el bloque «Mostrar manecillas» — para simplificar la pantalla para un niño (la esfera con las manecillas siempre queda visible)</td></tr>
       <tr><td>Tamaño del reloj (en ⚙)</td><td>Cuatro pasos: 100 %, 125 %, 150 % y 175 %. Toda la esfera crece junto con las manecillas y los números — útil para una pantalla grande o un proyector. En pantallas estrechas (teléfono) el tamaño está limitado por el ancho de la pantalla, y en pantallas bajas, también por la altura de la ventana. La elección se guarda en el navegador del dispositivo</td></tr>
       <tr><td>Desbloquear el movimiento del dedo sobre el reloj (en ⚙)</td><td>Por defecto, el reloj analógico está bloqueado ante el movimiento del dedo hacia arriba y abajo: la página no se desplaza mientras el dedo está sobre la esfera — así la hora que has puesto no se altera por un movimiento accidental. Esta casilla desbloquea el movimiento del dedo: se puede desplazar la página justo sobre el reloj (las manecillas se siguen arrastrando por sí mismas). La elección se guarda en el navegador del dispositivo</td></tr>
       <tr><td>Mantener la pantalla encendida (en ⚙)</td><td>Esta casilla evita que la pantalla del teléfono o del ordenador se apague mientras el reloj está abierto — útil cuando está sobre una mesa o en un proyector. La casilla se desmarca cada vez que se abre o se actualiza el reloj. Si se minimiza el reloj, el bloqueo se libera temporalmente y vuelve cuando regresas. Funciona en Chrome, Edge, Firefox (desde la versión 126) y Safari (en la aplicación instalada en iPhone, desde iOS 18.4); si el navegador no lo admite, la casilla no aparece. Mantener la pantalla encendida consume la batería más rápido</td></tr>
@@ -1050,7 +1095,7 @@
       <li>Se puede instalar como aplicación independiente con el botón «Instalar la aplicación»: en Android y en el ordenador abre la ventana de instalación del sistema, y si el navegador no la ofrece (o en iPhone) muestra instrucciones para instalarla a mano. En una aplicación ya instalada, el botón no aparece.</li>
       <li>Después de la primera visita funciona incluso sin conexión a internet.</li>
       <li>Al final de la página hay una breve sección «Sobre el reloj» con respuestas a preguntas frecuentes.</li>
-      <li>Junto al título hay una pequeña etiqueta con el número de versión (por ejemplo, v3.00): tocarla abre «Novedades».</li>
+      <li>Junto al título hay una pequeña etiqueta con el número de versión (por ejemplo, v3.01): tocarla abre «Novedades».</li>
       <li>La elección sobre los consejos y qué versión ya has visto se guardan en el navegador del dispositivo; en una pestaña privada o tras borrar los datos del sitio, los consejos se vuelven a activar y la marca NEW aparece de nuevo.</li>
     </ul>
 
@@ -1183,6 +1228,20 @@
   </div>
 </div>
 
+<div class="help-overlay" id="alarmOverlay" role="dialog" aria-modal="true">
+  <div class="help-card alarm-card">
+    <button class="help-close" id="alarmClose" type="button" aria-label="Закрити" data-i18n-aria="close">✕</button>
+    <h2 data-i18n="alarmTitle">⏰ Гра «Постав час»</h2>
+    <p data-i18n="alarmInstruction">Виставте на годиннику потрібний час і натисніть «Перевірити». Поки триває гра, годинник на паузі.</p>
+    <p class="alarm-target"><span data-i18n="alarmTargetLabel">Постав:</span> <b id="alarmTargetText">08:00</b></p>
+    <div class="alarm-actions">
+      <button type="button" class="pause-btn" id="alarmCheckBtn" data-i18n="alarmCheckBtn">✅ Перевірити</button>
+      <button type="button" class="reverse-btn" id="alarmNewBtn" data-i18n="alarmNewBtn">🔄 Нове завдання</button>
+    </div>
+    <p class="alarm-result" id="alarmResult" aria-live="polite"></p>
+  </div>
+</div>
+
 <div class="help-overlay" id="settingsOverlay" role="dialog" aria-modal="true">
   <div class="help-card settings-card">
     <button class="help-close" id="settingsClose" type="button" aria-label="Закрити" data-i18n-aria="close">✕</button>
@@ -1218,6 +1277,31 @@
 // позначка «NEW» на кнопці «Що нового» та анонс у вікні підказок — підхоплюється
 // з цього списку автоматично.
 var RELEASES = [
+  {
+    version: "3.01", date: "23.09.2026",
+    announce: {
+      uk: "нова навчальна гра «Постав час» — виставте заданий час і перевірте себе.",
+      en: "new learning game \"Set the time\" — set the requested time and check yourself.",
+      es: "nuevo juego educativo «Pon la hora» — pon la hora indicada y compru\u00e9balo."
+    },
+    items: {
+      uk: [
+        "Додано гру-нагадування «Постав час»: годинник показує випадковий час, дитина виставляє його стрілками чи полем часу і натискає «Перевірити» — гра підтверджує правильну відповідь або підказує напрямок (вперед/назад) при помилці",
+        "Гра не залежить від швидкості ходу: під час неї годинник автоматично стає на паузу, щоб виставлений час не «втікав»",
+        "Інструкцію оновлено: описано нову гру"
+      ],
+      en: [
+        "Added a \"Set the time\" reminder game: the clock shows a random time, the child sets it with the hands or the time field and presses \"Check\" — the game confirms a correct answer or hints at the direction (forward/back) on a miss",
+        "The game does not depend on the clock speed: it auto-pauses the clock while playing, so the time you set does not drift away",
+        "Updated the guide: described the new game"
+      ],
+      es: [
+        "Se a\u00f1adi\u00f3 el juego «Pon la hora»: el reloj muestra una hora al azar, el ni\u00f1o la pone con las manecillas o el campo de hora y pulsa «Comprobar» — el juego confirma la respuesta correcta o da una pista de direcci\u00f3n (adelante/atr\u00e1s) si se equivoca",
+        "El juego no depende de la velocidad del reloj: mientras se juega, el reloj se pausa autom\u00e1ticamente para que la hora puesta no cambie sola",
+        "Se actualiz\u00f3 la gu\u00eda: se describi\u00f3 el nuevo juego"
+      ]
+    }
+  },
   {
     version: "3.00", date: "22.09.2026",
     announce: {
@@ -1869,6 +1953,16 @@ var I18N = {
     helpBtn: "📖 Інструкція для батьків і вчителів",
     wishBtn: "💌 Залишити побажання",
     changesBtn: "🆕 Що нового",
+    alarmBtn: "⏰ Гра «Постав час»",
+    alarmTitle: "⏰ Гра «Постав час»",
+    alarmInstruction: "Виставте на годиннику потрібний час і натисніть «Перевірити». Поки триває гра, годинник на паузі.",
+    alarmTargetLabel: "Постав:",
+    alarmCheckBtn: "✅ Перевірити",
+    alarmNewBtn: "🔄 Нове завдання",
+    alarmCorrect: "Правильно! 🎉",
+    alarmWrong: "Ще не так.",
+    alarmHintForward: "Постав стрілки вперед ще на {n} хв.",
+    alarmHintBackward: "Постав стрілки назад на {n} хв.",
     settingsBtn: "Налаштування",
     settingsTitle: "⚙ Налаштування",
     settingsShowTips: "Показувати підказки при запуску",
@@ -1915,6 +2009,16 @@ var I18N = {
     helpBtn: "📖 Guide for parents and teachers",
     wishBtn: "💌 Send feedback",
     changesBtn: "🆕 What's new",
+    alarmBtn: "⏰ \"Set the time\" game",
+    alarmTitle: "⏰ \"Set the time\" game",
+    alarmInstruction: "Set the clock to the requested time and press \"Check\". While the game is on, the clock is paused.",
+    alarmTargetLabel: "Set to:",
+    alarmCheckBtn: "✅ Check",
+    alarmNewBtn: "🔄 New task",
+    alarmCorrect: "Correct! 🎉",
+    alarmWrong: "Not quite.",
+    alarmHintForward: "Move the hands forward {n} more min.",
+    alarmHintBackward: "Move the hands back {n} min.",
     settingsBtn: "Settings",
     settingsTitle: "⚙ Settings",
     settingsShowTips: "Show tips at startup",
@@ -1961,6 +2065,16 @@ var I18N = {
     helpBtn: "\ud83d\udcd6 Gu\u00eda para padres y profesores",
     wishBtn: "\ud83d\udc8c Dejar una sugerencia",
     changesBtn: "\ud83c\udd95 Novedades",
+    alarmBtn: "\u23f0 Juego \u00abPon la hora\u00bb",
+    alarmTitle: "\u23f0 Juego \u00abPon la hora\u00bb",
+    alarmInstruction: "Pon el reloj en la hora indicada y pulsa \u00abComprobar\u00bb. Mientras dure el juego, el reloj est\u00e1 en pausa.",
+    alarmTargetLabel: "Pon:",
+    alarmCheckBtn: "\u2705 Comprobar",
+    alarmNewBtn: "\ud83d\udd04 Nueva tarea",
+    alarmCorrect: "\u00a1Correcto! \ud83c\udf89",
+    alarmWrong: "Todav\u00eda no.",
+    alarmHintForward: "Adelanta las manecillas {n} min m\u00e1s.",
+    alarmHintBackward: "Atrasa las manecillas {n} min.",
     settingsBtn: "Ajustes",
     settingsTitle: "\u2699 Ajustes",
     settingsShowTips: "Mostrar consejos al iniciar",
@@ -2444,6 +2558,66 @@ applyLang(detectLang());
 
   updateButtons();
   render();
+
+  // Гра-нагадування «Постав час»: дитина виставляє на годиннику заданий час і перевіряє результат.
+  // Не залежить від швидкості ходу — під час гри годинник автоматично ставиться на паузу,
+  // щоб виставлений час не «втікав», поки дитина тягне стрілки чи вводить час у полі.
+  (function(){
+    const alarmBtn = document.getElementById('alarmBtn');
+    const alarmOverlay = document.getElementById('alarmOverlay');
+    const alarmClose = document.getElementById('alarmClose');
+    const alarmTargetText = document.getElementById('alarmTargetText');
+    const alarmCheckBtn = document.getElementById('alarmCheckBtn');
+    const alarmNewBtn = document.getElementById('alarmNewBtn');
+    const alarmResult = document.getElementById('alarmResult');
+    if(!alarmBtn || !alarmOverlay) return;
+
+    let targetH = 8, targetM = 0;   // 12-годинний формат (1-12), хвилини кратні 5
+
+    function newTarget(){
+      targetH = 1 + Math.floor(Math.random() * 12);   // 1..12
+      targetM = Math.floor(Math.random() * 12) * 5;    // 0,5,10,...,55
+      alarmTargetText.textContent = pad(targetH) + ':' + pad(targetM);
+      alarmResult.textContent = '';
+      alarmResult.className = 'alarm-result';
+    }
+
+    function openAlarm(){
+      if(!paused){
+        paused = true;
+        updateButtons();
+        pauseBtn.classList.toggle('playing', !paused);
+      }
+      newTarget();
+      alarmOverlay.classList.add('open');
+    }
+    function closeAlarm(){ alarmOverlay.classList.remove('open'); }
+
+    alarmBtn.addEventListener('click', openAlarm);
+    alarmClose.addEventListener('click', closeAlarm);
+    alarmOverlay.addEventListener('click', function(e){ if(e.target === alarmOverlay) closeAlarm(); });
+    alarmNewBtn.addEventListener('click', newTarget);
+
+    alarmCheckBtn.addEventListener('click', function(){
+      const h = simTime.getHours() % 12 || 12;   // 1..12 (опівночі/опівдні -> 12)
+      const m = simTime.getMinutes();
+      if(h === targetH && m === targetM){
+        alarmResult.textContent = t('alarmCorrect');
+        alarmResult.className = 'alarm-result correct';
+        return;
+      }
+      // Найкоротший шлях по колу 12-годинного циферблата (у хвилинах), щоб підказати напрямок
+      const cur = (h % 12) * 60 + m;
+      const tgt = (targetH % 12) * 60 + targetM;
+      let diff = tgt - cur;
+      if(diff > 360) diff -= 720; else if(diff < -360) diff += 720;
+      const absDiff = Math.abs(diff);
+      const hintKey = diff > 0 ? 'alarmHintForward' : 'alarmHintBackward';
+      alarmResult.textContent = t('alarmWrong') + ' ' + t(hintKey).replace('{n}', absDiff);
+      alarmResult.className = 'alarm-result wrong';
+    });
+  })();
+
 })();
 
 // Реєстрація Service Worker для офлайн-роботи (PWA)

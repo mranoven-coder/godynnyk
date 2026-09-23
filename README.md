@@ -1,6 +1,6 @@
 # Навчальний годинник / Learning Clock
 
-**Версія / Version:** 3.00 (22.09.2026)
+**Версія / Version:** 3.01 (23.09.2026)
 **Онлайн / Live:** https://mranoven-coder.github.io/godynnyk/
 
 🇺🇦 Інтерактивний аналоговий годинник, який вчить дітей визначати час. Безкоштовно, працює офлайн у будь-якому браузері, можна встановити як застосунок на телефон.
@@ -23,6 +23,7 @@
 - Кнопка «Залишити побажання» відкриває анонімну форму для відгуків / "Send feedback" button opens an anonymous feedback form
 - Кнопка «Встановити застосунок»: системне вікно встановлення, а якщо браузер його не дає — підказка, як встановити вручну / "Install app" button: the system install window, or instructions for installing manually if the browser does not provide one
 - Доступність: достатня контрастність, керування спливаючими вікнами з клавіатури, масштабування жестом / Accessibility: sufficient contrast, keyboard-friendly pop-ups, pinch-to-zoom
+- Навчальна гра «Постав час»: виставте заданий час і перевірте себе, з підказкою напрямку / Learning game "Set the time": set the requested time and check yourself, with a direction hint
 - Пошукова оптимізація (SEO): мета-теги, Open Graph, структуровані дані, canonical, `sitemap.xml`, короткий розділ «Про годинник» / Search engine optimization (SEO): meta tags, Open Graph, structured data, canonical, `sitemap.xml`, a short "About the clock" section
 
 ## Побажання та відповіді / Feedback and replies
@@ -44,6 +45,12 @@ Only these need updating by hand: the comment at the top of the file, the fallba
 © 2026 Anatolii Bondarenko. [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/) — повний текст у файлі [LICENSE](LICENSE) / full text in [LICENSE](LICENSE).
 
 ## Історія змін / Changelog
+
+### v3.01 — 23.09.2026
+
+- Додано гру-нагадування «Постав час»: годинник показує випадковий час, дитина виставляє його стрілками чи полем часу і натискає «Перевірити» — гра підтверджує правильну відповідь або підказує напрямок (вперед/назад) при помилці / Added a "Set the time" reminder game: the clock shows a random time, the child sets it with the hands or the time field and presses "Check" — the game confirms a correct answer or hints at the direction (forward/back) on a miss
+- Гра не залежить від швидкості ходу: під час неї годинник автоматично стає на паузу, щоб виставлений час не «втікав» / The game does not depend on the clock speed: it auto-pauses the clock while playing, so the time you set does not drift away
+- Інструкцію оновлено: описано нову гру / Updated the guide: described the new game
 
 ### v3.00 — 22.09.2026
 
