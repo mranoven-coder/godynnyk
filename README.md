@@ -1,6 +1,6 @@
 # Навчальний годинник / Learning Clock
 
-**Версія / Version:** 3.01 (23.09.2026)
+**Версія / Version:** 3.02 (24.09.2026)
 **Онлайн / Live:** https://mranoven-coder.github.io/godynnyk/
 
 🇺🇦 Інтерактивний аналоговий годинник, який вчить дітей визначати час. Безкоштовно, працює офлайн у будь-якому браузері, можна встановити як застосунок на телефон.
@@ -23,7 +23,6 @@
 - Кнопка «Залишити побажання» відкриває анонімну форму для відгуків / "Send feedback" button opens an anonymous feedback form
 - Кнопка «Встановити застосунок»: системне вікно встановлення, а якщо браузер його не дає — підказка, як встановити вручну / "Install app" button: the system install window, or instructions for installing manually if the browser does not provide one
 - Доступність: достатня контрастність, керування спливаючими вікнами з клавіатури, масштабування жестом / Accessibility: sufficient contrast, keyboard-friendly pop-ups, pinch-to-zoom
-- Навчальна гра «Постав час»: виставте заданий час і перевірте себе, з підказкою напрямку / Learning game "Set the time": set the requested time and check yourself, with a direction hint
 - Пошукова оптимізація (SEO): мета-теги, Open Graph, структуровані дані, canonical, `sitemap.xml`, короткий розділ «Про годинник» / Search engine optimization (SEO): meta tags, Open Graph, structured data, canonical, `sitemap.xml`, a short "About the clock" section
 
 ## Побажання та відповіді / Feedback and replies
@@ -45,6 +44,10 @@ Only these need updating by hand: the comment at the top of the file, the fallba
 © 2026 Anatolii Bondarenko. [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/) — повний текст у файлі [LICENSE](LICENSE) / full text in [LICENSE](LICENSE).
 
 ## Історія змін / Changelog
+
+### v3.02 — 24.09.2026
+
+- Прибрано гру «Постав час», додану у версії 3.01: спливаюче вікно гри закривало циферблат, тож доводилось раз у раз відкривати й закривати вікно, щоб побачити стрілки й результат. Такий тип завдання вчитель чи батьки можуть дати дитині усно й перевірити самі — окрема гра для цього не потрібна / Removed the "Set the time" game added in version 3.01: the game's pop-up window covered the clock face, so it had to be opened and closed repeatedly to see the hands and the result. A teacher or parent can give this kind of task out loud and check it themselves — a separate in-app game isn't needed for it
 
 ### v3.01 — 23.09.2026
 
