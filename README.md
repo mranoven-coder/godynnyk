@@ -1,6 +1,6 @@
 # Навчальний годинник / Learning Clock
 
-**Версія / Version:** 3.02 (24.09.2026)
+**Версія / Version:** 3.03 (24.09.2026)
 **Онлайн / Live:** https://mranoven-coder.github.io/godynnyk/
 
 🇺🇦 Інтерактивний аналоговий годинник, який вчить дітей визначати час. Безкоштовно, працює офлайн у будь-якому браузері, можна встановити як застосунок на телефон.
@@ -44,6 +44,10 @@ Only these need updating by hand: the comment at the top of the file, the fallba
 © 2026 Anatolii Bondarenko. [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/) — повний текст у файлі [LICENSE](LICENSE) / full text in [LICENSE](LICENSE).
 
 ## Історія змін / Changelog
+
+### v3.03 — 24.09.2026
+
+- Виправлено кнопку «Підтримати проєкт»: на комп'ютері вона розтягувалась на весь вільний простір ряду замість природної ширини, як у сусідніх кнопок. Помилка з'явилася у версії 2.96, коли кнопку перетворили з посилання на звичайну кнопку, і була непомітна на телефоні, де ряд кнопок і так переноситься по одній в рядок / Fixed the "Support the project" button: on desktop it used to stretch to fill the whole row instead of its natural width, unlike its neighboring buttons. The bug appeared in version 2.96, when the button was changed from a link to a regular button, and stayed unnoticed on phones, where the button row already wraps one per line
 
 ### v3.02 — 24.09.2026
 
