@@ -1,6 +1,6 @@
 # Навчальний годинник / Learning Clock
 
-**Версія / Version:** 3.04 (26.09.2026)
+**Версія / Version:** 3.03 (24.09.2026)
 **Онлайн / Live:** https://mranoven-coder.github.io/godynnyk/
 
 🇺🇦 Інтерактивний аналоговий годинник, який вчить дітей визначати час. Безкоштовно, працює офлайн у будь-якому браузері, можна встановити як застосунок на телефон.
@@ -14,7 +14,6 @@
 - Показ і приховування стрілок, пауза, хід назад / Show or hide hands, pause, run backward
 - Швидкість ходу: повзунок і вибір максимуму x300 / x600 / x1200 / Clock speed: slider with a maximum of x300 / x600 / x1200
 - Поле для встановлення часу (на телефоні — системне вікно вибору, оформлене як на комп'ютері) / A field to set the time (on a phone — the system picker, styled like on a computer)
-- ⚙ Дискретний («тікаючий») рух секундної стрілки, за бажанням / A ⚙ toggle for a discrete ("ticking") second-hand movement
 - Українська, англійська й іспанська (UA / EN / ES): повний переклад інтерфейсу, інструкції та всієї історії версій / Ukrainian, English and Spanish (UA / EN / ES): full translation of the interface, the guide, and the entire version history
 - Інструкція для батьків і вчителів обома мовами / Guide for parents and teachers in both languages
 - Підказки зі списком функцій при кожному відкритті чи оновленні сторінки (тап закриває) / Tips listing all functions on every open or refresh (tap to close)
@@ -45,13 +44,6 @@ Only these need updating by hand: the comment at the top of the file, the fallba
 © 2026 Anatolii Bondarenko. [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/) — повний текст у файлі [LICENSE](LICENSE) / full text in [LICENSE](LICENSE).
 
 ## Історія змін / Changelog
-
-### v3.04 — 26.09.2026
-
-- У налаштуваннях (⚙) додано галочку «Дискретний рух секундної стрілки»: вона «клацає» від позначки до позначки, як у механічному годиннику, замість плавного ходу з мілісекундами / Added a "Discrete second-hand movement" checkbox in settings (⚙): it "ticks" from mark to mark, like a mechanical clock, instead of sweeping smoothly with milliseconds
-- Годинникова й хвилинна стрілки завжди залишаються плавними, незалежно від цієї галочки — змінюється лише секундна / The hour and minute hands always stay smooth regardless of this checkbox — only the second hand changes
-- За замовчуванням галочка знята (хід лишається плавним, як і раніше); вибір зберігається в браузері пристрою / The checkbox is off by default (the movement stays smooth, as before); the choice is saved in the device's browser
-- Інструкцію оновлено: описано нову галочку / Updated the guide: described the new checkbox
 
 ### v3.03 — 24.09.2026
 
