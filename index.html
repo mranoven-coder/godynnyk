@@ -1,5 +1,5 @@
 <!--
-  Навчальний годинник / Learning Clock — v3.03 (24.09.2026)
+  Навчальний годинник / Learning Clock — v3.04 (28.09.2026)
   Автор ідеї та вимог / Author: Anatolii Bondarenko, створено / created 17.09.2026
   © 2026 Anatolii Bondarenko. Ліцензія / License: CC BY-NC-ND 4.0
   https://creativecommons.org/licenses/by-nc-nd/4.0/
@@ -9,13 +9,13 @@
 <html lang="uk">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Навчальний годинник для дітей — тренажер часу | Learning Clock for Kids</title>
 <meta name="description" content="Безкоштовний навчальний годинник для дітей: тягніть стрілки, вивчайте 12- і 24-годинний формат, час вперед і назад. Працює в браузері й офлайн.">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://mranoven-coder.github.io/godynnyk/">
 <meta name="author" content="Anatolii Bondarenko">
-<meta name="version" content="3.03">
+<meta name="version" content="3.04">
 <meta name="google-site-verification" content="0kAWkHnkUetvqLp91TnaHS1QHfxsoHvwadKuok6HM8w" />
 <link rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">
 
@@ -29,6 +29,7 @@
 <meta property="og:url" content="https://mranoven-coder.github.io/godynnyk/">
 <meta property="og:locale" content="uk_UA">
 <meta property="og:locale:alternate" content="en_US">
+<meta property="og:locale:alternate" content="es_ES">
 <meta property="og:site_name" content="Навчальний годинник / Learning Clock">
 <meta property="og:image:alt" content="Аналоговий годинник із кольоровими стрілками">
 
@@ -53,7 +54,8 @@
   "browserRequirements": "Requires JavaScript",
   "inLanguage": [
     "uk",
-    "en"
+    "en",
+    "es"
   ],
   "isAccessibleForFree": true,
   "offers": {
@@ -84,6 +86,7 @@
 
 <!-- PWA: iOS (Safari) підтримка -->
 <meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Годинник">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
@@ -109,6 +112,8 @@
     color:#333;
     min-height:100vh;
   }
+  /* viewport-fit=cover: відступи від «чолки» й закруглених країв */
+  body{padding:env(safe-area-inset-top,0px) env(safe-area-inset-right,0px) env(safe-area-inset-bottom,0px) env(safe-area-inset-left,0px);}
   h1{
     text-align:center;
     color:#4a7fd6;
@@ -733,7 +738,7 @@
   <button type="button" class="install-btn" id="installBtn" data-i18n="installBtn">📲 Встановити застосунок</button>
 </div>
 
-<div class="help-overlay" id="iosInstallOverlay">
+<div class="help-overlay" id="iosInstallOverlay" role="dialog" aria-modal="true">
   <div class="help-card" style="max-width:420px;text-align:center;">
     <button class="help-close" id="iosInstallClose" type="button" aria-label="Закрити" data-i18n-aria="close">✕</button>
     <p id="iosInstallText" style="font-size:1.05rem;margin-top:26px;line-height:1.6;"></p>
@@ -857,7 +862,7 @@
 <p class="download-note" data-i18n-html="downloadNote">Файл можна відкрити офлайн у будь-якому браузері.<br>Автор: Anatolii Bondarenko, 17.09.2026</p>
 <p class="download-note copyright-note" data-i18n-html="copyright">© 2026 Anatolii Bondarenko · <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.uk" target="_blank" rel="noopener noreferrer">CC BY-NC-ND 4.0</a> · v3.03 · 24.09.2026</p>
 
-<div class="help-overlay" id="helpOverlay">
+<div class="help-overlay" id="helpOverlay" role="dialog" aria-modal="true">
   <div class="help-card">
     <button class="help-close" id="helpClose" type="button" aria-label="Закрити" data-i18n-aria="close">✕</button>
     <div class="help-body" data-lang="uk">
@@ -1063,7 +1068,7 @@
   </div>
 </div>
 
-<div class="help-overlay" id="changesOverlay">
+<div class="help-overlay" id="changesOverlay" role="dialog" aria-modal="true">
   <div class="help-card">
     <button class="help-close" id="changesClose" type="button" aria-label="Закрити" data-i18n-aria="close">✕</button>
     <div class="help-body" data-lang="uk">
@@ -1221,6 +1226,37 @@
 // позначка «NEW» на кнопці «Що нового» та анонс у вікні підказок — підхоплюється
 // з цього списку автоматично.
 var RELEASES = [
+  {
+    version: "3.04", date: "28.09.2026",
+    announce: {
+      uk: "годинник більше не відстає, а стрілки коректно переходять через 12.",
+      en: "the clock no longer runs slow, and the hands now cross 12 correctly.",
+      es: "el reloj ya no se atrasa y las manecillas cruzan el 12 correctamente."
+    },
+    items: {
+      uk: [
+        "Виправлено відставання годинника на швидкості x1: час тепер рахується без втрати часток мілісекунди",
+        "Перетягування стрілок узгоджене: при переході хвилинної через «12» годинникова стрілка тепер зміщується разом із нею, а годинникова може переходити через 12:00 (AM/PM); після відпускання час притягується до цілої хвилини",
+        "Після повернення з фонової вкладки годинник не «стрибає» вперед; кнопка «Пауза» завжди має однаковий колір; тягнення другим пальцем не обриває перетягування",
+        "Поділитися: якщо системне меню недоступне, посилання копіюється; на iPad показується правильна підказка встановлення",
+        "Сторінка не перезавантажується під час першого встановлення застосунку; підготовлено безпечні відступи для iPhone з «чолкою»; покращено доступність вікон"
+      ],
+      en: [
+        "Fixed the clock running slow at x1: time is now counted without losing fractions of a millisecond",
+        "Hand dragging is now consistent: moving the minute hand across 12 also moves the hour hand, and the hour hand can cross 12:00 (AM/PM); on release the time snaps to a whole minute",
+        "After returning from a background tab the clock no longer jumps ahead; the Pause button always has the same color; a second finger no longer interrupts a drag",
+        "Share: if the system menu is unavailable the link is copied; iPad now gets the correct install instructions",
+        "The page no longer reloads during the app's first install; safe-area padding for iPhones with a notch; better dialog accessibility"
+      ],
+      es: [
+        "Se corrigió el retraso del reloj a x1: el tiempo se cuenta ahora sin perder fracciones de milisegundo",
+        "El arrastre de las manecillas es coherente: al pasar el minutero por el 12 también se mueve el horario, y el horario puede cruzar las 12:00 (AM/PM); al soltar, la hora se ajusta al minuto exacto",
+        "Al volver desde una pestaña en segundo plano el reloj ya no salta; el botón «Pausa» siempre tiene el mismo color; un segundo dedo ya no interrumpe el arrastre",
+        "Compartir: si el menú del sistema no está disponible se copia el enlace; en iPad se muestran las instrucciones de instalación correctas",
+        "La página ya no se recarga durante la primera instalación de la aplicación; márgenes seguros para iPhone con muesca; mejor accesibilidad de las ventanas"
+      ]
+    }
+  },
   {
     version: "3.03", date: "24.09.2026",
     announce: {
@@ -2262,19 +2298,24 @@ applyLang(detectLang());
   }
 
   // State
-  let simTime = new Date();
+  // Час зберігаємо числом (мс, з дробовою частиною): new Date() відкидає частки мілісекунди,
+  // через що на x1 годинник щокадру «губив» час і відставав.
+  let simMs = Date.now();
   let paused = false;
   let reverse = false;
   let speed = 1;
   let dragging = null; // 'hour' | 'minute' | 'second' | null
   let lastTs = null;
   let activePointerId = null;
+  let lastInputStr = '';
 
   function pad(n){ return n.toString().padStart(2,'0'); }
 
   function updateButtons(){
     pauseBtn.textContent = paused ? t('start') : t('pause');
+    pauseBtn.classList.toggle('playing', !paused);
     reverseBtn.textContent = reverse ? t('forward') : t('back');
+    reverseBtn.classList.toggle('active', reverse);
   }
 
   function formatTimeForInput(d){
@@ -2282,35 +2323,35 @@ applyLang(detectLang());
   }
 
   function render(){
-    const h = simTime.getHours() % 12;
-    const m = simTime.getMinutes();
-    const s = simTime.getSeconds();
-    const ms = simTime.getMilliseconds();
+    const d = new Date(simMs);
+    const h = d.getHours() % 12;
+    const m = d.getMinutes();
+    const s = d.getSeconds();
+    const ms = d.getMilliseconds();
 
     const secFrac = s + ms/1000;
     const minFrac = m + secFrac/60;
     const hourFrac = h + minFrac/60;
 
-    const hourAngle = (hourFrac/12)*360;
-    const minuteAngle = (minFrac/60)*360;
-    const secondAngle = (secFrac/60)*360;
+    hourGroup.setAttribute('transform', 'rotate('+((hourFrac/12)*360)+' '+CENTER+' '+CENTER+')');
+    minuteGroup.setAttribute('transform', 'rotate('+((minFrac/60)*360)+' '+CENTER+' '+CENTER+')');
+    secondGroup.setAttribute('transform', 'rotate('+((secFrac/60)*360)+' '+CENTER+' '+CENTER+')');
 
-    hourGroup.setAttribute('transform', 'rotate('+hourAngle+' '+CENTER+' '+CENTER+')');
-    minuteGroup.setAttribute('transform', 'rotate('+minuteAngle+' '+CENTER+' '+CENTER+')');
-    secondGroup.setAttribute('transform', 'rotate('+secondAngle+' '+CENTER+' '+CENTER+')');
-
-    if(document.activeElement !== timeInput){
-      timeInput.value = formatTimeForInput(simTime);
+    // Оновлюємо поле часу лише коли рядок справді змінився (а не 60 разів на секунду)
+    const str = formatTimeForInput(d);
+    if(document.activeElement !== timeInput && str !== lastInputStr){
+      timeInput.value = str;
+      lastInputStr = str;
     }
   }
 
   function loop(ts){
     if(lastTs===null) lastTs = ts;
-    const dt = ts - lastTs;
+    let dt = ts - lastTs;
     lastTs = ts;
+    if(dt > 1000) dt = 0;   // повернулись із фонової вкладки — без стрибка на години
     if(!paused && !dragging){
-      const delta = dt * speed * (reverse ? -1 : 1);
-      simTime = new Date(simTime.getTime() + delta);
+      simMs += dt * speed * (reverse ? -1 : 1);
     }
     render();
     requestAnimationFrame(loop);
@@ -2386,16 +2427,15 @@ applyLang(detectLang());
 
   // Now
   nowBtn.addEventListener('click', function(){
-    simTime = new Date();
+    simMs = Date.now();
+    lastTs = null;
     paused = false;
     reverse = false;
     selectPreset(presets[0]);
     speedRange.value = 1;
     speed = 1;
     speedValue.textContent = 'x1';
-    pauseBtn.classList.remove('playing');
     updateButtons();
-    reverseBtn.classList.remove('active');
   });
 
   // Manual keyboard-driven time/date inputs
@@ -2406,10 +2446,11 @@ applyLang(detectLang());
     const h = parseInt(parts[0],10) || 0;
     const m = parseInt(parts[1],10) || 0;
     const s = parts.length>2 ? (parseInt(parts[2],10)||0) : 0;
-    const nt = new Date(simTime);
+    const nt = new Date(simMs);
     nt.setHours(h,m,s,0);
-    simTime = nt;
+    simMs = nt.getTime();
   });
+  timeInput.addEventListener('blur', function(){ lastInputStr = ''; });
 
   // ---- Dragging hands ----
   function getSvgPoint(evt){
@@ -2427,55 +2468,44 @@ applyLang(detectLang());
   }
 
   let handWasTapped = false;
+  let lastAngle = 0;
 
   function startDrag(which, evt){
     dragging = which;
     activePointerId = evt.pointerId;
     handWasTapped = true;
+    lastAngle = angleFromPoint(getSvgPoint(evt));
     try{ evt.target.setPointerCapture(evt.pointerId); }catch(e){}
     evt.preventDefault();
   }
 
+  // Стрілка рухається на ту саму зміну кута, що й палець: перехід через «12» коректно
+  // змінює годину, а годинникова й хвилинна стрілки лишаються узгодженими, як на справжньому годиннику.
   function onPointerMove(evt){
     if(!dragging) return;
     if(activePointerId!==null && evt.pointerId!==activePointerId) return;
-    const pt = getSvgPoint(evt);
-    const angle = angleFromPoint(pt);
-    const nt = new Date(simTime);
-
-    if(dragging==='second'){
-      let sec = Math.round((angle/360)*60) % 60;
-      nt.setSeconds(sec, 0);
-    } else if(dragging==='minute'){
-      let minFrac = (angle/360)*60;
-      let min = Math.floor(minFrac) % 60;
-      let sec = Math.round((minFrac-Math.floor(minFrac))*60) % 60;
-      nt.setMinutes(min);
-      nt.setSeconds(sec);
-    } else if(dragging==='hour'){
-      let hourFrac = (angle/360)*12;
-      let h12 = Math.floor(hourFrac) % 12;
-      let minFrac = (hourFrac-Math.floor(hourFrac))*60;
-      let min = Math.round(minFrac) % 60;
-      const isPM = simTime.getHours() >= 12;
-      let h24 = h12 + (isPM ? 12 : 0);
-      nt.setHours(h24);
-      nt.setMinutes(min);
-    }
-    simTime = nt;
+    const a = angleFromPoint(getSvgPoint(evt));
+    let d = a - lastAngle;
+    if(d > 180) d -= 360; else if(d < -180) d += 360;
+    lastAngle = a;
+    const span = dragging==='hour' ? 43200000 : (dragging==='minute' ? 3600000 : 60000);
+    simMs += d/360*span;
     render();
     evt.preventDefault();
   }
 
   function endDrag(evt){
-    if(dragging){
-      dragging = null;
-      activePointerId = null;
-      lastTs = null;
-      // Після торкання стрілки на телефоні click може не прийти (жест погашено) — скидаємо прапорець самі,
-      // щоб перший тап по циферблату після перетягування не «з'їдався»
-      setTimeout(function(){ handWasTapped = false; }, 60);
-    }
+    if(!dragging) return;
+    if(evt && activePointerId!==null && evt.pointerId!==activePointerId) return;   // інший палець
+    // Притягуємо до цілої хвилини (для секундної — до цілої секунди), щоб виходило рівно 14:00:00
+    const unit = dragging==='second' ? 1000 : 60000;
+    simMs = Math.round(simMs/unit)*unit;
+    dragging = null;
+    activePointerId = null;
+    lastTs = null;
+    render();
+    // Після торкання стрілки на телефоні click може не прийти — скидаємо прапорець самі
+    setTimeout(function(){ handWasTapped = false; }, 60);
   }
 
   hourGroup.addEventListener('pointerdown', function(e){ startDrag('hour', e); });
@@ -2525,7 +2555,10 @@ if ('serviceWorker' in navigator) {
   // перезавантажуємо сторінку один раз, щоб показати свіжу версію
   // без потреби вручну натискати Ctrl+F5.
   var swRefreshed = false;
+  var swHadController = !!navigator.serviceWorker.controller;
   navigator.serviceWorker.addEventListener('controllerchange', function(){
+    // Перший візит: SW лише вперше бере керування — перезавантажувати не треба
+    if(!swHadController){ swHadController = true; return; }
     if(swRefreshed) return;
     swRefreshed = true;
     try{ sessionStorage.setItem('clockAutoReload', '1'); }catch(e){}
@@ -2614,7 +2647,7 @@ if ('serviceWorker' in navigator) {
     const show = unseen && noteAllowed === true;
     updateNote.hidden = !show;
     if(show){
-      updateNoteText.textContent = t('updatePrefix') + ' v' + latest.version + ': ' + latest.announce[LANG];
+      updateNoteText.textContent = t('updatePrefix') + ' v' + latest.version + ': ' + (latest.announce[LANG] || latest.announce.en);
     }
   }
 
@@ -2858,16 +2891,7 @@ if ('serviceWorker' in navigator) {
     document.body.removeChild(ta);
   }
 
-  inviteBtn.addEventListener('click', function(){
-    const shareData = {
-      title: t('h1'),
-      text: t('shareText'),
-      url: shareUrl
-    };
-    if(navigator.share){
-      navigator.share(shareData).catch(function(){ /* користувач скасував — нічого не робимо */ });
-      return;
-    }
+  function copyLink(){
     if(navigator.clipboard && navigator.clipboard.writeText){
       navigator.clipboard.writeText(shareUrl).then(showToast).catch(function(){
         fallbackCopy(shareUrl);
@@ -2877,6 +2901,22 @@ if ('serviceWorker' in navigator) {
       fallbackCopy(shareUrl);
       showToast();
     }
+  }
+
+  inviteBtn.addEventListener('click', function(){
+    const shareData = {
+      title: t('h1'),
+      text: t('shareText'),
+      url: shareUrl
+    };
+    if(navigator.share){
+      navigator.share(shareData).catch(function(err){
+        if(err && err.name === 'AbortError') return;   // користувач сам скасував
+        copyLink();                                     // інакше — копіюємо посилання
+      });
+      return;
+    }
+    copyLink();
   });
 })();
 
@@ -2898,7 +2938,8 @@ if ('serviceWorker' in navigator) {
   }
 
   function isIos(){
-    return /iphone|ipad|ipod/i.test(navigator.userAgent) && !window.MSStream;
+    return (/iphone|ipad|ipod/i.test(navigator.userAgent) ||
+            (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)) && !window.MSStream;
   }
 
   function isAndroid(){
