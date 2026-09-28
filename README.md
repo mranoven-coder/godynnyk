@@ -1,6 +1,6 @@
 # Навчальний годинник / Learning Clock
 
-**Версія / Version:** 3.04 (28.09.2026)
+**Версія / Version:** 3.05 (28.09.2026)
 **Онлайн / Live:** https://mranoven-coder.github.io/godynnyk/
 
 🇺🇦 Інтерактивний аналоговий годинник, який вчить дітей визначати час. Безкоштовно, працює офлайн у будь-якому браузері, можна встановити як застосунок на телефон.
@@ -44,6 +44,10 @@ Only these need updating by hand: the comment at the top of the file, the fallba
 © 2026 Anatolii Bondarenko. [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/) — повний текст у файлі [LICENSE](LICENSE) / full text in [LICENSE](LICENSE).
 
 ## Історія змін / Changelog
+
+### v3.05 — 28.09.2026
+
+- Секундна стрілка рухається дискретно, як на кварцовому годиннику: стрибок раз на секунду замість плавного ходу. Так дитині легше рахувати секунди й бачити, на якій саме секунді стоїть стрілка / The second hand now ticks like a quartz clock: one jump per second instead of a smooth sweep. This makes it easier for a child to count seconds and see exactly which second the hand points to
 
 ### v3.04 — 28.09.2026
 

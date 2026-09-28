@@ -1,5 +1,5 @@
 <!--
-  Навчальний годинник / Learning Clock — v3.04 (28.09.2026)
+  Навчальний годинник / Learning Clock — v3.05 (28.09.2026)
   Автор ідеї та вимог / Author: Anatolii Bondarenko, створено / created 17.09.2026
   © 2026 Anatolii Bondarenko. Ліцензія / License: CC BY-NC-ND 4.0
   https://creativecommons.org/licenses/by-nc-nd/4.0/
@@ -15,7 +15,7 @@
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://mranoven-coder.github.io/godynnyk/">
 <meta name="author" content="Anatolii Bondarenko">
-<meta name="version" content="3.04">
+<meta name="version" content="3.05">
 <meta name="google-site-verification" content="0kAWkHnkUetvqLp91TnaHS1QHfxsoHvwadKuok6HM8w" />
 <link rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">
 
@@ -76,7 +76,7 @@
   "image": "https://mranoven-coder.github.io/godynnyk/icons/og-image.png",
   "datePublished": "2026-09-17",
   "dateModified": "2026-09-28",
-  "softwareVersion": "3.04"
+  "softwareVersion": "3.05"
 }
 </script>
 
@@ -727,7 +727,7 @@
 
 <div class="title-row">
   <h1 data-i18n="h1">🕒 Навчальний годинник</h1>
-  <button type="button" class="version-badge" id="versionBadge">v3.04</button>
+  <button type="button" class="version-badge" id="versionBadge">v3.05</button>
 </div>
 <p class="hint" data-i18n="hint">Потягни стрілки пальцем або мишкою, щоб виставити свій час!</p>
 
@@ -860,7 +860,7 @@
 </section>
 
 <p class="download-note" data-i18n-html="downloadNote">Файл можна відкрити офлайн у будь-якому браузері.<br>Автор: Anatolii Bondarenko, 17.09.2026</p>
-<p class="download-note copyright-note" data-i18n-html="copyright">© 2026 Anatolii Bondarenko · <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.uk" target="_blank" rel="noopener noreferrer">CC BY-NC-ND 4.0</a> · v3.04 · 28.09.2026</p>
+<p class="download-note copyright-note" data-i18n-html="copyright">© 2026 Anatolii Bondarenko · <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.uk" target="_blank" rel="noopener noreferrer">CC BY-NC-ND 4.0</a> · v3.05 · 28.09.2026</p>
 
 <div class="help-overlay" id="helpOverlay" role="dialog" aria-modal="true">
   <div class="help-card">
@@ -1226,6 +1226,25 @@
 // позначка «NEW» на кнопці «Що нового» та анонс у вікні підказок — підхоплюється
 // з цього списку автоматично.
 var RELEASES = [
+  {
+    version: "3.05", date: "28.09.2026",
+    announce: {
+      uk: "секундна стрілка тепер рухається дискретно — від секунди до секунди.",
+      en: "the second hand now ticks from second to second instead of sweeping.",
+      es: "el segundero ahora avanza a saltos, de segundo en segundo."
+    },
+    items: {
+      uk: [
+        "Секундна стрілка рухається дискретно, як на кварцовому годиннику: стрибок раз на секунду замість плавного ходу. Так дитині легше рахувати секунди й бачити, на якій саме секунді стоїть стрілка"
+      ],
+      en: [
+        "The second hand now ticks like a quartz clock: one jump per second instead of a smooth sweep. This makes it easier for a child to count seconds and see exactly which second the hand points to"
+      ],
+      es: [
+        "El segundero avanza a saltos, como en un reloj de cuarzo: un salto por segundo en lugar de un movimiento continuo. Así al niño le resulta más fácil contar los segundos y ver exactamente en qué segundo está la manecilla"
+      ]
+    }
+  },
   {
     version: "3.04", date: "28.09.2026",
     announce: {
@@ -2335,7 +2354,7 @@ applyLang(detectLang());
 
     hourGroup.setAttribute('transform', 'rotate('+((hourFrac/12)*360)+' '+CENTER+' '+CENTER+')');
     minuteGroup.setAttribute('transform', 'rotate('+((minFrac/60)*360)+' '+CENTER+' '+CENTER+')');
-    secondGroup.setAttribute('transform', 'rotate('+((secFrac/60)*360)+' '+CENTER+' '+CENTER+')');
+    secondGroup.setAttribute('transform', 'rotate('+((s/60)*360)+' '+CENTER+' '+CENTER+')');
 
     // Оновлюємо поле часу лише коли рядок справді змінився (а не 60 разів на секунду)
     const str = formatTimeForInput(d);
