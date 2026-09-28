@@ -1,6 +1,6 @@
 # Навчальний годинник / Learning Clock
 
-**Версія / Version:** 3.03 (24.09.2026)
+**Версія / Version:** 3.04 (28.09.2026)
 **Онлайн / Live:** https://mranoven-coder.github.io/godynnyk/
 
 🇺🇦 Інтерактивний аналоговий годинник, який вчить дітей визначати час. Безкоштовно, працює офлайн у будь-якому браузері, можна встановити як застосунок на телефон.
@@ -44,6 +44,14 @@ Only these need updating by hand: the comment at the top of the file, the fallba
 © 2026 Anatolii Bondarenko. [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/) — повний текст у файлі [LICENSE](LICENSE) / full text in [LICENSE](LICENSE).
 
 ## Історія змін / Changelog
+
+### v3.04 — 28.09.2026
+
+- Виправлено відставання годинника на швидкості x1: час тепер рахується без втрати часток мілісекунди / Fixed the clock running slow at x1: time is now counted without losing fractions of a millisecond
+- Перетягування стрілок узгоджене: при переході хвилинної через «12» годинникова стрілка тепер зміщується разом із нею, а годинникова може переходити через 12:00 (AM/PM); після відпускання час притягується до цілої хвилини / Hand dragging is now consistent: moving the minute hand across 12 also moves the hour hand, and the hour hand can cross 12:00 (AM/PM); on release the time snaps to a whole minute
+- Після повернення з фонової вкладки годинник не «стрибає» вперед; кнопка «Пауза» завжди має однаковий колір; тягнення другим пальцем не обриває перетягування / After returning from a background tab the clock no longer jumps ahead; the Pause button always has the same color; a second finger no longer interrupts a drag
+- Поділитися: якщо системне меню недоступне, посилання копіюється; на iPad показується правильна підказка встановлення / Share: if the system menu is unavailable the link is copied; iPad now gets the correct install instructions
+- Сторінка не перезавантажується під час першого встановлення застосунку; підготовлено безпечні відступи для iPhone з «чолкою»; покращено доступність вікон / The page no longer reloads during the app's first install; safe-area padding for iPhones with a notch; better dialog accessibility
 
 ### v3.03 — 24.09.2026
 
