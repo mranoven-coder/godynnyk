@@ -1,6 +1,6 @@
 # Навчальний годинник / Learning Clock
 
-**Версія / Version:** 3.06 (28.09.2026)
+**Версія / Version:** 3.07 (28.09.2026)
 **Онлайн / Live:** https://mranoven-coder.github.io/godynnyk/
 
 🇺🇦 Інтерактивний аналоговий годинник, який вчить дітей визначати час. Безкоштовно, працює офлайн у будь-якому браузері, можна встановити як застосунок на телефон.
@@ -44,6 +44,10 @@ Only these need updating by hand: the comment at the top of the file, the fallba
 © 2026 Anatolii Bondarenko. [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/) — повний текст у файлі [LICENSE](LICENSE) / full text in [LICENSE](LICENSE).
 
 ## Історія змін / Changelog
+
+### v3.07 — 28.09.2026
+
+- У розділі «Технічні примітки» інструкції приклад номера версії поруч із заголовком оновлено з застарілого v3.03 на v3.06 / In the guide's "Technical notes" section, the example version number next to the title was updated from the outdated v3.03 to v3.06
 
 ### v3.06 — 28.09.2026
 
