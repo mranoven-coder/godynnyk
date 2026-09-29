@@ -1,5 +1,5 @@
 <!--
-  Навчальний годинник / Learning Clock — v3.05 (28.09.2026)
+  Навчальний годинник / Learning Clock — v3.06 (28.09.2026)
   Автор ідеї та вимог / Author: Anatolii Bondarenko, створено / created 17.09.2026
   © 2026 Anatolii Bondarenko. Ліцензія / License: CC BY-NC-ND 4.0
   https://creativecommons.org/licenses/by-nc-nd/4.0/
@@ -15,7 +15,7 @@
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://mranoven-coder.github.io/godynnyk/">
 <meta name="author" content="Anatolii Bondarenko">
-<meta name="version" content="3.05">
+<meta name="version" content="3.06">
 <meta name="google-site-verification" content="0kAWkHnkUetvqLp91TnaHS1QHfxsoHvwadKuok6HM8w" />
 <link rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">
 
@@ -76,7 +76,7 @@
   "image": "https://mranoven-coder.github.io/godynnyk/icons/og-image.png",
   "datePublished": "2026-09-17",
   "dateModified": "2026-09-28",
-  "softwareVersion": "3.05"
+  "softwareVersion": "3.06"
 }
 </script>
 
@@ -164,6 +164,8 @@
     touch-action:none;
     -webkit-user-select:none;
     user-select:none;
+    -webkit-tap-highlight-color:transparent;
+    outline:none;
     max-width:min(88vw,420px);
     height:auto;
     filter:drop-shadow(0 6px 14px rgba(0,0,0,0.15));
@@ -727,7 +729,7 @@
 
 <div class="title-row">
   <h1 data-i18n="h1">🕒 Навчальний годинник</h1>
-  <button type="button" class="version-badge" id="versionBadge">v3.05</button>
+  <button type="button" class="version-badge" id="versionBadge">v3.06</button>
 </div>
 <p class="hint" data-i18n="hint">Потягни стрілки пальцем або мишкою, щоб виставити свій час!</p>
 
@@ -860,7 +862,7 @@
 </section>
 
 <p class="download-note" data-i18n-html="downloadNote">Файл можна відкрити офлайн у будь-якому браузері.<br>Автор: Anatolii Bondarenko, 17.09.2026</p>
-<p class="download-note copyright-note" data-i18n-html="copyright">© 2026 Anatolii Bondarenko · <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.uk" target="_blank" rel="noopener noreferrer">CC BY-NC-ND 4.0</a> · v3.05 · 28.09.2026</p>
+<p class="download-note copyright-note" data-i18n-html="copyright">© 2026 Anatolii Bondarenko · <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.uk" target="_blank" rel="noopener noreferrer">CC BY-NC-ND 4.0</a> · v3.06 · 28.09.2026</p>
 
 <div class="help-overlay" id="helpOverlay" role="dialog" aria-modal="true">
   <div class="help-card">
@@ -1226,6 +1228,25 @@
 // позначка «NEW» на кнопці «Що нового» та анонс у вікні підказок — підхоплюється
 // з цього списку автоматично.
 var RELEASES = [
+  {
+    version: "3.06", date: "28.09.2026",
+    announce: {
+      uk: "прибрано сірий квадрат-підсвітку при тапі по циферблату на телефоні.",
+      en: "removed the gray tap-highlight square on the clock face on phones.",
+      es: "se elimin\u00f3 el recuadro gris al tocar la esfera en el tel\u00e9fono."
+    },
+    items: {
+      uk: [
+        "На телефонах і планшетах прибрано сірий квадрат, який браузер ненадовго показував навколо циферблата при тапі (пауза/старт) — стандартна підсвітка дотику вимкнена"
+      ],
+      en: [
+        "On phones and tablets, removed the gray square the browser briefly showed around the clock face on tap (pause/start) — the default tap highlight is now disabled"
+      ],
+      es: [
+        "En tel\u00e9fonos y tabletas se elimin\u00f3 el recuadro gris que el navegador mostraba brevemente alrededor de la esfera al tocar (pausa/inicio) \u2014 se desactiv\u00f3 el resaltado de toque predeterminado"
+      ]
+    }
+  },
   {
     version: "3.05", date: "28.09.2026",
     announce: {

@@ -1,6 +1,6 @@
 # Навчальний годинник / Learning Clock
 
-**Версія / Version:** 3.05 (28.09.2026)
+**Версія / Version:** 3.06 (28.09.2026)
 **Онлайн / Live:** https://mranoven-coder.github.io/godynnyk/
 
 🇺🇦 Інтерактивний аналоговий годинник, який вчить дітей визначати час. Безкоштовно, працює офлайн у будь-якому браузері, можна встановити як застосунок на телефон.
@@ -44,6 +44,10 @@ Only these need updating by hand: the comment at the top of the file, the fallba
 © 2026 Anatolii Bondarenko. [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/) — повний текст у файлі [LICENSE](LICENSE) / full text in [LICENSE](LICENSE).
 
 ## Історія змін / Changelog
+
+### v3.06 — 28.09.2026
+
+- На телефонах і планшетах прибрано сірий квадрат, який браузер ненадовго показував навколо циферблата при тапі (пауза/старт) — стандартна підсвітка дотику вимкнена / On phones and tablets, removed the gray square the browser briefly showed around the clock face on tap (pause/start) — the default tap highlight is now disabled
 
 ### v3.05 — 28.09.2026
 
