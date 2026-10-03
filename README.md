@@ -1,6 +1,6 @@
 # Навчальний годинник / Learning Clock
 
-**Версія / Version:** 3.07 (28.09.2026)
+**Версія / Version:** 3.08 (03.10.2026)
 **Онлайн / Live:** https://mranoven-coder.github.io/godynnyk/
 
 🇺🇦 Інтерактивний аналоговий годинник, який вчить дітей визначати час. Безкоштовно, працює офлайн у будь-якому браузері, можна встановити як застосунок на телефон.
@@ -44,6 +44,12 @@ Only these need updating by hand: the comment at the top of the file, the fallba
 © 2026 Anatolii Bondarenko. [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/) — повний текст у файлі [LICENSE](LICENSE) / full text in [LICENSE](LICENSE).
 
 ## Історія змін / Changelog
+
+### v3.08 — 03.10.2026
+
+- Оновлено заголовок і опис сторінки для пошукових систем (додано «онлайн» і «аналоговий годинник») / Updated the page title and description for search engines (added "online" and "analog clock")
+- У блок «Про годинник» додано два розділи з відповідями: про аналоговий годинник і про 12- і 24-годинний формат / Added two answer sections to the "About the clock" block (Ukrainian version): about the analog clock and about the 12- and 24-hour formats
+- Додано розділ «Інші тренажери» з посиланням на безкоштовний тренажер «Ділення стовпчиком» / Added an "Other trainers" section with a link to the free Long Division trainer (in Ukrainian)
 
 ### v3.07 — 28.09.2026
 
